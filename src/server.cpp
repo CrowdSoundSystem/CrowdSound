@@ -23,14 +23,43 @@
 using namespace std;
 using namespace skrillex;
 
+// Global State
+bool stop = false;
+shared_ptr<DB> db;
+
+// Each client (from mobile device) has a connection
+// with the Twisted Server. The Twisted Server then opens
+// a connection to us. As a result, each connection handler
+// represents an individual client (and session).
+//
+// This allows us to keep any session state localized to
+// the connection handler.
+//
+// Additionally, the primary method of the connection handler
+// is to read line by line (read_line()). While the client and
+// Twisted Server may send the entire message at one time, the
+// connection_handler will only proceccess line by line, to make
+// things super simple. (Remember, you can send a huge blob, but
+// the read_line() message will only read until a new line, and return,
+// but the data is still in the socket buffer).
 void* connection_handler(void* sock) {
+    string id;
     int socket = *( (int*)sock );
 
     try {
+        string data;
+        while (!stop && (data = read_line(socket)) != "") {
+            // Parse the data.
+            //     1) It's an iam message, so set the id (above)
+            //     2) It's a song message, so create a song / artist / genre and add to db (and also call db->count())
+            //     3) It's a vote message, so vote in db
+            //
+            // Additionally, we can call algo.run(), still have to decide
+        }
+
         close(socket);
     } catch (connection_closed) {
     } catch (socket_error) { }
-
     return 0;
 }
 
@@ -77,7 +106,7 @@ int main() {
     // Load the DB...
     DB* raw = 0;
     Status status = open(raw, "", Options::InMemoryOptions());
-    shared_ptr<DB> db(raw);
+    db.reset(raw);
 
     // Setup algorithm settings
     DecisionSettings settings;
