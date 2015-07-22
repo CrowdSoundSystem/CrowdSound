@@ -7,3 +7,6 @@
 [submodule "twisted-server"]
 	path = twisted-server
 	url = git@github.com:crowdsoundsystem/twisted-server
+[submodule "decisionalgorithm"]
+	path = decisionalgorithm
+	url = git@github.com:crowdsoundsystem/decisionalgorithm
