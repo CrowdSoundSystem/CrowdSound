@@ -13,6 +13,8 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
 include_directories(include)
 include_directories(skrillex/include)
+include_directories(decisionalgorithm/DecisionAlgorithm/src)
 
 add_subdirectory(skrillex)
+add_subdirectory(decisionalgorithm/DecisionAlgorithm/src)
 add_subdirectory(src)

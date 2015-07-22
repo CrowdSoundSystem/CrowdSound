@@ -8,6 +8,6 @@ file(GLOB_RECURSE crowdsound_srcs
 )
 
 add_executable(crowdsound server.cpp)
-target_link_libraries(crowdsound skrillex)
+target_link_libraries(crowdsound skrillex decision_algorithm)
 
 install(TARGETS crowdsound DESTINATION bin)
