@@ -7,6 +7,14 @@ One Sound to rule them all, One Sound to find them,<br />
 One Sound to bring them all and in the crowd bind them<br />
 In the Land of Waterloo where the Shadows lie
 
+## Setup
+The crowdsound repo uses submodules for the specific components.
+Thus, to initialize the repo:
+```
+$ git submodule init
+$ git submodule update
+```
+
 ## Building
 Building is as simple as running `CMake`. However, it is recommended
 to create a seperate directory for building. For example, from the project root:

@@ -4,6 +4,9 @@ project(crowdsound)
 # Allow C++11
 add_definitions(-std=c++0x)
 
+# Threading
+find_package(Threads)
+
 # The Install Location (i.e. make install)
 set(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR})
 
