@@ -4,3 +4,6 @@
 [submodule "supahotfire"]
 	path = supahotfire
 	url = git@github.com:crowdsoundsystem/supahotfire
+[submodule "twisted-server"]
+	path = twisted-server
+	url = git@github.com:crowdsoundsystem/twisted-server
