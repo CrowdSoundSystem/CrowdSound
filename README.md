@@ -4,7 +4,7 @@ Nine for the Moral Men doomed to die, (Bros)<br />
 One for the Pi on his dark thrown<br />
 In the Land of Waterloo where the Shadows lie.<br />
 One Sound to rule them all, One Sound to find them,<br />
-One Sound to bring them all and in the darkness bind them<br />
+One Sound to bring them all and in the crowd bind them<br />
 In the Land of Waterloo where the Shadows lie
 
 ## Building
