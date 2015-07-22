@@ -55,6 +55,10 @@ void* connection_handler(void* sock) {
             //     3) It's a vote message, so vote in db
             //
             // Additionally, we can call algo.run(), still have to decide
+
+            // For now, echo it back!
+            cout << "Echoing: " << data << endl;
+            send(socket, data.c_str(), data.length(), MSG_NOSIGNAL);
         }
 
         close(socket);
