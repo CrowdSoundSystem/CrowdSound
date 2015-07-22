@@ -1,0 +1,6 @@
+[submodule "skrillex"]
+	path = skrillex
+	url = git@github.com:crowdsoundsystem/skrillex
+[submodule "supahotfire"]
+	path = supahotfire
+	url = git@github.com:crowdsoundsystem/supahotfire
