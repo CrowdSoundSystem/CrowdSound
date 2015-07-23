@@ -15,7 +15,6 @@
 
 // Decision Algorithm (We probably want to clean this up)
 #include "DecisionAlgorithm.h"
-#include "Common/DecisionSettings.h"
 
 #define CONNECTION_BACKLOG 5
 #define PORT 2048
@@ -112,29 +111,10 @@ int main() {
     Status status = open(raw, "", Options::InMemoryOptions());
     db.reset(raw);
 
-    // Setup algorithm settings
-    DecisionSettings settings;
-	settings.m_countWeight = 1.0;
-
-	settings.m_voteWeight = DecisionSettings::VoteWeight_Equal;
-
-	settings.m_songGenreWeight = DecisionSettings::VoteWeight_Equal;
-	settings.m_artistGenreWeight = DecisionSettings::VoteWeight_Equal;
-
-	settings.m_tierMultipliers[Tier_SAG] = 1.0f;
-	settings.m_tierMultipliers[Tier_SA] = 0.9f;
-	settings.m_tierMultipliers[Tier_SG] = 0.8f;
-	settings.m_tierMultipliers[Tier_AG] = 0.7f;
-	settings.m_tierMultipliers[Tier_S] = 0.6f;
-	settings.m_tierMultipliers[Tier_A] = 0.5f;
-	settings.m_tierMultipliers[Tier_G] = 0.4f;
-
-	settings.m_numSongsGenerated = 3;
-
     // Okay, so what we want here is to push db
     // into the algorithm, such that getMusicData()
     // can read from the database.
-	DecisionAlgorithm algorithm(settings);
+	DecisionAlgorithm algorithm(DecisionSettings::defaultSettings(), db);
 
     // The next thing we need to decide to do is
     // how to run the algorithm. Since serve()
