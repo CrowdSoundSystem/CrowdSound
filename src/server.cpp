@@ -6,11 +6,14 @@
 #include <pthread.h>
 #include <fcntl.h>
 #include <unistd.h>
-
+#include <vector>
 
 #include <sys/socket.h>
 #include <sys/types.h>
 #include "util/network.hpp"
+
+// Boost it up
+#include <boost/algorithm/string.hpp>
 
 // DB
 #include "skrillex/skrillex.hpp"
@@ -27,9 +30,10 @@ using namespace skrillex;
 // Global State
 bool stop = false;
 shared_ptr<DB> db;
+shared_ptr<DecisionAlgorithm> algorithm;
 
 // In-memory storage for songs, artists and genres
-/*map<string, int> songID;
+map<string, int> songID;
 map<string, int> songCount;
 map<string, int> artistID;
 map<string, int> genreID;
@@ -38,7 +42,7 @@ map<string, int> genreCount;
 
 int songIDCount = 1;
 int artistIDCount = 1;
-int genreIDCount = 1;*/ 
+int genreIDCount = 1;
 
 // Each client (from mobile device) has a connection
 // with the Twisted Server. The Twisted Server then opens
@@ -65,7 +69,7 @@ void* connection_handler(void* sock) {
             // Some parsing required once I know exactly what IAM msg and song info message look like
             // Although if it is an iam message we just kinda treat it as a Chinese daughter and pretend it never happened
 
-            /*if ((data.substr(0,3).compare("iam") != 0)&&(data.compare("mediaitemsended") != 0)){ 
+            if ((data.substr(0,3).compare("iam") != 0)&&(data.compare("mediaitemsended") != 0)){
                 boost::erase_all(data, "[");
                 boost::erase_all(data, "]");
                 boost::erase_all(data, "'");
@@ -73,13 +77,13 @@ void* connection_handler(void* sock) {
                 //data.erase(std::remove(data.begin(), data.end(), ']'), data.end());
                 vector<string> song_info;
                 boost::split(song_info, data, boost::is_any_of(","));
-                
+
                 Song s;
                 Artist a;
                 Genre g;
 
                 string songName = song_info.at(0);
-                string artistName = vector.at(1); 
+                string artistName = song_info.at(1);
                 string genreName = song_info.at(2);
 
                 // Check if the song/artist/genre exists in the inmemory storage
@@ -88,13 +92,13 @@ void* connection_handler(void* sock) {
                     s.id = songIDCount;
                     songCount[songName] = 1;
                     s.count = 1;
-                    songIDCount++;   
+                    songIDCount++;
                 } else{
                     s.id = songID.find(songName)->second;
                     s.count = songCount.find(songName)->second+1;
                     s.name = songName;
                 }
-                
+
                 if (artistID.find(artistName) == artistID.end()){
                     artistID[artistName] = artistIDCount;
                     a.id = artistIDCount;
@@ -106,7 +110,7 @@ void* connection_handler(void* sock) {
                     a.count = artistCount.find(artistName)->second+1;
                     a.name = artistName;
                 }
-                
+
                 if (genreID.find(genreName) == genreID.end()){
                     genreID[genreName] = genreIDCount;
                     g.id = genreIDCount;
@@ -131,16 +135,16 @@ void* connection_handler(void* sock) {
                 s.session_id = 0;
 
                 db->addSong(s);
-                
+
             }
             if (data.compare("mediaitemsended") == 0){
-                algorithm.run();
+                algorithm->run();
                 ResultSet<Song> playList;
-               
+
                 // Don't know how this status ish works
                 Status status;
                 status = db->getSongs(playList);
-            }*/
+            }
             // Parse the data.
             //     1) It's an iam message, so set the id (above)
             //     2) It's a song message, so create a song / artist / genre and add to db (and also call db->count())
@@ -207,7 +211,7 @@ int main() {
     // Okay, so what we want here is to push db
     // into the algorithm, such that getMusicData()
     // can read from the database.
-	DecisionAlgorithm algorithm(DecisionSettings::defaultSettings(), db);
+    algorithm.reset(new DecisionAlgorithm(DecisionSettings::defaultSettings(), db));
 
     // The next thing we need to decide to do is
     // how to run the algorithm. Since serve()
