@@ -65,7 +65,7 @@ void* connection_handler(void* sock) {
             // Some parsing required once I know exactly what IAM msg and song info message look like
             // Although if it is an iam message we just kinda treat it as a Chinese daughter and pretend it never happened
 
-            /*if (data != iam){ 
+            /*if ((data.substr(0,3).compare("iam") != 0)&&(data.compare("mediaitemsended") != 0)){ 
                 boost::erase_all(data, "[");
                 boost::erase_all(data, "]");
                 boost::erase_all(data, "'");
@@ -82,7 +82,7 @@ void* connection_handler(void* sock) {
                 string artistName = vector.at(1); 
                 string genreName = song_info.at(2);
 
-                // Check if the artist exists in the in-memory storage and retrieve the information if so 
+                // Check if the song/artist/genre exists in the inmemory storage
                 if (songID.find(songName) == songID.end()){
                     songID[songName] = songIDCount;
                     s.id = songIDCount;
@@ -133,8 +133,13 @@ void* connection_handler(void* sock) {
                 db->addSong(s);
                 
             }
-            if (data == endMSG){
+            if (data.compare("mediaitemsended") == 0){
                 algorithm.run();
+                ResultSet<Song> playList;
+               
+                // Don't know how this status ish works
+                Status status;
+                status = db->getSongs(playList);
             }*/
             // Parse the data.
             //     1) It's an iam message, so set the id (above)
