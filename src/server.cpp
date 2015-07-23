@@ -39,6 +39,9 @@ map<string, int> artistID;
 map<string, int> genreID;
 map<string, int> artistCount;
 map<string, int> genreCount;
+//map<string, int> songVote;
+//map<string, int> artistVote;
+//map<string, int> genreVote;
 
 int songIDCount = 1;
 int artistIDCount = 1;
@@ -71,21 +74,23 @@ void* connection_handler(void* sock) {
         cout << "Reading lines..." << endl;
         while (!stop && (data = read_line(socket)) != "") {
             cout << "Read Line: " << data << endl;
-            // Some parsing required once I know exactly what IAM msg and song info message look like
-            // Although if it is an iam message we just kinda treat it as a Chinese daughter and pretend it never happened
 
-            cout << "Checking Media Item Sended" << endl;
+            cout << "Checking Media Items Ended" << endl;
             if (data.compare("mediaitemsended\n") == 0){
                 algorithm->run();
                 ResultSet<Song> playlist;
 
-                // Don't know how this status ish works
                 Status status;
                 status = db->getSongs(playlist);
                 for (auto& s : playlist) {
                     cout << "DB: Song[" << s.name << ", " << s.artist.name << ", " << s.genre.name << "]" << endl;
                 }
 
+                status = db->getSongs(playlist);
+                for (auto& s : playlist) {
+                    cout << "DB: Song[" << s.name << ", " << s.artist.name << ", " << s.genre.name << "]" << endl;
+                }
+                
                 close(socket);
                 break;
             }
@@ -94,8 +99,6 @@ void* connection_handler(void* sock) {
             if ((data.substr(0,3).compare("iam") != 0)&&(data.compare("mediaitemsended") != 0)) {
                 cout << "Erasing things" << endl;
                 boost::erase_all(data, "\"");
-                //data.erase(std::remove(data.begin(), data.end(), '['), data.end()); // If we don't use boost
-                //data.erase(std::remove(data.begin(), data.end(), ']'), data.end());
 
                 cout << "Splitting..." << endl;
                 vector<string> song_info;
@@ -125,7 +128,6 @@ void* connection_handler(void* sock) {
 
 
                 // Check if the song/artist/genre exists in the inmemory storage
-                cout << "Crazy saad logic" << endl;
                 s.name = songName;
                 if (songID.find(songName) == songID.end()){
                     songID[songName] = songIDCount;
@@ -162,7 +164,6 @@ void* connection_handler(void* sock) {
                     g.count = genreCount.find(genreName)->second+1;
                 }
 
-                cout << "Crazy logic complete" << endl;
                 a.votes = 0;
                 a.session_id = 0;
 
@@ -177,13 +178,6 @@ void* connection_handler(void* sock) {
                 cout << "Adding song" << endl;
                 db->addSong(s);
             }
-
-            // Parse the data.
-            //     1) It's an iam message, so set the id (above)
-            //     2) It's a song message, so create a song / artist / genre and add to db (and also call db->count())
-            //     3) It's a vote message, so vote in db
-            //
-            // Additionally, we can call algo.run(), still have to decide
 
             // For now, echo it back!
             cout << "Echoing: " << data << endl;
