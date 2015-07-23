@@ -63,13 +63,19 @@ void* connection_handler(void* sock) {
     string id;
     int socket = *( (int*)sock );
 
+    cout << "Connection recieved!" << endl;
+
     try {
         string data;
+
+        cout << "Reading lines..." << endl;
         while (!stop && (data = read_line(socket)) != "") {
+            cout << "Read Line: " << data << endl;
             // Some parsing required once I know exactly what IAM msg and song info message look like
             // Although if it is an iam message we just kinda treat it as a Chinese daughter and pretend it never happened
 
-            if ((data.substr(0,3).compare("iam") != 0)&&(data.compare("mediaitemsended") != 0)){
+            cout << "Checking IAM..." << endl;
+            if ((data.substr(0,3).compare("iam") != 0)&&(data.compare("mediaitemsended") != 0)) {
                 boost::erase_all(data, "[");
                 boost::erase_all(data, "]");
                 boost::erase_all(data, "'");
@@ -137,6 +143,8 @@ void* connection_handler(void* sock) {
                 db->addSong(s);
 
             }
+
+            cout << "Checking Media Item Sended" << endl;
             if (data.compare("mediaitemsended") == 0){
                 algorithm->run();
                 ResultSet<Song> playList;
@@ -159,7 +167,11 @@ void* connection_handler(void* sock) {
 
         close(socket);
     } catch (connection_closed) {
-    } catch (socket_error) { }
+        cerr << "Handler Failed: Conncetion Closed" << endl;
+    } catch (socket_error) {
+        cerr << "Handler Failed: Socket Error" << endl;
+    }
+
     return 0;
 }
 
