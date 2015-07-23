@@ -74,13 +74,14 @@ void* connection_handler(void* sock) {
             // Some parsing required once I know exactly what IAM msg and song info message look like
             // Although if it is an iam message we just kinda treat it as a Chinese daughter and pretend it never happened
 
-            cout << "Checking IAM..." << endl;
+            cout << "Checking Song..." << endl;
             if ((data.substr(0,3).compare("iam") != 0)&&(data.compare("mediaitemsended") != 0)) {
-                boost::erase_all(data, "[");
-                boost::erase_all(data, "]");
-                boost::erase_all(data, "'");
+                cout << "Erasing things" << endl;
+                boost::erase_all(data, "\"");
                 //data.erase(std::remove(data.begin(), data.end(), '['), data.end()); // If we don't use boost
                 //data.erase(std::remove(data.begin(), data.end(), ']'), data.end());
+
+                cout << "Splitting..." << endl;
                 vector<string> song_info;
                 boost::split(song_info, data, boost::is_any_of(","));
 
@@ -88,11 +89,24 @@ void* connection_handler(void* sock) {
                 Artist a;
                 Genre g;
 
-                string songName = song_info.at(0);
-                string artistName = song_info.at(1);
-                string genreName = song_info.at(2);
+                string songName   = "Unknown";
+                string artistName = "Unknown";
+                string genreName  = "Unknown";
+
+                cout << "Constructing Objects" << endl;
+                if (song_info.size() == 1) {
+                    songName = song_info.at(0);
+                }
+                if (song_info.size() == 2) {
+                    artistName = song_info.at(1);
+                }
+                if (song_info.size() >= 3) {
+                    genreName = song_info.at(2);
+                }
+
 
                 // Check if the song/artist/genre exists in the inmemory storage
+                cout << "Crazy saad logic" << endl;
                 if (songID.find(songName) == songID.end()){
                     songID[songName] = songIDCount;
                     s.id = songIDCount;
@@ -129,6 +143,7 @@ void* connection_handler(void* sock) {
                     g.name = genreName;
                 }
 
+                cout << "Crazy logic complete" << endl;
                 a.votes = 0;
                 a.session_id = 0;
 
@@ -140,8 +155,8 @@ void* connection_handler(void* sock) {
                 s.votes = 0;
                 s.session_id = 0;
 
+                cout << "Adding song" << endl;
                 db->addSong(s);
-
             }
 
             cout << "Checking Media Item Sended" << endl;
