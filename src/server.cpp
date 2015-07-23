@@ -74,6 +74,22 @@ void* connection_handler(void* sock) {
             // Some parsing required once I know exactly what IAM msg and song info message look like
             // Although if it is an iam message we just kinda treat it as a Chinese daughter and pretend it never happened
 
+            cout << "Checking Media Item Sended" << endl;
+            if (data.compare("mediaitemsended\n") == 0){
+                algorithm->run();
+                ResultSet<Song> playlist;
+
+                // Don't know how this status ish works
+                Status status;
+                status = db->getSongs(playlist);
+                for (auto& s : playlist) {
+                    cout << "DB: Song[" << s.name << ", " << s.artist.name << ", " << s.genre.name << "]" << endl;
+                }
+
+                close(socket);
+                break;
+            }
+
             cout << "Checking Song..." << endl;
             if ((data.substr(0,3).compare("iam") != 0)&&(data.compare("mediaitemsended") != 0)) {
                 cout << "Erasing things" << endl;
@@ -94,19 +110,23 @@ void* connection_handler(void* sock) {
                 string genreName  = "Unknown";
 
                 cout << "Constructing Objects" << endl;
-                if (song_info.size() == 1) {
+                if (song_info.size() >= 1) {
                     songName = song_info.at(0);
+                    songName = songName.substr(0, songName.length());
                 }
-                if (song_info.size() == 2) {
+                if (song_info.size() >= 2) {
                     artistName = song_info.at(1);
+                    artistName = artistName.substr(0, artistName.length());
                 }
                 if (song_info.size() >= 3) {
                     genreName = song_info.at(2);
+                    genreName = genreName.substr(0, genreName.length() - 1);
                 }
 
 
                 // Check if the song/artist/genre exists in the inmemory storage
                 cout << "Crazy saad logic" << endl;
+                s.name = songName;
                 if (songID.find(songName) == songID.end()){
                     songID[songName] = songIDCount;
                     s.id = songIDCount;
@@ -116,9 +136,9 @@ void* connection_handler(void* sock) {
                 } else{
                     s.id = songID.find(songName)->second;
                     s.count = songCount.find(songName)->second+1;
-                    s.name = songName;
                 }
 
+                a.name = artistName;
                 if (artistID.find(artistName) == artistID.end()){
                     artistID[artistName] = artistIDCount;
                     a.id = artistIDCount;
@@ -128,9 +148,9 @@ void* connection_handler(void* sock) {
                 } else{
                     a.id = artistID.find(artistName)->second;
                     a.count = artistCount.find(artistName)->second+1;
-                    a.name = artistName;
                 }
 
+                g.name = genreName;
                 if (genreID.find(genreName) == genreID.end()){
                     genreID[genreName] = genreIDCount;
                     g.id = genreIDCount;
@@ -140,7 +160,6 @@ void* connection_handler(void* sock) {
                 } else{
                     g.id = genreID.find(genreName)->second;
                     g.count = genreCount.find(genreName)->second+1;
-                    g.name = genreName;
                 }
 
                 cout << "Crazy logic complete" << endl;
@@ -159,15 +178,6 @@ void* connection_handler(void* sock) {
                 db->addSong(s);
             }
 
-            cout << "Checking Media Item Sended" << endl;
-            if (data.compare("mediaitemsended") == 0){
-                algorithm->run();
-                ResultSet<Song> playList;
-
-                // Don't know how this status ish works
-                Status status;
-                status = db->getSongs(playList);
-            }
             // Parse the data.
             //     1) It's an iam message, so set the id (above)
             //     2) It's a song message, so create a song / artist / genre and add to db (and also call db->count())
