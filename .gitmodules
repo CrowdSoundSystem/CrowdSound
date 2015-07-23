@@ -10,3 +10,6 @@
 [submodule "decisionalgorithm"]
 	path = decisionalgorithm
 	url = git@github.com:crowdsoundsystem/decisionalgorithm
+[submodule "playsource"]
+	path = playsource
+	url = git@github.com:crowdsoundsystem/playsource
