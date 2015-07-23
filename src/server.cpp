@@ -1,5 +1,6 @@
 #include <ctime>
 #include <iostream>
+#include <map>
 #include <string>
 #include <stdexcept>
 #include <pthread.h>
@@ -26,6 +27,14 @@ using namespace skrillex;
 bool stop = false;
 shared_ptr<DB> db;
 
+// In-memory storage for songs, artists and genres
+map<string, int> songID;
+map<string, int> songCount;
+map<string, int> artistID;
+map<string, int> genreID;
+map<string, int> artistCount;
+map<string, int> genreCount;
+
 // Each client (from mobile device) has a connection
 // with the Twisted Server. The Twisted Server then opens
 // a connection to us. As a result, each connection handler
@@ -48,6 +57,78 @@ void* connection_handler(void* sock) {
     try {
         string data;
         while (!stop && (data = read_line(socket)) != "") {
+            // Some parsing required once I know exactly what IAM msg and song info message look like
+            // Although if it is an iam message we just kinda treat it as a Chinese daughter and pretend it never happened
+            if (data != iam){ 
+                int songIDCount = 1;
+                int artistIDCount = 1;
+                int genreIDCount = 1;
+                boost::erase_all(data, "[");
+                boost::erase_all(data, "]");
+                boost::erase_all(data, "'");
+                //data.erase(std::remove(data.begin(), data.end(), '['), data.end()); // If we don't use boost
+                //data.erase(std::remove(data.begin(), data.end(), ']'), data.end());
+                vector<string> song_info;
+                boost::split(song_info, data, boost::is_any_of(","));
+                
+                Song s;
+                Artist a;
+                Genre g;
+
+                string songName = song_info.at(0);
+                string artistName = vector.at(1); 
+                string genreName = song_info.at(2);
+
+                // Check if the artist exists in the in-memory storage and retrieve the information if so 
+                if (songID.find(songName) == songID.end()){
+                    songID[songName] = songIDCount;
+                    s.id = songIDCount;
+                    songCount[songName] = 1;
+                    s.count = 1;
+                    songIDCount++;   
+                } else{
+                    s.id = songID.find(songName)->second;
+                    s.cound = songCount.find(songName)->second;
+                    s.name = songName;
+                }
+                
+                if (artistID.find(artistName) == artistID.end()){
+                    artistID[artistName] = artistIDCount;
+                    a.id = artistIDCount;
+                    artistCount[artistName] = artistIDCount;
+                    a.count = 1;
+                    artistIDCount++;
+                } else{
+                    a.id = artistID.find(artistName)->second;
+                    a.count = artistCount.find(artistName)->second;
+                    a.name = artistName;
+                }
+                
+                if (genreID.find(genreName) == genreID.end()){
+                    genreID[genreName] = genreIDCount;
+                    g.id = genreIDCount;
+                    genreCount[genreName] = genreIDCount;
+                    g.count = 1;
+                    genreIDCount++;
+                } else{
+                    g.id = genreID.find(genreName)->second;
+                    g.count = genreCount.find(genreName)->second;
+                    g.name = genreName;
+                }
+
+                a.votes = 0;
+                a.session_id = 0;
+
+                g.votes = 0;
+                g.session_id = 0;
+
+                s.artist = a;
+                s.genre = g;
+                s.votes = 0;
+                s.session_id = 0;
+
+                db->addSong(s);
+            }
             // Parse the data.
             //     1) It's an iam message, so set the id (above)
             //     2) It's a song message, so create a song / artist / genre and add to db (and also call db->count())
