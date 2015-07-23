@@ -34,7 +34,11 @@ map<string, int> songCount;
 map<string, int> artistID;
 map<string, int> genreID;
 map<string, int> artistCount;
-map<string, int> genreCount;*/
+map<string, int> genreCount;
+
+int songIDCount = 1;
+int artistIDCount = 1;
+int genreIDCount = 1;*/ 
 
 // Each client (from mobile device) has a connection
 // with the Twisted Server. The Twisted Server then opens
@@ -60,10 +64,8 @@ void* connection_handler(void* sock) {
         while (!stop && (data = read_line(socket)) != "") {
             // Some parsing required once I know exactly what IAM msg and song info message look like
             // Although if it is an iam message we just kinda treat it as a Chinese daughter and pretend it never happened
+
             /*if (data != iam){ 
-                int songIDCount = 1;
-                int artistIDCount = 1;
-                int genreIDCount = 1;
                 boost::erase_all(data, "[");
                 boost::erase_all(data, "]");
                 boost::erase_all(data, "'");
@@ -89,7 +91,7 @@ void* connection_handler(void* sock) {
                     songIDCount++;   
                 } else{
                     s.id = songID.find(songName)->second;
-                    s.cound = songCount.find(songName)->second;
+                    s.count = songCount.find(songName)->second+1;
                     s.name = songName;
                 }
                 
@@ -101,7 +103,7 @@ void* connection_handler(void* sock) {
                     artistIDCount++;
                 } else{
                     a.id = artistID.find(artistName)->second;
-                    a.count = artistCount.find(artistName)->second;
+                    a.count = artistCount.find(artistName)->second+1;
                     a.name = artistName;
                 }
                 
@@ -113,7 +115,7 @@ void* connection_handler(void* sock) {
                     genreIDCount++;
                 } else{
                     g.id = genreID.find(genreName)->second;
-                    g.count = genreCount.find(genreName)->second;
+                    g.count = genreCount.find(genreName)->second+1;
                     g.name = genreName;
                 }
 
@@ -128,8 +130,12 @@ void* connection_handler(void* sock) {
                 s.votes = 0;
                 s.session_id = 0;
 
-                db->addSong(s);*/
+                db->addSong(s);
+                
             }
+            if (data == endMSG){
+                algorithm.run();
+            }*/
             // Parse the data.
             //     1) It's an iam message, so set the id (above)
             //     2) It's a song message, so create a song / artist / genre and add to db (and also call db->count())
