@@ -80,7 +80,6 @@ void* connection_handler(void* sock) {
 
             cout << "Checking Media Items Ended" << endl;
             if (data.compare("mediaitemsended\n") == 0){
-                //algorithm->run();
                 ResultSet<Song> playlist;
 
                 Status status;
