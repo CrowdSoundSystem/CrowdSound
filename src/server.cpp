@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <vector>
+#include <thread>
 
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -20,6 +21,7 @@
 
 // Decision Algorithm (We probably want to clean this up)
 #include "DecisionAlgorithm.h"
+#include "PlaySource.h"
 
 #define CONNECTION_BACKLOG 5
 #define PORT 2048
@@ -31,6 +33,7 @@ using namespace skrillex;
 bool stop = false;
 shared_ptr<DB> db;
 shared_ptr<DecisionAlgorithm> algorithm;
+shared_ptr<PlaySource> playsource;
 
 // In-memory storage for songs, artists and genres
 map<string, int> songID;
@@ -77,7 +80,7 @@ void* connection_handler(void* sock) {
 
             cout << "Checking Media Items Ended" << endl;
             if (data.compare("mediaitemsended\n") == 0){
-                algorithm->run();
+                //algorithm->run();
                 ResultSet<Song> playlist;
 
                 Status status;
@@ -240,22 +243,33 @@ int serve(int port) {
     }
 }
 
+void runPlaySource(shared_ptr<DecisionAlgorithm> algo, shared_ptr<PlaySource> source) {
+    
+    while(true) {
+        // Run through iteration of PS, and then generate songs after
+        
+        cout << "Running source" << endl;
+        source->run();
+        
+        cout << "Running algo" << endl;
+        algo->run();
+    }
+}
+
 int main() {
     // Load the DB...
     DB* raw = 0;
     Status status = open(raw, "", Options::InMemoryOptions());
     db.reset(raw);
 
-    // Okay, so what we want here is to push db
-    // into the algorithm, such that getMusicData()
-    // can read from the database.
+    // Setup Algorthm
     algorithm.reset(new DecisionAlgorithm(DecisionSettings::defaultSettings(), db));
-
-    // The next thing we need to decide to do is
-    // how to run the algorithm. Since serve()
-    // runs until the program dies, we need a way
-    // to run the algorithm. A few ways:
-    //     1) Run the algorithm after receiving data (maybe some heuristics, like every 10 pieces of data)
-    //     2) Periodically Run
+    // Setup playsource
+    playsource.reset(new PlaySource(db));
+    
+    //Start PlaySource thread that uses algorithm to generate music
+    // Dont need to join as it terminates when goes out of scope of main.
+    std::thread psThread(runPlaySource, algorithm, playsource);
+    
     return serve(PORT);
 }
