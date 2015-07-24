@@ -10,6 +10,6 @@ file(GLOB_RECURSE crowdsound_srcs
 )
 
 add_executable(crowdsound server.cpp)
-target_link_libraries(crowdsound skrillex decision_algorithm "${CMAKE_THREAD_LIBS_INIT}")
+target_link_libraries(crowdsound skrillex decision_algorithm playsource "${CMAKE_THREAD_LIBS_INIT}")
 
 install(TARGETS crowdsound DESTINATION bin)

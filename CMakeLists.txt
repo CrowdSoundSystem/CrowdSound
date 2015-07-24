@@ -6,7 +6,7 @@ add_definitions(-std=c++0x)
 
 # Threading
 find_package(Threads REQUIRED)
-find_package(boost REQUIRED)
+find_package(Boost REQUIRED)
 
 # The Install Location (i.e. make install)
 set(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR})
@@ -20,9 +20,9 @@ include_directories( ${Boost_INCLUDE_DIR} )
 include_directories(include)
 include_directories(skrillex/include)
 include_directories(decisionalgorithm/DecisionAlgorithm/src)
-# include_directories(playsource/src)
+include_directories(playsource/src)
 
 add_subdirectory(skrillex)
 add_subdirectory(decisionalgorithm/DecisionAlgorithm/src)
-# add_subdirectory(playsource/src)
+add_subdirectory(playsource/src)
 add_subdirectory(src)
