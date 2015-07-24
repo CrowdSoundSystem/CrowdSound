@@ -6,7 +6,7 @@ add_definitions(-std=c++0x)
 
 # Threading
 find_package(Threads REQUIRED)
-find_package(boost REQUIRED)
+find_package(Boost REQUIRED)
 
 # The Install Location (i.e. make install)
 set(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR})
