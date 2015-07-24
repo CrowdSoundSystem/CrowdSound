@@ -85,10 +85,10 @@ void* connection_handler(void* sock) {
                 for (auto& s : playlist) {
                     cout << "DB: Song[" << s.name << ", " << s.artist.name << ", " << s.genre.name << "]" << endl;
                 }
-
-                status = db->getSongs(playlist);
+                cout << "Printing Queue Items"<< endl;
+                status = db->getQueue(playlist);
                 for (auto& s : playlist) {
-                    cout << "DB: Song[" << s.name << ", " << s.artist.name << ", " << s.genre.name << "]" << endl;
+                    cout << "DB: Queue[" << s.name << ", " << s.artist.name << ", " << s.genre.name << ", " << s.count << "]" << endl;
                 }
                 
                 close(socket);
@@ -137,31 +137,37 @@ void* connection_handler(void* sock) {
                     songIDCount++;
                 } else{
                     s.id = songID.find(songName)->second;
-                    s.count = songCount.find(songName)->second+1;
+                    //soundCount[songName]++;
+                    s.count = songCount.find(songName)->second;
+                    cout << "Song ID = " << s.id << ", Count = " << s.count << endl;
                 }
 
                 a.name = artistName;
                 if (artistID.find(artistName) == artistID.end()){
                     artistID[artistName] = artistIDCount;
                     a.id = artistIDCount;
-                    artistCount[artistName] = artistIDCount;
+                    artistCount[artistName] = 1;
                     a.count = 1;
                     artistIDCount++;
                 } else{
                     a.id = artistID.find(artistName)->second;
-                    a.count = artistCount.find(artistName)->second+1;
+                    //artistCount[artistName]++;
+                    a.count = artistCount.find(artistName)->second;
+                    cout << "Artist ID = " << a.id << ", Count = " << a.count << endl;
                 }
 
                 g.name = genreName;
                 if (genreID.find(genreName) == genreID.end()){
                     genreID[genreName] = genreIDCount;
                     g.id = genreIDCount;
-                    genreCount[genreName] = genreIDCount;
+                    genreCount[genreName] = 1;
                     g.count = 1;
                     genreIDCount++;
                 } else{
                     g.id = genreID.find(genreName)->second;
-                    g.count = genreCount.find(genreName)->second+1;
+                    //genreCount[genreName]++;
+                    g.count = genreCount.find(genreName)->second;
+                    cout << "Genre ID = " << g.id << ", Count = " << g.count << endl;
                 }
 
                 a.votes = 0;
@@ -176,6 +182,7 @@ void* connection_handler(void* sock) {
                 s.session_id = 0;
 
                 cout << "Adding song" << endl;
+                cout << "Count = " << s.count << endl;
                 db->addSong(s);
             }
 
