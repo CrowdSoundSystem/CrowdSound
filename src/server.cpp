@@ -87,11 +87,18 @@ void* connection_handler(void* sock) {
                 }
                 cout << "Printing Queue Items"<< endl;
                 status = db->getQueue(playlist);
+                std::string songString = "queue:";
                 for (auto& s : playlist) {
                     cout << "DB: Queue[" << s.name << ", " << s.artist.name << ", " << s.genre.name << ", " << s.count << "]" << endl;
+                    songString += s.name + ",";
+                    
                 }
+
+                //cout << songString << endl;
+                send(socket, songString.c_str(), songString.length(), MSG_NOSIGNAL);
+
                 
-                close(socket);
+                
                 break;
             }
 
@@ -126,7 +133,7 @@ void* connection_handler(void* sock) {
                     genreName = genreName.substr(0, genreName.length() - 1);
                 }
 
-
+                cout << "Song[" << songName << ", " << artistName << ", " << genreName << "]" << endl;
                 // Check if the song/artist/genre exists in the inmemory storage
                 s.name = songName;
                 if (songID.find(songName) == songID.end()){
@@ -187,13 +194,13 @@ void* connection_handler(void* sock) {
             }
 
             // For now, echo it back!
-            cout << "Echoing: " << data << endl;
-            send(socket, data.c_str(), data.length(), MSG_NOSIGNAL);
+            /*cout << "Echoing: " << data << endl;
+            send(socket, data.c_str(), data.length(), MSG_NOSIGNAL);*/
         }
 
         close(socket);
     } catch (connection_closed) {
-        cerr << "Handler Failed: Conncetion Closed" << endl;
+        cerr << "Handler Failed: Connection Closed" << endl;
     } catch (socket_error) {
         cerr << "Handler Failed: Socket Error" << endl;
     }
