@@ -140,7 +140,7 @@ void* connection_handler(void* sock) {
                     songIDCount++;
                 } else{
                     s.id = songID.find(songName)->second;
-                    //soundCount[songName]++;
+                    songCount[songName]++;
                     s.count = songCount.find(songName)->second;
                     cout << "Song ID = " << s.id << ", Count = " << s.count << endl;
                 }
@@ -154,7 +154,7 @@ void* connection_handler(void* sock) {
                     artistIDCount++;
                 } else{
                     a.id = artistID.find(artistName)->second;
-                    //artistCount[artistName]++;
+                    artistCount[artistName]++;
                     a.count = artistCount.find(artistName)->second;
                     cout << "Artist ID = " << a.id << ", Count = " << a.count << endl;
                 }
@@ -168,7 +168,7 @@ void* connection_handler(void* sock) {
                     genreIDCount++;
                 } else{
                     g.id = genreID.find(genreName)->second;
-                    //genreCount[genreName]++;
+                    genreCount[genreName]++;
                     g.count = genreCount.find(genreName)->second;
                     cout << "Genre ID = " << g.id << ", Count = " << g.count << endl;
                 }
