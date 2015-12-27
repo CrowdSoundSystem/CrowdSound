@@ -13,3 +13,6 @@
 [submodule "playsource"]
 	path = playsource
 	url = git@github.com:crowdsoundsystem/playsource
+[submodule "Objective-C-rowdSound"]
+	path = Objective-C-rowdSound
+	url = https://github.com/CrowdSoundSystem/Objective-C-rowdSound

@@ -5,7 +5,6 @@ build/
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
-Makefile
 
 # Compiled Object files
 *.slo
