@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option java_package = "ex.grpc";
+option objc_class_prefix = "CS";
+
+package CrowdSound;
+
+// Interface exported by the server.
+service CrowdSound {
+	rpc ListSongs(ListSongsRequest) returns (stream ListSongsResponse) {}
+	rpc ListTrendingArtists(ListTrendingArtistsRequest) returns (ListTrendingArtistsResponse) {}
+	rpc PostSong(stream PostSongRequest) returns (PostSongResponse) {}
+	rpc VoteSong(VoteSongRequest) returns (VoteSongResponse) {}
+}
+
+message ListSongsRequest {
+	
+}
+
+message ListSongsResponse {
+	string name = 1;
+	bool isPlaying = 2;
+}
+
+message ListTrendingArtistsRequest {
+	
+}
+
+message ListTrendingArtistsResponse {
+	string name = 1;
+	int32 score = 2;
+}
+
+message PostSongRequest {
+	string name = 1;
+	string artist = 2;
+	string genre = 3;
+}
+
+message PostSongResponse {
+	
+}
+
+message VoteSongRequest {
+	string name = 1;
+	string artist = 2;
+	bool like = 3;
+	bool dislike = 4;
+	
+}
+
+message VoteSongResponse {
+	
+}
