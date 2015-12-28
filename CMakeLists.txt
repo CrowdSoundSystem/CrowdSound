@@ -4,6 +4,10 @@ project(crowdsound)
 # Allow C++11
 add_definitions(-std=c++0x)
 
+# GRPC
+include(cmake/grpc.cmake)
+find_package(Protobuf REQUIRED)
+
 # Threading
 find_package(Threads REQUIRED)
 find_package(Boost REQUIRED)

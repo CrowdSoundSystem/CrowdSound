@@ -6,6 +6,9 @@ CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 
+# CTags
+tags
+
 # Compiled Object files
 *.slo
 *.lo
