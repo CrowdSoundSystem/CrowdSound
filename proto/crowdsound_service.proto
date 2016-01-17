@@ -7,14 +7,32 @@ package CrowdSound;
 
 // Interface exported by the server.
 service CrowdSound {
+    // ListSongs streams all songs known to the CrowdSound service.
+    //
+    // Because the amount of songs may be massive, it is up to the clients
+    // to implement pagination and/or stream termination (with the exception of
+    // end-of-stream). For example, a client may request 20 from the stream,
+    // display to user, and then wait for the user to keep scrolling before
+    // requesting. Alternatively, if the user is no longer browsing, the
+    // stream can be terminated.
 	rpc ListSongs(ListSongsRequest) returns (stream ListSongsResponse) {}
-	rpc ListTrendingArtists(ListTrendingArtistsRequest) returns (ListTrendingArtistsResponse) {}
+
+    // ListTrendingArtists returns an ordered list of artists, based on
+    // trending value.
+    //
+    // As with ListSongs, it is up to the client to control pagination and stream
+    // termination (with the exception of end-of-stream).
+	rpc ListTrendingArtists(ListTrendingArtistsRequest) returns (stream ListTrendingArtistsResponse) {}
+
+    // PostSong informs the CrowdSound service of a 'Song' that the client
+    // has. The 'Song' may or may not have all of the fields filled or present.
 	rpc PostSong(stream PostSongRequest) returns (PostSongResponse) {}
+
+    // VoteSong informs the CrowdSound service of a vote for a Song.
 	rpc VoteSong(VoteSongRequest) returns (VoteSongResponse) {}
 }
 
 message ListSongsRequest {
-	
 }
 
 message ListSongsResponse {
@@ -23,7 +41,6 @@ message ListSongsResponse {
 }
 
 message ListTrendingArtistsRequest {
-	
 }
 
 message ListTrendingArtistsResponse {
@@ -38,17 +55,13 @@ message PostSongRequest {
 }
 
 message PostSongResponse {
-	
 }
 
 message VoteSongRequest {
 	string name = 1;
 	string artist = 2;
 	bool like = 3;
-	bool dislike = 4;
-	
 }
 
 message VoteSongResponse {
-	
 }
