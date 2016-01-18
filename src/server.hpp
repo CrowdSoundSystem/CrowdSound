@@ -26,14 +26,6 @@ using CrowdSound::PostSongResponse;
 using CrowdSound::VoteSongRequest;
 using CrowdSound::VoteSongResponse;
 
-struct Song {
-    std::string name;
-    std::string artist;
-    std::string genre;
-
-    int vote;
-};
-
 class CrowdSoundImpl final : public CrowdSound::CrowdSound::Service {
 public:
     explicit CrowdSoundImpl(std::shared_ptr<skrillex::DB> db);
@@ -45,7 +37,6 @@ public:
 
 private:
     std::shared_ptr<skrillex::DB> db_;
-    std::vector<Song> songs_;
 };
 
 #endif
