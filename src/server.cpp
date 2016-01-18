@@ -97,6 +97,8 @@ Status CrowdSoundImpl::PostSong(ServerContext* context, ServerReader<PostSongReq
         Artist a;
         Song s;
 
+        cout << "Attempting to post song: [" << request.genre() << "] " << request.artist() << " - " << request.name() << endl;
+
         if (request.genre() != "") {
             g.name = request.genre();
 
