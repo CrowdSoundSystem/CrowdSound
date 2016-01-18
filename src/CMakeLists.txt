@@ -18,7 +18,7 @@ file(GLOB_RECURSE crowdsound_srcs
 )
 
 add_library(generated ${ProtoGRPCSources} ${ProtoGRPCHeaders})
-add_executable(crowdsound server.cpp)
+add_executable(crowdsound ${crowdsound_srcs})
 target_link_libraries(crowdsound generated skrillex decision_algorithm playsource ${CMAKE_THREAD_LIBS_INIT} ${GRPC_LIBRARIES} ${PROTOBUF_LIBRARIES})
 
 install(TARGETS crowdsound DESTINATION bin)
