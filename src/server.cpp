@@ -31,8 +31,22 @@ using skrillex::Song;
 using skrillex::Artist;
 using skrillex::Genre;
 
-CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db)
-: db_(db) {
+CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db, DecisionSettings decision_settings)
+: db_(db)
+, algo_(new DecisionAlgorithm(decision_settings, db_))
+, playsource_(new PlaySource(db_))
+, ps_thread_(std::bind(&CrowdSoundImpl::runPlaySource, this)) {
+}
+
+void CrowdSoundImpl::runPlaySource() {
+    while(true) {
+        // Run through iteration of PlaySource, and then generate songs after.
+        cout << "Running source" << endl;
+        this->playsource_->run();
+
+        cout << "Running algo" << endl;
+        this->algo_->run();
+    }
 }
 
 Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) {

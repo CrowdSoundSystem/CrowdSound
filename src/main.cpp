@@ -3,6 +3,7 @@
 #include <string>
 
 #include "skrillex/skrillex.hpp"
+#include "DecisionAlgorithm.h"
 
 #include "server.hpp"
 
@@ -23,7 +24,7 @@ int main() {
 
     string listen_address("0.0.0.0:50051");
 
-    CrowdSoundImpl service(db);
+    CrowdSoundImpl service(db, DecisionSettings::defaultSettings());
 
     ServerBuilder builder;
     builder.AddListeningPort(listen_address, grpc::InsecureServerCredentials());
