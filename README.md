@@ -11,8 +11,43 @@ In the Land of Waterloo where the Shadows lie
 The crowdsound repo uses submodules for the specific components.
 Thus, to initialize the repo:
 ```
-$ git submodule init
-$ git submodule update
+$ git submodule update --init
+```
+
+Additionally, crowdsound depends on gRPC which is not always present
+in a distributions package manager. First, we will want to get and install
+protobuf3:
+
+```
+$ cd [projects / folder of your preference]
+$ git clone git@github.com:google/protobuf
+$ git checkout tags/v3.0.0-beta-1
+$ ./autogen.sh
+$ ./configure
+$ make
+$ sudo make install
+```
+
+Next, we'll want to install gRPC:
+
+```
+$ cd [projects / folder of your preference]
+$ git clone git@github.com:grpc/grpc
+$ get checkout tags/release-0_11_1
+$ git submodule update --init
+$ make
+$ sudo make install
+```
+
+You may receive a warning about no protobuf being installed. This is okay,
+as long as `which protoc` yields the location of protoc.
+
+If your system does not have boost installed, then you should be able to
+retrieve it from your package manager:
+```
+$ [Ubuntu | Debian] sudo apt-get install libboost-dev
+$ [Fedora | CentOS] sudo yum install -y boost-devel
+$ [Arch]            pacman -S boost
 ```
 
 ## Building
