@@ -30,33 +30,33 @@ message GetQueueRequest {
 }
 
 message GetQueueResponse {
-	string name = 1;
+    string name = 1;
     string artist = 2;
     string genre = 3;
-	bool isPlaying = 4;
+    bool isPlaying = 4;
 }
 
 message ListTrendingArtistsRequest {
 }
 
 message ListTrendingArtistsResponse {
-	string name = 1;
-	int32 score = 2;
+    string name = 1;
+    int32 score = 2;
 }
 
 message PostSongRequest {
-	string name = 1;
-	string artist = 2;
-	string genre = 3;
+    string name = 1;
+    string artist = 2;
+    string genre = 3;
 }
 
 message PostSongResponse {
 }
 
 message VoteSongRequest {
-	string name = 1;
-	string artist = 2;
-	bool like = 3;
+    string name = 1;
+    string artist = 2;
+    bool like = 3;
 }
 
 message VoteSongResponse {
