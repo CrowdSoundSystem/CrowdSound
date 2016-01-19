@@ -36,8 +36,8 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
 void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto();
 void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
 
-class ListSongsRequest;
-class ListSongsResponse;
+class GetQueueRequest;
+class GetQueueResponse;
 class ListTrendingArtistsRequest;
 class ListTrendingArtistsResponse;
 class PostSongRequest;
@@ -47,32 +47,32 @@ class VoteSongResponse;
 
 // ===================================================================
 
-class ListSongsRequest : public ::google::protobuf::Message {
+class GetQueueRequest : public ::google::protobuf::Message {
  public:
-  ListSongsRequest();
-  virtual ~ListSongsRequest();
+  GetQueueRequest();
+  virtual ~GetQueueRequest();
 
-  ListSongsRequest(const ListSongsRequest& from);
+  GetQueueRequest(const GetQueueRequest& from);
 
-  inline ListSongsRequest& operator=(const ListSongsRequest& from) {
+  inline GetQueueRequest& operator=(const GetQueueRequest& from) {
     CopyFrom(from);
     return *this;
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ListSongsRequest& default_instance();
+  static const GetQueueRequest& default_instance();
 
-  void Swap(ListSongsRequest* other);
+  void Swap(GetQueueRequest* other);
 
   // implements Message ----------------------------------------------
 
-  inline ListSongsRequest* New() const { return New(NULL); }
+  inline GetQueueRequest* New() const { return New(NULL); }
 
-  ListSongsRequest* New(::google::protobuf::Arena* arena) const;
+  GetQueueRequest* New(::google::protobuf::Arena* arena) const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ListSongsRequest& from);
-  void MergeFrom(const ListSongsRequest& from);
+  void CopyFrom(const GetQueueRequest& from);
+  void MergeFrom(const GetQueueRequest& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -87,7 +87,7 @@ class ListSongsRequest : public ::google::protobuf::Message {
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(ListSongsRequest* other);
+  void InternalSwap(GetQueueRequest* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return _internal_metadata_.arena();
@@ -103,7 +103,7 @@ class ListSongsRequest : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:CrowdSound.ListSongsRequest)
+  // @@protoc_insertion_point(class_scope:CrowdSound.GetQueueRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -114,36 +114,36 @@ class ListSongsRequest : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
 
   void InitAsDefaultInstance();
-  static ListSongsRequest* default_instance_;
+  static GetQueueRequest* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class ListSongsResponse : public ::google::protobuf::Message {
+class GetQueueResponse : public ::google::protobuf::Message {
  public:
-  ListSongsResponse();
-  virtual ~ListSongsResponse();
+  GetQueueResponse();
+  virtual ~GetQueueResponse();
 
-  ListSongsResponse(const ListSongsResponse& from);
+  GetQueueResponse(const GetQueueResponse& from);
 
-  inline ListSongsResponse& operator=(const ListSongsResponse& from) {
+  inline GetQueueResponse& operator=(const GetQueueResponse& from) {
     CopyFrom(from);
     return *this;
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ListSongsResponse& default_instance();
+  static const GetQueueResponse& default_instance();
 
-  void Swap(ListSongsResponse* other);
+  void Swap(GetQueueResponse* other);
 
   // implements Message ----------------------------------------------
 
-  inline ListSongsResponse* New() const { return New(NULL); }
+  inline GetQueueResponse* New() const { return New(NULL); }
 
-  ListSongsResponse* New(::google::protobuf::Arena* arena) const;
+  GetQueueResponse* New(::google::protobuf::Arena* arena) const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ListSongsResponse& from);
-  void MergeFrom(const ListSongsResponse& from);
+  void CopyFrom(const GetQueueResponse& from);
+  void MergeFrom(const GetQueueResponse& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -158,7 +158,7 @@ class ListSongsResponse : public ::google::protobuf::Message {
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(ListSongsResponse* other);
+  void InternalSwap(GetQueueResponse* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return _internal_metadata_.arena();
@@ -185,18 +185,42 @@ class ListSongsResponse : public ::google::protobuf::Message {
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // optional bool isPlaying = 2;
+  // optional string artist = 2;
+  void clear_artist();
+  static const int kArtistFieldNumber = 2;
+  const ::std::string& artist() const;
+  void set_artist(const ::std::string& value);
+  void set_artist(const char* value);
+  void set_artist(const char* value, size_t size);
+  ::std::string* mutable_artist();
+  ::std::string* release_artist();
+  void set_allocated_artist(::std::string* artist);
+
+  // optional string genre = 3;
+  void clear_genre();
+  static const int kGenreFieldNumber = 3;
+  const ::std::string& genre() const;
+  void set_genre(const ::std::string& value);
+  void set_genre(const char* value);
+  void set_genre(const char* value, size_t size);
+  ::std::string* mutable_genre();
+  ::std::string* release_genre();
+  void set_allocated_genre(::std::string* genre);
+
+  // optional bool isPlaying = 4;
   void clear_isplaying();
-  static const int kIsPlayingFieldNumber = 2;
+  static const int kIsPlayingFieldNumber = 4;
   bool isplaying() const;
   void set_isplaying(bool value);
 
-  // @@protoc_insertion_point(class_scope:CrowdSound.ListSongsResponse)
+  // @@protoc_insertion_point(class_scope:CrowdSound.GetQueueResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr artist_;
+  ::google::protobuf::internal::ArenaStringPtr genre_;
   bool isplaying_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
@@ -204,7 +228,7 @@ class ListSongsResponse : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
 
   void InitAsDefaultInstance();
-  static ListSongsResponse* default_instance_;
+  static GetQueueResponse* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -724,67 +748,153 @@ class VoteSongResponse : public ::google::protobuf::Message {
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
-// ListSongsRequest
+// GetQueueRequest
 
 // -------------------------------------------------------------------
 
-// ListSongsResponse
+// GetQueueResponse
 
 // optional string name = 1;
-inline void ListSongsResponse::clear_name() {
+inline void GetQueueResponse::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& ListSongsResponse::name() const {
-  // @@protoc_insertion_point(field_get:CrowdSound.ListSongsResponse.name)
+inline const ::std::string& GetQueueResponse::name() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetQueueResponse.name)
   return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ListSongsResponse::set_name(const ::std::string& value) {
+inline void GetQueueResponse::set_name(const ::std::string& value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CrowdSound.ListSongsResponse.name)
+  // @@protoc_insertion_point(field_set:CrowdSound.GetQueueResponse.name)
 }
-inline void ListSongsResponse::set_name(const char* value) {
+inline void GetQueueResponse::set_name(const char* value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CrowdSound.ListSongsResponse.name)
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetQueueResponse.name)
 }
-inline void ListSongsResponse::set_name(const char* value, size_t size) {
+inline void GetQueueResponse::set_name(const char* value, size_t size) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CrowdSound.ListSongsResponse.name)
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetQueueResponse.name)
 }
-inline ::std::string* ListSongsResponse::mutable_name() {
+inline ::std::string* GetQueueResponse::mutable_name() {
   
-  // @@protoc_insertion_point(field_mutable:CrowdSound.ListSongsResponse.name)
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetQueueResponse.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* ListSongsResponse::release_name() {
+inline ::std::string* GetQueueResponse::release_name() {
   
   return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ListSongsResponse::set_allocated_name(::std::string* name) {
+inline void GetQueueResponse::set_allocated_name(::std::string* name) {
   if (name != NULL) {
     
   } else {
     
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:CrowdSound.ListSongsResponse.name)
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetQueueResponse.name)
 }
 
-// optional bool isPlaying = 2;
-inline void ListSongsResponse::clear_isplaying() {
+// optional string artist = 2;
+inline void GetQueueResponse::clear_artist() {
+  artist_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetQueueResponse::artist() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetQueueResponse.artist)
+  return artist_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetQueueResponse::set_artist(const ::std::string& value) {
+  
+  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetQueueResponse.artist)
+}
+inline void GetQueueResponse::set_artist(const char* value) {
+  
+  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetQueueResponse.artist)
+}
+inline void GetQueueResponse::set_artist(const char* value, size_t size) {
+  
+  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetQueueResponse.artist)
+}
+inline ::std::string* GetQueueResponse::mutable_artist() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetQueueResponse.artist)
+  return artist_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetQueueResponse::release_artist() {
+  
+  return artist_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetQueueResponse::set_allocated_artist(::std::string* artist) {
+  if (artist != NULL) {
+    
+  } else {
+    
+  }
+  artist_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), artist);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetQueueResponse.artist)
+}
+
+// optional string genre = 3;
+inline void GetQueueResponse::clear_genre() {
+  genre_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetQueueResponse::genre() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetQueueResponse.genre)
+  return genre_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetQueueResponse::set_genre(const ::std::string& value) {
+  
+  genre_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetQueueResponse.genre)
+}
+inline void GetQueueResponse::set_genre(const char* value) {
+  
+  genre_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetQueueResponse.genre)
+}
+inline void GetQueueResponse::set_genre(const char* value, size_t size) {
+  
+  genre_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetQueueResponse.genre)
+}
+inline ::std::string* GetQueueResponse::mutable_genre() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetQueueResponse.genre)
+  return genre_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetQueueResponse::release_genre() {
+  
+  return genre_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetQueueResponse::set_allocated_genre(::std::string* genre) {
+  if (genre != NULL) {
+    
+  } else {
+    
+  }
+  genre_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), genre);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetQueueResponse.genre)
+}
+
+// optional bool isPlaying = 4;
+inline void GetQueueResponse::clear_isplaying() {
   isplaying_ = false;
 }
-inline bool ListSongsResponse::isplaying() const {
-  // @@protoc_insertion_point(field_get:CrowdSound.ListSongsResponse.isPlaying)
+inline bool GetQueueResponse::isplaying() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetQueueResponse.isPlaying)
   return isplaying_;
 }
-inline void ListSongsResponse::set_isplaying(bool value) {
+inline void GetQueueResponse::set_isplaying(bool value) {
   
   isplaying_ = value;
-  // @@protoc_insertion_point(field_set:CrowdSound.ListSongsResponse.isPlaying)
+  // @@protoc_insertion_point(field_set:CrowdSound.GetQueueResponse.isPlaying)
 }
 
 // -------------------------------------------------------------------

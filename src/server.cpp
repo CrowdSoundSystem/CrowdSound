@@ -13,8 +13,8 @@ using grpc::ServerWriter;
 using grpc::Status;
 using grpc::StatusCode;
 
-using CrowdSound::ListSongsRequest;
-using CrowdSound::ListSongsResponse;
+using CrowdSound::GetQueueRequest;
+using CrowdSound::GetQueueResponse;
 using CrowdSound::ListTrendingArtistsRequest;
 using CrowdSound::ListTrendingArtistsResponse;
 using CrowdSound::PostSongRequest;
@@ -35,7 +35,7 @@ CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db)
 : db_(db) {
 }
 
-Status CrowdSoundImpl::ListSongs(ServerContext* context, const ListSongsRequest* request, ServerWriter<ListSongsResponse>* writer) {
+Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) {
     ResultSet<Song> resultSet;
     skrillex::Status status = this->db_->getSongs(resultSet);
     if (status != skrillex::Status::OK()) {
@@ -43,11 +43,14 @@ Status CrowdSoundImpl::ListSongs(ServerContext* context, const ListSongsRequest*
     }
 
     for (Song s : resultSet) {
-        ListSongsResponse resp;
+        GetQueueResponse resp;
         resp.set_name(s.name);
+        resp.set_artist(s.artist.name);
+        resp.set_genre(s.genre.name);
         resp.set_isplaying(false);
+
         if (!writer->Write(resp)) {
-            cerr << "Failed to write song in ListSongs" << endl;
+            cerr << "Failed to write song in GetQueue" << endl;
             return Status(StatusCode::INTERNAL, "");
         }
     }

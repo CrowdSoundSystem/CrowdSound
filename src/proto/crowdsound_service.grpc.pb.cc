@@ -15,7 +15,7 @@
 namespace CrowdSound {
 
 static const char* CrowdSound_method_names[] = {
-  "/CrowdSound.CrowdSound/ListSongs",
+  "/CrowdSound.CrowdSound/GetQueue",
   "/CrowdSound.CrowdSound/ListTrendingArtists",
   "/CrowdSound.CrowdSound/PostSong",
   "/CrowdSound.CrowdSound/VoteSong",
@@ -27,18 +27,18 @@ std::unique_ptr< CrowdSound::Stub> CrowdSound::NewStub(const std::shared_ptr< ::
 }
 
 CrowdSound::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
-  : channel_(channel), rpcmethod_ListSongs_(CrowdSound_method_names[0], ::grpc::RpcMethod::SERVER_STREAMING, channel)
+  : channel_(channel), rpcmethod_GetQueue_(CrowdSound_method_names[0], ::grpc::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_ListTrendingArtists_(CrowdSound_method_names[1], ::grpc::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_PostSong_(CrowdSound_method_names[2], ::grpc::RpcMethod::CLIENT_STREAMING, channel)
   , rpcmethod_VoteSong_(CrowdSound_method_names[3], ::grpc::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::ClientReader< ::CrowdSound::ListSongsResponse>* CrowdSound::Stub::ListSongsRaw(::grpc::ClientContext* context, const ::CrowdSound::ListSongsRequest& request) {
-  return new ::grpc::ClientReader< ::CrowdSound::ListSongsResponse>(channel_.get(), rpcmethod_ListSongs_, context, request);
+::grpc::ClientReader< ::CrowdSound::GetQueueResponse>* CrowdSound::Stub::GetQueueRaw(::grpc::ClientContext* context, const ::CrowdSound::GetQueueRequest& request) {
+  return new ::grpc::ClientReader< ::CrowdSound::GetQueueResponse>(channel_.get(), rpcmethod_GetQueue_, context, request);
 }
 
-::grpc::ClientAsyncReader< ::CrowdSound::ListSongsResponse>* CrowdSound::Stub::AsyncListSongsRaw(::grpc::ClientContext* context, const ::CrowdSound::ListSongsRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return new ::grpc::ClientAsyncReader< ::CrowdSound::ListSongsResponse>(channel_.get(), cq, rpcmethod_ListSongs_, context, request, tag);
+::grpc::ClientAsyncReader< ::CrowdSound::GetQueueResponse>* CrowdSound::Stub::AsyncGetQueueRaw(::grpc::ClientContext* context, const ::CrowdSound::GetQueueRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return new ::grpc::ClientAsyncReader< ::CrowdSound::GetQueueResponse>(channel_.get(), cq, rpcmethod_GetQueue_, context, request, tag);
 }
 
 ::grpc::ClientReader< ::CrowdSound::ListTrendingArtistsResponse>* CrowdSound::Stub::ListTrendingArtistsRaw(::grpc::ClientContext* context, const ::CrowdSound::ListTrendingArtistsRequest& request) {
@@ -71,14 +71,14 @@ CrowdSound::Service::~Service() {
   delete service_;
 }
 
-::grpc::Status CrowdSound::Service::ListSongs(::grpc::ServerContext* context, const ::CrowdSound::ListSongsRequest* request, ::grpc::ServerWriter< ::CrowdSound::ListSongsResponse>* writer) {
+::grpc::Status CrowdSound::Service::GetQueue(::grpc::ServerContext* context, const ::CrowdSound::GetQueueRequest* request, ::grpc::ServerWriter< ::CrowdSound::GetQueueResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void CrowdSound::AsyncService::RequestListSongs(::grpc::ServerContext* context, ::CrowdSound::ListSongsRequest* request, ::grpc::ServerAsyncWriter< ::CrowdSound::ListSongsResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void CrowdSound::AsyncService::RequestGetQueue(::grpc::ServerContext* context, ::CrowdSound::GetQueueRequest* request, ::grpc::ServerAsyncWriter< ::CrowdSound::GetQueueResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
 }
 
@@ -123,8 +123,8 @@ void CrowdSound::AsyncService::RequestVoteSong(::grpc::ServerContext* context, :
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       CrowdSound_method_names[0],
       ::grpc::RpcMethod::SERVER_STREAMING,
-      new ::grpc::ServerStreamingHandler< CrowdSound::Service, ::CrowdSound::ListSongsRequest, ::CrowdSound::ListSongsResponse>(
-          std::mem_fn(&CrowdSound::Service::ListSongs), this)));
+      new ::grpc::ServerStreamingHandler< CrowdSound::Service, ::CrowdSound::GetQueueRequest, ::CrowdSound::GetQueueResponse>(
+          std::mem_fn(&CrowdSound::Service::GetQueue), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       CrowdSound_method_names[1],
       ::grpc::RpcMethod::SERVER_STREAMING,

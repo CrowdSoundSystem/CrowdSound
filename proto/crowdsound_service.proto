@@ -7,37 +7,32 @@ package CrowdSound;
 
 // Interface exported by the server.
 service CrowdSound {
-    // ListSongs streams all songs known to the CrowdSound service.
-    //
-    // Because the amount of songs may be massive, it is up to the clients
-    // to implement pagination and/or stream termination (with the exception of
-    // end-of-stream). For example, a client may request 20 from the stream,
-    // display to user, and then wait for the user to keep scrolling before
-    // requesting. Alternatively, if the user is no longer browsing, the
-    // stream can be terminated.
-	rpc ListSongs(ListSongsRequest) returns (stream ListSongsResponse) {}
+    // GetQueue streams the queue of songs (including what's currently playing).
+    rpc GetQueue(GetQueueRequest) returns (stream GetQueueResponse) {}
 
-    // ListTrendingArtists returns an ordered list of artists, based on
-    // trending value.
+    // ListTrendingArtists returns an ordered list of artists, based on trending
+    // value.
     //
     // As with ListSongs, it is up to the client to control pagination and stream
     // termination (with the exception of end-of-stream).
-	rpc ListTrendingArtists(ListTrendingArtistsRequest) returns (stream ListTrendingArtistsResponse) {}
+    rpc ListTrendingArtists(ListTrendingArtistsRequest) returns (stream ListTrendingArtistsResponse) {}
 
     // PostSong informs the CrowdSound service of a 'Song' that the client
     // has. The 'Song' may or may not have all of the fields filled or present.
-	rpc PostSong(stream PostSongRequest) returns (PostSongResponse) {}
+    rpc PostSong(stream PostSongRequest) returns (PostSongResponse) {}
 
     // VoteSong informs the CrowdSound service of a vote for a Song.
-	rpc VoteSong(VoteSongRequest) returns (VoteSongResponse) {}
+    rpc VoteSong(VoteSongRequest) returns (VoteSongResponse) {}
 }
 
-message ListSongsRequest {
+message GetQueueRequest {
 }
 
-message ListSongsResponse {
+message GetQueueResponse {
 	string name = 1;
-	bool isPlaying = 2;
+    string artist = 2;
+    string genre = 3;
+	bool isPlaying = 4;
 }
 
 message ListTrendingArtistsRequest {
