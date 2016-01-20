@@ -1,3 +1,4 @@
+#include <chrono>
 #include <iostream>
 #include <grpc++/grpc++.h>
 
@@ -41,17 +42,19 @@ CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db, DecisionSettings decision_sett
 void CrowdSoundImpl::runPlaySource() {
     while(true) {
         // Run through iteration of PlaySource, and then generate songs after.
-        cout << "Running source" << endl;
+        //cout << "Running source" << endl;
         this->playsource_->run();
 
-        cout << "Running algo" << endl;
+        //cout << "Running algo" << endl;
         this->algo_->run();
+
+        this_thread::sleep_for(chrono::seconds(1));
     }
 }
 
 Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) {
     ResultSet<Song> resultSet;
-    skrillex::Status status = this->db_->getSongs(resultSet);
+    skrillex::Status status = this->db_->getQueue(resultSet);
     if (status != skrillex::Status::OK()) {
         return Status(StatusCode::INTERNAL, status.message());
     }
