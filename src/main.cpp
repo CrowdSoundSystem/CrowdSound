@@ -14,7 +14,7 @@ using namespace std;
 
 int main() {
     skrillex::DB* raw = 0;
-    skrillex::Status status = skrillex::open(raw, "", skrillex::Options::InMemoryOptions());
+    skrillex::Status status = skrillex::open(raw, "", skrillex::Options());
     shared_ptr<skrillex::DB> db(raw);
 
     if (status != skrillex::Status::OK()) {

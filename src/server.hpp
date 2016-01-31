@@ -20,6 +20,8 @@ using grpc::ServerWriter;
 using grpc::ServerReader;
 using grpc::Status;
 
+using CrowdSound::PingRequest;
+using CrowdSound::PingResponse;
 using CrowdSound::GetQueueRequest;
 using CrowdSound::GetQueueResponse;
 using CrowdSound::ListTrendingArtistsRequest;
@@ -33,6 +35,7 @@ class CrowdSoundImpl final : public CrowdSound::CrowdSound::Service {
 public:
     explicit CrowdSoundImpl(std::shared_ptr<skrillex::DB> db, DecisionSettings decision_settings);
 
+    Status Ping(ServerContext* context, const PingRequest* request, PingResponse* resp) override;
     Status GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) override;
     Status ListTrendingArtists(ServerContext* context, const ListTrendingArtistsRequest* request, ServerWriter<ListTrendingArtistsResponse>* writer) override;
     Status PostSong(ServerContext* context, ServerReader<PostSongRequest>* request, PostSongResponse* resp) override;

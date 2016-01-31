@@ -14,6 +14,8 @@ using grpc::ServerWriter;
 using grpc::Status;
 using grpc::StatusCode;
 
+using CrowdSound::PingRequest;
+using CrowdSound::PingResponse;
 using CrowdSound::GetQueueRequest;
 using CrowdSound::GetQueueResponse;
 using CrowdSound::ListTrendingArtistsRequest;
@@ -50,6 +52,13 @@ void CrowdSoundImpl::runPlaySource() {
 
         this_thread::sleep_for(chrono::seconds(1));
     }
+}
+
+Status CrowdSoundImpl::Ping(ServerContext* context, const PingRequest* request, PingResponse* resp) {
+    int64_t now = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
+    this->db_->setActivity(request->user_id(), now);
+
+    return Status::OK;
 }
 
 Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) {
@@ -128,6 +137,11 @@ Status CrowdSoundImpl::PostSong(ServerContext* context, ServerReader<PostSongReq
             }
 
             s.genre = g;
+
+            status = this->db_->voteGenre(request.user_id(), g, 0);
+            if (status != skrillex::Status::OK()) {
+                return Status(StatusCode::INTERNAL, status.message());
+            }
         }
         if (request.artist() != "") {
             a.name = request.artist();
@@ -138,10 +152,20 @@ Status CrowdSoundImpl::PostSong(ServerContext* context, ServerReader<PostSongReq
             }
 
             s.artist = a;
+
+            status = this->db_->voteArtist(request.user_id(), a, 0);
+            if (status != skrillex::Status::OK()) {
+                return Status(StatusCode::INTERNAL, status.message());
+            }
         }
         if (request.name() != "") {
             s.name = request.name();
             this->db_->addSong(s);
+            if (status != skrillex::Status::OK()) {
+                return Status(StatusCode::INTERNAL, status.message());
+            }
+
+            status = this->db_->voteSong(request.user_id(), s, 0);
             if (status != skrillex::Status::OK()) {
                 return Status(StatusCode::INTERNAL, status.message());
             }
@@ -185,7 +209,7 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
                 amount = -1;
             }
 
-            status = this->db_->voteSong(s, amount);
+            status = this->db_->voteSong(request->user_id(), s, amount);
             if (status != skrillex::Status::OK()) {
                 return Status(StatusCode::INTERNAL, status.message());
             }
