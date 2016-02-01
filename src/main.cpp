@@ -13,8 +13,11 @@ using namespace std;
 
 
 int main() {
+    skrillex::Options options;
+    options.create_if_missing = true;
+
     skrillex::DB* raw = 0;
-    skrillex::Status status = skrillex::open(raw, "", skrillex::Options());
+    skrillex::Status status = skrillex::open(raw, "crowdsound.db", options);
     shared_ptr<skrillex::DB> db(raw);
 
     if (status != skrillex::Status::OK()) {
