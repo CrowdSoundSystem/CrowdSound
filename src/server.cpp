@@ -58,6 +58,8 @@ Status CrowdSoundImpl::Ping(ServerContext* context, const PingRequest* request, 
     int64_t now = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
     this->db_->setActivity(request->user_id(), now);
 
+    cout << "Received ping from: " << request->user_id() << endl;
+
     return Status::OK;
 }
 
