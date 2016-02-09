@@ -12,6 +12,8 @@ service CrowdSound {
     // alive and connected.
     rpc Ping(PingRequest) returns (PingResponse) {}
 
+    rpc GetSessionData(GetSessionDataRequest) returns (GetSessionDataResponse) {}
+
     // GetQueue streams the queue of songs (including what's currently playing).
     rpc GetQueue(GetQueueRequest) returns (stream GetQueueResponse) {}
 
@@ -35,6 +37,14 @@ message PingRequest {
 }
 
 message PingResponse {
+}
+
+message GetSessionDataRequest {
+}
+
+message GetSessionDataResponse {
+    string session_name = 1;
+    int32  num_users = 2;
 }
 
 message GetQueueRequest {
