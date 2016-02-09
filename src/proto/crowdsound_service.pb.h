@@ -38,6 +38,8 @@ void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
 
 class GetQueueRequest;
 class GetQueueResponse;
+class GetSessionDataRequest;
+class GetSessionDataResponse;
 class ListTrendingArtistsRequest;
 class ListTrendingArtistsResponse;
 class PingRequest;
@@ -200,6 +202,167 @@ class PingResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static PingResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GetSessionDataRequest : public ::google::protobuf::Message {
+ public:
+  GetSessionDataRequest();
+  virtual ~GetSessionDataRequest();
+
+  GetSessionDataRequest(const GetSessionDataRequest& from);
+
+  inline GetSessionDataRequest& operator=(const GetSessionDataRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetSessionDataRequest& default_instance();
+
+  void Swap(GetSessionDataRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline GetSessionDataRequest* New() const { return New(NULL); }
+
+  GetSessionDataRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetSessionDataRequest& from);
+  void MergeFrom(const GetSessionDataRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(GetSessionDataRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:CrowdSound.GetSessionDataRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static GetSessionDataRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GetSessionDataResponse : public ::google::protobuf::Message {
+ public:
+  GetSessionDataResponse();
+  virtual ~GetSessionDataResponse();
+
+  GetSessionDataResponse(const GetSessionDataResponse& from);
+
+  inline GetSessionDataResponse& operator=(const GetSessionDataResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetSessionDataResponse& default_instance();
+
+  void Swap(GetSessionDataResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline GetSessionDataResponse* New() const { return New(NULL); }
+
+  GetSessionDataResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetSessionDataResponse& from);
+  void MergeFrom(const GetSessionDataResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(GetSessionDataResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string session_name = 1;
+  void clear_session_name();
+  static const int kSessionNameFieldNumber = 1;
+  const ::std::string& session_name() const;
+  void set_session_name(const ::std::string& value);
+  void set_session_name(const char* value);
+  void set_session_name(const char* value, size_t size);
+  ::std::string* mutable_session_name();
+  ::std::string* release_session_name();
+  void set_allocated_session_name(::std::string* session_name);
+
+  // optional int32 num_users = 2;
+  void clear_num_users();
+  static const int kNumUsersFieldNumber = 2;
+  ::google::protobuf::int32 num_users() const;
+  void set_num_users(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:CrowdSound.GetSessionDataResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr session_name_;
+  ::google::protobuf::int32 num_users_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static GetSessionDataResponse* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -979,6 +1142,71 @@ inline void PingRequest::set_allocated_user_id(::std::string* user_id) {
 
 // -------------------------------------------------------------------
 
+// GetSessionDataRequest
+
+// -------------------------------------------------------------------
+
+// GetSessionDataResponse
+
+// optional string session_name = 1;
+inline void GetSessionDataResponse::clear_session_name() {
+  session_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetSessionDataResponse::session_name() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSessionDataResponse.session_name)
+  return session_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetSessionDataResponse::set_session_name(const ::std::string& value) {
+  
+  session_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSessionDataResponse.session_name)
+}
+inline void GetSessionDataResponse::set_session_name(const char* value) {
+  
+  session_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetSessionDataResponse.session_name)
+}
+inline void GetSessionDataResponse::set_session_name(const char* value, size_t size) {
+  
+  session_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetSessionDataResponse.session_name)
+}
+inline ::std::string* GetSessionDataResponse::mutable_session_name() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetSessionDataResponse.session_name)
+  return session_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetSessionDataResponse::release_session_name() {
+  
+  return session_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetSessionDataResponse::set_allocated_session_name(::std::string* session_name) {
+  if (session_name != NULL) {
+    
+  } else {
+    
+  }
+  session_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), session_name);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetSessionDataResponse.session_name)
+}
+
+// optional int32 num_users = 2;
+inline void GetSessionDataResponse::clear_num_users() {
+  num_users_ = 0;
+}
+inline ::google::protobuf::int32 GetSessionDataResponse::num_users() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSessionDataResponse.num_users)
+  return num_users_;
+}
+inline void GetSessionDataResponse::set_num_users(::google::protobuf::int32 value) {
+  
+  num_users_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSessionDataResponse.num_users)
+}
+
+// -------------------------------------------------------------------
+
 // GetQueueRequest
 
 // -------------------------------------------------------------------
@@ -1525,6 +1753,10 @@ inline void VoteSongRequest::set_like(bool value) {
 // VoteSongResponse
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

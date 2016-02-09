@@ -16,6 +16,8 @@ using grpc::StatusCode;
 
 using CrowdSound::PingRequest;
 using CrowdSound::PingResponse;
+using CrowdSound::GetSessionDataRequest;
+using CrowdSound::GetSessionDataResponse;
 using CrowdSound::GetQueueRequest;
 using CrowdSound::GetQueueResponse;
 using CrowdSound::ListTrendingArtistsRequest;
@@ -59,6 +61,14 @@ Status CrowdSoundImpl::Ping(ServerContext* context, const PingRequest* request, 
     this->db_->setActivity(request->user_id(), now);
 
     cout << "Received ping from: " << request->user_id() << endl;
+
+    return Status::OK;
+}
+
+Status CrowdSoundImpl::GetSessionData(ServerContext* context, const GetSessionDataRequest* request, GetSessionDataResponse* resp) {
+    // TODO: Use real data
+    resp->set_session_name("Erect af");
+    resp->set_num_users(1);
 
     return Status::OK;
 }
@@ -216,12 +226,12 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
                 return Status(StatusCode::INTERNAL, status.message());
             }
 
-            break;
+            return Status::OK;
         }
     }
 
     cout << "Could not find a song to vote on: " << request->name() << endl;
 
-    return Status::OK;
+    return Status(StatusCode::NOT_FOUND, "Could not find song to vote on");
 }
 

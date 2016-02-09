@@ -26,6 +26,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* PingResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PingResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GetSessionDataRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GetSessionDataRequest_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GetSessionDataResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GetSessionDataResponse_reflection_ = NULL;
 const ::google::protobuf::Descriptor* GetQueueRequest_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   GetQueueRequest_reflection_ = NULL;
@@ -89,7 +95,37 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       sizeof(PingResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PingResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PingResponse, _is_default_instance_));
-  GetQueueRequest_descriptor_ = file->message_type(2);
+  GetSessionDataRequest_descriptor_ = file->message_type(2);
+  static const int GetSessionDataRequest_offsets_[1] = {
+  };
+  GetSessionDataRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      GetSessionDataRequest_descriptor_,
+      GetSessionDataRequest::default_instance_,
+      GetSessionDataRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(GetSessionDataRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSessionDataRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSessionDataRequest, _is_default_instance_));
+  GetSessionDataResponse_descriptor_ = file->message_type(3);
+  static const int GetSessionDataResponse_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSessionDataResponse, session_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSessionDataResponse, num_users_),
+  };
+  GetSessionDataResponse_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      GetSessionDataResponse_descriptor_,
+      GetSessionDataResponse::default_instance_,
+      GetSessionDataResponse_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(GetSessionDataResponse),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSessionDataResponse, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSessionDataResponse, _is_default_instance_));
+  GetQueueRequest_descriptor_ = file->message_type(4);
   static const int GetQueueRequest_offsets_[1] = {
   };
   GetQueueRequest_reflection_ =
@@ -103,7 +139,7 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       sizeof(GetQueueRequest),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueRequest, _is_default_instance_));
-  GetQueueResponse_descriptor_ = file->message_type(3);
+  GetQueueResponse_descriptor_ = file->message_type(5);
   static const int GetQueueResponse_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueResponse, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueResponse, artist_),
@@ -121,7 +157,7 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       sizeof(GetQueueResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueResponse, _is_default_instance_));
-  ListTrendingArtistsRequest_descriptor_ = file->message_type(4);
+  ListTrendingArtistsRequest_descriptor_ = file->message_type(6);
   static const int ListTrendingArtistsRequest_offsets_[1] = {
   };
   ListTrendingArtistsRequest_reflection_ =
@@ -135,7 +171,7 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       sizeof(ListTrendingArtistsRequest),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ListTrendingArtistsRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ListTrendingArtistsRequest, _is_default_instance_));
-  ListTrendingArtistsResponse_descriptor_ = file->message_type(5);
+  ListTrendingArtistsResponse_descriptor_ = file->message_type(7);
   static const int ListTrendingArtistsResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ListTrendingArtistsResponse, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ListTrendingArtistsResponse, score_),
@@ -151,7 +187,7 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       sizeof(ListTrendingArtistsResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ListTrendingArtistsResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ListTrendingArtistsResponse, _is_default_instance_));
-  PostSongRequest_descriptor_ = file->message_type(6);
+  PostSongRequest_descriptor_ = file->message_type(8);
   static const int PostSongRequest_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PostSongRequest, user_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PostSongRequest, name_),
@@ -169,7 +205,7 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       sizeof(PostSongRequest),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PostSongRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PostSongRequest, _is_default_instance_));
-  PostSongResponse_descriptor_ = file->message_type(7);
+  PostSongResponse_descriptor_ = file->message_type(9);
   static const int PostSongResponse_offsets_[1] = {
   };
   PostSongResponse_reflection_ =
@@ -183,7 +219,7 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       sizeof(PostSongResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PostSongResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PostSongResponse, _is_default_instance_));
-  VoteSongRequest_descriptor_ = file->message_type(8);
+  VoteSongRequest_descriptor_ = file->message_type(10);
   static const int VoteSongRequest_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteSongRequest, user_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteSongRequest, name_),
@@ -201,7 +237,7 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       sizeof(VoteSongRequest),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteSongRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteSongRequest, _is_default_instance_));
-  VoteSongResponse_descriptor_ = file->message_type(9);
+  VoteSongResponse_descriptor_ = file->message_type(11);
   static const int VoteSongResponse_offsets_[1] = {
   };
   VoteSongResponse_reflection_ =
@@ -232,6 +268,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       PingResponse_descriptor_, &PingResponse::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      GetSessionDataRequest_descriptor_, &GetSessionDataRequest::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      GetSessionDataResponse_descriptor_, &GetSessionDataResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       GetQueueRequest_descriptor_, &GetQueueRequest::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       GetQueueResponse_descriptor_, &GetQueueResponse::default_instance());
@@ -256,6 +296,10 @@ void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto() {
   delete PingRequest_reflection_;
   delete PingResponse::default_instance_;
   delete PingResponse_reflection_;
+  delete GetSessionDataRequest::default_instance_;
+  delete GetSessionDataRequest_reflection_;
+  delete GetSessionDataResponse::default_instance_;
+  delete GetSessionDataResponse_reflection_;
   delete GetQueueRequest::default_instance_;
   delete GetQueueRequest_reflection_;
   delete GetQueueResponse::default_instance_;
@@ -283,32 +327,38 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\036proto/crowdsound_service.proto\022\nCrowdS"
     "ound\"\036\n\013PingRequest\022\017\n\007user_id\030\001 \001(\t\"\016\n\014"
-    "PingResponse\"\021\n\017GetQueueRequest\"R\n\020GetQu"
-    "eueResponse\022\014\n\004name\030\001 \001(\t\022\016\n\006artist\030\002 \001("
-    "\t\022\r\n\005genre\030\003 \001(\t\022\021\n\tisPlaying\030\004 \001(\010\"\034\n\032L"
-    "istTrendingArtistsRequest\":\n\033ListTrendin"
-    "gArtistsResponse\022\014\n\004name\030\001 \001(\t\022\r\n\005score\030"
-    "\002 \001(\005\"O\n\017PostSongRequest\022\017\n\007user_id\030\001 \001("
-    "\t\022\014\n\004name\030\002 \001(\t\022\016\n\006artist\030\003 \001(\t\022\r\n\005genre"
-    "\030\004 \001(\t\"\022\n\020PostSongResponse\"N\n\017VoteSongRe"
-    "quest\022\017\n\007user_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006"
-    "artist\030\003 \001(\t\022\014\n\004like\030\004 \001(\010\"\022\n\020VoteSongRe"
-    "sponse2\224\003\n\nCrowdSound\022;\n\004Ping\022\027.CrowdSou"
-    "nd.PingRequest\032\030.CrowdSound.PingResponse"
-    "\"\000\022I\n\010GetQueue\022\033.CrowdSound.GetQueueRequ"
-    "est\032\034.CrowdSound.GetQueueResponse\"\0000\001\022j\n"
-    "\023ListTrendingArtists\022&.CrowdSound.ListTr"
-    "endingArtistsRequest\032\'.CrowdSound.ListTr"
-    "endingArtistsResponse\"\0000\001\022I\n\010PostSong\022\033."
-    "CrowdSound.PostSongRequest\032\034.CrowdSound."
-    "PostSongResponse\"\000(\001\022G\n\010VoteSong\022\033.Crowd"
-    "Sound.VoteSongRequest\032\034.CrowdSound.VoteS"
-    "ongResponse\"\000B\032\n\007ex.grpcZ\ncrowdsound\242\002\002C"
-    "Sb\006proto3", 929);
+    "PingResponse\"\027\n\025GetSessionDataRequest\"A\n"
+    "\026GetSessionDataResponse\022\024\n\014session_name\030"
+    "\001 \001(\t\022\021\n\tnum_users\030\002 \001(\005\"\021\n\017GetQueueRequ"
+    "est\"R\n\020GetQueueResponse\022\014\n\004name\030\001 \001(\t\022\016\n"
+    "\006artist\030\002 \001(\t\022\r\n\005genre\030\003 \001(\t\022\021\n\tisPlayin"
+    "g\030\004 \001(\010\"\034\n\032ListTrendingArtistsRequest\":\n"
+    "\033ListTrendingArtistsResponse\022\014\n\004name\030\001 \001"
+    "(\t\022\r\n\005score\030\002 \001(\005\"O\n\017PostSongRequest\022\017\n\007"
+    "user_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006artist\030\003 "
+    "\001(\t\022\r\n\005genre\030\004 \001(\t\"\022\n\020PostSongResponse\"N"
+    "\n\017VoteSongRequest\022\017\n\007user_id\030\001 \001(\t\022\014\n\004na"
+    "me\030\002 \001(\t\022\016\n\006artist\030\003 \001(\t\022\014\n\004like\030\004 \001(\010\"\022"
+    "\n\020VoteSongResponse2\357\003\n\nCrowdSound\022;\n\004Pin"
+    "g\022\027.CrowdSound.PingRequest\032\030.CrowdSound."
+    "PingResponse\"\000\022Y\n\016GetSessionData\022!.Crowd"
+    "Sound.GetSessionDataRequest\032\".CrowdSound"
+    ".GetSessionDataResponse\"\000\022I\n\010GetQueue\022\033."
+    "CrowdSound.GetQueueRequest\032\034.CrowdSound."
+    "GetQueueResponse\"\0000\001\022j\n\023ListTrendingArti"
+    "sts\022&.CrowdSound.ListTrendingArtistsRequ"
+    "est\032\'.CrowdSound.ListTrendingArtistsResp"
+    "onse\"\0000\001\022I\n\010PostSong\022\033.CrowdSound.PostSo"
+    "ngRequest\032\034.CrowdSound.PostSongResponse\""
+    "\000(\001\022G\n\010VoteSong\022\033.CrowdSound.VoteSongReq"
+    "uest\032\034.CrowdSound.VoteSongResponse\"\000B\032\n\007"
+    "ex.grpcZ\ncrowdsound\242\002\002CSb\006proto3", 1112);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/crowdsound_service.proto", &protobuf_RegisterTypes);
   PingRequest::default_instance_ = new PingRequest();
   PingResponse::default_instance_ = new PingResponse();
+  GetSessionDataRequest::default_instance_ = new GetSessionDataRequest();
+  GetSessionDataResponse::default_instance_ = new GetSessionDataResponse();
   GetQueueRequest::default_instance_ = new GetQueueRequest();
   GetQueueResponse::default_instance_ = new GetQueueResponse();
   ListTrendingArtistsRequest::default_instance_ = new ListTrendingArtistsRequest();
@@ -319,6 +369,8 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto() {
   VoteSongResponse::default_instance_ = new VoteSongResponse();
   PingRequest::default_instance_->InitAsDefaultInstance();
   PingResponse::default_instance_->InitAsDefaultInstance();
+  GetSessionDataRequest::default_instance_->InitAsDefaultInstance();
+  GetSessionDataResponse::default_instance_->InitAsDefaultInstance();
   GetQueueRequest::default_instance_->InitAsDefaultInstance();
   GetQueueResponse::default_instance_->InitAsDefaultInstance();
   ListTrendingArtistsRequest::default_instance_->InitAsDefaultInstance();
@@ -784,6 +836,499 @@ void PingResponse::InternalSwap(PingResponse* other) {
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // PingResponse
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+GetSessionDataRequest::GetSessionDataRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CrowdSound.GetSessionDataRequest)
+}
+
+void GetSessionDataRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+GetSessionDataRequest::GetSessionDataRequest(const GetSessionDataRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:CrowdSound.GetSessionDataRequest)
+}
+
+void GetSessionDataRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+}
+
+GetSessionDataRequest::~GetSessionDataRequest() {
+  // @@protoc_insertion_point(destructor:CrowdSound.GetSessionDataRequest)
+  SharedDtor();
+}
+
+void GetSessionDataRequest::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void GetSessionDataRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetSessionDataRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GetSessionDataRequest_descriptor_;
+}
+
+const GetSessionDataRequest& GetSessionDataRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
+  return *default_instance_;
+}
+
+GetSessionDataRequest* GetSessionDataRequest::default_instance_ = NULL;
+
+GetSessionDataRequest* GetSessionDataRequest::New(::google::protobuf::Arena* arena) const {
+  GetSessionDataRequest* n = new GetSessionDataRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void GetSessionDataRequest::Clear() {
+}
+
+bool GetSessionDataRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CrowdSound.GetSessionDataRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CrowdSound.GetSessionDataRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CrowdSound.GetSessionDataRequest)
+  return false;
+#undef DO_
+}
+
+void GetSessionDataRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CrowdSound.GetSessionDataRequest)
+  // @@protoc_insertion_point(serialize_end:CrowdSound.GetSessionDataRequest)
+}
+
+::google::protobuf::uint8* GetSessionDataRequest::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:CrowdSound.GetSessionDataRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.GetSessionDataRequest)
+  return target;
+}
+
+int GetSessionDataRequest::ByteSize() const {
+  int total_size = 0;
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetSessionDataRequest::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const GetSessionDataRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetSessionDataRequest>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GetSessionDataRequest::MergeFrom(const GetSessionDataRequest& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+}
+
+void GetSessionDataRequest::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetSessionDataRequest::CopyFrom(const GetSessionDataRequest& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetSessionDataRequest::IsInitialized() const {
+
+  return true;
+}
+
+void GetSessionDataRequest::Swap(GetSessionDataRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void GetSessionDataRequest::InternalSwap(GetSessionDataRequest* other) {
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata GetSessionDataRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GetSessionDataRequest_descriptor_;
+  metadata.reflection = GetSessionDataRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// GetSessionDataRequest
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int GetSessionDataResponse::kSessionNameFieldNumber;
+const int GetSessionDataResponse::kNumUsersFieldNumber;
+#endif  // !_MSC_VER
+
+GetSessionDataResponse::GetSessionDataResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CrowdSound.GetSessionDataResponse)
+}
+
+void GetSessionDataResponse::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+GetSessionDataResponse::GetSessionDataResponse(const GetSessionDataResponse& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:CrowdSound.GetSessionDataResponse)
+}
+
+void GetSessionDataResponse::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  session_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  num_users_ = 0;
+}
+
+GetSessionDataResponse::~GetSessionDataResponse() {
+  // @@protoc_insertion_point(destructor:CrowdSound.GetSessionDataResponse)
+  SharedDtor();
+}
+
+void GetSessionDataResponse::SharedDtor() {
+  session_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void GetSessionDataResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetSessionDataResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GetSessionDataResponse_descriptor_;
+}
+
+const GetSessionDataResponse& GetSessionDataResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
+  return *default_instance_;
+}
+
+GetSessionDataResponse* GetSessionDataResponse::default_instance_ = NULL;
+
+GetSessionDataResponse* GetSessionDataResponse::New(::google::protobuf::Arena* arena) const {
+  GetSessionDataResponse* n = new GetSessionDataResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void GetSessionDataResponse::Clear() {
+  session_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  num_users_ = 0;
+}
+
+bool GetSessionDataResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CrowdSound.GetSessionDataResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string session_name = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_session_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->session_name().data(), this->session_name().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CrowdSound.GetSessionDataResponse.session_name"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_num_users;
+        break;
+      }
+
+      // optional int32 num_users = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_num_users:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &num_users_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CrowdSound.GetSessionDataResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CrowdSound.GetSessionDataResponse)
+  return false;
+#undef DO_
+}
+
+void GetSessionDataResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CrowdSound.GetSessionDataResponse)
+  // optional string session_name = 1;
+  if (this->session_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->session_name().data(), this->session_name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetSessionDataResponse.session_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->session_name(), output);
+  }
+
+  // optional int32 num_users = 2;
+  if (this->num_users() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->num_users(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:CrowdSound.GetSessionDataResponse)
+}
+
+::google::protobuf::uint8* GetSessionDataResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:CrowdSound.GetSessionDataResponse)
+  // optional string session_name = 1;
+  if (this->session_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->session_name().data(), this->session_name().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetSessionDataResponse.session_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->session_name(), target);
+  }
+
+  // optional int32 num_users = 2;
+  if (this->num_users() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->num_users(), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.GetSessionDataResponse)
+  return target;
+}
+
+int GetSessionDataResponse::ByteSize() const {
+  int total_size = 0;
+
+  // optional string session_name = 1;
+  if (this->session_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->session_name());
+  }
+
+  // optional int32 num_users = 2;
+  if (this->num_users() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->num_users());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetSessionDataResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const GetSessionDataResponse* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetSessionDataResponse>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GetSessionDataResponse::MergeFrom(const GetSessionDataResponse& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.session_name().size() > 0) {
+
+    session_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.session_name_);
+  }
+  if (from.num_users() != 0) {
+    set_num_users(from.num_users());
+  }
+}
+
+void GetSessionDataResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetSessionDataResponse::CopyFrom(const GetSessionDataResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetSessionDataResponse::IsInitialized() const {
+
+  return true;
+}
+
+void GetSessionDataResponse::Swap(GetSessionDataResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void GetSessionDataResponse::InternalSwap(GetSessionDataResponse* other) {
+  session_name_.Swap(&other->session_name_);
+  std::swap(num_users_, other->num_users_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata GetSessionDataResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GetSessionDataResponse_descriptor_;
+  metadata.reflection = GetSessionDataResponse_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// GetSessionDataResponse
+
+// optional string session_name = 1;
+void GetSessionDataResponse::clear_session_name() {
+  session_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& GetSessionDataResponse::session_name() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSessionDataResponse.session_name)
+  return session_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetSessionDataResponse::set_session_name(const ::std::string& value) {
+  
+  session_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSessionDataResponse.session_name)
+}
+ void GetSessionDataResponse::set_session_name(const char* value) {
+  
+  session_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetSessionDataResponse.session_name)
+}
+ void GetSessionDataResponse::set_session_name(const char* value, size_t size) {
+  
+  session_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetSessionDataResponse.session_name)
+}
+ ::std::string* GetSessionDataResponse::mutable_session_name() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetSessionDataResponse.session_name)
+  return session_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* GetSessionDataResponse::release_session_name() {
+  
+  return session_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetSessionDataResponse::set_allocated_session_name(::std::string* session_name) {
+  if (session_name != NULL) {
+    
+  } else {
+    
+  }
+  session_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), session_name);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetSessionDataResponse.session_name)
+}
+
+// optional int32 num_users = 2;
+void GetSessionDataResponse::clear_num_users() {
+  num_users_ = 0;
+}
+ ::google::protobuf::int32 GetSessionDataResponse::num_users() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSessionDataResponse.num_users)
+  return num_users_;
+}
+ void GetSessionDataResponse::set_num_users(::google::protobuf::int32 value) {
+  
+  num_users_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSessionDataResponse.num_users)
+}
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
