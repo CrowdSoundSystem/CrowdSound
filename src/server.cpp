@@ -180,34 +180,38 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
     // TODO: This is primarily blocked by the parser functionality:
     // Give me the complete song object, for a given input. We'll put in a small hack :P
 
-    ResultSet<Song> resultSet;
-    skrillex::Status status = this->db_->getSongs(resultSet);
+    cout << "[Server] Received VoteSong: [" << request->artist() << " - " << request->name() << "] - " << request->like() << endl;
+
+    Song song;
+    int amount = request->like() ? 1 : -1;
+    skrillex::Status status = mapper_->lookup(song, request->name(), request->artist());
+
+    if (status.notFound()) {
+        return Status(StatusCode::NOT_FOUND, status.message());
+    } else if (status != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, status.message());
+    }
+
+    status = db_->voteSong(request->user_id(), song, amount);
     if (status != skrillex::Status::OK()) {
         return Status(StatusCode::INTERNAL, status.message());
     }
 
-    for (Song s : resultSet) {
-        if (s.name == request->name()) {
-            cout << "Found voted song: " << s.name << endl;
-
-            int amount = 0;
-            if (request->like()) {
-                amount = 1;
-            } else {
-                amount = -1;
-            }
-
-            status = this->db_->voteSong(request->user_id(), s, amount);
-            if (status != skrillex::Status::OK()) {
-                return Status(StatusCode::INTERNAL, status.message());
-            }
-
-            return Status::OK;
+    if (song.artist.id > 0) {
+        status = db_->voteArtist(request->user_id(), song.artist, amount);
+        if (status != skrillex::Status::OK()) {
+            return Status(StatusCode::INTERNAL, status.message());
         }
     }
 
-    cout << "Could not find a song to vote on: " << request->name() << endl;
+    if (song.genre.id > 0) {
+        status = db_->voteGenre(request->user_id(), song.genre, amount);
+        if (status != skrillex::Status::OK()) {
+            return Status(StatusCode::INTERNAL, status.message());
+        }
+    }
 
-    return Status(StatusCode::NOT_FOUND, "Could not find song to vote on");
+    return Status::OK;
+
 }
 
