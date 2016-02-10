@@ -48,6 +48,7 @@ protected:
     void runPlaySource();
 private:
     std::shared_ptr<skrillex::DB> db_;
+    std::shared_ptr<skrillex::Mapper> mapper_;
     std::shared_ptr<DecisionAlgorithm> algo_;
     std::shared_ptr<PlaySource> playsource_;
 

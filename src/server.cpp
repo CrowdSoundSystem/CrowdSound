@@ -28,6 +28,7 @@ using CrowdSound::VoteSongRequest;
 using CrowdSound::VoteSongResponse;
 
 using skrillex::DB;
+using skrillex::Mapper;
 using skrillex::ResultSet;
 using skrillex::ReadOptions;
 using skrillex::WriteOptions;
@@ -38,6 +39,7 @@ using skrillex::Genre;
 
 CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db, DecisionSettings decision_settings)
 : db_(db)
+, mapper_(new Mapper(db_))
 , algo_(new DecisionAlgorithm(decision_settings, db_))
 , playsource_(new PlaySource(db_))
 , ps_thread_(std::bind(&CrowdSoundImpl::runPlaySource, this)) {
@@ -126,58 +128,32 @@ Status CrowdSoundImpl::PostSong(ServerContext* context, ServerReader<PostSongReq
     // may not be an actual Song, maybe just an artist (or at least, all we
     // can extract is the artist).
     //
-    // TODO: Parsing logic.
-    //
-    // Once parsing is done, we can insert or link the objects.
-    // For now, we will assume the client only sends complete, unique, information.
+    // Note: If a client sends PostSong() after a VoteSong(), their vote will be reset.
     PostSongRequest request;
     skrillex::Status status = skrillex::Status::OK();
 
     while (reader->Read(&request)) {
-        Genre g;
-        Artist a;
-        Song s;
+        Song song;
+        cout << "[Server] Received PostSong: [" << request.genre() << "] " << request.artist() << " - " << request.name() << endl;
+        status = mapper_->map(song, request.name(), request.artist(), request.genre());
+        if (status != skrillex::Status::OK()) {
+            return Status(StatusCode::INTERNAL, status.message());
+        }
 
-        cout << "Attempting to post song: [" << request.genre() << "] " << request.artist() << " - " << request.name() << endl;
-
-        if (request.genre() != "") {
-            g.name = request.genre();
-
-            status = this->db_->addGenre(g);
-            if (status != skrillex::Status::OK()) {
-                return Status(StatusCode::INTERNAL, status.message());
-            }
-
-            s.genre = g;
-
-            status = this->db_->voteGenre(request.user_id(), g, 0);
+        if (song.genre.id > 0) {
+            status = db_->voteGenre(request.user_id(), song.genre, 0);
             if (status != skrillex::Status::OK()) {
                 return Status(StatusCode::INTERNAL, status.message());
             }
         }
-        if (request.artist() != "") {
-            a.name = request.artist();
-
-            this->db_->addArtist(a);
-            if (status != skrillex::Status::OK()) {
-                return Status(StatusCode::INTERNAL, status.message());
-            }
-
-            s.artist = a;
-
-            status = this->db_->voteArtist(request.user_id(), a, 0);
+        if (song.artist.id > 0) {
+            status = db_->voteArtist(request.user_id(), song.artist, 0);
             if (status != skrillex::Status::OK()) {
                 return Status(StatusCode::INTERNAL, status.message());
             }
         }
-        if (request.name() != "") {
-            s.name = request.name();
-            this->db_->addSong(s);
-            if (status != skrillex::Status::OK()) {
-                return Status(StatusCode::INTERNAL, status.message());
-            }
-
-            status = this->db_->voteSong(request.user_id(), s, 0);
+        if (song.id > 0) {
+            status = db_->voteSong(request.user_id(), song, 0);
             if (status != skrillex::Status::OK()) {
                 return Status(StatusCode::INTERNAL, status.message());
             }
