@@ -33,7 +33,7 @@ Next, we'll want to install gRPC:
 ```
 $ cd [projects / folder of your preference]
 $ git clone git@github.com:grpc/grpc
-$ get checkout tags/release-0_11_1
+$ git checkout tags/release-0_11_1
 $ git submodule update --init
 $ make
 $ sudo make install
