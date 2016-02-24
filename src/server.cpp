@@ -69,7 +69,7 @@ Status CrowdSoundImpl::Ping(ServerContext* context, const PingRequest* request, 
 
 Status CrowdSoundImpl::GetSessionData(ServerContext* context, const GetSessionDataRequest* request, GetSessionDataResponse* resp) {
     // TODO: Use real data
-    resp->set_session_name("Erect af");
+    resp->set_session_name("Symposium");
     resp->set_num_users(1);
 
     return Status::OK;
