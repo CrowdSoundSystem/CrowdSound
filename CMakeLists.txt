@@ -21,7 +21,6 @@ include_directories( ${Boost_INCLUDE_DIR} )
 include_directories(include)
 include_directories(skrillex/include)
 include_directories(decisionalgorithm/DecisionAlgorithm/src)
-include_directories(playsource/src)
 
 add_subdirectory(skrillex)
 add_subdirectory(decisionalgorithm/DecisionAlgorithm/src)
