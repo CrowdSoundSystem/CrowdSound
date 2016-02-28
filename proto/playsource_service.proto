@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+option go_package = "playsource";
+
+package PlaySource;
+
+service PlaySource {
+    // QueueSong is a bidirectional stream where callers send QueueSongRequests
+    // to queue song, and receive QueueSongResponses, which indicate whether a
+    // song was able to be queued (server queue full, not found, etc), or when
+    // a song was finished.
+    //
+    // Only one QueueSong() stream may be in progress at a given time.
+    //
+    // When a QueueSong() stream is successfully opened, the playsource resets
+    // the playback system, stopping what's playing, and clearing the queues.
+    //
+    // When a QueueSong() stream finishes, the state remains until another stream
+    // is opened.
+    //
+    // While there is an internal queue size limitation, clients are expected to
+    // have a queue size that is smaller. The internal queue size limitation is
+    // a safety measure to ensure the playback system can handle the queue.
+    rpc QueueSong(stream QueueSongRequest) returns (stream QueueSongResponse) {}
+
+    // GetPlaying returns the currently playing song (if any).
+    rpc GetPlaying(GetPlayingRequest) returns (GetPlayingResponse) {}
+
+    // GetPlayHistory returns songs that have been played since the service has been running.
+    rpc GetPlayHistory(GetPlayHistoryRequest) returns (stream GetPlayHistoryResponse) {}
+}
+
+message Song {
+    // Crowdsound song id.
+    int32 song_id = 1;
+
+    // Song name.
+    string name = 2;
+
+    // Song artists.
+    repeated string artists = 3;
+}
+
+message QueueSongRequest {
+    Song song = 1;
+}
+
+message QueueSongResponse {
+    // The Crowdsound song in question.
+    int32 song_id = 1;
+
+    // Whether or not the song was queued. If queued == false, then
+    // the song may not have been found (found == false), or the internal
+    // queue was full (found == true).
+    bool queued = 2;
+
+    // Whether or not a song was found. Will always be true if queued == true.
+    bool found = 3;
+
+    // Whether or not the song was finished.
+    bool finished = 4;
+}
+
+message GetPlayingRequest {
+}
+
+message GetPlayingResponse {
+    Song song = 1;
+}
+
+message GetPlayHistoryRequest {
+}
+
+message GetPlayHistoryResponse {
+    Song song = 1;
+}
