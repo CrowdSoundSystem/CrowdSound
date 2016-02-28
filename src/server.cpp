@@ -77,18 +77,21 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
         return Status(StatusCode::INTERNAL, status.message());
     }
 
+    bool first = true;
     for (Song s : resultSet) {
         GetQueueResponse resp;
         resp.set_name(s.name);
         resp.set_artist(s.artist.name);
         resp.set_genre(s.genre.name);
-        resp.set_isplaying(false);
+        resp.set_isplaying(first);
         resp.set_isbuffered(true);
 
         if (!writer->Write(resp)) {
             cerr << "Failed to write song in GetQueue" << endl;
             return Status(StatusCode::INTERNAL, "");
         }
+
+        first = false;
     }
 
     status = this->db_->getQueue(resultSet);
