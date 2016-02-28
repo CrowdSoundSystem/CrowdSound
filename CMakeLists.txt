@@ -25,5 +25,4 @@ include_directories(playsource/src)
 
 add_subdirectory(skrillex)
 add_subdirectory(decisionalgorithm/DecisionAlgorithm/src)
-add_subdirectory(playsource/src)
 add_subdirectory(src)
