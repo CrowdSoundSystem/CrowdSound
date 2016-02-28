@@ -113,8 +113,8 @@ void PlaysourceClient::runQueueLoop() {
             cout << "[playsource] song finished: " << responseSong << endl;
         }
 
-        db_->songFinished();
         algorithm_->run();
+        db_->songFinished();
         db_->bufferNext();
         sendPosition--;
     }
