@@ -26,8 +26,8 @@ public:
 private:
     bool pullFromQueue(int& count);
 
-
 private:
+    bool running_;
     int max_queue_size_;
     std::unique_ptr<Playsource::Playsource::Stub> stub_;
     std::shared_ptr<skrillex::DB> db_;

@@ -18,6 +18,7 @@ using Playsource::QueueSongResponse;
 
 PlaysourceClient::PlaysourceClient(shared_ptr<Channel> channel, int maxQueueSize, shared_ptr<skrillex::DB> db, shared_ptr<DecisionAlgorithm> algorithm)
     : stub_(Playsource::Playsource::NewStub(channel))
+    , running_(false)
     , max_queue_size_(maxQueueSize)
     , db_(db)
     , algorithm_(algorithm)
@@ -47,10 +48,11 @@ void PlaysourceClient::runQueueLoop() {
         stub_->QueueSong(&context)
     );
 
+    running_ = true;
     int sendPosition = 0;
     skrillex::ResultSet<skrillex::Song> buffer;
 
-    while (true) {
+    while (running_) {
         skrillex::Status s = db_->getBuffer(buffer);
         if (s != skrillex::Status::OK()) {
             cout << "[playsource] could not retrieve buffer: " << s.message() << endl;
@@ -116,6 +118,12 @@ void PlaysourceClient::runQueueLoop() {
         db_->bufferNext();
         sendPosition--;
     }
+
+    stream->Finish();
+}
+
+void PlaysourceClient::stop() {
+    running_ = false;
 }
 
 bool PlaysourceClient::pullFromQueue(int& count) {
@@ -129,7 +137,7 @@ bool PlaysourceClient::pullFromQueue(int& count) {
 
     count = 0;
     for (auto it = queue.begin(); it != queue.end(); it++, count++) {
-        if (count > max_queue_size_) {
+        if (count >= max_queue_size_) {
             break;
         }
 
