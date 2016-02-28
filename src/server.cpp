@@ -37,25 +37,18 @@ using skrillex::Song;
 using skrillex::Artist;
 using skrillex::Genre;
 
-CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db, DecisionSettings decision_settings)
+CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db, unique_ptr<PlaysourceClient> playsource, shared_ptr<DecisionAlgorithm> algorithm)
 : db_(db)
 , mapper_(new Mapper(db_))
-, algo_(new DecisionAlgorithm(decision_settings, db_))
-, playsource_(new PlaySource(db_))
+, algo_(algorithm)
+, playsource_(move(playsource))
 , ps_thread_(std::bind(&CrowdSoundImpl::runPlaySource, this)) {
 }
 
 void CrowdSoundImpl::runPlaySource() {
-    while(true) {
-        // Run through iteration of PlaySource, and then generate songs after.
-        //cout << "Running source" << endl;
-        this->playsource_->run();
-
-        //cout << "Running algo" << endl;
-        this->algo_->run();
-
-        this_thread::sleep_for(chrono::seconds(1));
-    }
+    // TODO: Use member binding instead?
+    cout << "[server] running playsource loop" << endl;
+    playsource_->runQueueLoop();
 }
 
 Status CrowdSoundImpl::Ping(ServerContext* context, const PingRequest* request, PingResponse* resp) {

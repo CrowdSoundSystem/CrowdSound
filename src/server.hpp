@@ -9,9 +9,9 @@
 #include <grpc++/grpc++.h>
 #include "proto/crowdsound_service.grpc.pb.h"
 
+#include "playsource_client.hpp"
 #include "skrillex/skrillex.hpp"
 #include "DecisionAlgorithm.h"
-#include "PlaySource.h"
 
 using grpc::Server;
 using grpc::ServerBuilder;
@@ -35,7 +35,10 @@ using CrowdSound::VoteSongResponse;
 
 class CrowdSoundImpl final : public CrowdSound::CrowdSound::Service {
 public:
-    explicit CrowdSoundImpl(std::shared_ptr<skrillex::DB> db, DecisionSettings decision_settings);
+    explicit CrowdSoundImpl(
+        std::shared_ptr<skrillex::DB> db,
+        std::unique_ptr<PlaysourceClient> playsource,
+        std::shared_ptr<DecisionAlgorithm> decisionAlgorithm);
 
     Status Ping(ServerContext* context, const PingRequest* request, PingResponse* resp) override;
     Status GetSessionData(ServerContext* context, const GetSessionDataRequest* request, GetSessionDataResponse* resp) override;
@@ -50,7 +53,7 @@ private:
     std::shared_ptr<skrillex::DB> db_;
     std::shared_ptr<skrillex::Mapper> mapper_;
     std::shared_ptr<DecisionAlgorithm> algo_;
-    std::shared_ptr<PlaySource> playsource_;
+    std::unique_ptr<PlaysourceClient> playsource_;
 
     std::thread ps_thread_;
 };

@@ -29,7 +29,7 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
-namespace PlaySource {
+namespace Playsource {
 
 // Internal implementation detail -- do not call these.
 void protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto();
@@ -135,7 +135,7 @@ class Song : public ::google::protobuf::Message {
   const ::google::protobuf::RepeatedPtrField< ::std::string>& artists() const;
   ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_artists();
 
-  // @@protoc_insertion_point(class_scope:PlaySource.Song)
+  // @@protoc_insertion_point(class_scope:Playsource.Song)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -209,21 +209,21 @@ class QueueSongRequest : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .PlaySource.Song song = 1;
+  // optional .Playsource.Song song = 1;
   bool has_song() const;
   void clear_song();
   static const int kSongFieldNumber = 1;
-  const ::PlaySource::Song& song() const;
-  ::PlaySource::Song* mutable_song();
-  ::PlaySource::Song* release_song();
-  void set_allocated_song(::PlaySource::Song* song);
+  const ::Playsource::Song& song() const;
+  ::Playsource::Song* mutable_song();
+  ::Playsource::Song* release_song();
+  void set_allocated_song(::Playsource::Song* song);
 
-  // @@protoc_insertion_point(class_scope:PlaySource.QueueSongRequest)
+  // @@protoc_insertion_point(class_scope:Playsource.QueueSongRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::PlaySource::Song* song_;
+  ::Playsource::Song* song_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto();
   friend void protobuf_AssignDesc_proto_2fplaysource_5fservice_2eproto();
@@ -314,7 +314,7 @@ class QueueSongResponse : public ::google::protobuf::Message {
   bool finished() const;
   void set_finished(bool value);
 
-  // @@protoc_insertion_point(class_scope:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(class_scope:Playsource.QueueSongResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -389,7 +389,7 @@ class GetPlayingRequest : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:PlaySource.GetPlayingRequest)
+  // @@protoc_insertion_point(class_scope:Playsource.GetPlayingRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -460,21 +460,21 @@ class GetPlayingResponse : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .PlaySource.Song song = 1;
+  // optional .Playsource.Song song = 1;
   bool has_song() const;
   void clear_song();
   static const int kSongFieldNumber = 1;
-  const ::PlaySource::Song& song() const;
-  ::PlaySource::Song* mutable_song();
-  ::PlaySource::Song* release_song();
-  void set_allocated_song(::PlaySource::Song* song);
+  const ::Playsource::Song& song() const;
+  ::Playsource::Song* mutable_song();
+  ::Playsource::Song* release_song();
+  void set_allocated_song(::Playsource::Song* song);
 
-  // @@protoc_insertion_point(class_scope:PlaySource.GetPlayingResponse)
+  // @@protoc_insertion_point(class_scope:Playsource.GetPlayingResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::PlaySource::Song* song_;
+  ::Playsource::Song* song_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto();
   friend void protobuf_AssignDesc_proto_2fplaysource_5fservice_2eproto();
@@ -541,7 +541,7 @@ class GetPlayHistoryRequest : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:PlaySource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(class_scope:Playsource.GetPlayHistoryRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -612,21 +612,21 @@ class GetPlayHistoryResponse : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .PlaySource.Song song = 1;
+  // optional .Playsource.Song song = 1;
   bool has_song() const;
   void clear_song();
   static const int kSongFieldNumber = 1;
-  const ::PlaySource::Song& song() const;
-  ::PlaySource::Song* mutable_song();
-  ::PlaySource::Song* release_song();
-  void set_allocated_song(::PlaySource::Song* song);
+  const ::Playsource::Song& song() const;
+  ::Playsource::Song* mutable_song();
+  ::Playsource::Song* release_song();
+  void set_allocated_song(::Playsource::Song* song);
 
-  // @@protoc_insertion_point(class_scope:PlaySource.GetPlayHistoryResponse)
+  // @@protoc_insertion_point(class_scope:Playsource.GetPlayHistoryResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::PlaySource::Song* song_;
+  ::Playsource::Song* song_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto();
   friend void protobuf_AssignDesc_proto_2fplaysource_5fservice_2eproto();
@@ -648,13 +648,13 @@ inline void Song::clear_song_id() {
   song_id_ = 0;
 }
 inline ::google::protobuf::int32 Song::song_id() const {
-  // @@protoc_insertion_point(field_get:PlaySource.Song.song_id)
+  // @@protoc_insertion_point(field_get:Playsource.Song.song_id)
   return song_id_;
 }
 inline void Song::set_song_id(::google::protobuf::int32 value) {
   
   song_id_ = value;
-  // @@protoc_insertion_point(field_set:PlaySource.Song.song_id)
+  // @@protoc_insertion_point(field_set:Playsource.Song.song_id)
 }
 
 // optional string name = 2;
@@ -662,28 +662,28 @@ inline void Song::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Song::name() const {
-  // @@protoc_insertion_point(field_get:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_get:Playsource.Song.name)
   return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void Song::set_name(const ::std::string& value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_set:Playsource.Song.name)
 }
 inline void Song::set_name(const char* value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_set_char:Playsource.Song.name)
 }
 inline void Song::set_name(const char* value, size_t size) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_set_pointer:Playsource.Song.name)
 }
 inline ::std::string* Song::mutable_name() {
   
-  // @@protoc_insertion_point(field_mutable:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_mutable:Playsource.Song.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* Song::release_name() {
@@ -697,7 +697,7 @@ inline void Song::set_allocated_name(::std::string* name) {
     
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_set_allocated:Playsource.Song.name)
 }
 
 // repeated string artists = 3;
@@ -708,49 +708,49 @@ inline void Song::clear_artists() {
   artists_.Clear();
 }
 inline const ::std::string& Song::artists(int index) const {
-  // @@protoc_insertion_point(field_get:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_get:Playsource.Song.artists)
   return artists_.Get(index);
 }
 inline ::std::string* Song::mutable_artists(int index) {
-  // @@protoc_insertion_point(field_mutable:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_mutable:Playsource.Song.artists)
   return artists_.Mutable(index);
 }
 inline void Song::set_artists(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_set:Playsource.Song.artists)
   artists_.Mutable(index)->assign(value);
 }
 inline void Song::set_artists(int index, const char* value) {
   artists_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_set_char:Playsource.Song.artists)
 }
 inline void Song::set_artists(int index, const char* value, size_t size) {
   artists_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_set_pointer:Playsource.Song.artists)
 }
 inline ::std::string* Song::add_artists() {
   return artists_.Add();
 }
 inline void Song::add_artists(const ::std::string& value) {
   artists_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_add:Playsource.Song.artists)
 }
 inline void Song::add_artists(const char* value) {
   artists_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_add_char:Playsource.Song.artists)
 }
 inline void Song::add_artists(const char* value, size_t size) {
   artists_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_add_pointer:Playsource.Song.artists)
 }
 inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
 Song::artists() const {
-  // @@protoc_insertion_point(field_list:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_list:Playsource.Song.artists)
   return artists_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
 Song::mutable_artists() {
-  // @@protoc_insertion_point(field_mutable_list:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_mutable_list:Playsource.Song.artists)
   return &artists_;
 }
 
@@ -758,7 +758,7 @@ Song::mutable_artists() {
 
 // QueueSongRequest
 
-// optional .PlaySource.Song song = 1;
+// optional .Playsource.Song song = 1;
 inline bool QueueSongRequest::has_song() const {
   return !_is_default_instance_ && song_ != NULL;
 }
@@ -766,25 +766,25 @@ inline void QueueSongRequest::clear_song() {
   if (GetArenaNoVirtual() == NULL && song_ != NULL) delete song_;
   song_ = NULL;
 }
-inline const ::PlaySource::Song& QueueSongRequest::song() const {
-  // @@protoc_insertion_point(field_get:PlaySource.QueueSongRequest.song)
+inline const ::Playsource::Song& QueueSongRequest::song() const {
+  // @@protoc_insertion_point(field_get:Playsource.QueueSongRequest.song)
   return song_ != NULL ? *song_ : *default_instance_->song_;
 }
-inline ::PlaySource::Song* QueueSongRequest::mutable_song() {
+inline ::Playsource::Song* QueueSongRequest::mutable_song() {
   
   if (song_ == NULL) {
-    song_ = new ::PlaySource::Song;
+    song_ = new ::Playsource::Song;
   }
-  // @@protoc_insertion_point(field_mutable:PlaySource.QueueSongRequest.song)
+  // @@protoc_insertion_point(field_mutable:Playsource.QueueSongRequest.song)
   return song_;
 }
-inline ::PlaySource::Song* QueueSongRequest::release_song() {
+inline ::Playsource::Song* QueueSongRequest::release_song() {
   
-  ::PlaySource::Song* temp = song_;
+  ::Playsource::Song* temp = song_;
   song_ = NULL;
   return temp;
 }
-inline void QueueSongRequest::set_allocated_song(::PlaySource::Song* song) {
+inline void QueueSongRequest::set_allocated_song(::Playsource::Song* song) {
   delete song_;
   song_ = song;
   if (song) {
@@ -792,7 +792,7 @@ inline void QueueSongRequest::set_allocated_song(::PlaySource::Song* song) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlaySource.QueueSongRequest.song)
+  // @@protoc_insertion_point(field_set_allocated:Playsource.QueueSongRequest.song)
 }
 
 // -------------------------------------------------------------------
@@ -804,13 +804,13 @@ inline void QueueSongResponse::clear_song_id() {
   song_id_ = 0;
 }
 inline ::google::protobuf::int32 QueueSongResponse::song_id() const {
-  // @@protoc_insertion_point(field_get:PlaySource.QueueSongResponse.song_id)
+  // @@protoc_insertion_point(field_get:Playsource.QueueSongResponse.song_id)
   return song_id_;
 }
 inline void QueueSongResponse::set_song_id(::google::protobuf::int32 value) {
   
   song_id_ = value;
-  // @@protoc_insertion_point(field_set:PlaySource.QueueSongResponse.song_id)
+  // @@protoc_insertion_point(field_set:Playsource.QueueSongResponse.song_id)
 }
 
 // optional bool queued = 2;
@@ -818,13 +818,13 @@ inline void QueueSongResponse::clear_queued() {
   queued_ = false;
 }
 inline bool QueueSongResponse::queued() const {
-  // @@protoc_insertion_point(field_get:PlaySource.QueueSongResponse.queued)
+  // @@protoc_insertion_point(field_get:Playsource.QueueSongResponse.queued)
   return queued_;
 }
 inline void QueueSongResponse::set_queued(bool value) {
   
   queued_ = value;
-  // @@protoc_insertion_point(field_set:PlaySource.QueueSongResponse.queued)
+  // @@protoc_insertion_point(field_set:Playsource.QueueSongResponse.queued)
 }
 
 // optional bool found = 3;
@@ -832,13 +832,13 @@ inline void QueueSongResponse::clear_found() {
   found_ = false;
 }
 inline bool QueueSongResponse::found() const {
-  // @@protoc_insertion_point(field_get:PlaySource.QueueSongResponse.found)
+  // @@protoc_insertion_point(field_get:Playsource.QueueSongResponse.found)
   return found_;
 }
 inline void QueueSongResponse::set_found(bool value) {
   
   found_ = value;
-  // @@protoc_insertion_point(field_set:PlaySource.QueueSongResponse.found)
+  // @@protoc_insertion_point(field_set:Playsource.QueueSongResponse.found)
 }
 
 // optional bool finished = 4;
@@ -846,13 +846,13 @@ inline void QueueSongResponse::clear_finished() {
   finished_ = false;
 }
 inline bool QueueSongResponse::finished() const {
-  // @@protoc_insertion_point(field_get:PlaySource.QueueSongResponse.finished)
+  // @@protoc_insertion_point(field_get:Playsource.QueueSongResponse.finished)
   return finished_;
 }
 inline void QueueSongResponse::set_finished(bool value) {
   
   finished_ = value;
-  // @@protoc_insertion_point(field_set:PlaySource.QueueSongResponse.finished)
+  // @@protoc_insertion_point(field_set:Playsource.QueueSongResponse.finished)
 }
 
 // -------------------------------------------------------------------
@@ -863,7 +863,7 @@ inline void QueueSongResponse::set_finished(bool value) {
 
 // GetPlayingResponse
 
-// optional .PlaySource.Song song = 1;
+// optional .Playsource.Song song = 1;
 inline bool GetPlayingResponse::has_song() const {
   return !_is_default_instance_ && song_ != NULL;
 }
@@ -871,25 +871,25 @@ inline void GetPlayingResponse::clear_song() {
   if (GetArenaNoVirtual() == NULL && song_ != NULL) delete song_;
   song_ = NULL;
 }
-inline const ::PlaySource::Song& GetPlayingResponse::song() const {
-  // @@protoc_insertion_point(field_get:PlaySource.GetPlayingResponse.song)
+inline const ::Playsource::Song& GetPlayingResponse::song() const {
+  // @@protoc_insertion_point(field_get:Playsource.GetPlayingResponse.song)
   return song_ != NULL ? *song_ : *default_instance_->song_;
 }
-inline ::PlaySource::Song* GetPlayingResponse::mutable_song() {
+inline ::Playsource::Song* GetPlayingResponse::mutable_song() {
   
   if (song_ == NULL) {
-    song_ = new ::PlaySource::Song;
+    song_ = new ::Playsource::Song;
   }
-  // @@protoc_insertion_point(field_mutable:PlaySource.GetPlayingResponse.song)
+  // @@protoc_insertion_point(field_mutable:Playsource.GetPlayingResponse.song)
   return song_;
 }
-inline ::PlaySource::Song* GetPlayingResponse::release_song() {
+inline ::Playsource::Song* GetPlayingResponse::release_song() {
   
-  ::PlaySource::Song* temp = song_;
+  ::Playsource::Song* temp = song_;
   song_ = NULL;
   return temp;
 }
-inline void GetPlayingResponse::set_allocated_song(::PlaySource::Song* song) {
+inline void GetPlayingResponse::set_allocated_song(::Playsource::Song* song) {
   delete song_;
   song_ = song;
   if (song) {
@@ -897,7 +897,7 @@ inline void GetPlayingResponse::set_allocated_song(::PlaySource::Song* song) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlaySource.GetPlayingResponse.song)
+  // @@protoc_insertion_point(field_set_allocated:Playsource.GetPlayingResponse.song)
 }
 
 // -------------------------------------------------------------------
@@ -908,7 +908,7 @@ inline void GetPlayingResponse::set_allocated_song(::PlaySource::Song* song) {
 
 // GetPlayHistoryResponse
 
-// optional .PlaySource.Song song = 1;
+// optional .Playsource.Song song = 1;
 inline bool GetPlayHistoryResponse::has_song() const {
   return !_is_default_instance_ && song_ != NULL;
 }
@@ -916,25 +916,25 @@ inline void GetPlayHistoryResponse::clear_song() {
   if (GetArenaNoVirtual() == NULL && song_ != NULL) delete song_;
   song_ = NULL;
 }
-inline const ::PlaySource::Song& GetPlayHistoryResponse::song() const {
-  // @@protoc_insertion_point(field_get:PlaySource.GetPlayHistoryResponse.song)
+inline const ::Playsource::Song& GetPlayHistoryResponse::song() const {
+  // @@protoc_insertion_point(field_get:Playsource.GetPlayHistoryResponse.song)
   return song_ != NULL ? *song_ : *default_instance_->song_;
 }
-inline ::PlaySource::Song* GetPlayHistoryResponse::mutable_song() {
+inline ::Playsource::Song* GetPlayHistoryResponse::mutable_song() {
   
   if (song_ == NULL) {
-    song_ = new ::PlaySource::Song;
+    song_ = new ::Playsource::Song;
   }
-  // @@protoc_insertion_point(field_mutable:PlaySource.GetPlayHistoryResponse.song)
+  // @@protoc_insertion_point(field_mutable:Playsource.GetPlayHistoryResponse.song)
   return song_;
 }
-inline ::PlaySource::Song* GetPlayHistoryResponse::release_song() {
+inline ::Playsource::Song* GetPlayHistoryResponse::release_song() {
   
-  ::PlaySource::Song* temp = song_;
+  ::Playsource::Song* temp = song_;
   song_ = NULL;
   return temp;
 }
-inline void GetPlayHistoryResponse::set_allocated_song(::PlaySource::Song* song) {
+inline void GetPlayHistoryResponse::set_allocated_song(::Playsource::Song* song) {
   delete song_;
   song_ = song;
   if (song) {
@@ -942,7 +942,7 @@ inline void GetPlayHistoryResponse::set_allocated_song(::PlaySource::Song* song)
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlaySource.GetPlayHistoryResponse.song)
+  // @@protoc_insertion_point(field_set_allocated:Playsource.GetPlayHistoryResponse.song)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -961,7 +961,7 @@ inline void GetPlayHistoryResponse::set_allocated_song(::PlaySource::Song* song)
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace PlaySource
+}  // namespace Playsource
 
 // @@protoc_insertion_point(global_scope)
 

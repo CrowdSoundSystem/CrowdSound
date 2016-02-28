@@ -16,7 +16,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
-namespace PlaySource {
+namespace Playsource {
 
 namespace {
 
@@ -213,22 +213,22 @@ void protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\036proto/playsource_service.proto\022\nPlaySo"
+    "\n\036proto/playsource_service.proto\022\nPlayso"
     "urce\"6\n\004Song\022\017\n\007song_id\030\001 \001(\005\022\014\n\004name\030\002 "
     "\001(\t\022\017\n\007artists\030\003 \003(\t\"2\n\020QueueSongRequest"
-    "\022\036\n\004song\030\001 \001(\0132\020.PlaySource.Song\"U\n\021Queu"
+    "\022\036\n\004song\030\001 \001(\0132\020.Playsource.Song\"U\n\021Queu"
     "eSongResponse\022\017\n\007song_id\030\001 \001(\005\022\016\n\006queued"
     "\030\002 \001(\010\022\r\n\005found\030\003 \001(\010\022\020\n\010finished\030\004 \001(\010\""
     "\023\n\021GetPlayingRequest\"4\n\022GetPlayingRespon"
-    "se\022\036\n\004song\030\001 \001(\0132\020.PlaySource.Song\"\027\n\025Ge"
+    "se\022\036\n\004song\030\001 \001(\0132\020.Playsource.Song\"\027\n\025Ge"
     "tPlayHistoryRequest\"8\n\026GetPlayHistoryRes"
-    "ponse\022\036\n\004song\030\001 \001(\0132\020.PlaySource.Song2\210\002"
-    "\n\nPlaySource\022N\n\tQueueSong\022\034.PlaySource.Q"
-    "ueueSongRequest\032\035.PlaySource.QueueSongRe"
-    "sponse\"\000(\0010\001\022M\n\nGetPlaying\022\035.PlaySource."
-    "GetPlayingRequest\032\036.PlaySource.GetPlayin"
-    "gResponse\"\000\022[\n\016GetPlayHistory\022!.PlaySour"
-    "ce.GetPlayHistoryRequest\032\".PlaySource.Ge"
+    "ponse\022\036\n\004song\030\001 \001(\0132\020.Playsource.Song2\210\002"
+    "\n\nPlaysource\022N\n\tQueueSong\022\034.Playsource.Q"
+    "ueueSongRequest\032\035.Playsource.QueueSongRe"
+    "sponse\"\000(\0010\001\022M\n\nGetPlaying\022\035.Playsource."
+    "GetPlayingRequest\032\036.Playsource.GetPlayin"
+    "gResponse\"\000\022[\n\016GetPlayHistory\022!.Playsour"
+    "ce.GetPlayHistoryRequest\032\".Playsource.Ge"
     "tPlayHistoryResponse\"\0000\001B\014Z\nplaysourceb\006"
     "proto3", 686);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -278,7 +278,7 @@ const int Song::kArtistsFieldNumber;
 Song::Song()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PlaySource.Song)
+  // @@protoc_insertion_point(constructor:Playsource.Song)
 }
 
 void Song::InitAsDefaultInstance() {
@@ -290,7 +290,7 @@ Song::Song(const Song& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:PlaySource.Song)
+  // @@protoc_insertion_point(copy_constructor:Playsource.Song)
 }
 
 void Song::SharedCtor() {
@@ -302,7 +302,7 @@ void Song::SharedCtor() {
 }
 
 Song::~Song() {
-  // @@protoc_insertion_point(destructor:PlaySource.Song)
+  // @@protoc_insertion_point(destructor:Playsource.Song)
   SharedDtor();
 }
 
@@ -347,7 +347,7 @@ bool Song::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PlaySource.Song)
+  // @@protoc_insertion_point(parse_start:Playsource.Song)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -376,7 +376,7 @@ bool Song::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->name().data(), this->name().length(),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "PlaySource.Song.name"));
+            "Playsource.Song.name"));
         } else {
           goto handle_unusual;
         }
@@ -394,7 +394,7 @@ bool Song::MergePartialFromCodedStream(
             this->artists(this->artists_size() - 1).data(),
             this->artists(this->artists_size() - 1).length(),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "PlaySource.Song.artists"));
+            "Playsource.Song.artists"));
         } else {
           goto handle_unusual;
         }
@@ -416,17 +416,17 @@ bool Song::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:PlaySource.Song)
+  // @@protoc_insertion_point(parse_success:Playsource.Song)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PlaySource.Song)
+  // @@protoc_insertion_point(parse_failure:Playsource.Song)
   return false;
 #undef DO_
 }
 
 void Song::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PlaySource.Song)
+  // @@protoc_insertion_point(serialize_start:Playsource.Song)
   // optional int32 song_id = 1;
   if (this->song_id() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->song_id(), output);
@@ -437,7 +437,7 @@ void Song::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), this->name().length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "PlaySource.Song.name");
+      "Playsource.Song.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->name(), output);
   }
@@ -447,17 +447,17 @@ void Song::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->artists(i).data(), this->artists(i).length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "PlaySource.Song.artists");
+      "Playsource.Song.artists");
     ::google::protobuf::internal::WireFormatLite::WriteString(
       3, this->artists(i), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:PlaySource.Song)
+  // @@protoc_insertion_point(serialize_end:Playsource.Song)
 }
 
 ::google::protobuf::uint8* Song::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PlaySource.Song)
+  // @@protoc_insertion_point(serialize_to_array_start:Playsource.Song)
   // optional int32 song_id = 1;
   if (this->song_id() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->song_id(), target);
@@ -468,7 +468,7 @@ void Song::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), this->name().length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "PlaySource.Song.name");
+      "Playsource.Song.name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->name(), target);
@@ -479,12 +479,12 @@ void Song::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->artists(i).data(), this->artists(i).length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "PlaySource.Song.artists");
+      "Playsource.Song.artists");
     target = ::google::protobuf::internal::WireFormatLite::
       WriteStringToArray(3, this->artists(i), target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:PlaySource.Song)
+  // @@protoc_insertion_point(serialize_to_array_end:Playsource.Song)
   return target;
 }
 
@@ -587,13 +587,13 @@ void Song::clear_song_id() {
   song_id_ = 0;
 }
  ::google::protobuf::int32 Song::song_id() const {
-  // @@protoc_insertion_point(field_get:PlaySource.Song.song_id)
+  // @@protoc_insertion_point(field_get:Playsource.Song.song_id)
   return song_id_;
 }
  void Song::set_song_id(::google::protobuf::int32 value) {
   
   song_id_ = value;
-  // @@protoc_insertion_point(field_set:PlaySource.Song.song_id)
+  // @@protoc_insertion_point(field_set:Playsource.Song.song_id)
 }
 
 // optional string name = 2;
@@ -601,28 +601,28 @@ void Song::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  const ::std::string& Song::name() const {
-  // @@protoc_insertion_point(field_get:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_get:Playsource.Song.name)
   return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void Song::set_name(const ::std::string& value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_set:Playsource.Song.name)
 }
  void Song::set_name(const char* value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_set_char:Playsource.Song.name)
 }
  void Song::set_name(const char* value, size_t size) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_set_pointer:Playsource.Song.name)
 }
  ::std::string* Song::mutable_name() {
   
-  // @@protoc_insertion_point(field_mutable:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_mutable:Playsource.Song.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  ::std::string* Song::release_name() {
@@ -636,7 +636,7 @@ void Song::clear_name() {
     
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:PlaySource.Song.name)
+  // @@protoc_insertion_point(field_set_allocated:Playsource.Song.name)
 }
 
 // repeated string artists = 3;
@@ -647,49 +647,49 @@ void Song::clear_artists() {
   artists_.Clear();
 }
  const ::std::string& Song::artists(int index) const {
-  // @@protoc_insertion_point(field_get:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_get:Playsource.Song.artists)
   return artists_.Get(index);
 }
  ::std::string* Song::mutable_artists(int index) {
-  // @@protoc_insertion_point(field_mutable:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_mutable:Playsource.Song.artists)
   return artists_.Mutable(index);
 }
  void Song::set_artists(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_set:Playsource.Song.artists)
   artists_.Mutable(index)->assign(value);
 }
  void Song::set_artists(int index, const char* value) {
   artists_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_set_char:Playsource.Song.artists)
 }
  void Song::set_artists(int index, const char* value, size_t size) {
   artists_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_set_pointer:Playsource.Song.artists)
 }
  ::std::string* Song::add_artists() {
   return artists_.Add();
 }
  void Song::add_artists(const ::std::string& value) {
   artists_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_add:Playsource.Song.artists)
 }
  void Song::add_artists(const char* value) {
   artists_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_add_char:Playsource.Song.artists)
 }
  void Song::add_artists(const char* value, size_t size) {
   artists_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_add_pointer:Playsource.Song.artists)
 }
  const ::google::protobuf::RepeatedPtrField< ::std::string>&
 Song::artists() const {
-  // @@protoc_insertion_point(field_list:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_list:Playsource.Song.artists)
   return artists_;
 }
  ::google::protobuf::RepeatedPtrField< ::std::string>*
 Song::mutable_artists() {
-  // @@protoc_insertion_point(field_mutable_list:PlaySource.Song.artists)
+  // @@protoc_insertion_point(field_mutable_list:Playsource.Song.artists)
   return &artists_;
 }
 
@@ -704,12 +704,12 @@ const int QueueSongRequest::kSongFieldNumber;
 QueueSongRequest::QueueSongRequest()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PlaySource.QueueSongRequest)
+  // @@protoc_insertion_point(constructor:Playsource.QueueSongRequest)
 }
 
 void QueueSongRequest::InitAsDefaultInstance() {
   _is_default_instance_ = true;
-  song_ = const_cast< ::PlaySource::Song*>(&::PlaySource::Song::default_instance());
+  song_ = const_cast< ::Playsource::Song*>(&::Playsource::Song::default_instance());
 }
 
 QueueSongRequest::QueueSongRequest(const QueueSongRequest& from)
@@ -717,7 +717,7 @@ QueueSongRequest::QueueSongRequest(const QueueSongRequest& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:PlaySource.QueueSongRequest)
+  // @@protoc_insertion_point(copy_constructor:Playsource.QueueSongRequest)
 }
 
 void QueueSongRequest::SharedCtor() {
@@ -727,7 +727,7 @@ void QueueSongRequest::SharedCtor() {
 }
 
 QueueSongRequest::~QueueSongRequest() {
-  // @@protoc_insertion_point(destructor:PlaySource.QueueSongRequest)
+  // @@protoc_insertion_point(destructor:Playsource.QueueSongRequest)
   SharedDtor();
 }
 
@@ -771,13 +771,13 @@ bool QueueSongRequest::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PlaySource.QueueSongRequest)
+  // @@protoc_insertion_point(parse_start:Playsource.QueueSongRequest)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .PlaySource.Song song = 1;
+      // optional .Playsource.Song song = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -802,44 +802,44 @@ bool QueueSongRequest::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:PlaySource.QueueSongRequest)
+  // @@protoc_insertion_point(parse_success:Playsource.QueueSongRequest)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PlaySource.QueueSongRequest)
+  // @@protoc_insertion_point(parse_failure:Playsource.QueueSongRequest)
   return false;
 #undef DO_
 }
 
 void QueueSongRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PlaySource.QueueSongRequest)
-  // optional .PlaySource.Song song = 1;
+  // @@protoc_insertion_point(serialize_start:Playsource.QueueSongRequest)
+  // optional .Playsource.Song song = 1;
   if (this->has_song()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, *this->song_, output);
   }
 
-  // @@protoc_insertion_point(serialize_end:PlaySource.QueueSongRequest)
+  // @@protoc_insertion_point(serialize_end:Playsource.QueueSongRequest)
 }
 
 ::google::protobuf::uint8* QueueSongRequest::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PlaySource.QueueSongRequest)
-  // optional .PlaySource.Song song = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:Playsource.QueueSongRequest)
+  // optional .Playsource.Song song = 1;
   if (this->has_song()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, *this->song_, target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:PlaySource.QueueSongRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:Playsource.QueueSongRequest)
   return target;
 }
 
 int QueueSongRequest::ByteSize() const {
   int total_size = 0;
 
-  // optional .PlaySource.Song song = 1;
+  // optional .Playsource.Song song = 1;
   if (this->has_song()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -867,7 +867,7 @@ void QueueSongRequest::MergeFrom(const ::google::protobuf::Message& from) {
 void QueueSongRequest::MergeFrom(const QueueSongRequest& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.has_song()) {
-    mutable_song()->::PlaySource::Song::MergeFrom(from.song());
+    mutable_song()->::Playsource::Song::MergeFrom(from.song());
   }
 }
 
@@ -909,7 +909,7 @@ void QueueSongRequest::InternalSwap(QueueSongRequest* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // QueueSongRequest
 
-// optional .PlaySource.Song song = 1;
+// optional .Playsource.Song song = 1;
 bool QueueSongRequest::has_song() const {
   return !_is_default_instance_ && song_ != NULL;
 }
@@ -917,25 +917,25 @@ void QueueSongRequest::clear_song() {
   if (GetArenaNoVirtual() == NULL && song_ != NULL) delete song_;
   song_ = NULL;
 }
-const ::PlaySource::Song& QueueSongRequest::song() const {
-  // @@protoc_insertion_point(field_get:PlaySource.QueueSongRequest.song)
+const ::Playsource::Song& QueueSongRequest::song() const {
+  // @@protoc_insertion_point(field_get:Playsource.QueueSongRequest.song)
   return song_ != NULL ? *song_ : *default_instance_->song_;
 }
-::PlaySource::Song* QueueSongRequest::mutable_song() {
+::Playsource::Song* QueueSongRequest::mutable_song() {
   
   if (song_ == NULL) {
-    song_ = new ::PlaySource::Song;
+    song_ = new ::Playsource::Song;
   }
-  // @@protoc_insertion_point(field_mutable:PlaySource.QueueSongRequest.song)
+  // @@protoc_insertion_point(field_mutable:Playsource.QueueSongRequest.song)
   return song_;
 }
-::PlaySource::Song* QueueSongRequest::release_song() {
+::Playsource::Song* QueueSongRequest::release_song() {
   
-  ::PlaySource::Song* temp = song_;
+  ::Playsource::Song* temp = song_;
   song_ = NULL;
   return temp;
 }
-void QueueSongRequest::set_allocated_song(::PlaySource::Song* song) {
+void QueueSongRequest::set_allocated_song(::Playsource::Song* song) {
   delete song_;
   song_ = song;
   if (song) {
@@ -943,7 +943,7 @@ void QueueSongRequest::set_allocated_song(::PlaySource::Song* song) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlaySource.QueueSongRequest.song)
+  // @@protoc_insertion_point(field_set_allocated:Playsource.QueueSongRequest.song)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -960,7 +960,7 @@ const int QueueSongResponse::kFinishedFieldNumber;
 QueueSongResponse::QueueSongResponse()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(constructor:Playsource.QueueSongResponse)
 }
 
 void QueueSongResponse::InitAsDefaultInstance() {
@@ -972,7 +972,7 @@ QueueSongResponse::QueueSongResponse(const QueueSongResponse& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(copy_constructor:Playsource.QueueSongResponse)
 }
 
 void QueueSongResponse::SharedCtor() {
@@ -985,7 +985,7 @@ void QueueSongResponse::SharedCtor() {
 }
 
 QueueSongResponse::~QueueSongResponse() {
-  // @@protoc_insertion_point(destructor:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(destructor:Playsource.QueueSongResponse)
   SharedDtor();
 }
 
@@ -1039,7 +1039,7 @@ bool QueueSongResponse::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(parse_start:Playsource.QueueSongResponse)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -1117,17 +1117,17 @@ bool QueueSongResponse::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(parse_success:Playsource.QueueSongResponse)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(parse_failure:Playsource.QueueSongResponse)
   return false;
 #undef DO_
 }
 
 void QueueSongResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(serialize_start:Playsource.QueueSongResponse)
   // optional int32 song_id = 1;
   if (this->song_id() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->song_id(), output);
@@ -1148,12 +1148,12 @@ void QueueSongResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->finished(), output);
   }
 
-  // @@protoc_insertion_point(serialize_end:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(serialize_end:Playsource.QueueSongResponse)
 }
 
 ::google::protobuf::uint8* QueueSongResponse::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:Playsource.QueueSongResponse)
   // optional int32 song_id = 1;
   if (this->song_id() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->song_id(), target);
@@ -1174,7 +1174,7 @@ void QueueSongResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->finished(), target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:PlaySource.QueueSongResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:Playsource.QueueSongResponse)
   return target;
 }
 
@@ -1283,13 +1283,13 @@ void QueueSongResponse::clear_song_id() {
   song_id_ = 0;
 }
  ::google::protobuf::int32 QueueSongResponse::song_id() const {
-  // @@protoc_insertion_point(field_get:PlaySource.QueueSongResponse.song_id)
+  // @@protoc_insertion_point(field_get:Playsource.QueueSongResponse.song_id)
   return song_id_;
 }
  void QueueSongResponse::set_song_id(::google::protobuf::int32 value) {
   
   song_id_ = value;
-  // @@protoc_insertion_point(field_set:PlaySource.QueueSongResponse.song_id)
+  // @@protoc_insertion_point(field_set:Playsource.QueueSongResponse.song_id)
 }
 
 // optional bool queued = 2;
@@ -1297,13 +1297,13 @@ void QueueSongResponse::clear_queued() {
   queued_ = false;
 }
  bool QueueSongResponse::queued() const {
-  // @@protoc_insertion_point(field_get:PlaySource.QueueSongResponse.queued)
+  // @@protoc_insertion_point(field_get:Playsource.QueueSongResponse.queued)
   return queued_;
 }
  void QueueSongResponse::set_queued(bool value) {
   
   queued_ = value;
-  // @@protoc_insertion_point(field_set:PlaySource.QueueSongResponse.queued)
+  // @@protoc_insertion_point(field_set:Playsource.QueueSongResponse.queued)
 }
 
 // optional bool found = 3;
@@ -1311,13 +1311,13 @@ void QueueSongResponse::clear_found() {
   found_ = false;
 }
  bool QueueSongResponse::found() const {
-  // @@protoc_insertion_point(field_get:PlaySource.QueueSongResponse.found)
+  // @@protoc_insertion_point(field_get:Playsource.QueueSongResponse.found)
   return found_;
 }
  void QueueSongResponse::set_found(bool value) {
   
   found_ = value;
-  // @@protoc_insertion_point(field_set:PlaySource.QueueSongResponse.found)
+  // @@protoc_insertion_point(field_set:Playsource.QueueSongResponse.found)
 }
 
 // optional bool finished = 4;
@@ -1325,13 +1325,13 @@ void QueueSongResponse::clear_finished() {
   finished_ = false;
 }
  bool QueueSongResponse::finished() const {
-  // @@protoc_insertion_point(field_get:PlaySource.QueueSongResponse.finished)
+  // @@protoc_insertion_point(field_get:Playsource.QueueSongResponse.finished)
   return finished_;
 }
  void QueueSongResponse::set_finished(bool value) {
   
   finished_ = value;
-  // @@protoc_insertion_point(field_set:PlaySource.QueueSongResponse.finished)
+  // @@protoc_insertion_point(field_set:Playsource.QueueSongResponse.finished)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -1344,7 +1344,7 @@ void QueueSongResponse::clear_finished() {
 GetPlayingRequest::GetPlayingRequest()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PlaySource.GetPlayingRequest)
+  // @@protoc_insertion_point(constructor:Playsource.GetPlayingRequest)
 }
 
 void GetPlayingRequest::InitAsDefaultInstance() {
@@ -1356,7 +1356,7 @@ GetPlayingRequest::GetPlayingRequest(const GetPlayingRequest& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:PlaySource.GetPlayingRequest)
+  // @@protoc_insertion_point(copy_constructor:Playsource.GetPlayingRequest)
 }
 
 void GetPlayingRequest::SharedCtor() {
@@ -1365,7 +1365,7 @@ void GetPlayingRequest::SharedCtor() {
 }
 
 GetPlayingRequest::~GetPlayingRequest() {
-  // @@protoc_insertion_point(destructor:PlaySource.GetPlayingRequest)
+  // @@protoc_insertion_point(destructor:Playsource.GetPlayingRequest)
   SharedDtor();
 }
 
@@ -1406,7 +1406,7 @@ bool GetPlayingRequest::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PlaySource.GetPlayingRequest)
+  // @@protoc_insertion_point(parse_start:Playsource.GetPlayingRequest)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -1420,24 +1420,24 @@ bool GetPlayingRequest::MergePartialFromCodedStream(
     DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
   }
 success:
-  // @@protoc_insertion_point(parse_success:PlaySource.GetPlayingRequest)
+  // @@protoc_insertion_point(parse_success:Playsource.GetPlayingRequest)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PlaySource.GetPlayingRequest)
+  // @@protoc_insertion_point(parse_failure:Playsource.GetPlayingRequest)
   return false;
 #undef DO_
 }
 
 void GetPlayingRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PlaySource.GetPlayingRequest)
-  // @@protoc_insertion_point(serialize_end:PlaySource.GetPlayingRequest)
+  // @@protoc_insertion_point(serialize_start:Playsource.GetPlayingRequest)
+  // @@protoc_insertion_point(serialize_end:Playsource.GetPlayingRequest)
 }
 
 ::google::protobuf::uint8* GetPlayingRequest::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PlaySource.GetPlayingRequest)
-  // @@protoc_insertion_point(serialize_to_array_end:PlaySource.GetPlayingRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:Playsource.GetPlayingRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:Playsource.GetPlayingRequest)
   return target;
 }
 
@@ -1514,12 +1514,12 @@ const int GetPlayingResponse::kSongFieldNumber;
 GetPlayingResponse::GetPlayingResponse()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PlaySource.GetPlayingResponse)
+  // @@protoc_insertion_point(constructor:Playsource.GetPlayingResponse)
 }
 
 void GetPlayingResponse::InitAsDefaultInstance() {
   _is_default_instance_ = true;
-  song_ = const_cast< ::PlaySource::Song*>(&::PlaySource::Song::default_instance());
+  song_ = const_cast< ::Playsource::Song*>(&::Playsource::Song::default_instance());
 }
 
 GetPlayingResponse::GetPlayingResponse(const GetPlayingResponse& from)
@@ -1527,7 +1527,7 @@ GetPlayingResponse::GetPlayingResponse(const GetPlayingResponse& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:PlaySource.GetPlayingResponse)
+  // @@protoc_insertion_point(copy_constructor:Playsource.GetPlayingResponse)
 }
 
 void GetPlayingResponse::SharedCtor() {
@@ -1537,7 +1537,7 @@ void GetPlayingResponse::SharedCtor() {
 }
 
 GetPlayingResponse::~GetPlayingResponse() {
-  // @@protoc_insertion_point(destructor:PlaySource.GetPlayingResponse)
+  // @@protoc_insertion_point(destructor:Playsource.GetPlayingResponse)
   SharedDtor();
 }
 
@@ -1581,13 +1581,13 @@ bool GetPlayingResponse::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PlaySource.GetPlayingResponse)
+  // @@protoc_insertion_point(parse_start:Playsource.GetPlayingResponse)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .PlaySource.Song song = 1;
+      // optional .Playsource.Song song = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -1612,44 +1612,44 @@ bool GetPlayingResponse::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:PlaySource.GetPlayingResponse)
+  // @@protoc_insertion_point(parse_success:Playsource.GetPlayingResponse)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PlaySource.GetPlayingResponse)
+  // @@protoc_insertion_point(parse_failure:Playsource.GetPlayingResponse)
   return false;
 #undef DO_
 }
 
 void GetPlayingResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PlaySource.GetPlayingResponse)
-  // optional .PlaySource.Song song = 1;
+  // @@protoc_insertion_point(serialize_start:Playsource.GetPlayingResponse)
+  // optional .Playsource.Song song = 1;
   if (this->has_song()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, *this->song_, output);
   }
 
-  // @@protoc_insertion_point(serialize_end:PlaySource.GetPlayingResponse)
+  // @@protoc_insertion_point(serialize_end:Playsource.GetPlayingResponse)
 }
 
 ::google::protobuf::uint8* GetPlayingResponse::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PlaySource.GetPlayingResponse)
-  // optional .PlaySource.Song song = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:Playsource.GetPlayingResponse)
+  // optional .Playsource.Song song = 1;
   if (this->has_song()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, *this->song_, target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:PlaySource.GetPlayingResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:Playsource.GetPlayingResponse)
   return target;
 }
 
 int GetPlayingResponse::ByteSize() const {
   int total_size = 0;
 
-  // optional .PlaySource.Song song = 1;
+  // optional .Playsource.Song song = 1;
   if (this->has_song()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1677,7 +1677,7 @@ void GetPlayingResponse::MergeFrom(const ::google::protobuf::Message& from) {
 void GetPlayingResponse::MergeFrom(const GetPlayingResponse& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.has_song()) {
-    mutable_song()->::PlaySource::Song::MergeFrom(from.song());
+    mutable_song()->::Playsource::Song::MergeFrom(from.song());
   }
 }
 
@@ -1719,7 +1719,7 @@ void GetPlayingResponse::InternalSwap(GetPlayingResponse* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // GetPlayingResponse
 
-// optional .PlaySource.Song song = 1;
+// optional .Playsource.Song song = 1;
 bool GetPlayingResponse::has_song() const {
   return !_is_default_instance_ && song_ != NULL;
 }
@@ -1727,25 +1727,25 @@ void GetPlayingResponse::clear_song() {
   if (GetArenaNoVirtual() == NULL && song_ != NULL) delete song_;
   song_ = NULL;
 }
-const ::PlaySource::Song& GetPlayingResponse::song() const {
-  // @@protoc_insertion_point(field_get:PlaySource.GetPlayingResponse.song)
+const ::Playsource::Song& GetPlayingResponse::song() const {
+  // @@protoc_insertion_point(field_get:Playsource.GetPlayingResponse.song)
   return song_ != NULL ? *song_ : *default_instance_->song_;
 }
-::PlaySource::Song* GetPlayingResponse::mutable_song() {
+::Playsource::Song* GetPlayingResponse::mutable_song() {
   
   if (song_ == NULL) {
-    song_ = new ::PlaySource::Song;
+    song_ = new ::Playsource::Song;
   }
-  // @@protoc_insertion_point(field_mutable:PlaySource.GetPlayingResponse.song)
+  // @@protoc_insertion_point(field_mutable:Playsource.GetPlayingResponse.song)
   return song_;
 }
-::PlaySource::Song* GetPlayingResponse::release_song() {
+::Playsource::Song* GetPlayingResponse::release_song() {
   
-  ::PlaySource::Song* temp = song_;
+  ::Playsource::Song* temp = song_;
   song_ = NULL;
   return temp;
 }
-void GetPlayingResponse::set_allocated_song(::PlaySource::Song* song) {
+void GetPlayingResponse::set_allocated_song(::Playsource::Song* song) {
   delete song_;
   song_ = song;
   if (song) {
@@ -1753,7 +1753,7 @@ void GetPlayingResponse::set_allocated_song(::PlaySource::Song* song) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlaySource.GetPlayingResponse.song)
+  // @@protoc_insertion_point(field_set_allocated:Playsource.GetPlayingResponse.song)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -1766,7 +1766,7 @@ void GetPlayingResponse::set_allocated_song(::PlaySource::Song* song) {
 GetPlayHistoryRequest::GetPlayHistoryRequest()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PlaySource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(constructor:Playsource.GetPlayHistoryRequest)
 }
 
 void GetPlayHistoryRequest::InitAsDefaultInstance() {
@@ -1778,7 +1778,7 @@ GetPlayHistoryRequest::GetPlayHistoryRequest(const GetPlayHistoryRequest& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:PlaySource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(copy_constructor:Playsource.GetPlayHistoryRequest)
 }
 
 void GetPlayHistoryRequest::SharedCtor() {
@@ -1787,7 +1787,7 @@ void GetPlayHistoryRequest::SharedCtor() {
 }
 
 GetPlayHistoryRequest::~GetPlayHistoryRequest() {
-  // @@protoc_insertion_point(destructor:PlaySource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(destructor:Playsource.GetPlayHistoryRequest)
   SharedDtor();
 }
 
@@ -1828,7 +1828,7 @@ bool GetPlayHistoryRequest::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PlaySource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(parse_start:Playsource.GetPlayHistoryRequest)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -1842,24 +1842,24 @@ bool GetPlayHistoryRequest::MergePartialFromCodedStream(
     DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
   }
 success:
-  // @@protoc_insertion_point(parse_success:PlaySource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(parse_success:Playsource.GetPlayHistoryRequest)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PlaySource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(parse_failure:Playsource.GetPlayHistoryRequest)
   return false;
 #undef DO_
 }
 
 void GetPlayHistoryRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PlaySource.GetPlayHistoryRequest)
-  // @@protoc_insertion_point(serialize_end:PlaySource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(serialize_start:Playsource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(serialize_end:Playsource.GetPlayHistoryRequest)
 }
 
 ::google::protobuf::uint8* GetPlayHistoryRequest::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PlaySource.GetPlayHistoryRequest)
-  // @@protoc_insertion_point(serialize_to_array_end:PlaySource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:Playsource.GetPlayHistoryRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:Playsource.GetPlayHistoryRequest)
   return target;
 }
 
@@ -1936,12 +1936,12 @@ const int GetPlayHistoryResponse::kSongFieldNumber;
 GetPlayHistoryResponse::GetPlayHistoryResponse()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PlaySource.GetPlayHistoryResponse)
+  // @@protoc_insertion_point(constructor:Playsource.GetPlayHistoryResponse)
 }
 
 void GetPlayHistoryResponse::InitAsDefaultInstance() {
   _is_default_instance_ = true;
-  song_ = const_cast< ::PlaySource::Song*>(&::PlaySource::Song::default_instance());
+  song_ = const_cast< ::Playsource::Song*>(&::Playsource::Song::default_instance());
 }
 
 GetPlayHistoryResponse::GetPlayHistoryResponse(const GetPlayHistoryResponse& from)
@@ -1949,7 +1949,7 @@ GetPlayHistoryResponse::GetPlayHistoryResponse(const GetPlayHistoryResponse& fro
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:PlaySource.GetPlayHistoryResponse)
+  // @@protoc_insertion_point(copy_constructor:Playsource.GetPlayHistoryResponse)
 }
 
 void GetPlayHistoryResponse::SharedCtor() {
@@ -1959,7 +1959,7 @@ void GetPlayHistoryResponse::SharedCtor() {
 }
 
 GetPlayHistoryResponse::~GetPlayHistoryResponse() {
-  // @@protoc_insertion_point(destructor:PlaySource.GetPlayHistoryResponse)
+  // @@protoc_insertion_point(destructor:Playsource.GetPlayHistoryResponse)
   SharedDtor();
 }
 
@@ -2003,13 +2003,13 @@ bool GetPlayHistoryResponse::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PlaySource.GetPlayHistoryResponse)
+  // @@protoc_insertion_point(parse_start:Playsource.GetPlayHistoryResponse)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .PlaySource.Song song = 1;
+      // optional .Playsource.Song song = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -2034,44 +2034,44 @@ bool GetPlayHistoryResponse::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:PlaySource.GetPlayHistoryResponse)
+  // @@protoc_insertion_point(parse_success:Playsource.GetPlayHistoryResponse)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PlaySource.GetPlayHistoryResponse)
+  // @@protoc_insertion_point(parse_failure:Playsource.GetPlayHistoryResponse)
   return false;
 #undef DO_
 }
 
 void GetPlayHistoryResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PlaySource.GetPlayHistoryResponse)
-  // optional .PlaySource.Song song = 1;
+  // @@protoc_insertion_point(serialize_start:Playsource.GetPlayHistoryResponse)
+  // optional .Playsource.Song song = 1;
   if (this->has_song()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, *this->song_, output);
   }
 
-  // @@protoc_insertion_point(serialize_end:PlaySource.GetPlayHistoryResponse)
+  // @@protoc_insertion_point(serialize_end:Playsource.GetPlayHistoryResponse)
 }
 
 ::google::protobuf::uint8* GetPlayHistoryResponse::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PlaySource.GetPlayHistoryResponse)
-  // optional .PlaySource.Song song = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:Playsource.GetPlayHistoryResponse)
+  // optional .Playsource.Song song = 1;
   if (this->has_song()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, *this->song_, target);
   }
 
-  // @@protoc_insertion_point(serialize_to_array_end:PlaySource.GetPlayHistoryResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:Playsource.GetPlayHistoryResponse)
   return target;
 }
 
 int GetPlayHistoryResponse::ByteSize() const {
   int total_size = 0;
 
-  // optional .PlaySource.Song song = 1;
+  // optional .Playsource.Song song = 1;
   if (this->has_song()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -2099,7 +2099,7 @@ void GetPlayHistoryResponse::MergeFrom(const ::google::protobuf::Message& from) 
 void GetPlayHistoryResponse::MergeFrom(const GetPlayHistoryResponse& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from.has_song()) {
-    mutable_song()->::PlaySource::Song::MergeFrom(from.song());
+    mutable_song()->::Playsource::Song::MergeFrom(from.song());
   }
 }
 
@@ -2141,7 +2141,7 @@ void GetPlayHistoryResponse::InternalSwap(GetPlayHistoryResponse* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // GetPlayHistoryResponse
 
-// optional .PlaySource.Song song = 1;
+// optional .Playsource.Song song = 1;
 bool GetPlayHistoryResponse::has_song() const {
   return !_is_default_instance_ && song_ != NULL;
 }
@@ -2149,25 +2149,25 @@ void GetPlayHistoryResponse::clear_song() {
   if (GetArenaNoVirtual() == NULL && song_ != NULL) delete song_;
   song_ = NULL;
 }
-const ::PlaySource::Song& GetPlayHistoryResponse::song() const {
-  // @@protoc_insertion_point(field_get:PlaySource.GetPlayHistoryResponse.song)
+const ::Playsource::Song& GetPlayHistoryResponse::song() const {
+  // @@protoc_insertion_point(field_get:Playsource.GetPlayHistoryResponse.song)
   return song_ != NULL ? *song_ : *default_instance_->song_;
 }
-::PlaySource::Song* GetPlayHistoryResponse::mutable_song() {
+::Playsource::Song* GetPlayHistoryResponse::mutable_song() {
   
   if (song_ == NULL) {
-    song_ = new ::PlaySource::Song;
+    song_ = new ::Playsource::Song;
   }
-  // @@protoc_insertion_point(field_mutable:PlaySource.GetPlayHistoryResponse.song)
+  // @@protoc_insertion_point(field_mutable:Playsource.GetPlayHistoryResponse.song)
   return song_;
 }
-::PlaySource::Song* GetPlayHistoryResponse::release_song() {
+::Playsource::Song* GetPlayHistoryResponse::release_song() {
   
-  ::PlaySource::Song* temp = song_;
+  ::Playsource::Song* temp = song_;
   song_ = NULL;
   return temp;
 }
-void GetPlayHistoryResponse::set_allocated_song(::PlaySource::Song* song) {
+void GetPlayHistoryResponse::set_allocated_song(::Playsource::Song* song) {
   delete song_;
   song_ = song;
   if (song) {
@@ -2175,13 +2175,13 @@ void GetPlayHistoryResponse::set_allocated_song(::PlaySource::Song* song) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:PlaySource.GetPlayHistoryResponse.song)
+  // @@protoc_insertion_point(field_set_allocated:Playsource.GetPlayHistoryResponse.song)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace PlaySource
+}  // namespace Playsource
 
 // @@protoc_insertion_point(global_scope)

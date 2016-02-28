@@ -12,110 +12,110 @@
 #include <grpc++/support/async_unary_call.h>
 #include <grpc++/support/async_stream.h>
 #include <grpc++/support/sync_stream.h>
-namespace PlaySource {
+namespace Playsource {
 
-static const char* PlaySource_method_names[] = {
-  "/PlaySource.PlaySource/QueueSong",
-  "/PlaySource.PlaySource/GetPlaying",
-  "/PlaySource.PlaySource/GetPlayHistory",
+static const char* Playsource_method_names[] = {
+  "/Playsource.Playsource/QueueSong",
+  "/Playsource.Playsource/GetPlaying",
+  "/Playsource.Playsource/GetPlayHistory",
 };
 
-std::unique_ptr< PlaySource::Stub> PlaySource::NewStub(const std::shared_ptr< ::grpc::Channel>& channel, const ::grpc::StubOptions& options) {
-  std::unique_ptr< PlaySource::Stub> stub(new PlaySource::Stub(channel));
+std::unique_ptr< Playsource::Stub> Playsource::NewStub(const std::shared_ptr< ::grpc::Channel>& channel, const ::grpc::StubOptions& options) {
+  std::unique_ptr< Playsource::Stub> stub(new Playsource::Stub(channel));
   return stub;
 }
 
-PlaySource::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
-  : channel_(channel), rpcmethod_QueueSong_(PlaySource_method_names[0], ::grpc::RpcMethod::BIDI_STREAMING, channel)
-  , rpcmethod_GetPlaying_(PlaySource_method_names[1], ::grpc::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetPlayHistory_(PlaySource_method_names[2], ::grpc::RpcMethod::SERVER_STREAMING, channel)
+Playsource::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
+  : channel_(channel), rpcmethod_QueueSong_(Playsource_method_names[0], ::grpc::RpcMethod::BIDI_STREAMING, channel)
+  , rpcmethod_GetPlaying_(Playsource_method_names[1], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetPlayHistory_(Playsource_method_names[2], ::grpc::RpcMethod::SERVER_STREAMING, channel)
   {}
 
-::grpc::ClientReaderWriter< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>* PlaySource::Stub::QueueSongRaw(::grpc::ClientContext* context) {
-  return new ::grpc::ClientReaderWriter< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>(channel_.get(), rpcmethod_QueueSong_, context);
+::grpc::ClientReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* Playsource::Stub::QueueSongRaw(::grpc::ClientContext* context) {
+  return new ::grpc::ClientReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>(channel_.get(), rpcmethod_QueueSong_, context);
 }
 
-::grpc::ClientAsyncReaderWriter< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>* PlaySource::Stub::AsyncQueueSongRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return new ::grpc::ClientAsyncReaderWriter< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>(channel_.get(), cq, rpcmethod_QueueSong_, context, tag);
+::grpc::ClientAsyncReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* Playsource::Stub::AsyncQueueSongRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+  return new ::grpc::ClientAsyncReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>(channel_.get(), cq, rpcmethod_QueueSong_, context, tag);
 }
 
-::grpc::Status PlaySource::Stub::GetPlaying(::grpc::ClientContext* context, const ::PlaySource::GetPlayingRequest& request, ::PlaySource::GetPlayingResponse* response) {
+::grpc::Status Playsource::Stub::GetPlaying(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::Playsource::GetPlayingResponse* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_GetPlaying_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::PlaySource::GetPlayingResponse>* PlaySource::Stub::AsyncGetPlayingRaw(::grpc::ClientContext* context, const ::PlaySource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) {
-  return new ::grpc::ClientAsyncResponseReader< ::PlaySource::GetPlayingResponse>(channel_.get(), cq, rpcmethod_GetPlaying_, context, request);
+::grpc::ClientAsyncResponseReader< ::Playsource::GetPlayingResponse>* Playsource::Stub::AsyncGetPlayingRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::Playsource::GetPlayingResponse>(channel_.get(), cq, rpcmethod_GetPlaying_, context, request);
 }
 
-::grpc::ClientReader< ::PlaySource::GetPlayHistoryResponse>* PlaySource::Stub::GetPlayHistoryRaw(::grpc::ClientContext* context, const ::PlaySource::GetPlayHistoryRequest& request) {
-  return new ::grpc::ClientReader< ::PlaySource::GetPlayHistoryResponse>(channel_.get(), rpcmethod_GetPlayHistory_, context, request);
+::grpc::ClientReader< ::Playsource::GetPlayHistoryResponse>* Playsource::Stub::GetPlayHistoryRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request) {
+  return new ::grpc::ClientReader< ::Playsource::GetPlayHistoryResponse>(channel_.get(), rpcmethod_GetPlayHistory_, context, request);
 }
 
-::grpc::ClientAsyncReader< ::PlaySource::GetPlayHistoryResponse>* PlaySource::Stub::AsyncGetPlayHistoryRaw(::grpc::ClientContext* context, const ::PlaySource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return new ::grpc::ClientAsyncReader< ::PlaySource::GetPlayHistoryResponse>(channel_.get(), cq, rpcmethod_GetPlayHistory_, context, request, tag);
+::grpc::ClientAsyncReader< ::Playsource::GetPlayHistoryResponse>* Playsource::Stub::AsyncGetPlayHistoryRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return new ::grpc::ClientAsyncReader< ::Playsource::GetPlayHistoryResponse>(channel_.get(), cq, rpcmethod_GetPlayHistory_, context, request, tag);
 }
 
-PlaySource::AsyncService::AsyncService() : ::grpc::AsynchronousService(PlaySource_method_names, 3) {}
+Playsource::AsyncService::AsyncService() : ::grpc::AsynchronousService(Playsource_method_names, 3) {}
 
-PlaySource::Service::~Service() {
+Playsource::Service::~Service() {
   delete service_;
 }
 
-::grpc::Status PlaySource::Service::QueueSong(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::PlaySource::QueueSongResponse, ::PlaySource::QueueSongRequest>* stream) {
+::grpc::Status Playsource::Service::QueueSong(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::Playsource::QueueSongResponse, ::Playsource::QueueSongRequest>* stream) {
   (void) context;
   (void) stream;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void PlaySource::AsyncService::RequestQueueSong(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::PlaySource::QueueSongResponse, ::PlaySource::QueueSongRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void Playsource::AsyncService::RequestQueueSong(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::Playsource::QueueSongResponse, ::Playsource::QueueSongRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestBidiStreaming(0, context, stream, new_call_cq, notification_cq, tag);
 }
 
-::grpc::Status PlaySource::Service::GetPlaying(::grpc::ServerContext* context, const ::PlaySource::GetPlayingRequest* request, ::PlaySource::GetPlayingResponse* response) {
+::grpc::Status Playsource::Service::GetPlaying(::grpc::ServerContext* context, const ::Playsource::GetPlayingRequest* request, ::Playsource::GetPlayingResponse* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void PlaySource::AsyncService::RequestGetPlaying(::grpc::ServerContext* context, ::PlaySource::GetPlayingRequest* request, ::grpc::ServerAsyncResponseWriter< ::PlaySource::GetPlayingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void Playsource::AsyncService::RequestGetPlaying(::grpc::ServerContext* context, ::Playsource::GetPlayingRequest* request, ::grpc::ServerAsyncResponseWriter< ::Playsource::GetPlayingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
 }
 
-::grpc::Status PlaySource::Service::GetPlayHistory(::grpc::ServerContext* context, const ::PlaySource::GetPlayHistoryRequest* request, ::grpc::ServerWriter< ::PlaySource::GetPlayHistoryResponse>* writer) {
+::grpc::Status Playsource::Service::GetPlayHistory(::grpc::ServerContext* context, const ::Playsource::GetPlayHistoryRequest* request, ::grpc::ServerWriter< ::Playsource::GetPlayHistoryResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void PlaySource::AsyncService::RequestGetPlayHistory(::grpc::ServerContext* context, ::PlaySource::GetPlayHistoryRequest* request, ::grpc::ServerAsyncWriter< ::PlaySource::GetPlayHistoryResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void Playsource::AsyncService::RequestGetPlayHistory(::grpc::ServerContext* context, ::Playsource::GetPlayHistoryRequest* request, ::grpc::ServerAsyncWriter< ::Playsource::GetPlayHistoryResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
 }
 
-::grpc::RpcService* PlaySource::Service::service() {
+::grpc::RpcService* Playsource::Service::service() {
   if (service_ != nullptr) {
     return service_;
   }
   service_ = new ::grpc::RpcService();
   service_->AddMethod(new ::grpc::RpcServiceMethod(
-      PlaySource_method_names[0],
+      Playsource_method_names[0],
       ::grpc::RpcMethod::BIDI_STREAMING,
-      new ::grpc::BidiStreamingHandler< PlaySource::Service, ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>(
-          std::mem_fn(&PlaySource::Service::QueueSong), this)));
+      new ::grpc::BidiStreamingHandler< Playsource::Service, ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>(
+          std::mem_fn(&Playsource::Service::QueueSong), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
-      PlaySource_method_names[1],
+      Playsource_method_names[1],
       ::grpc::RpcMethod::NORMAL_RPC,
-      new ::grpc::RpcMethodHandler< PlaySource::Service, ::PlaySource::GetPlayingRequest, ::PlaySource::GetPlayingResponse>(
-          std::mem_fn(&PlaySource::Service::GetPlaying), this)));
+      new ::grpc::RpcMethodHandler< Playsource::Service, ::Playsource::GetPlayingRequest, ::Playsource::GetPlayingResponse>(
+          std::mem_fn(&Playsource::Service::GetPlaying), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
-      PlaySource_method_names[2],
+      Playsource_method_names[2],
       ::grpc::RpcMethod::SERVER_STREAMING,
-      new ::grpc::ServerStreamingHandler< PlaySource::Service, ::PlaySource::GetPlayHistoryRequest, ::PlaySource::GetPlayHistoryResponse>(
-          std::mem_fn(&PlaySource::Service::GetPlayHistory), this)));
+      new ::grpc::ServerStreamingHandler< Playsource::Service, ::Playsource::GetPlayHistoryRequest, ::Playsource::GetPlayHistoryResponse>(
+          std::mem_fn(&Playsource::Service::GetPlayHistory), this)));
   return service_;
 }
 
 
-}  // namespace PlaySource
+}  // namespace Playsource
 

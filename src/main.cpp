@@ -6,6 +6,7 @@
 #include "DecisionAlgorithm.h"
 
 #include "server.hpp"
+#include "playsource_client.hpp"
 
 using grpc::Server;
 using grpc::ServerBuilder;
@@ -13,6 +14,7 @@ using namespace std;
 
 
 int main() {
+    // Create/Load the main database
     skrillex::Options options;
     options.create_if_missing = true;
 
@@ -25,9 +27,19 @@ int main() {
         return -1;
     }
 
+    // Create algorithm
+    shared_ptr<DecisionAlgorithm> algorithm(new DecisionAlgorithm(DecisionSettings::defaultSettings(), db));
+
+    unique_ptr<PlaysourceClient> playsource(new PlaysourceClient(
+        grpc::CreateChannel("localhost:50052", grpc::InsecureCredentials()),
+        3,
+        db,
+        algorithm
+    ));
+
     string listen_address("0.0.0.0:50051");
 
-    CrowdSoundImpl service(db, DecisionSettings::defaultSettings());
+    CrowdSoundImpl service(db, move(playsource), algorithm);
 
     ServerBuilder builder;
     builder.AddListeningPort(listen_address, grpc::InsecureServerCredentials());

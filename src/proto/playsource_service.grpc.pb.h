@@ -23,63 +23,63 @@ class ServerCompletionQueue;
 class ServerContext;
 }  // namespace grpc
 
-namespace PlaySource {
+namespace Playsource {
 
-class PlaySource GRPC_FINAL {
+class Playsource GRPC_FINAL {
  public:
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>> QueueSong(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>>(QueueSongRaw(context));
+    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>> QueueSong(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>>(QueueSongRaw(context));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>> AsyncQueueSong(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>>(AsyncQueueSongRaw(context, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>> AsyncQueueSong(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>>(AsyncQueueSongRaw(context, cq, tag));
     }
-    virtual ::grpc::Status GetPlaying(::grpc::ClientContext* context, const ::PlaySource::GetPlayingRequest& request, ::PlaySource::GetPlayingResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::PlaySource::GetPlayingResponse>> AsyncGetPlaying(::grpc::ClientContext* context, const ::PlaySource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::PlaySource::GetPlayingResponse>>(AsyncGetPlayingRaw(context, request, cq));
+    virtual ::grpc::Status GetPlaying(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::Playsource::GetPlayingResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Playsource::GetPlayingResponse>> AsyncGetPlaying(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Playsource::GetPlayingResponse>>(AsyncGetPlayingRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReaderInterface< ::PlaySource::GetPlayHistoryResponse>> GetPlayHistory(::grpc::ClientContext* context, const ::PlaySource::GetPlayHistoryRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReaderInterface< ::PlaySource::GetPlayHistoryResponse>>(GetPlayHistoryRaw(context, request));
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::Playsource::GetPlayHistoryResponse>> GetPlayHistory(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::Playsource::GetPlayHistoryResponse>>(GetPlayHistoryRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::PlaySource::GetPlayHistoryResponse>> AsyncGetPlayHistory(::grpc::ClientContext* context, const ::PlaySource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::PlaySource::GetPlayHistoryResponse>>(AsyncGetPlayHistoryRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Playsource::GetPlayHistoryResponse>> AsyncGetPlayHistory(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Playsource::GetPlayHistoryResponse>>(AsyncGetPlayHistoryRaw(context, request, cq, tag));
     }
   private:
-    virtual ::grpc::ClientReaderWriterInterface< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>* QueueSongRaw(::grpc::ClientContext* context) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>* AsyncQueueSongRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::PlaySource::GetPlayingResponse>* AsyncGetPlayingRaw(::grpc::ClientContext* context, const ::PlaySource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderInterface< ::PlaySource::GetPlayHistoryResponse>* GetPlayHistoryRaw(::grpc::ClientContext* context, const ::PlaySource::GetPlayHistoryRequest& request) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::PlaySource::GetPlayHistoryResponse>* AsyncGetPlayHistoryRaw(::grpc::ClientContext* context, const ::PlaySource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientReaderWriterInterface< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* QueueSongRaw(::grpc::ClientContext* context) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* AsyncQueueSongRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::Playsource::GetPlayingResponse>* AsyncGetPlayingRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::Playsource::GetPlayHistoryResponse>* GetPlayHistoryRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::Playsource::GetPlayHistoryResponse>* AsyncGetPlayHistoryRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
   };
   class Stub GRPC_FINAL : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::Channel>& channel);
-    std::unique_ptr< ::grpc::ClientReaderWriter< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>> QueueSong(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriter< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>>(QueueSongRaw(context));
+    std::unique_ptr< ::grpc::ClientReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>> QueueSong(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>>(QueueSongRaw(context));
     }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>> AsyncQueueSong(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>>(AsyncQueueSongRaw(context, cq, tag));
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>> AsyncQueueSong(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>>(AsyncQueueSongRaw(context, cq, tag));
     }
-    ::grpc::Status GetPlaying(::grpc::ClientContext* context, const ::PlaySource::GetPlayingRequest& request, ::PlaySource::GetPlayingResponse* response) GRPC_OVERRIDE;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::PlaySource::GetPlayingResponse>> AsyncGetPlaying(::grpc::ClientContext* context, const ::PlaySource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::PlaySource::GetPlayingResponse>>(AsyncGetPlayingRaw(context, request, cq));
+    ::grpc::Status GetPlaying(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::Playsource::GetPlayingResponse* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Playsource::GetPlayingResponse>> AsyncGetPlaying(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Playsource::GetPlayingResponse>>(AsyncGetPlayingRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReader< ::PlaySource::GetPlayHistoryResponse>> GetPlayHistory(::grpc::ClientContext* context, const ::PlaySource::GetPlayHistoryRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReader< ::PlaySource::GetPlayHistoryResponse>>(GetPlayHistoryRaw(context, request));
+    std::unique_ptr< ::grpc::ClientReader< ::Playsource::GetPlayHistoryResponse>> GetPlayHistory(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::Playsource::GetPlayHistoryResponse>>(GetPlayHistoryRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::PlaySource::GetPlayHistoryResponse>> AsyncGetPlayHistory(::grpc::ClientContext* context, const ::PlaySource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::PlaySource::GetPlayHistoryResponse>>(AsyncGetPlayHistoryRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::Playsource::GetPlayHistoryResponse>> AsyncGetPlayHistory(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::Playsource::GetPlayHistoryResponse>>(AsyncGetPlayHistoryRaw(context, request, cq, tag));
     }
 
    private:
     std::shared_ptr< ::grpc::Channel> channel_;
-    ::grpc::ClientReaderWriter< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>* QueueSongRaw(::grpc::ClientContext* context) GRPC_OVERRIDE;
-    ::grpc::ClientAsyncReaderWriter< ::PlaySource::QueueSongRequest, ::PlaySource::QueueSongResponse>* AsyncQueueSongRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) GRPC_OVERRIDE;
-    ::grpc::ClientAsyncResponseReader< ::PlaySource::GetPlayingResponse>* AsyncGetPlayingRaw(::grpc::ClientContext* context, const ::PlaySource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
-    ::grpc::ClientReader< ::PlaySource::GetPlayHistoryResponse>* GetPlayHistoryRaw(::grpc::ClientContext* context, const ::PlaySource::GetPlayHistoryRequest& request) GRPC_OVERRIDE;
-    ::grpc::ClientAsyncReader< ::PlaySource::GetPlayHistoryResponse>* AsyncGetPlayHistoryRaw(::grpc::ClientContext* context, const ::PlaySource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) GRPC_OVERRIDE;
+    ::grpc::ClientReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* QueueSongRaw(::grpc::ClientContext* context) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* AsyncQueueSongRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::Playsource::GetPlayingResponse>* AsyncGetPlayingRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientReader< ::Playsource::GetPlayHistoryResponse>* GetPlayHistoryRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncReader< ::Playsource::GetPlayHistoryResponse>* AsyncGetPlayHistoryRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) GRPC_OVERRIDE;
     const ::grpc::RpcMethod rpcmethod_QueueSong_;
     const ::grpc::RpcMethod rpcmethod_GetPlaying_;
     const ::grpc::RpcMethod rpcmethod_GetPlayHistory_;
@@ -90,9 +90,9 @@ class PlaySource GRPC_FINAL {
    public:
     Service() : service_(nullptr) {}
     virtual ~Service();
-    virtual ::grpc::Status QueueSong(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::PlaySource::QueueSongResponse, ::PlaySource::QueueSongRequest>* stream);
-    virtual ::grpc::Status GetPlaying(::grpc::ServerContext* context, const ::PlaySource::GetPlayingRequest* request, ::PlaySource::GetPlayingResponse* response);
-    virtual ::grpc::Status GetPlayHistory(::grpc::ServerContext* context, const ::PlaySource::GetPlayHistoryRequest* request, ::grpc::ServerWriter< ::PlaySource::GetPlayHistoryResponse>* writer);
+    virtual ::grpc::Status QueueSong(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::Playsource::QueueSongResponse, ::Playsource::QueueSongRequest>* stream);
+    virtual ::grpc::Status GetPlaying(::grpc::ServerContext* context, const ::Playsource::GetPlayingRequest* request, ::Playsource::GetPlayingResponse* response);
+    virtual ::grpc::Status GetPlayHistory(::grpc::ServerContext* context, const ::Playsource::GetPlayHistoryRequest* request, ::grpc::ServerWriter< ::Playsource::GetPlayHistoryResponse>* writer);
     ::grpc::RpcService* service() GRPC_OVERRIDE GRPC_FINAL;
    private:
     ::grpc::RpcService* service_;
@@ -101,13 +101,13 @@ class PlaySource GRPC_FINAL {
    public:
     explicit AsyncService();
     ~AsyncService() {};
-    void RequestQueueSong(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::PlaySource::QueueSongResponse, ::PlaySource::QueueSongRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
-    void RequestGetPlaying(::grpc::ServerContext* context, ::PlaySource::GetPlayingRequest* request, ::grpc::ServerAsyncResponseWriter< ::PlaySource::GetPlayingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
-    void RequestGetPlayHistory(::grpc::ServerContext* context, ::PlaySource::GetPlayHistoryRequest* request, ::grpc::ServerAsyncWriter< ::PlaySource::GetPlayHistoryResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestQueueSong(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::Playsource::QueueSongResponse, ::Playsource::QueueSongRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestGetPlaying(::grpc::ServerContext* context, ::Playsource::GetPlayingRequest* request, ::grpc::ServerAsyncResponseWriter< ::Playsource::GetPlayingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestGetPlayHistory(::grpc::ServerContext* context, ::Playsource::GetPlayHistoryRequest* request, ::grpc::ServerAsyncWriter< ::Playsource::GetPlayHistoryResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
   };
 };
 
-}  // namespace PlaySource
+}  // namespace Playsource
 
 
 #endif  // GRPC_proto_2fplaysource_5fservice_2eproto__INCLUDED

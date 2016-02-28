@@ -2,9 +2,9 @@ syntax = "proto3";
 
 option go_package = "playsource";
 
-package PlaySource;
+package Playsource;
 
-service PlaySource {
+service Playsource {
     // QueueSong is a bidirectional stream where callers send QueueSongRequests
     // to queue song, and receive QueueSongResponses, which indicate whether a
     // song was able to be queued (server queue full, not found, etc), or when
