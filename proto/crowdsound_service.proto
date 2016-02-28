@@ -54,7 +54,9 @@ message GetQueueResponse {
     string name = 1;
     string artist = 2;
     string genre = 3;
+
     bool isPlaying = 4;
+    bool isBuffered = 5;
 }
 
 message ListTrendingArtistsRequest {

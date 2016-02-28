@@ -532,6 +532,12 @@ class GetQueueResponse : public ::google::protobuf::Message {
   bool isplaying() const;
   void set_isplaying(bool value);
 
+  // optional bool isBuffered = 5;
+  void clear_isbuffered();
+  static const int kIsBufferedFieldNumber = 5;
+  bool isbuffered() const;
+  void set_isbuffered(bool value);
+
   // @@protoc_insertion_point(class_scope:CrowdSound.GetQueueResponse)
  private:
 
@@ -541,6 +547,7 @@ class GetQueueResponse : public ::google::protobuf::Message {
   ::google::protobuf::internal::ArenaStringPtr artist_;
   ::google::protobuf::internal::ArenaStringPtr genre_;
   bool isplaying_;
+  bool isbuffered_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
   friend void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto();
@@ -1354,6 +1361,20 @@ inline void GetQueueResponse::set_isplaying(bool value) {
   
   isplaying_ = value;
   // @@protoc_insertion_point(field_set:CrowdSound.GetQueueResponse.isPlaying)
+}
+
+// optional bool isBuffered = 5;
+inline void GetQueueResponse::clear_isbuffered() {
+  isbuffered_ = false;
+}
+inline bool GetQueueResponse::isbuffered() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetQueueResponse.isBuffered)
+  return isbuffered_;
+}
+inline void GetQueueResponse::set_isbuffered(bool value) {
+  
+  isbuffered_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetQueueResponse.isBuffered)
 }
 
 // -------------------------------------------------------------------

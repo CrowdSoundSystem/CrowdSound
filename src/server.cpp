@@ -70,7 +70,9 @@ Status CrowdSoundImpl::GetSessionData(ServerContext* context, const GetSessionDa
 
 Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) {
     ResultSet<Song> resultSet;
-    skrillex::Status status = this->db_->getQueue(resultSet);
+
+    // First, send back the buffer
+    skrillex::Status status = this->db_->getBuffer(resultSet);
     if (status != skrillex::Status::OK()) {
         return Status(StatusCode::INTERNAL, status.message());
     }
@@ -81,6 +83,26 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
         resp.set_artist(s.artist.name);
         resp.set_genre(s.genre.name);
         resp.set_isplaying(false);
+        resp.set_isbuffered(true);
+
+        if (!writer->Write(resp)) {
+            cerr << "Failed to write song in GetQueue" << endl;
+            return Status(StatusCode::INTERNAL, "");
+        }
+    }
+
+    status = this->db_->getQueue(resultSet);
+    if (status != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, status.message());
+    }
+
+    for (Song s : resultSet) {
+        GetQueueResponse resp;
+        resp.set_name(s.name);
+        resp.set_artist(s.artist.name);
+        resp.set_genre(s.genre.name);
+        resp.set_isplaying(false);
+        resp.set_isbuffered(false);
 
         if (!writer->Write(resp)) {
             cerr << "Failed to write song in GetQueue" << endl;
@@ -169,9 +191,6 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
     // The second approach is pretty invasive and touches a bunch of stuff (and probably
     // introduces a lot of work client side too). The first approach comes relatively
     // free with the parsing model, and fuck it, it's a prototype with strick deadlines.
-
-    // TODO: This is primarily blocked by the parser functionality:
-    // Give me the complete song object, for a given input. We'll put in a small hack :P
 
     cout << "[Server] Received VoteSong: [" << request->artist() << " - " << request->name() << "] - " << request->like() << endl;
 
