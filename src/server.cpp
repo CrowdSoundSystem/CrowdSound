@@ -87,8 +87,7 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
         resp.set_isbuffered(true);
 
         if (!writer->Write(resp)) {
-            cerr << "Failed to write song in GetQueue" << endl;
-            return Status(StatusCode::INTERNAL, "");
+            break;
         }
 
         first = false;
@@ -99,6 +98,7 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
         return Status(StatusCode::INTERNAL, status.message());
     }
 
+    int count = 0;
     for (Song s : resultSet) {
         GetQueueResponse resp;
         resp.set_name(s.name);
@@ -108,8 +108,11 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
         resp.set_isbuffered(false);
 
         if (!writer->Write(resp)) {
-            cerr << "Failed to write song in GetQueue" << endl;
-            return Status(StatusCode::INTERNAL, "");
+            break;
+        }
+
+        if (++count >= 10) {
+            break;
         }
     }
 
@@ -136,7 +139,7 @@ Status CrowdSoundImpl::ListTrendingArtists(ServerContext* context, const ListTre
             break;
         }
 
-        if (++count > 20) {
+        if (++count >= 20) {
             break;
         }
     }
