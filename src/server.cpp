@@ -126,15 +126,19 @@ Status CrowdSoundImpl::ListTrendingArtists(ServerContext* context, const ListTre
         return Status(StatusCode::INTERNAL, status.message());
     }
 
-    // TODO: Currently, this just uses the number of votes
-    // as the score, but really should be looking at the algorithm
-    // for ranking. Maybe there's a 'getScore()' kind of API?
+    int count = 0;
     for (Song s : resultSet) {
         ListTrendingArtistsResponse resp;
         resp.set_name(s.name);
         resp.set_score(s.votes);
 
-        writer->Write(resp);
+        if (!writer->Write(resp)) {
+            break;
+        }
+
+        if (++count > 20) {
+            break;
+        }
     }
 
     return Status::OK;
