@@ -63,7 +63,14 @@ Status CrowdSoundImpl::Ping(ServerContext* context, const PingRequest* request, 
 Status CrowdSoundImpl::GetSessionData(ServerContext* context, const GetSessionDataRequest* request, GetSessionDataResponse* resp) {
     // TODO: Use real data
     resp->set_session_name("Symposium");
-    resp->set_num_users(1);
+
+    int users = 0;
+    skrillex::Status status = db_->getSessionUserCount(users);
+    if (status != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, status.message());
+    }
+
+    resp->set_num_users(users);
 
     return Status::OK;
 }
