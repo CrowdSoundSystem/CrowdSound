@@ -84,6 +84,7 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
         return Status(StatusCode::INTERNAL, status.message());
     }
 
+    int count = 0;
     bool first = true;
     for (Song s : resultSet) {
         GetQueueResponse resp;
@@ -98,6 +99,7 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
         }
 
         first = false;
+        count++;
     }
 
     status = this->db_->getQueue(resultSet);
@@ -105,7 +107,6 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
         return Status(StatusCode::INTERNAL, status.message());
     }
 
-    int count = 0;
     for (Song s : resultSet) {
         GetQueueResponse resp;
         resp.set_name(s.name);
