@@ -70,7 +70,7 @@ message ListTrendingArtistsResponse {
 message PostSongRequest {
     string user_id = 1;
     string name = 2;
-    string artist = 3;
+    repeated string artist = 3;
     string genre = 4;
 }
 

@@ -167,8 +167,13 @@ Status CrowdSoundImpl::PostSong(ServerContext* context, ServerReader<PostSongReq
 
     while (reader->Read(&request)) {
         Song song;
-        cout << "[Server] Received PostSong: [" << request.genre() << "] " << request.artist() << " - " << request.name() << endl;
-        status = mapper_->map(song, request.name(), request.artist(), request.genre());
+        string firstArtist;
+        if (request.artist_size() > 0) {
+            firstArtist = request.artist(0);
+        }
+
+        cout << "[Server] Received PostSong: [" << request.genre() << "] " << firstArtist << " - " << request.name() << endl;
+        status = mapper_->map(song, request.name(), firstArtist, request.genre());
         if (status != skrillex::Status::OK()) {
             return Status(StatusCode::INTERNAL, status.message());
         }
