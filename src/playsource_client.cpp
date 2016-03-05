@@ -104,8 +104,8 @@ void PlaysourceClient::runQueueLoop() {
         skrillex::Song responseSong = getSongFromBuffer(buffer, resp.song_id());
         if (!resp.finished()) {
             if (!resp.found()) {
-                // TODO: Mark not found
                 cout << "[playsource] song not found: " << responseSong << endl;
+                db_->markUnplayable(resp.song_id());
             } else {
                 cout << "[playsource] song was not queued (server queue full?): " << responseSong << endl;
             }
