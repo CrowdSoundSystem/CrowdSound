@@ -140,11 +140,12 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueRequest, _is_default_instance_));
   GetQueueResponse_descriptor_ = file->message_type(5);
-  static const int GetQueueResponse_offsets_[4] = {
+  static const int GetQueueResponse_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueResponse, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueResponse, artist_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueResponse, genre_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueResponse, isplaying_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueResponse, isbuffered_),
   };
   GetQueueResponse_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -330,29 +331,30 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto() {
     "PingResponse\"\027\n\025GetSessionDataRequest\"A\n"
     "\026GetSessionDataResponse\022\024\n\014session_name\030"
     "\001 \001(\t\022\021\n\tnum_users\030\002 \001(\005\"\021\n\017GetQueueRequ"
-    "est\"R\n\020GetQueueResponse\022\014\n\004name\030\001 \001(\t\022\016\n"
+    "est\"f\n\020GetQueueResponse\022\014\n\004name\030\001 \001(\t\022\016\n"
     "\006artist\030\002 \001(\t\022\r\n\005genre\030\003 \001(\t\022\021\n\tisPlayin"
-    "g\030\004 \001(\010\"\034\n\032ListTrendingArtistsRequest\":\n"
-    "\033ListTrendingArtistsResponse\022\014\n\004name\030\001 \001"
-    "(\t\022\r\n\005score\030\002 \001(\005\"O\n\017PostSongRequest\022\017\n\007"
-    "user_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006artist\030\003 "
-    "\001(\t\022\r\n\005genre\030\004 \001(\t\"\022\n\020PostSongResponse\"N"
-    "\n\017VoteSongRequest\022\017\n\007user_id\030\001 \001(\t\022\014\n\004na"
-    "me\030\002 \001(\t\022\016\n\006artist\030\003 \001(\t\022\014\n\004like\030\004 \001(\010\"\022"
-    "\n\020VoteSongResponse2\357\003\n\nCrowdSound\022;\n\004Pin"
-    "g\022\027.CrowdSound.PingRequest\032\030.CrowdSound."
-    "PingResponse\"\000\022Y\n\016GetSessionData\022!.Crowd"
-    "Sound.GetSessionDataRequest\032\".CrowdSound"
-    ".GetSessionDataResponse\"\000\022I\n\010GetQueue\022\033."
-    "CrowdSound.GetQueueRequest\032\034.CrowdSound."
-    "GetQueueResponse\"\0000\001\022j\n\023ListTrendingArti"
-    "sts\022&.CrowdSound.ListTrendingArtistsRequ"
-    "est\032\'.CrowdSound.ListTrendingArtistsResp"
-    "onse\"\0000\001\022I\n\010PostSong\022\033.CrowdSound.PostSo"
-    "ngRequest\032\034.CrowdSound.PostSongResponse\""
-    "\000(\001\022G\n\010VoteSong\022\033.CrowdSound.VoteSongReq"
-    "uest\032\034.CrowdSound.VoteSongResponse\"\000B\032\n\007"
-    "ex.grpcZ\ncrowdsound\242\002\002CSb\006proto3", 1112);
+    "g\030\004 \001(\010\022\022\n\nisBuffered\030\005 \001(\010\"\034\n\032ListTrend"
+    "ingArtistsRequest\":\n\033ListTrendingArtists"
+    "Response\022\014\n\004name\030\001 \001(\t\022\r\n\005score\030\002 \001(\005\"O\n"
+    "\017PostSongRequest\022\017\n\007user_id\030\001 \001(\t\022\014\n\004nam"
+    "e\030\002 \001(\t\022\016\n\006artist\030\003 \003(\t\022\r\n\005genre\030\004 \001(\t\"\022"
+    "\n\020PostSongResponse\"N\n\017VoteSongRequest\022\017\n"
+    "\007user_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006artist\030\003"
+    " \001(\t\022\014\n\004like\030\004 \001(\010\"\022\n\020VoteSongResponse2\357"
+    "\003\n\nCrowdSound\022;\n\004Ping\022\027.CrowdSound.PingR"
+    "equest\032\030.CrowdSound.PingResponse\"\000\022Y\n\016Ge"
+    "tSessionData\022!.CrowdSound.GetSessionData"
+    "Request\032\".CrowdSound.GetSessionDataRespo"
+    "nse\"\000\022I\n\010GetQueue\022\033.CrowdSound.GetQueueR"
+    "equest\032\034.CrowdSound.GetQueueResponse\"\0000\001"
+    "\022j\n\023ListTrendingArtists\022&.CrowdSound.Lis"
+    "tTrendingArtistsRequest\032\'.CrowdSound.Lis"
+    "tTrendingArtistsResponse\"\0000\001\022I\n\010PostSong"
+    "\022\033.CrowdSound.PostSongRequest\032\034.CrowdSou"
+    "nd.PostSongResponse\"\000(\001\022G\n\010VoteSong\022\033.Cr"
+    "owdSound.VoteSongRequest\032\034.CrowdSound.Vo"
+    "teSongResponse\"\000B\032\n\007ex.grpcZ\ncrowdsound\242"
+    "\002\002CSb\006proto3", 1132);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/crowdsound_service.proto", &protobuf_RegisterTypes);
   PingRequest::default_instance_ = new PingRequest();
@@ -1508,6 +1510,7 @@ const int GetQueueResponse::kNameFieldNumber;
 const int GetQueueResponse::kArtistFieldNumber;
 const int GetQueueResponse::kGenreFieldNumber;
 const int GetQueueResponse::kIsPlayingFieldNumber;
+const int GetQueueResponse::kIsBufferedFieldNumber;
 #endif  // !_MSC_VER
 
 GetQueueResponse::GetQueueResponse()
@@ -1536,6 +1539,7 @@ void GetQueueResponse::SharedCtor() {
   artist_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   genre_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   isplaying_ = false;
+  isbuffered_ = false;
 }
 
 GetQueueResponse::~GetQueueResponse() {
@@ -1577,10 +1581,22 @@ GetQueueResponse* GetQueueResponse::New(::google::protobuf::Arena* arena) const 
 }
 
 void GetQueueResponse::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<GetQueueResponse*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(isplaying_, isbuffered_);
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   artist_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   genre_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  isplaying_ = false;
+
+#undef ZR_HELPER_
+#undef ZR_
+
 }
 
 bool GetQueueResponse::MergePartialFromCodedStream(
@@ -1654,6 +1670,21 @@ bool GetQueueResponse::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(40)) goto parse_isBuffered;
+        break;
+      }
+
+      // optional bool isBuffered = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_isBuffered:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &isbuffered_)));
+
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1717,6 +1748,11 @@ void GetQueueResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->isplaying(), output);
   }
 
+  // optional bool isBuffered = 5;
+  if (this->isbuffered() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->isbuffered(), output);
+  }
+
   // @@protoc_insertion_point(serialize_end:CrowdSound.GetQueueResponse)
 }
 
@@ -1761,6 +1797,11 @@ void GetQueueResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->isplaying(), target);
   }
 
+  // optional bool isBuffered = 5;
+  if (this->isbuffered() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->isbuffered(), target);
+  }
+
   // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.GetQueueResponse)
   return target;
 }
@@ -1791,6 +1832,11 @@ int GetQueueResponse::ByteSize() const {
 
   // optional bool isPlaying = 4;
   if (this->isplaying() != 0) {
+    total_size += 1 + 1;
+  }
+
+  // optional bool isBuffered = 5;
+  if (this->isbuffered() != 0) {
     total_size += 1 + 1;
   }
 
@@ -1829,6 +1875,9 @@ void GetQueueResponse::MergeFrom(const GetQueueResponse& from) {
   if (from.isplaying() != 0) {
     set_isplaying(from.isplaying());
   }
+  if (from.isbuffered() != 0) {
+    set_isbuffered(from.isbuffered());
+  }
 }
 
 void GetQueueResponse::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1857,6 +1906,7 @@ void GetQueueResponse::InternalSwap(GetQueueResponse* other) {
   artist_.Swap(&other->artist_);
   genre_.Swap(&other->genre_);
   std::swap(isplaying_, other->isplaying_);
+  std::swap(isbuffered_, other->isbuffered_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -2013,6 +2063,20 @@ void GetQueueResponse::clear_isplaying() {
   
   isplaying_ = value;
   // @@protoc_insertion_point(field_set:CrowdSound.GetQueueResponse.isPlaying)
+}
+
+// optional bool isBuffered = 5;
+void GetQueueResponse::clear_isbuffered() {
+  isbuffered_ = false;
+}
+ bool GetQueueResponse::isbuffered() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetQueueResponse.isBuffered)
+  return isbuffered_;
+}
+ void GetQueueResponse::set_isbuffered(bool value) {
+  
+  isbuffered_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetQueueResponse.isBuffered)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -2543,7 +2607,6 @@ void PostSongRequest::SharedCtor() {
   _cached_size_ = 0;
   user_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  artist_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   genre_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -2555,7 +2618,6 @@ PostSongRequest::~PostSongRequest() {
 void PostSongRequest::SharedDtor() {
   user_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  artist_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   genre_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
@@ -2589,8 +2651,8 @@ PostSongRequest* PostSongRequest::New(::google::protobuf::Arena* arena) const {
 void PostSongRequest::Clear() {
   user_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  artist_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   genre_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  artist_.Clear();
 }
 
 bool PostSongRequest::MergePartialFromCodedStream(
@@ -2636,19 +2698,21 @@ bool PostSongRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // optional string artist = 3;
+      // repeated string artist = 3;
       case 3: {
         if (tag == 26) {
          parse_artist:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_artist()));
+                input, this->add_artist()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->artist().data(), this->artist().length(),
+            this->artist(this->artist_size() - 1).data(),
+            this->artist(this->artist_size() - 1).length(),
             ::google::protobuf::internal::WireFormatLite::PARSE,
             "CrowdSound.PostSongRequest.artist"));
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(26)) goto parse_artist;
         if (input->ExpectTag(34)) goto parse_genre;
         break;
       }
@@ -2714,14 +2778,14 @@ void PostSongRequest::SerializeWithCachedSizes(
       2, this->name(), output);
   }
 
-  // optional string artist = 3;
-  if (this->artist().size() > 0) {
+  // repeated string artist = 3;
+  for (int i = 0; i < this->artist_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->artist().data(), this->artist().length(),
+      this->artist(i).data(), this->artist(i).length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "CrowdSound.PostSongRequest.artist");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->artist(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->artist(i), output);
   }
 
   // optional string genre = 4;
@@ -2762,15 +2826,14 @@ void PostSongRequest::SerializeWithCachedSizes(
         2, this->name(), target);
   }
 
-  // optional string artist = 3;
-  if (this->artist().size() > 0) {
+  // repeated string artist = 3;
+  for (int i = 0; i < this->artist_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->artist().data(), this->artist().length(),
+      this->artist(i).data(), this->artist(i).length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "CrowdSound.PostSongRequest.artist");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->artist(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(3, this->artist(i), target);
   }
 
   // optional string genre = 4;
@@ -2805,18 +2868,18 @@ int PostSongRequest::ByteSize() const {
         this->name());
   }
 
-  // optional string artist = 3;
-  if (this->artist().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->artist());
-  }
-
   // optional string genre = 4;
   if (this->genre().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->genre());
+  }
+
+  // repeated string artist = 3;
+  total_size += 1 * this->artist_size();
+  for (int i = 0; i < this->artist_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->artist(i));
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -2839,6 +2902,7 @@ void PostSongRequest::MergeFrom(const ::google::protobuf::Message& from) {
 
 void PostSongRequest::MergeFrom(const PostSongRequest& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  artist_.MergeFrom(from.artist_);
   if (from.user_id().size() > 0) {
 
     user_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.user_id_);
@@ -2846,10 +2910,6 @@ void PostSongRequest::MergeFrom(const PostSongRequest& from) {
   if (from.name().size() > 0) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
-  }
-  if (from.artist().size() > 0) {
-
-    artist_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.artist_);
   }
   if (from.genre().size() > 0) {
 
@@ -2881,7 +2941,7 @@ void PostSongRequest::Swap(PostSongRequest* other) {
 void PostSongRequest::InternalSwap(PostSongRequest* other) {
   user_id_.Swap(&other->user_id_);
   name_.Swap(&other->name_);
-  artist_.Swap(&other->artist_);
+  artist_.UnsafeArenaSwap(&other->artist_);
   genre_.Swap(&other->genre_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -2984,47 +3044,58 @@ void PostSongRequest::clear_name() {
   // @@protoc_insertion_point(field_set_allocated:CrowdSound.PostSongRequest.name)
 }
 
-// optional string artist = 3;
+// repeated string artist = 3;
+int PostSongRequest::artist_size() const {
+  return artist_.size();
+}
 void PostSongRequest::clear_artist() {
-  artist_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  artist_.Clear();
 }
- const ::std::string& PostSongRequest::artist() const {
+ const ::std::string& PostSongRequest::artist(int index) const {
   // @@protoc_insertion_point(field_get:CrowdSound.PostSongRequest.artist)
-  return artist_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return artist_.Get(index);
 }
- void PostSongRequest::set_artist(const ::std::string& value) {
-  
-  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+ ::std::string* PostSongRequest::mutable_artist(int index) {
+  // @@protoc_insertion_point(field_mutable:CrowdSound.PostSongRequest.artist)
+  return artist_.Mutable(index);
+}
+ void PostSongRequest::set_artist(int index, const ::std::string& value) {
   // @@protoc_insertion_point(field_set:CrowdSound.PostSongRequest.artist)
+  artist_.Mutable(index)->assign(value);
 }
- void PostSongRequest::set_artist(const char* value) {
-  
-  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+ void PostSongRequest::set_artist(int index, const char* value) {
+  artist_.Mutable(index)->assign(value);
   // @@protoc_insertion_point(field_set_char:CrowdSound.PostSongRequest.artist)
 }
- void PostSongRequest::set_artist(const char* value, size_t size) {
-  
-  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
+ void PostSongRequest::set_artist(int index, const char* value, size_t size) {
+  artist_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
   // @@protoc_insertion_point(field_set_pointer:CrowdSound.PostSongRequest.artist)
 }
- ::std::string* PostSongRequest::mutable_artist() {
-  
-  // @@protoc_insertion_point(field_mutable:CrowdSound.PostSongRequest.artist)
-  return artist_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+ ::std::string* PostSongRequest::add_artist() {
+  return artist_.Add();
 }
- ::std::string* PostSongRequest::release_artist() {
-  
-  return artist_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+ void PostSongRequest::add_artist(const ::std::string& value) {
+  artist_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:CrowdSound.PostSongRequest.artist)
 }
- void PostSongRequest::set_allocated_artist(::std::string* artist) {
-  if (artist != NULL) {
-    
-  } else {
-    
-  }
-  artist_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), artist);
-  // @@protoc_insertion_point(field_set_allocated:CrowdSound.PostSongRequest.artist)
+ void PostSongRequest::add_artist(const char* value) {
+  artist_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:CrowdSound.PostSongRequest.artist)
+}
+ void PostSongRequest::add_artist(const char* value, size_t size) {
+  artist_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:CrowdSound.PostSongRequest.artist)
+}
+ const ::google::protobuf::RepeatedPtrField< ::std::string>&
+PostSongRequest::artist() const {
+  // @@protoc_insertion_point(field_list:CrowdSound.PostSongRequest.artist)
+  return artist_;
+}
+ ::google::protobuf::RepeatedPtrField< ::std::string>*
+PostSongRequest::mutable_artist() {
+  // @@protoc_insertion_point(field_mutable_list:CrowdSound.PostSongRequest.artist)
+  return &artist_;
 }
 
 // optional string genre = 4;

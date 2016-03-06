@@ -28,6 +28,7 @@ using CrowdSound::VoteSongRequest;
 using CrowdSound::VoteSongResponse;
 
 using skrillex::DB;
+using skrillex::Mapper;
 using skrillex::ResultSet;
 using skrillex::ReadOptions;
 using skrillex::WriteOptions;
@@ -36,24 +37,18 @@ using skrillex::Song;
 using skrillex::Artist;
 using skrillex::Genre;
 
-CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db, DecisionSettings decision_settings)
+CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db, unique_ptr<PlaysourceClient> playsource, shared_ptr<DecisionAlgorithm> algorithm)
 : db_(db)
-, algo_(new DecisionAlgorithm(decision_settings, db_))
-, playsource_(new PlaySource(db_))
+, mapper_(new Mapper(db_))
+, algo_(algorithm)
+, playsource_(move(playsource))
 , ps_thread_(std::bind(&CrowdSoundImpl::runPlaySource, this)) {
 }
 
 void CrowdSoundImpl::runPlaySource() {
-    while(true) {
-        // Run through iteration of PlaySource, and then generate songs after.
-        //cout << "Running source" << endl;
-        this->playsource_->run();
-
-        //cout << "Running algo" << endl;
-        this->algo_->run();
-
-        this_thread::sleep_for(chrono::seconds(1));
-    }
+    // TODO: Use member binding instead?
+    cout << "[server] running playsource loop" << endl;
+    playsource_->runQueueLoop();
 }
 
 Status CrowdSoundImpl::Ping(ServerContext* context, const PingRequest* request, PingResponse* resp) {
@@ -67,15 +62,47 @@ Status CrowdSoundImpl::Ping(ServerContext* context, const PingRequest* request, 
 
 Status CrowdSoundImpl::GetSessionData(ServerContext* context, const GetSessionDataRequest* request, GetSessionDataResponse* resp) {
     // TODO: Use real data
-    resp->set_session_name("Erect af");
-    resp->set_num_users(1);
+    resp->set_session_name("Symposium");
+
+    int users = 0;
+    skrillex::Status status = db_->getSessionUserCount(users);
+    if (status != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, status.message());
+    }
+
+    resp->set_num_users(users);
 
     return Status::OK;
 }
 
 Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) {
     ResultSet<Song> resultSet;
-    skrillex::Status status = this->db_->getQueue(resultSet);
+
+    // First, send back the buffer
+    skrillex::Status status = this->db_->getBuffer(resultSet);
+    if (status != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, status.message());
+    }
+
+    int count = 0;
+    bool first = true;
+    for (Song s : resultSet) {
+        GetQueueResponse resp;
+        resp.set_name(s.name);
+        resp.set_artist(s.artist.name);
+        resp.set_genre(s.genre.name);
+        resp.set_isplaying(first);
+        resp.set_isbuffered(true);
+
+        if (!writer->Write(resp)) {
+            break;
+        }
+
+        first = false;
+        count++;
+    }
+
+    status = this->db_->getQueue(resultSet);
     if (status != skrillex::Status::OK()) {
         return Status(StatusCode::INTERNAL, status.message());
     }
@@ -86,10 +113,14 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
         resp.set_artist(s.artist.name);
         resp.set_genre(s.genre.name);
         resp.set_isplaying(false);
+        resp.set_isbuffered(false);
 
         if (!writer->Write(resp)) {
-            cerr << "Failed to write song in GetQueue" << endl;
-            return Status(StatusCode::INTERNAL, "");
+            break;
+        }
+
+        if (++count >= 10) {
+            break;
         }
     }
 
@@ -106,15 +137,19 @@ Status CrowdSoundImpl::ListTrendingArtists(ServerContext* context, const ListTre
         return Status(StatusCode::INTERNAL, status.message());
     }
 
-    // TODO: Currently, this just uses the number of votes
-    // as the score, but really should be looking at the algorithm
-    // for ranking. Maybe there's a 'getScore()' kind of API?
+    int count = 0;
     for (Song s : resultSet) {
         ListTrendingArtistsResponse resp;
         resp.set_name(s.name);
         resp.set_score(s.votes);
 
-        writer->Write(resp);
+        if (!writer->Write(resp)) {
+            break;
+        }
+
+        if (++count >= 20) {
+            break;
+        }
     }
 
     return Status::OK;
@@ -126,58 +161,37 @@ Status CrowdSoundImpl::PostSong(ServerContext* context, ServerReader<PostSongReq
     // may not be an actual Song, maybe just an artist (or at least, all we
     // can extract is the artist).
     //
-    // TODO: Parsing logic.
-    //
-    // Once parsing is done, we can insert or link the objects.
-    // For now, we will assume the client only sends complete, unique, information.
+    // Note: If a client sends PostSong() after a VoteSong(), their vote will be reset.
     PostSongRequest request;
     skrillex::Status status = skrillex::Status::OK();
 
     while (reader->Read(&request)) {
-        Genre g;
-        Artist a;
-        Song s;
+        Song song;
+        string firstArtist;
+        if (request.artist_size() > 0) {
+            firstArtist = request.artist(0);
+        }
 
-        cout << "Attempting to post song: [" << request.genre() << "] " << request.artist() << " - " << request.name() << endl;
+        cout << "[Server] Received PostSong: [" << request.genre() << "] " << firstArtist << " - " << request.name() << endl;
+        status = mapper_->map(song, request.name(), firstArtist, request.genre());
+        if (status != skrillex::Status::OK()) {
+            return Status(StatusCode::INTERNAL, status.message());
+        }
 
-        if (request.genre() != "") {
-            g.name = request.genre();
-
-            status = this->db_->addGenre(g);
-            if (status != skrillex::Status::OK()) {
-                return Status(StatusCode::INTERNAL, status.message());
-            }
-
-            s.genre = g;
-
-            status = this->db_->voteGenre(request.user_id(), g, 0);
+        if (song.genre.id > 0) {
+            status = db_->voteGenre(request.user_id(), song.genre, 0);
             if (status != skrillex::Status::OK()) {
                 return Status(StatusCode::INTERNAL, status.message());
             }
         }
-        if (request.artist() != "") {
-            a.name = request.artist();
-
-            this->db_->addArtist(a);
-            if (status != skrillex::Status::OK()) {
-                return Status(StatusCode::INTERNAL, status.message());
-            }
-
-            s.artist = a;
-
-            status = this->db_->voteArtist(request.user_id(), a, 0);
+        if (song.artist.id > 0) {
+            status = db_->voteArtist(request.user_id(), song.artist, 0);
             if (status != skrillex::Status::OK()) {
                 return Status(StatusCode::INTERNAL, status.message());
             }
         }
-        if (request.name() != "") {
-            s.name = request.name();
-            this->db_->addSong(s);
-            if (status != skrillex::Status::OK()) {
-                return Status(StatusCode::INTERNAL, status.message());
-            }
-
-            status = this->db_->voteSong(request.user_id(), s, 0);
+        if (song.id > 0) {
+            status = db_->voteSong(request.user_id(), song, 0);
             if (status != skrillex::Status::OK()) {
                 return Status(StatusCode::INTERNAL, status.message());
             }
@@ -201,37 +215,38 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
     // introduces a lot of work client side too). The first approach comes relatively
     // free with the parsing model, and fuck it, it's a prototype with strick deadlines.
 
-    // TODO: This is primarily blocked by the parser functionality:
-    // Give me the complete song object, for a given input. We'll put in a small hack :P
+    cout << "[Server] Received VoteSong: [" << request->artist() << " - " << request->name() << "] - " << request->like() << endl;
 
-    ResultSet<Song> resultSet;
-    skrillex::Status status = this->db_->getSongs(resultSet);
+    Song song;
+    int amount = request->like() ? 1 : -1;
+    skrillex::Status status = mapper_->lookup(song, request->name(), request->artist());
+
+    if (status.notFound()) {
+        return Status(StatusCode::NOT_FOUND, status.message());
+    } else if (status != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, status.message());
+    }
+
+    status = db_->voteSong(request->user_id(), song, amount);
     if (status != skrillex::Status::OK()) {
         return Status(StatusCode::INTERNAL, status.message());
     }
 
-    for (Song s : resultSet) {
-        if (s.name == request->name()) {
-            cout << "Found voted song: " << s.name << endl;
-
-            int amount = 0;
-            if (request->like()) {
-                amount = 1;
-            } else {
-                amount = -1;
-            }
-
-            status = this->db_->voteSong(request->user_id(), s, amount);
-            if (status != skrillex::Status::OK()) {
-                return Status(StatusCode::INTERNAL, status.message());
-            }
-
-            return Status::OK;
+    if (song.artist.id > 0) {
+        status = db_->voteArtist(request->user_id(), song.artist, amount);
+        if (status != skrillex::Status::OK()) {
+            return Status(StatusCode::INTERNAL, status.message());
         }
     }
 
-    cout << "Could not find a song to vote on: " << request->name() << endl;
+    if (song.genre.id > 0) {
+        status = db_->voteGenre(request->user_id(), song.genre, amount);
+        if (status != skrillex::Status::OK()) {
+            return Status(StatusCode::INTERNAL, status.message());
+        }
+    }
 
-    return Status(StatusCode::NOT_FOUND, "Could not find song to vote on");
+    return Status::OK;
+
 }
 

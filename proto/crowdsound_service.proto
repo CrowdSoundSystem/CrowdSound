@@ -54,7 +54,9 @@ message GetQueueResponse {
     string name = 1;
     string artist = 2;
     string genre = 3;
+
     bool isPlaying = 4;
+    bool isBuffered = 5;
 }
 
 message ListTrendingArtistsRequest {
@@ -68,7 +70,7 @@ message ListTrendingArtistsResponse {
 message PostSongRequest {
     string user_id = 1;
     string name = 2;
-    string artist = 3;
+    repeated string artist = 3;
     string genre = 4;
 }
 
