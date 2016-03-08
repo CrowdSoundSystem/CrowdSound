@@ -78,6 +78,13 @@ Status CrowdSoundImpl::GetSessionData(ServerContext* context, const GetSessionDa
 Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) {
     ResultSet<Song> resultSet;
 
+    // If the user_id was provided (it should be), then update their activity
+    if (request->user_id().size() > 0) {
+        int64_t timestamp = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
+        db_->setActivity(request->user_id(), timestamp);
+    }
+
+
     // First, send back the buffer
     skrillex::Status status = this->db_->getBuffer(resultSet);
     if (status != skrillex::Status::OK()) {

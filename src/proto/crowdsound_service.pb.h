@@ -422,11 +422,23 @@ class GetQueueRequest : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
+  // optional string user_id = 1;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 1;
+  const ::std::string& user_id() const;
+  void set_user_id(const ::std::string& value);
+  void set_user_id(const char* value);
+  void set_user_id(const char* value, size_t size);
+  ::std::string* mutable_user_id();
+  ::std::string* release_user_id();
+  void set_allocated_user_id(::std::string* user_id);
+
   // @@protoc_insertion_point(class_scope:CrowdSound.GetQueueRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr user_id_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
   friend void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto();
@@ -1220,6 +1232,49 @@ inline void GetSessionDataResponse::set_num_users(::google::protobuf::int32 valu
 // -------------------------------------------------------------------
 
 // GetQueueRequest
+
+// optional string user_id = 1;
+inline void GetQueueRequest::clear_user_id() {
+  user_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetQueueRequest::user_id() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetQueueRequest.user_id)
+  return user_id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetQueueRequest::set_user_id(const ::std::string& value) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetQueueRequest.user_id)
+}
+inline void GetQueueRequest::set_user_id(const char* value) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetQueueRequest.user_id)
+}
+inline void GetQueueRequest::set_user_id(const char* value, size_t size) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetQueueRequest.user_id)
+}
+inline ::std::string* GetQueueRequest::mutable_user_id() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetQueueRequest.user_id)
+  return user_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetQueueRequest::release_user_id() {
+  
+  return user_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetQueueRequest::set_allocated_user_id(::std::string* user_id) {
+  if (user_id != NULL) {
+    
+  } else {
+    
+  }
+  user_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), user_id);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetQueueRequest.user_id)
+}
 
 // -------------------------------------------------------------------
 

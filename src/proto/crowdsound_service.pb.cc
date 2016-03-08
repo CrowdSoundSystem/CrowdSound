@@ -127,6 +127,7 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSessionDataResponse, _is_default_instance_));
   GetQueueRequest_descriptor_ = file->message_type(4);
   static const int GetQueueRequest_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetQueueRequest, user_id_),
   };
   GetQueueRequest_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -330,31 +331,31 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto() {
     "ound\"\036\n\013PingRequest\022\017\n\007user_id\030\001 \001(\t\"\016\n\014"
     "PingResponse\"\027\n\025GetSessionDataRequest\"A\n"
     "\026GetSessionDataResponse\022\024\n\014session_name\030"
-    "\001 \001(\t\022\021\n\tnum_users\030\002 \001(\005\"\021\n\017GetQueueRequ"
-    "est\"f\n\020GetQueueResponse\022\014\n\004name\030\001 \001(\t\022\016\n"
-    "\006artist\030\002 \001(\t\022\r\n\005genre\030\003 \001(\t\022\021\n\tisPlayin"
-    "g\030\004 \001(\010\022\022\n\nisBuffered\030\005 \001(\010\"\034\n\032ListTrend"
-    "ingArtistsRequest\":\n\033ListTrendingArtists"
-    "Response\022\014\n\004name\030\001 \001(\t\022\r\n\005score\030\002 \001(\005\"O\n"
-    "\017PostSongRequest\022\017\n\007user_id\030\001 \001(\t\022\014\n\004nam"
-    "e\030\002 \001(\t\022\016\n\006artist\030\003 \003(\t\022\r\n\005genre\030\004 \001(\t\"\022"
-    "\n\020PostSongResponse\"N\n\017VoteSongRequest\022\017\n"
-    "\007user_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006artist\030\003"
-    " \001(\t\022\014\n\004like\030\004 \001(\010\"\022\n\020VoteSongResponse2\357"
-    "\003\n\nCrowdSound\022;\n\004Ping\022\027.CrowdSound.PingR"
-    "equest\032\030.CrowdSound.PingResponse\"\000\022Y\n\016Ge"
-    "tSessionData\022!.CrowdSound.GetSessionData"
-    "Request\032\".CrowdSound.GetSessionDataRespo"
-    "nse\"\000\022I\n\010GetQueue\022\033.CrowdSound.GetQueueR"
-    "equest\032\034.CrowdSound.GetQueueResponse\"\0000\001"
-    "\022j\n\023ListTrendingArtists\022&.CrowdSound.Lis"
-    "tTrendingArtistsRequest\032\'.CrowdSound.Lis"
-    "tTrendingArtistsResponse\"\0000\001\022I\n\010PostSong"
-    "\022\033.CrowdSound.PostSongRequest\032\034.CrowdSou"
-    "nd.PostSongResponse\"\000(\001\022G\n\010VoteSong\022\033.Cr"
-    "owdSound.VoteSongRequest\032\034.CrowdSound.Vo"
-    "teSongResponse\"\000B\032\n\007ex.grpcZ\ncrowdsound\242"
-    "\002\002CSb\006proto3", 1132);
+    "\001 \001(\t\022\021\n\tnum_users\030\002 \001(\005\"\"\n\017GetQueueRequ"
+    "est\022\017\n\007user_id\030\001 \001(\t\"f\n\020GetQueueResponse"
+    "\022\014\n\004name\030\001 \001(\t\022\016\n\006artist\030\002 \001(\t\022\r\n\005genre\030"
+    "\003 \001(\t\022\021\n\tisPlaying\030\004 \001(\010\022\022\n\nisBuffered\030\005"
+    " \001(\010\"\034\n\032ListTrendingArtistsRequest\":\n\033Li"
+    "stTrendingArtistsResponse\022\014\n\004name\030\001 \001(\t\022"
+    "\r\n\005score\030\002 \001(\005\"O\n\017PostSongRequest\022\017\n\007use"
+    "r_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006artist\030\003 \003(\t"
+    "\022\r\n\005genre\030\004 \001(\t\"\022\n\020PostSongResponse\"N\n\017V"
+    "oteSongRequest\022\017\n\007user_id\030\001 \001(\t\022\014\n\004name\030"
+    "\002 \001(\t\022\016\n\006artist\030\003 \001(\t\022\014\n\004like\030\004 \001(\010\"\022\n\020V"
+    "oteSongResponse2\357\003\n\nCrowdSound\022;\n\004Ping\022\027"
+    ".CrowdSound.PingRequest\032\030.CrowdSound.Pin"
+    "gResponse\"\000\022Y\n\016GetSessionData\022!.CrowdSou"
+    "nd.GetSessionDataRequest\032\".CrowdSound.Ge"
+    "tSessionDataResponse\"\000\022I\n\010GetQueue\022\033.Cro"
+    "wdSound.GetQueueRequest\032\034.CrowdSound.Get"
+    "QueueResponse\"\0000\001\022j\n\023ListTrendingArtists"
+    "\022&.CrowdSound.ListTrendingArtistsRequest"
+    "\032\'.CrowdSound.ListTrendingArtistsRespons"
+    "e\"\0000\001\022I\n\010PostSong\022\033.CrowdSound.PostSongR"
+    "equest\032\034.CrowdSound.PostSongResponse\"\000(\001"
+    "\022G\n\010VoteSong\022\033.CrowdSound.VoteSongReques"
+    "t\032\034.CrowdSound.VoteSongResponse\"\000B\032\n\007ex."
+    "grpcZ\ncrowdsound\242\002\002CSb\006proto3", 1149);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/crowdsound_service.proto", &protobuf_RegisterTypes);
   PingRequest::default_instance_ = new PingRequest();
@@ -1337,6 +1338,7 @@ void GetSessionDataResponse::clear_num_users() {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int GetQueueRequest::kUserIdFieldNumber;
 #endif  // !_MSC_VER
 
 GetQueueRequest::GetQueueRequest()
@@ -1359,7 +1361,9 @@ GetQueueRequest::GetQueueRequest(const GetQueueRequest& from)
 
 void GetQueueRequest::SharedCtor() {
     _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
+  user_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 GetQueueRequest::~GetQueueRequest() {
@@ -1368,6 +1372,7 @@ GetQueueRequest::~GetQueueRequest() {
 }
 
 void GetQueueRequest::SharedDtor() {
+  user_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -1398,6 +1403,7 @@ GetQueueRequest* GetQueueRequest::New(::google::protobuf::Arena* arena) const {
 }
 
 void GetQueueRequest::Clear() {
+  user_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 bool GetQueueRequest::MergePartialFromCodedStream(
@@ -1409,13 +1415,34 @@ bool GetQueueRequest::MergePartialFromCodedStream(
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0 ||
-        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      goto success;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string user_id = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_user_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->user_id().data(), this->user_id().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CrowdSound.GetQueueRequest.user_id"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
   }
 success:
   // @@protoc_insertion_point(parse_success:CrowdSound.GetQueueRequest)
@@ -1429,18 +1456,46 @@ failure:
 void GetQueueRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:CrowdSound.GetQueueRequest)
+  // optional string user_id = 1;
+  if (this->user_id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->user_id().data(), this->user_id().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetQueueRequest.user_id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->user_id(), output);
+  }
+
   // @@protoc_insertion_point(serialize_end:CrowdSound.GetQueueRequest)
 }
 
 ::google::protobuf::uint8* GetQueueRequest::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:CrowdSound.GetQueueRequest)
+  // optional string user_id = 1;
+  if (this->user_id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->user_id().data(), this->user_id().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetQueueRequest.user_id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->user_id(), target);
+  }
+
   // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.GetQueueRequest)
   return target;
 }
 
 int GetQueueRequest::ByteSize() const {
   int total_size = 0;
+
+  // optional string user_id = 1;
+  if (this->user_id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->user_id());
+  }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = total_size;
@@ -1462,6 +1517,10 @@ void GetQueueRequest::MergeFrom(const ::google::protobuf::Message& from) {
 
 void GetQueueRequest::MergeFrom(const GetQueueRequest& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.user_id().size() > 0) {
+
+    user_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.user_id_);
+  }
 }
 
 void GetQueueRequest::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1486,6 +1545,7 @@ void GetQueueRequest::Swap(GetQueueRequest* other) {
   InternalSwap(other);
 }
 void GetQueueRequest::InternalSwap(GetQueueRequest* other) {
+  user_id_.Swap(&other->user_id_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -1500,6 +1560,49 @@ void GetQueueRequest::InternalSwap(GetQueueRequest* other) {
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // GetQueueRequest
+
+// optional string user_id = 1;
+void GetQueueRequest::clear_user_id() {
+  user_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& GetQueueRequest::user_id() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetQueueRequest.user_id)
+  return user_id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetQueueRequest::set_user_id(const ::std::string& value) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetQueueRequest.user_id)
+}
+ void GetQueueRequest::set_user_id(const char* value) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetQueueRequest.user_id)
+}
+ void GetQueueRequest::set_user_id(const char* value, size_t size) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetQueueRequest.user_id)
+}
+ ::std::string* GetQueueRequest::mutable_user_id() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetQueueRequest.user_id)
+  return user_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* GetQueueRequest::release_user_id() {
+  
+  return user_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetQueueRequest::set_allocated_user_id(::std::string* user_id) {
+  if (user_id != NULL) {
+    
+  } else {
+    
+  }
+  user_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), user_id);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetQueueRequest.user_id)
+}
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 

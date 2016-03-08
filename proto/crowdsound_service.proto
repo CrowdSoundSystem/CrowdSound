@@ -48,6 +48,7 @@ message GetSessionDataResponse {
 }
 
 message GetQueueRequest {
+    string user_id = 1;
 }
 
 message GetQueueResponse {
