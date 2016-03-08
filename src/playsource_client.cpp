@@ -1,6 +1,7 @@
 #include <chrono>
 #include <iostream>
 #include <thread>
+#include <queue>
 
 #include "playsource_client.hpp"
 #include "skrillex/skrillex.hpp"
@@ -51,6 +52,7 @@ void PlaysourceClient::runQueueLoop() {
     running_ = true;
     int sendPosition = 0;
     skrillex::ResultSet<skrillex::Song> buffer;
+    queue<int> skip;
 
     while (running_) {
         skrillex::Status s = db_->getBuffer(buffer);
@@ -106,6 +108,14 @@ void PlaysourceClient::runQueueLoop() {
             if (!resp.found()) {
                 cout << "[playsource] song not found: " << responseSong << endl;
                 db_->markUnplayable(resp.song_id());
+
+                // If the song that cannot be played is not at the head, mark
+                // it so we can skip later. I'm incredibly embarrased that I
+                // programmed myself into a wall, and have to have this incredible hack.
+                if (buffer.begin()->id != resp.song_id()) {
+                    skip.push(resp.song_id());
+                    continue;
+                }
             } else {
                 cout << "[playsource] song was not queued (server queue full?): " << responseSong << endl;
             }
@@ -117,6 +127,23 @@ void PlaysourceClient::runQueueLoop() {
         db_->songFinished();
         db_->bufferNext();
         sendPosition--;
+
+        // Is the next song playable? If not, pretend it played immediately
+        db_->getBuffer(buffer);
+        if (buffer.size() == 0 && skip.size() != 0) {
+            while (!skip.empty()) {
+                skip.pop();
+            }
+        } else if (buffer.size() > 0 && skip.size() > 0) {
+            if (buffer.begin()->id == skip.front()) {
+                algorithm_->run();
+                db_->songFinished();
+                db_->bufferNext();
+                sendPosition--;
+
+                skip.pop();
+            }
+        }
     }
 
     stream->Finish();
