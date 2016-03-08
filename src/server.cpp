@@ -147,7 +147,7 @@ Status CrowdSoundImpl::ListTrendingArtists(ServerContext* context, const ListTre
     int count = 0;
     for (Song s : resultSet) {
         ListTrendingArtistsResponse resp;
-        resp.set_name(s.name);
+        resp.set_name(s.artist.name);
         resp.set_score(s.votes);
 
         if (!writer->Write(resp)) {
