@@ -16,6 +16,7 @@ namespace Playsource {
 
 static const char* Playsource_method_names[] = {
   "/Playsource.Playsource/QueueSong",
+  "/Playsource.Playsource/SkipSong",
   "/Playsource.Playsource/GetPlaying",
   "/Playsource.Playsource/GetPlayHistory",
 };
@@ -27,8 +28,9 @@ std::unique_ptr< Playsource::Stub> Playsource::NewStub(const std::shared_ptr< ::
 
 Playsource::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   : channel_(channel), rpcmethod_QueueSong_(Playsource_method_names[0], ::grpc::RpcMethod::BIDI_STREAMING, channel)
-  , rpcmethod_GetPlaying_(Playsource_method_names[1], ::grpc::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetPlayHistory_(Playsource_method_names[2], ::grpc::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SkipSong_(Playsource_method_names[1], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetPlaying_(Playsource_method_names[2], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetPlayHistory_(Playsource_method_names[3], ::grpc::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::ClientReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* Playsource::Stub::QueueSongRaw(::grpc::ClientContext* context) {
@@ -37,6 +39,14 @@ Playsource::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
 
 ::grpc::ClientAsyncReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* Playsource::Stub::AsyncQueueSongRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
   return new ::grpc::ClientAsyncReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>(channel_.get(), cq, rpcmethod_QueueSong_, context, tag);
+}
+
+::grpc::Status Playsource::Stub::SkipSong(::grpc::ClientContext* context, const ::Playsource::SkipSongRequest& request, ::Playsource::SkipSongResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_SkipSong_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::Playsource::SkipSongResponse>* Playsource::Stub::AsyncSkipSongRaw(::grpc::ClientContext* context, const ::Playsource::SkipSongRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::Playsource::SkipSongResponse>(channel_.get(), cq, rpcmethod_SkipSong_, context, request);
 }
 
 ::grpc::Status Playsource::Stub::GetPlaying(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::Playsource::GetPlayingResponse* response) {
@@ -55,7 +65,7 @@ Playsource::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   return new ::grpc::ClientAsyncReader< ::Playsource::GetPlayHistoryResponse>(channel_.get(), cq, rpcmethod_GetPlayHistory_, context, request, tag);
 }
 
-Playsource::AsyncService::AsyncService() : ::grpc::AsynchronousService(Playsource_method_names, 3) {}
+Playsource::AsyncService::AsyncService() : ::grpc::AsynchronousService(Playsource_method_names, 4) {}
 
 Playsource::Service::~Service() {
   delete service_;
@@ -71,6 +81,17 @@ void Playsource::AsyncService::RequestQueueSong(::grpc::ServerContext* context, 
   AsynchronousService::RequestBidiStreaming(0, context, stream, new_call_cq, notification_cq, tag);
 }
 
+::grpc::Status Playsource::Service::SkipSong(::grpc::ServerContext* context, const ::Playsource::SkipSongRequest* request, ::Playsource::SkipSongResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+void Playsource::AsyncService::RequestSkipSong(::grpc::ServerContext* context, ::Playsource::SkipSongRequest* request, ::grpc::ServerAsyncResponseWriter< ::Playsource::SkipSongResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+  AsynchronousService::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+}
+
 ::grpc::Status Playsource::Service::GetPlaying(::grpc::ServerContext* context, const ::Playsource::GetPlayingRequest* request, ::Playsource::GetPlayingResponse* response) {
   (void) context;
   (void) request;
@@ -79,7 +100,7 @@ void Playsource::AsyncService::RequestQueueSong(::grpc::ServerContext* context, 
 }
 
 void Playsource::AsyncService::RequestGetPlaying(::grpc::ServerContext* context, ::Playsource::GetPlayingRequest* request, ::grpc::ServerAsyncResponseWriter< ::Playsource::GetPlayingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-  AsynchronousService::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+  AsynchronousService::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
 }
 
 ::grpc::Status Playsource::Service::GetPlayHistory(::grpc::ServerContext* context, const ::Playsource::GetPlayHistoryRequest* request, ::grpc::ServerWriter< ::Playsource::GetPlayHistoryResponse>* writer) {
@@ -90,7 +111,7 @@ void Playsource::AsyncService::RequestGetPlaying(::grpc::ServerContext* context,
 }
 
 void Playsource::AsyncService::RequestGetPlayHistory(::grpc::ServerContext* context, ::Playsource::GetPlayHistoryRequest* request, ::grpc::ServerAsyncWriter< ::Playsource::GetPlayHistoryResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-  AsynchronousService::RequestServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
+  AsynchronousService::RequestServerStreaming(3, context, request, writer, new_call_cq, notification_cq, tag);
 }
 
 ::grpc::RpcService* Playsource::Service::service() {
@@ -106,10 +127,15 @@ void Playsource::AsyncService::RequestGetPlayHistory(::grpc::ServerContext* cont
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       Playsource_method_names[1],
       ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< Playsource::Service, ::Playsource::SkipSongRequest, ::Playsource::SkipSongResponse>(
+          std::mem_fn(&Playsource::Service::SkipSong), this)));
+  service_->AddMethod(new ::grpc::RpcServiceMethod(
+      Playsource_method_names[2],
+      ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< Playsource::Service, ::Playsource::GetPlayingRequest, ::Playsource::GetPlayingResponse>(
           std::mem_fn(&Playsource::Service::GetPlaying), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
-      Playsource_method_names[2],
+      Playsource_method_names[3],
       ::grpc::RpcMethod::SERVER_STREAMING,
       new ::grpc::ServerStreamingHandler< Playsource::Service, ::Playsource::GetPlayHistoryRequest, ::Playsource::GetPlayHistoryResponse>(
           std::mem_fn(&Playsource::Service::GetPlayHistory), this)));

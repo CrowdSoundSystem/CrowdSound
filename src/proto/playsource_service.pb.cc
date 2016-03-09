@@ -29,6 +29,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* QueueSongResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   QueueSongResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SkipSongRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SkipSongRequest_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SkipSongResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SkipSongResponse_reflection_ = NULL;
 const ::google::protobuf::Descriptor* GetPlayingRequest_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   GetPlayingRequest_reflection_ = NULL;
@@ -101,7 +107,35 @@ void protobuf_AssignDesc_proto_2fplaysource_5fservice_2eproto() {
       sizeof(QueueSongResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QueueSongResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QueueSongResponse, _is_default_instance_));
-  GetPlayingRequest_descriptor_ = file->message_type(3);
+  SkipSongRequest_descriptor_ = file->message_type(3);
+  static const int SkipSongRequest_offsets_[1] = {
+  };
+  SkipSongRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      SkipSongRequest_descriptor_,
+      SkipSongRequest::default_instance_,
+      SkipSongRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(SkipSongRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkipSongRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkipSongRequest, _is_default_instance_));
+  SkipSongResponse_descriptor_ = file->message_type(4);
+  static const int SkipSongResponse_offsets_[1] = {
+  };
+  SkipSongResponse_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      SkipSongResponse_descriptor_,
+      SkipSongResponse::default_instance_,
+      SkipSongResponse_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(SkipSongResponse),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkipSongResponse, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkipSongResponse, _is_default_instance_));
+  GetPlayingRequest_descriptor_ = file->message_type(5);
   static const int GetPlayingRequest_offsets_[1] = {
   };
   GetPlayingRequest_reflection_ =
@@ -115,7 +149,7 @@ void protobuf_AssignDesc_proto_2fplaysource_5fservice_2eproto() {
       sizeof(GetPlayingRequest),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetPlayingRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetPlayingRequest, _is_default_instance_));
-  GetPlayingResponse_descriptor_ = file->message_type(4);
+  GetPlayingResponse_descriptor_ = file->message_type(6);
   static const int GetPlayingResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetPlayingResponse, song_),
   };
@@ -130,7 +164,7 @@ void protobuf_AssignDesc_proto_2fplaysource_5fservice_2eproto() {
       sizeof(GetPlayingResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetPlayingResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetPlayingResponse, _is_default_instance_));
-  GetPlayHistoryRequest_descriptor_ = file->message_type(5);
+  GetPlayHistoryRequest_descriptor_ = file->message_type(7);
   static const int GetPlayHistoryRequest_offsets_[1] = {
   };
   GetPlayHistoryRequest_reflection_ =
@@ -144,7 +178,7 @@ void protobuf_AssignDesc_proto_2fplaysource_5fservice_2eproto() {
       sizeof(GetPlayHistoryRequest),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetPlayHistoryRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetPlayHistoryRequest, _is_default_instance_));
-  GetPlayHistoryResponse_descriptor_ = file->message_type(6);
+  GetPlayHistoryResponse_descriptor_ = file->message_type(8);
   static const int GetPlayHistoryResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetPlayHistoryResponse, song_),
   };
@@ -178,6 +212,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       QueueSongResponse_descriptor_, &QueueSongResponse::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      SkipSongRequest_descriptor_, &SkipSongRequest::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      SkipSongResponse_descriptor_, &SkipSongResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       GetPlayingRequest_descriptor_, &GetPlayingRequest::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       GetPlayingResponse_descriptor_, &GetPlayingResponse::default_instance());
@@ -196,6 +234,10 @@ void protobuf_ShutdownFile_proto_2fplaysource_5fservice_2eproto() {
   delete QueueSongRequest_reflection_;
   delete QueueSongResponse::default_instance_;
   delete QueueSongResponse_reflection_;
+  delete SkipSongRequest::default_instance_;
+  delete SkipSongRequest_reflection_;
+  delete SkipSongResponse::default_instance_;
+  delete SkipSongResponse_reflection_;
   delete GetPlayingRequest::default_instance_;
   delete GetPlayingRequest_reflection_;
   delete GetPlayingResponse::default_instance_;
@@ -219,23 +261,27 @@ void protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto() {
     "\022\036\n\004song\030\001 \001(\0132\020.Playsource.Song\"U\n\021Queu"
     "eSongResponse\022\017\n\007song_id\030\001 \001(\005\022\016\n\006queued"
     "\030\002 \001(\010\022\r\n\005found\030\003 \001(\010\022\020\n\010finished\030\004 \001(\010\""
-    "\023\n\021GetPlayingRequest\"4\n\022GetPlayingRespon"
-    "se\022\036\n\004song\030\001 \001(\0132\020.Playsource.Song\"\027\n\025Ge"
-    "tPlayHistoryRequest\"8\n\026GetPlayHistoryRes"
-    "ponse\022\036\n\004song\030\001 \001(\0132\020.Playsource.Song2\210\002"
-    "\n\nPlaysource\022N\n\tQueueSong\022\034.Playsource.Q"
-    "ueueSongRequest\032\035.Playsource.QueueSongRe"
-    "sponse\"\000(\0010\001\022M\n\nGetPlaying\022\035.Playsource."
-    "GetPlayingRequest\032\036.Playsource.GetPlayin"
-    "gResponse\"\000\022[\n\016GetPlayHistory\022!.Playsour"
-    "ce.GetPlayHistoryRequest\032\".Playsource.Ge"
-    "tPlayHistoryResponse\"\0000\001B\014Z\nplaysourceb\006"
-    "proto3", 686);
+    "\021\n\017SkipSongRequest\"\022\n\020SkipSongResponse\"\023"
+    "\n\021GetPlayingRequest\"4\n\022GetPlayingRespons"
+    "e\022\036\n\004song\030\001 \001(\0132\020.Playsource.Song\"\027\n\025Get"
+    "PlayHistoryRequest\"8\n\026GetPlayHistoryResp"
+    "onse\022\036\n\004song\030\001 \001(\0132\020.Playsource.Song2\321\002\n"
+    "\nPlaysource\022N\n\tQueueSong\022\034.Playsource.Qu"
+    "eueSongRequest\032\035.Playsource.QueueSongRes"
+    "ponse\"\000(\0010\001\022G\n\010SkipSong\022\033.Playsource.Ski"
+    "pSongRequest\032\034.Playsource.SkipSongRespon"
+    "se\"\000\022M\n\nGetPlaying\022\035.Playsource.GetPlayi"
+    "ngRequest\032\036.Playsource.GetPlayingRespons"
+    "e\"\000\022[\n\016GetPlayHistory\022!.Playsource.GetPl"
+    "ayHistoryRequest\032\".Playsource.GetPlayHis"
+    "toryResponse\"\0000\001B\014Z\nplaysourceb\006proto3", 798);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/playsource_service.proto", &protobuf_RegisterTypes);
   Song::default_instance_ = new Song();
   QueueSongRequest::default_instance_ = new QueueSongRequest();
   QueueSongResponse::default_instance_ = new QueueSongResponse();
+  SkipSongRequest::default_instance_ = new SkipSongRequest();
+  SkipSongResponse::default_instance_ = new SkipSongResponse();
   GetPlayingRequest::default_instance_ = new GetPlayingRequest();
   GetPlayingResponse::default_instance_ = new GetPlayingResponse();
   GetPlayHistoryRequest::default_instance_ = new GetPlayHistoryRequest();
@@ -243,6 +289,8 @@ void protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto() {
   Song::default_instance_->InitAsDefaultInstance();
   QueueSongRequest::default_instance_->InitAsDefaultInstance();
   QueueSongResponse::default_instance_->InitAsDefaultInstance();
+  SkipSongRequest::default_instance_->InitAsDefaultInstance();
+  SkipSongResponse::default_instance_->InitAsDefaultInstance();
   GetPlayingRequest::default_instance_->InitAsDefaultInstance();
   GetPlayingResponse::default_instance_->InitAsDefaultInstance();
   GetPlayHistoryRequest::default_instance_->InitAsDefaultInstance();
@@ -1333,6 +1381,344 @@ void QueueSongResponse::clear_finished() {
   finished_ = value;
   // @@protoc_insertion_point(field_set:Playsource.QueueSongResponse.finished)
 }
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+SkipSongRequest::SkipSongRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Playsource.SkipSongRequest)
+}
+
+void SkipSongRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+SkipSongRequest::SkipSongRequest(const SkipSongRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:Playsource.SkipSongRequest)
+}
+
+void SkipSongRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+}
+
+SkipSongRequest::~SkipSongRequest() {
+  // @@protoc_insertion_point(destructor:Playsource.SkipSongRequest)
+  SharedDtor();
+}
+
+void SkipSongRequest::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void SkipSongRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SkipSongRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SkipSongRequest_descriptor_;
+}
+
+const SkipSongRequest& SkipSongRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto();
+  return *default_instance_;
+}
+
+SkipSongRequest* SkipSongRequest::default_instance_ = NULL;
+
+SkipSongRequest* SkipSongRequest::New(::google::protobuf::Arena* arena) const {
+  SkipSongRequest* n = new SkipSongRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void SkipSongRequest::Clear() {
+}
+
+bool SkipSongRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Playsource.SkipSongRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Playsource.SkipSongRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Playsource.SkipSongRequest)
+  return false;
+#undef DO_
+}
+
+void SkipSongRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Playsource.SkipSongRequest)
+  // @@protoc_insertion_point(serialize_end:Playsource.SkipSongRequest)
+}
+
+::google::protobuf::uint8* SkipSongRequest::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:Playsource.SkipSongRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:Playsource.SkipSongRequest)
+  return target;
+}
+
+int SkipSongRequest::ByteSize() const {
+  int total_size = 0;
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SkipSongRequest::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const SkipSongRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const SkipSongRequest>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SkipSongRequest::MergeFrom(const SkipSongRequest& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+}
+
+void SkipSongRequest::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SkipSongRequest::CopyFrom(const SkipSongRequest& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SkipSongRequest::IsInitialized() const {
+
+  return true;
+}
+
+void SkipSongRequest::Swap(SkipSongRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void SkipSongRequest::InternalSwap(SkipSongRequest* other) {
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata SkipSongRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SkipSongRequest_descriptor_;
+  metadata.reflection = SkipSongRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// SkipSongRequest
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+SkipSongResponse::SkipSongResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Playsource.SkipSongResponse)
+}
+
+void SkipSongResponse::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+SkipSongResponse::SkipSongResponse(const SkipSongResponse& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:Playsource.SkipSongResponse)
+}
+
+void SkipSongResponse::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+}
+
+SkipSongResponse::~SkipSongResponse() {
+  // @@protoc_insertion_point(destructor:Playsource.SkipSongResponse)
+  SharedDtor();
+}
+
+void SkipSongResponse::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void SkipSongResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SkipSongResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SkipSongResponse_descriptor_;
+}
+
+const SkipSongResponse& SkipSongResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto();
+  return *default_instance_;
+}
+
+SkipSongResponse* SkipSongResponse::default_instance_ = NULL;
+
+SkipSongResponse* SkipSongResponse::New(::google::protobuf::Arena* arena) const {
+  SkipSongResponse* n = new SkipSongResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void SkipSongResponse::Clear() {
+}
+
+bool SkipSongResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Playsource.SkipSongResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Playsource.SkipSongResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Playsource.SkipSongResponse)
+  return false;
+#undef DO_
+}
+
+void SkipSongResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Playsource.SkipSongResponse)
+  // @@protoc_insertion_point(serialize_end:Playsource.SkipSongResponse)
+}
+
+::google::protobuf::uint8* SkipSongResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:Playsource.SkipSongResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:Playsource.SkipSongResponse)
+  return target;
+}
+
+int SkipSongResponse::ByteSize() const {
+  int total_size = 0;
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SkipSongResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const SkipSongResponse* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const SkipSongResponse>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SkipSongResponse::MergeFrom(const SkipSongResponse& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+}
+
+void SkipSongResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SkipSongResponse::CopyFrom(const SkipSongResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SkipSongResponse::IsInitialized() const {
+
+  return true;
+}
+
+void SkipSongResponse::Swap(SkipSongResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void SkipSongResponse::InternalSwap(SkipSongResponse* other) {
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata SkipSongResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SkipSongResponse_descriptor_;
+  metadata.reflection = SkipSongResponse_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// SkipSongResponse
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 

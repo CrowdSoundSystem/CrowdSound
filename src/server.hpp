@@ -2,6 +2,7 @@
 #define crowdsoundserver_hpp
 
 #include <memory>
+#include <mutex>
 #include <string>
 #include <thread>
 #include <vector>
@@ -32,6 +33,8 @@ using CrowdSound::PostSongRequest;
 using CrowdSound::PostSongResponse;
 using CrowdSound::VoteSongRequest;
 using CrowdSound::VoteSongResponse;
+using CrowdSound::VoteSkipRequest;
+using CrowdSound::VoteSkipResponse;
 
 class CrowdSoundImpl final : public CrowdSound::CrowdSound::Service {
 public:
@@ -46,6 +49,7 @@ public:
     Status ListTrendingArtists(ServerContext* context, const ListTrendingArtistsRequest* request, ServerWriter<ListTrendingArtistsResponse>* writer) override;
     Status PostSong(ServerContext* context, ServerReader<PostSongRequest>* request, PostSongResponse* resp) override;
     Status VoteSong(ServerContext* context, const VoteSongRequest* request, VoteSongResponse* resp) override;
+    Status VoteSkip(ServerContext* context, const VoteSkipRequest* request, VoteSkipResponse* resp) override;
 
 protected:
     void runPlaySource();
@@ -54,6 +58,9 @@ private:
     std::shared_ptr<skrillex::Mapper> mapper_;
     std::shared_ptr<DecisionAlgorithm> algo_;
     std::unique_ptr<PlaysourceClient> playsource_;
+
+    std::mutex            skip_guard_;
+    std::set<std::string> skip_voters_;
 
     std::thread ps_thread_;
 };

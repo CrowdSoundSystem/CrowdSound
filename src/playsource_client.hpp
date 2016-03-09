@@ -23,6 +23,8 @@ public:
 
     void runQueueLoop();
     void stop();
+
+    void skipSong();
 private:
     bool pullFromQueue(int& count);
 

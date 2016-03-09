@@ -26,6 +26,8 @@ using CrowdSound::PostSongRequest;
 using CrowdSound::PostSongResponse;
 using CrowdSound::VoteSongRequest;
 using CrowdSound::VoteSongResponse;
+using CrowdSound::VoteSkipRequest;
+using CrowdSound::VoteSkipResponse;
 
 using skrillex::DB;
 using skrillex::Mapper;
@@ -257,3 +259,21 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
 
 }
 
+Status CrowdSoundImpl::VoteSkip(ServerContext* context, const VoteSkipRequest* request, VoteSkipResponse* resp) {
+    lock_guard<mutex> lock(skip_guard_);
+
+    skip_voters_.insert(request->user_id());
+
+    int users = 0;
+    skrillex::Status status = db_->getSessionUserCount(users);
+    if (status != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, status.message());
+    }
+
+    if (skip_voters_.size() > users/2) {
+        playsource_->skipSong();
+        skip_voters_.clear();
+    }
+
+    return Status::OK;
+}

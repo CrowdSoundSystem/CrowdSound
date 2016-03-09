@@ -46,6 +46,8 @@ class PingRequest;
 class PingResponse;
 class PostSongRequest;
 class PostSongResponse;
+class VoteSkipRequest;
+class VoteSkipResponse;
 class VoteSongRequest;
 class VoteSongResponse;
 
@@ -1109,6 +1111,160 @@ class VoteSongResponse : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static VoteSongResponse* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class VoteSkipRequest : public ::google::protobuf::Message {
+ public:
+  VoteSkipRequest();
+  virtual ~VoteSkipRequest();
+
+  VoteSkipRequest(const VoteSkipRequest& from);
+
+  inline VoteSkipRequest& operator=(const VoteSkipRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const VoteSkipRequest& default_instance();
+
+  void Swap(VoteSkipRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline VoteSkipRequest* New() const { return New(NULL); }
+
+  VoteSkipRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const VoteSkipRequest& from);
+  void MergeFrom(const VoteSkipRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(VoteSkipRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string user_id = 1;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 1;
+  const ::std::string& user_id() const;
+  void set_user_id(const ::std::string& value);
+  void set_user_id(const char* value);
+  void set_user_id(const char* value, size_t size);
+  ::std::string* mutable_user_id();
+  ::std::string* release_user_id();
+  void set_allocated_user_id(::std::string* user_id);
+
+  // @@protoc_insertion_point(class_scope:CrowdSound.VoteSkipRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr user_id_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static VoteSkipRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class VoteSkipResponse : public ::google::protobuf::Message {
+ public:
+  VoteSkipResponse();
+  virtual ~VoteSkipResponse();
+
+  VoteSkipResponse(const VoteSkipResponse& from);
+
+  inline VoteSkipResponse& operator=(const VoteSkipResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const VoteSkipResponse& default_instance();
+
+  void Swap(VoteSkipResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline VoteSkipResponse* New() const { return New(NULL); }
+
+  VoteSkipResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const VoteSkipResponse& from);
+  void MergeFrom(const VoteSkipResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(VoteSkipResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:CrowdSound.VoteSkipResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static VoteSkipResponse* default_instance_;
+};
 // ===================================================================
 
 
@@ -1844,7 +2000,62 @@ inline void VoteSongRequest::set_like(bool value) {
 
 // VoteSongResponse
 
+// -------------------------------------------------------------------
+
+// VoteSkipRequest
+
+// optional string user_id = 1;
+inline void VoteSkipRequest::clear_user_id() {
+  user_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& VoteSkipRequest::user_id() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.VoteSkipRequest.user_id)
+  return user_id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void VoteSkipRequest::set_user_id(const ::std::string& value) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.VoteSkipRequest.user_id)
+}
+inline void VoteSkipRequest::set_user_id(const char* value) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.VoteSkipRequest.user_id)
+}
+inline void VoteSkipRequest::set_user_id(const char* value, size_t size) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.VoteSkipRequest.user_id)
+}
+inline ::std::string* VoteSkipRequest::mutable_user_id() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.VoteSkipRequest.user_id)
+  return user_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* VoteSkipRequest::release_user_id() {
+  
+  return user_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void VoteSkipRequest::set_allocated_user_id(::std::string* user_id) {
+  if (user_id != NULL) {
+    
+  } else {
+    
+  }
+  user_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), user_id);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.VoteSkipRequest.user_id)
+}
+
+// -------------------------------------------------------------------
+
+// VoteSkipResponse
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

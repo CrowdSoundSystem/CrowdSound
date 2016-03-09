@@ -23,6 +23,8 @@ service Playsource {
     // a safety measure to ensure the playback system can handle the queue.
     rpc QueueSong(stream QueueSongRequest) returns (stream QueueSongResponse) {}
 
+    rpc SkipSong(SkipSongRequest) returns (SkipSongResponse) {}
+
     // GetPlaying returns the currently playing song (if any).
     rpc GetPlaying(GetPlayingRequest) returns (GetPlayingResponse) {}
 
@@ -59,6 +61,12 @@ message QueueSongResponse {
 
     // Whether or not the song was finished.
     bool finished = 4;
+}
+
+message SkipSongRequest {
+}
+
+message SkipSongResponse {
 }
 
 message GetPlayingRequest {

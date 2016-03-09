@@ -42,6 +42,8 @@ class GetPlayingRequest;
 class GetPlayingResponse;
 class QueueSongRequest;
 class QueueSongResponse;
+class SkipSongRequest;
+class SkipSongResponse;
 class Song;
 
 // ===================================================================
@@ -330,6 +332,148 @@ class QueueSongResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static QueueSongResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SkipSongRequest : public ::google::protobuf::Message {
+ public:
+  SkipSongRequest();
+  virtual ~SkipSongRequest();
+
+  SkipSongRequest(const SkipSongRequest& from);
+
+  inline SkipSongRequest& operator=(const SkipSongRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SkipSongRequest& default_instance();
+
+  void Swap(SkipSongRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline SkipSongRequest* New() const { return New(NULL); }
+
+  SkipSongRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SkipSongRequest& from);
+  void MergeFrom(const SkipSongRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(SkipSongRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:Playsource.SkipSongRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fplaysource_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fplaysource_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static SkipSongRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SkipSongResponse : public ::google::protobuf::Message {
+ public:
+  SkipSongResponse();
+  virtual ~SkipSongResponse();
+
+  SkipSongResponse(const SkipSongResponse& from);
+
+  inline SkipSongResponse& operator=(const SkipSongResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SkipSongResponse& default_instance();
+
+  void Swap(SkipSongResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline SkipSongResponse* New() const { return New(NULL); }
+
+  SkipSongResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SkipSongResponse& from);
+  void MergeFrom(const SkipSongResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(SkipSongResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:Playsource.SkipSongResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fplaysource_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fplaysource_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fplaysource_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static SkipSongResponse* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -857,6 +1001,14 @@ inline void QueueSongResponse::set_finished(bool value) {
 
 // -------------------------------------------------------------------
 
+// SkipSongRequest
+
+// -------------------------------------------------------------------
+
+// SkipSongResponse
+
+// -------------------------------------------------------------------
+
 // GetPlayingRequest
 
 // -------------------------------------------------------------------
@@ -946,6 +1098,10 @@ inline void GetPlayHistoryResponse::set_allocated_song(::Playsource::Song* song)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

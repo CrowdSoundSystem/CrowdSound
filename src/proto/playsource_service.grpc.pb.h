@@ -36,6 +36,10 @@ class Playsource GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>> AsyncQueueSong(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>>(AsyncQueueSongRaw(context, cq, tag));
     }
+    virtual ::grpc::Status SkipSong(::grpc::ClientContext* context, const ::Playsource::SkipSongRequest& request, ::Playsource::SkipSongResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Playsource::SkipSongResponse>> AsyncSkipSong(::grpc::ClientContext* context, const ::Playsource::SkipSongRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Playsource::SkipSongResponse>>(AsyncSkipSongRaw(context, request, cq));
+    }
     virtual ::grpc::Status GetPlaying(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::Playsource::GetPlayingResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Playsource::GetPlayingResponse>> AsyncGetPlaying(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Playsource::GetPlayingResponse>>(AsyncGetPlayingRaw(context, request, cq));
@@ -49,6 +53,7 @@ class Playsource GRPC_FINAL {
   private:
     virtual ::grpc::ClientReaderWriterInterface< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* QueueSongRaw(::grpc::ClientContext* context) = 0;
     virtual ::grpc::ClientAsyncReaderWriterInterface< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* AsyncQueueSongRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::Playsource::SkipSongResponse>* AsyncSkipSongRaw(::grpc::ClientContext* context, const ::Playsource::SkipSongRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::Playsource::GetPlayingResponse>* AsyncGetPlayingRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientReaderInterface< ::Playsource::GetPlayHistoryResponse>* GetPlayHistoryRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::Playsource::GetPlayHistoryResponse>* AsyncGetPlayHistoryRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
@@ -61,6 +66,10 @@ class Playsource GRPC_FINAL {
     }
     std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>> AsyncQueueSong(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>>(AsyncQueueSongRaw(context, cq, tag));
+    }
+    ::grpc::Status SkipSong(::grpc::ClientContext* context, const ::Playsource::SkipSongRequest& request, ::Playsource::SkipSongResponse* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Playsource::SkipSongResponse>> AsyncSkipSong(::grpc::ClientContext* context, const ::Playsource::SkipSongRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Playsource::SkipSongResponse>>(AsyncSkipSongRaw(context, request, cq));
     }
     ::grpc::Status GetPlaying(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::Playsource::GetPlayingResponse* response) GRPC_OVERRIDE;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Playsource::GetPlayingResponse>> AsyncGetPlaying(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) {
@@ -77,10 +86,12 @@ class Playsource GRPC_FINAL {
     std::shared_ptr< ::grpc::Channel> channel_;
     ::grpc::ClientReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* QueueSongRaw(::grpc::ClientContext* context) GRPC_OVERRIDE;
     ::grpc::ClientAsyncReaderWriter< ::Playsource::QueueSongRequest, ::Playsource::QueueSongResponse>* AsyncQueueSongRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::Playsource::SkipSongResponse>* AsyncSkipSongRaw(::grpc::ClientContext* context, const ::Playsource::SkipSongRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::Playsource::GetPlayingResponse>* AsyncGetPlayingRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientReader< ::Playsource::GetPlayHistoryResponse>* GetPlayHistoryRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request) GRPC_OVERRIDE;
     ::grpc::ClientAsyncReader< ::Playsource::GetPlayHistoryResponse>* AsyncGetPlayHistoryRaw(::grpc::ClientContext* context, const ::Playsource::GetPlayHistoryRequest& request, ::grpc::CompletionQueue* cq, void* tag) GRPC_OVERRIDE;
     const ::grpc::RpcMethod rpcmethod_QueueSong_;
+    const ::grpc::RpcMethod rpcmethod_SkipSong_;
     const ::grpc::RpcMethod rpcmethod_GetPlaying_;
     const ::grpc::RpcMethod rpcmethod_GetPlayHistory_;
   };
@@ -91,6 +102,7 @@ class Playsource GRPC_FINAL {
     Service() : service_(nullptr) {}
     virtual ~Service();
     virtual ::grpc::Status QueueSong(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::Playsource::QueueSongResponse, ::Playsource::QueueSongRequest>* stream);
+    virtual ::grpc::Status SkipSong(::grpc::ServerContext* context, const ::Playsource::SkipSongRequest* request, ::Playsource::SkipSongResponse* response);
     virtual ::grpc::Status GetPlaying(::grpc::ServerContext* context, const ::Playsource::GetPlayingRequest* request, ::Playsource::GetPlayingResponse* response);
     virtual ::grpc::Status GetPlayHistory(::grpc::ServerContext* context, const ::Playsource::GetPlayHistoryRequest* request, ::grpc::ServerWriter< ::Playsource::GetPlayHistoryResponse>* writer);
     ::grpc::RpcService* service() GRPC_OVERRIDE GRPC_FINAL;
@@ -102,6 +114,7 @@ class Playsource GRPC_FINAL {
     explicit AsyncService();
     ~AsyncService() {};
     void RequestQueueSong(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::Playsource::QueueSongResponse, ::Playsource::QueueSongRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestSkipSong(::grpc::ServerContext* context, ::Playsource::SkipSongRequest* request, ::grpc::ServerAsyncResponseWriter< ::Playsource::SkipSongResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestGetPlaying(::grpc::ServerContext* context, ::Playsource::GetPlayingRequest* request, ::grpc::ServerAsyncResponseWriter< ::Playsource::GetPlayingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestGetPlayHistory(::grpc::ServerContext* context, ::Playsource::GetPlayHistoryRequest* request, ::grpc::ServerAsyncWriter< ::Playsource::GetPlayHistoryResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
   };

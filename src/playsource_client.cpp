@@ -16,6 +16,8 @@ using grpc::WriteOptions;
 using Playsource::Song;
 using Playsource::QueueSongRequest;
 using Playsource::QueueSongResponse;
+using Playsource::SkipSongRequest;
+using Playsource::SkipSongResponse;
 
 PlaysourceClient::PlaysourceClient(shared_ptr<Channel> channel, int maxQueueSize, shared_ptr<skrillex::DB> db, shared_ptr<DecisionAlgorithm> algorithm)
     : stub_(Playsource::Playsource::NewStub(channel))
@@ -172,4 +174,15 @@ bool PlaysourceClient::pullFromQueue(int& count) {
     }
 
     return true;
+}
+
+void PlaysourceClient::skipSong() {
+    SkipSongRequest  req;
+    SkipSongResponse resp;
+
+    ClientContext context;
+    Status status = stub_->SkipSong(&context, req, &resp);
+    if (!status.ok()) {
+        cout << "[playsource] skip failed" << endl;
+    }
 }
