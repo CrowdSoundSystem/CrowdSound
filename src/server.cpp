@@ -161,16 +161,16 @@ Status CrowdSoundImpl::ListTrendingArtists(ServerContext* context, const ListTre
     ReadOptions voteSort;
     voteSort.sort = SortType::Votes;
 
-    ResultSet<Song> resultSet;
-    skrillex::Status status = this->db_->getSongs(resultSet, voteSort);
+    ResultSet<Artist> resultSet;
+    skrillex::Status status = this->db_->getArtists(resultSet, voteSort);
     if (status != skrillex::Status::OK()) {
         return Status(StatusCode::INTERNAL, status.message());
     }
 
     int count = 0;
-    for (Song s : resultSet) {
+    for (Artist s : resultSet) {
         ListTrendingArtistsResponse resp;
-        resp.set_name(s.artist.name);
+        resp.set_name(s.name);
         resp.set_score(s.votes);
 
         if (!writer->Write(resp)) {
