@@ -52,7 +52,6 @@ void PlaysourceClient::runQueueLoop() {
     running_ = true;
     int sendPosition = 0;
     skrillex::ResultSet<skrillex::Song> buffer;
-    queue<int> skip;
 
     while (running_) {
         skrillex::Status s = db_->getBuffer(buffer);
@@ -61,12 +60,11 @@ void PlaysourceClient::runQueueLoop() {
             return;
         }
 
-        // If the buffer is empty, re-run algorithm (which updates queue)
-        // and try to pull the queue into the buffer.
-        if (buffer.size() == 0) {
+        // If the buffer is not full, try to pull in songs.
+        if (buffer.size() < 3) {
             algorithm_->run();
 
-            int count = 0;
+            int count = buffer.size();
             if (!pullFromQueue(count)) {
                 return;
             }
@@ -105,20 +103,40 @@ void PlaysourceClient::runQueueLoop() {
         // Are there any issues with this song?
         skrillex::Song responseSong = getSongFromBuffer(buffer, resp.song_id());
         if (!resp.finished()) {
+            // There was an issue with this song, and it wasn't put into the
+            // mopidy queue. What this means, is that the position of this song
+            // in our local buffer, is not present in mopidy's buffer, and so everything
+            // is offset by 1. Example:
+            //
+            // Local Buffer:
+            // +---+---+---+
+            // | A | B | C |
+            // +---+---+---+
+            //
+            // Remote Buffer:
+            // +---+---+---+
+            // | A | C | - |
+            // +---+---+---+
+            //
+            //
+            // What this means, is that we have to remove 'B' in our local queue, shifting
+            // everything up (shift C, and decrease songPosition). Our buffer will then be
+            // back in sync, but we will also need to fill out the missing slot.
+
+            // Step 1: Update buffer state.
+            db_->removeFromBuffer(resp.song_id());
+            sendPosition--;
+
+            // Step 2: Update db song state.
             if (!resp.found()) {
                 cout << "[playsource] song not found: " << responseSong << endl;
                 db_->markUnplayable(resp.song_id());
-
-                // If the song that cannot be played is not at the head, mark
-                // it so we can skip later. I'm incredibly embarrased that I
-                // programmed myself into a wall, and have to have this incredible hack.
-                if (buffer.begin()->id != resp.song_id()) {
-                    skip.push(resp.song_id());
-                    continue;
-                }
             } else {
                 cout << "[playsource] song was not queued (server queue full?): " << responseSong << endl;
             }
+
+            // Step 3: Continue, to let the next iteration refill queue.
+            continue;
         } else {
             cout << "[playsource] song finished: " << responseSong << endl;
         }
@@ -127,23 +145,6 @@ void PlaysourceClient::runQueueLoop() {
         db_->songFinished();
         db_->bufferNext();
         sendPosition--;
-
-        // Is the next song playable? If not, pretend it played immediately
-        db_->getBuffer(buffer);
-        if (buffer.size() == 0 && skip.size() != 0) {
-            while (!skip.empty()) {
-                skip.pop();
-            }
-        } else if (buffer.size() > 0 && skip.size() > 0) {
-            if (buffer.begin()->id == skip.front()) {
-                algorithm_->run();
-                db_->songFinished();
-                db_->bufferNext();
-                sendPosition--;
-
-                skip.pop();
-            }
-        }
     }
 
     stream->Finish();
@@ -162,7 +163,6 @@ bool PlaysourceClient::pullFromQueue(int& count) {
         return false;
     }
 
-    count = 0;
     for (auto it = queue.begin(); it != queue.end(); it++, count++) {
         if (count >= max_queue_size_) {
             break;
