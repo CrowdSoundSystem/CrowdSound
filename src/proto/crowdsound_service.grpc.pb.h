@@ -38,6 +38,10 @@ class CrowdSound GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetSessionDataResponse>> AsyncGetSessionData(::grpc::ClientContext* context, const ::CrowdSound::GetSessionDataRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetSessionDataResponse>>(AsyncGetSessionDataRaw(context, request, cq));
     }
+    virtual ::grpc::Status GetPlaying(::grpc::ClientContext* context, const ::CrowdSound::GetPlayingRequest& request, ::CrowdSound::GetPlayingResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetPlayingResponse>> AsyncGetPlaying(::grpc::ClientContext* context, const ::CrowdSound::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetPlayingResponse>>(AsyncGetPlayingRaw(context, request, cq));
+    }
     std::unique_ptr< ::grpc::ClientReaderInterface< ::CrowdSound::GetQueueResponse>> GetQueue(::grpc::ClientContext* context, const ::CrowdSound::GetQueueRequest& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::CrowdSound::GetQueueResponse>>(GetQueueRaw(context, request));
     }
@@ -67,6 +71,7 @@ class CrowdSound GRPC_FINAL {
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::PingResponse>* AsyncPingRaw(::grpc::ClientContext* context, const ::CrowdSound::PingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetSessionDataResponse>* AsyncGetSessionDataRaw(::grpc::ClientContext* context, const ::CrowdSound::GetSessionDataRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetPlayingResponse>* AsyncGetPlayingRaw(::grpc::ClientContext* context, const ::CrowdSound::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientReaderInterface< ::CrowdSound::GetQueueResponse>* GetQueueRaw(::grpc::ClientContext* context, const ::CrowdSound::GetQueueRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::CrowdSound::GetQueueResponse>* AsyncGetQueueRaw(::grpc::ClientContext* context, const ::CrowdSound::GetQueueRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientReaderInterface< ::CrowdSound::ListTrendingArtistsResponse>* ListTrendingArtistsRaw(::grpc::ClientContext* context, const ::CrowdSound::ListTrendingArtistsRequest& request) = 0;
@@ -86,6 +91,10 @@ class CrowdSound GRPC_FINAL {
     ::grpc::Status GetSessionData(::grpc::ClientContext* context, const ::CrowdSound::GetSessionDataRequest& request, ::CrowdSound::GetSessionDataResponse* response) GRPC_OVERRIDE;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetSessionDataResponse>> AsyncGetSessionData(::grpc::ClientContext* context, const ::CrowdSound::GetSessionDataRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetSessionDataResponse>>(AsyncGetSessionDataRaw(context, request, cq));
+    }
+    ::grpc::Status GetPlaying(::grpc::ClientContext* context, const ::CrowdSound::GetPlayingRequest& request, ::CrowdSound::GetPlayingResponse* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetPlayingResponse>> AsyncGetPlaying(::grpc::ClientContext* context, const ::CrowdSound::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetPlayingResponse>>(AsyncGetPlayingRaw(context, request, cq));
     }
     std::unique_ptr< ::grpc::ClientReader< ::CrowdSound::GetQueueResponse>> GetQueue(::grpc::ClientContext* context, const ::CrowdSound::GetQueueRequest& request) {
       return std::unique_ptr< ::grpc::ClientReader< ::CrowdSound::GetQueueResponse>>(GetQueueRaw(context, request));
@@ -118,6 +127,7 @@ class CrowdSound GRPC_FINAL {
     std::shared_ptr< ::grpc::Channel> channel_;
     ::grpc::ClientAsyncResponseReader< ::CrowdSound::PingResponse>* AsyncPingRaw(::grpc::ClientContext* context, const ::CrowdSound::PingRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetSessionDataResponse>* AsyncGetSessionDataRaw(::grpc::ClientContext* context, const ::CrowdSound::GetSessionDataRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetPlayingResponse>* AsyncGetPlayingRaw(::grpc::ClientContext* context, const ::CrowdSound::GetPlayingRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientReader< ::CrowdSound::GetQueueResponse>* GetQueueRaw(::grpc::ClientContext* context, const ::CrowdSound::GetQueueRequest& request) GRPC_OVERRIDE;
     ::grpc::ClientAsyncReader< ::CrowdSound::GetQueueResponse>* AsyncGetQueueRaw(::grpc::ClientContext* context, const ::CrowdSound::GetQueueRequest& request, ::grpc::CompletionQueue* cq, void* tag) GRPC_OVERRIDE;
     ::grpc::ClientReader< ::CrowdSound::ListTrendingArtistsResponse>* ListTrendingArtistsRaw(::grpc::ClientContext* context, const ::CrowdSound::ListTrendingArtistsRequest& request) GRPC_OVERRIDE;
@@ -128,6 +138,7 @@ class CrowdSound GRPC_FINAL {
     ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteSkipResponse>* AsyncVoteSkipRaw(::grpc::ClientContext* context, const ::CrowdSound::VoteSkipRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     const ::grpc::RpcMethod rpcmethod_Ping_;
     const ::grpc::RpcMethod rpcmethod_GetSessionData_;
+    const ::grpc::RpcMethod rpcmethod_GetPlaying_;
     const ::grpc::RpcMethod rpcmethod_GetQueue_;
     const ::grpc::RpcMethod rpcmethod_ListTrendingArtists_;
     const ::grpc::RpcMethod rpcmethod_PostSong_;
@@ -142,6 +153,7 @@ class CrowdSound GRPC_FINAL {
     virtual ~Service();
     virtual ::grpc::Status Ping(::grpc::ServerContext* context, const ::CrowdSound::PingRequest* request, ::CrowdSound::PingResponse* response);
     virtual ::grpc::Status GetSessionData(::grpc::ServerContext* context, const ::CrowdSound::GetSessionDataRequest* request, ::CrowdSound::GetSessionDataResponse* response);
+    virtual ::grpc::Status GetPlaying(::grpc::ServerContext* context, const ::CrowdSound::GetPlayingRequest* request, ::CrowdSound::GetPlayingResponse* response);
     virtual ::grpc::Status GetQueue(::grpc::ServerContext* context, const ::CrowdSound::GetQueueRequest* request, ::grpc::ServerWriter< ::CrowdSound::GetQueueResponse>* writer);
     virtual ::grpc::Status ListTrendingArtists(::grpc::ServerContext* context, const ::CrowdSound::ListTrendingArtistsRequest* request, ::grpc::ServerWriter< ::CrowdSound::ListTrendingArtistsResponse>* writer);
     virtual ::grpc::Status PostSong(::grpc::ServerContext* context, ::grpc::ServerReader< ::CrowdSound::PostSongRequest>* reader, ::CrowdSound::PostSongResponse* response);
@@ -157,6 +169,7 @@ class CrowdSound GRPC_FINAL {
     ~AsyncService() {};
     void RequestPing(::grpc::ServerContext* context, ::CrowdSound::PingRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::PingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestGetSessionData(::grpc::ServerContext* context, ::CrowdSound::GetSessionDataRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::GetSessionDataResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestGetPlaying(::grpc::ServerContext* context, ::CrowdSound::GetPlayingRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::GetPlayingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestGetQueue(::grpc::ServerContext* context, ::CrowdSound::GetQueueRequest* request, ::grpc::ServerAsyncWriter< ::CrowdSound::GetQueueResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestListTrendingArtists(::grpc::ServerContext* context, ::CrowdSound::ListTrendingArtistsRequest* request, ::grpc::ServerAsyncWriter< ::CrowdSound::ListTrendingArtistsResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestPostSong(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::CrowdSound::PostSongResponse, ::CrowdSound::PostSongRequest>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);

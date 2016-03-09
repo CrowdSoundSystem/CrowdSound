@@ -36,6 +36,8 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
 void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto();
 void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
 
+class GetPlayingRequest;
+class GetPlayingResponse;
 class GetQueueRequest;
 class GetQueueResponse;
 class GetSessionDataRequest;
@@ -365,6 +367,184 @@ class GetSessionDataResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static GetSessionDataResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GetPlayingRequest : public ::google::protobuf::Message {
+ public:
+  GetPlayingRequest();
+  virtual ~GetPlayingRequest();
+
+  GetPlayingRequest(const GetPlayingRequest& from);
+
+  inline GetPlayingRequest& operator=(const GetPlayingRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetPlayingRequest& default_instance();
+
+  void Swap(GetPlayingRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline GetPlayingRequest* New() const { return New(NULL); }
+
+  GetPlayingRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetPlayingRequest& from);
+  void MergeFrom(const GetPlayingRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(GetPlayingRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:CrowdSound.GetPlayingRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static GetPlayingRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GetPlayingResponse : public ::google::protobuf::Message {
+ public:
+  GetPlayingResponse();
+  virtual ~GetPlayingResponse();
+
+  GetPlayingResponse(const GetPlayingResponse& from);
+
+  inline GetPlayingResponse& operator=(const GetPlayingResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetPlayingResponse& default_instance();
+
+  void Swap(GetPlayingResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline GetPlayingResponse* New() const { return New(NULL); }
+
+  GetPlayingResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetPlayingResponse& from);
+  void MergeFrom(const GetPlayingResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(GetPlayingResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional string artist = 2;
+  void clear_artist();
+  static const int kArtistFieldNumber = 2;
+  const ::std::string& artist() const;
+  void set_artist(const ::std::string& value);
+  void set_artist(const char* value);
+  void set_artist(const char* value, size_t size);
+  ::std::string* mutable_artist();
+  ::std::string* release_artist();
+  void set_allocated_artist(::std::string* artist);
+
+  // optional string genre = 3;
+  void clear_genre();
+  static const int kGenreFieldNumber = 3;
+  const ::std::string& genre() const;
+  void set_genre(const ::std::string& value);
+  void set_genre(const char* value);
+  void set_genre(const char* value, size_t size);
+  ::std::string* mutable_genre();
+  ::std::string* release_genre();
+  void set_allocated_genre(::std::string* genre);
+
+  // @@protoc_insertion_point(class_scope:CrowdSound.GetPlayingResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr artist_;
+  ::google::protobuf::internal::ArenaStringPtr genre_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static GetPlayingResponse* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1387,6 +1567,143 @@ inline void GetSessionDataResponse::set_num_users(::google::protobuf::int32 valu
 
 // -------------------------------------------------------------------
 
+// GetPlayingRequest
+
+// -------------------------------------------------------------------
+
+// GetPlayingResponse
+
+// optional string name = 1;
+inline void GetPlayingResponse::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetPlayingResponse::name() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetPlayingResponse.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetPlayingResponse::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetPlayingResponse.name)
+}
+inline void GetPlayingResponse::set_name(const char* value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetPlayingResponse.name)
+}
+inline void GetPlayingResponse::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetPlayingResponse.name)
+}
+inline ::std::string* GetPlayingResponse::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetPlayingResponse.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetPlayingResponse::release_name() {
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetPlayingResponse::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetPlayingResponse.name)
+}
+
+// optional string artist = 2;
+inline void GetPlayingResponse::clear_artist() {
+  artist_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetPlayingResponse::artist() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetPlayingResponse.artist)
+  return artist_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetPlayingResponse::set_artist(const ::std::string& value) {
+  
+  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetPlayingResponse.artist)
+}
+inline void GetPlayingResponse::set_artist(const char* value) {
+  
+  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetPlayingResponse.artist)
+}
+inline void GetPlayingResponse::set_artist(const char* value, size_t size) {
+  
+  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetPlayingResponse.artist)
+}
+inline ::std::string* GetPlayingResponse::mutable_artist() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetPlayingResponse.artist)
+  return artist_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetPlayingResponse::release_artist() {
+  
+  return artist_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetPlayingResponse::set_allocated_artist(::std::string* artist) {
+  if (artist != NULL) {
+    
+  } else {
+    
+  }
+  artist_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), artist);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetPlayingResponse.artist)
+}
+
+// optional string genre = 3;
+inline void GetPlayingResponse::clear_genre() {
+  genre_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetPlayingResponse::genre() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetPlayingResponse.genre)
+  return genre_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetPlayingResponse::set_genre(const ::std::string& value) {
+  
+  genre_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetPlayingResponse.genre)
+}
+inline void GetPlayingResponse::set_genre(const char* value) {
+  
+  genre_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetPlayingResponse.genre)
+}
+inline void GetPlayingResponse::set_genre(const char* value, size_t size) {
+  
+  genre_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetPlayingResponse.genre)
+}
+inline ::std::string* GetPlayingResponse::mutable_genre() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetPlayingResponse.genre)
+  return genre_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetPlayingResponse::release_genre() {
+  
+  return genre_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetPlayingResponse::set_allocated_genre(::std::string* genre) {
+  if (genre != NULL) {
+    
+  } else {
+    
+  }
+  genre_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), genre);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetPlayingResponse.genre)
+}
+
+// -------------------------------------------------------------------
+
 // GetQueueRequest
 
 // optional string user_id = 1;
@@ -2052,6 +2369,10 @@ inline void VoteSkipRequest::set_allocated_user_id(::std::string* user_id) {
 // VoteSkipResponse
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

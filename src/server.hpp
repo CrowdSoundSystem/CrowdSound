@@ -25,6 +25,8 @@ using CrowdSound::PingRequest;
 using CrowdSound::PingResponse;
 using CrowdSound::GetSessionDataRequest;
 using CrowdSound::GetSessionDataResponse;
+using CrowdSound::GetPlayingRequest;
+using CrowdSound::GetPlayingResponse;
 using CrowdSound::GetQueueRequest;
 using CrowdSound::GetQueueResponse;
 using CrowdSound::ListTrendingArtistsRequest;
@@ -45,6 +47,7 @@ public:
 
     Status Ping(ServerContext* context, const PingRequest* request, PingResponse* resp) override;
     Status GetSessionData(ServerContext* context, const GetSessionDataRequest* request, GetSessionDataResponse* resp) override;
+    Status GetPlaying(ServerContext* context, const GetPlayingRequest* request, GetPlayingResponse* writer) override;
     Status GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) override;
     Status ListTrendingArtists(ServerContext* context, const ListTrendingArtistsRequest* request, ServerWriter<ListTrendingArtistsResponse>* writer) override;
     Status PostSong(ServerContext* context, ServerReader<PostSongRequest>* request, PostSongResponse* resp) override;

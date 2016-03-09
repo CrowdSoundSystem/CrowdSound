@@ -77,6 +77,23 @@ Status CrowdSoundImpl::GetSessionData(ServerContext* context, const GetSessionDa
     return Status::OK;
 }
 
+Status CrowdSoundImpl::GetPlaying(ServerContext* context, const GetPlayingRequest* request, GetPlayingResponse* response) {
+    ResultSet<Song> resultSet;
+
+    skrillex::Status status = this->db_->getBuffer(resultSet);
+    if (status != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, status.message());
+    }
+
+    if (resultSet.size() > 0) {
+        response->set_name(resultSet.begin()->name);
+        response->set_artist(resultSet.begin()->artist.name);
+        response->set_genre(resultSet.begin()->genre.name);
+    }
+
+    return Status::OK;
+}
+
 Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) {
     ResultSet<Song> resultSet;
 
@@ -96,18 +113,22 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
     int count = 0;
     bool first = true;
     for (Song s : resultSet) {
+        if (first) {
+            first = false;
+            continue;
+        }
+
         GetQueueResponse resp;
         resp.set_name(s.name);
         resp.set_artist(s.artist.name);
         resp.set_genre(s.genre.name);
-        resp.set_isplaying(first);
+        resp.set_isplaying(false);
         resp.set_isbuffered(true);
 
         if (!writer->Write(resp)) {
             break;
         }
 
-        first = false;
         count++;
     }
 
@@ -128,7 +149,7 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
             break;
         }
 
-        if (++count >= 10) {
+        if (++count >= 20) {
             break;
         }
     }
