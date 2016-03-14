@@ -139,6 +139,7 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSessionDataResponse, _is_default_instance_));
   GetPlayingRequest_descriptor_ = file->message_type(4);
   static const int GetPlayingRequest_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetPlayingRequest, user_id_),
   };
   GetPlayingRequest_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -419,39 +420,39 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto() {
     "ound\"\036\n\013PingRequest\022\017\n\007user_id\030\001 \001(\t\"\016\n\014"
     "PingResponse\"\027\n\025GetSessionDataRequest\"A\n"
     "\026GetSessionDataResponse\022\024\n\014session_name\030"
-    "\001 \001(\t\022\021\n\tnum_users\030\002 \001(\005\"\023\n\021GetPlayingRe"
-    "quest\"A\n\022GetPlayingResponse\022\014\n\004name\030\001 \001("
-    "\t\022\016\n\006artist\030\002 \001(\t\022\r\n\005genre\030\003 \001(\t\"\"\n\017GetQ"
-    "ueueRequest\022\017\n\007user_id\030\001 \001(\t\"f\n\020GetQueue"
-    "Response\022\014\n\004name\030\001 \001(\t\022\016\n\006artist\030\002 \001(\t\022\r"
-    "\n\005genre\030\003 \001(\t\022\021\n\tisPlaying\030\004 \001(\010\022\022\n\nisBu"
-    "ffered\030\005 \001(\010\"\034\n\032ListTrendingArtistsReque"
-    "st\":\n\033ListTrendingArtistsResponse\022\014\n\004nam"
-    "e\030\001 \001(\t\022\r\n\005score\030\002 \001(\005\"O\n\017PostSongReques"
-    "t\022\017\n\007user_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006arti"
-    "st\030\003 \003(\t\022\r\n\005genre\030\004 \001(\t\"\022\n\020PostSongRespo"
-    "nse\"N\n\017VoteSongRequest\022\017\n\007user_id\030\001 \001(\t\022"
-    "\014\n\004name\030\002 \001(\t\022\016\n\006artist\030\003 \001(\t\022\014\n\004like\030\004 "
-    "\001(\010\"\022\n\020VoteSongResponse\"\"\n\017VoteSkipReque"
-    "st\022\017\n\007user_id\030\001 \001(\t\"\022\n\020VoteSkipResponse2"
-    "\207\005\n\nCrowdSound\022;\n\004Ping\022\027.CrowdSound.Ping"
-    "Request\032\030.CrowdSound.PingResponse\"\000\022Y\n\016G"
-    "etSessionData\022!.CrowdSound.GetSessionDat"
-    "aRequest\032\".CrowdSound.GetSessionDataResp"
-    "onse\"\000\022M\n\nGetPlaying\022\035.CrowdSound.GetPla"
-    "yingRequest\032\036.CrowdSound.GetPlayingRespo"
-    "nse\"\000\022I\n\010GetQueue\022\033.CrowdSound.GetQueueR"
-    "equest\032\034.CrowdSound.GetQueueResponse\"\0000\001"
-    "\022j\n\023ListTrendingArtists\022&.CrowdSound.Lis"
-    "tTrendingArtistsRequest\032\'.CrowdSound.Lis"
-    "tTrendingArtistsResponse\"\0000\001\022I\n\010PostSong"
-    "\022\033.CrowdSound.PostSongRequest\032\034.CrowdSou"
-    "nd.PostSongResponse\"\000(\001\022G\n\010VoteSong\022\033.Cr"
-    "owdSound.VoteSongRequest\032\034.CrowdSound.Vo"
-    "teSongResponse\"\000\022G\n\010VoteSkip\022\033.CrowdSoun"
-    "d.VoteSkipRequest\032\034.CrowdSound.VoteSkipR"
-    "esponse\"\000B\032\n\007ex.grpcZ\ncrowdsound\242\002\002CSb\006p"
-    "roto3", 1445);
+    "\001 \001(\t\022\021\n\tnum_users\030\002 \001(\005\"$\n\021GetPlayingRe"
+    "quest\022\017\n\007user_id\030\001 \001(\t\"A\n\022GetPlayingResp"
+    "onse\022\014\n\004name\030\001 \001(\t\022\016\n\006artist\030\002 \001(\t\022\r\n\005ge"
+    "nre\030\003 \001(\t\"\"\n\017GetQueueRequest\022\017\n\007user_id\030"
+    "\001 \001(\t\"f\n\020GetQueueResponse\022\014\n\004name\030\001 \001(\t\022"
+    "\016\n\006artist\030\002 \001(\t\022\r\n\005genre\030\003 \001(\t\022\021\n\tisPlay"
+    "ing\030\004 \001(\010\022\022\n\nisBuffered\030\005 \001(\010\"\034\n\032ListTre"
+    "ndingArtistsRequest\":\n\033ListTrendingArtis"
+    "tsResponse\022\014\n\004name\030\001 \001(\t\022\r\n\005score\030\002 \001(\005\""
+    "O\n\017PostSongRequest\022\017\n\007user_id\030\001 \001(\t\022\014\n\004n"
+    "ame\030\002 \001(\t\022\016\n\006artist\030\003 \003(\t\022\r\n\005genre\030\004 \001(\t"
+    "\"\022\n\020PostSongResponse\"N\n\017VoteSongRequest\022"
+    "\017\n\007user_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006artist"
+    "\030\003 \001(\t\022\014\n\004like\030\004 \001(\010\"\022\n\020VoteSongResponse"
+    "\"\"\n\017VoteSkipRequest\022\017\n\007user_id\030\001 \001(\t\"\022\n\020"
+    "VoteSkipResponse2\207\005\n\nCrowdSound\022;\n\004Ping\022"
+    "\027.CrowdSound.PingRequest\032\030.CrowdSound.Pi"
+    "ngResponse\"\000\022Y\n\016GetSessionData\022!.CrowdSo"
+    "und.GetSessionDataRequest\032\".CrowdSound.G"
+    "etSessionDataResponse\"\000\022M\n\nGetPlaying\022\035."
+    "CrowdSound.GetPlayingRequest\032\036.CrowdSoun"
+    "d.GetPlayingResponse\"\000\022I\n\010GetQueue\022\033.Cro"
+    "wdSound.GetQueueRequest\032\034.CrowdSound.Get"
+    "QueueResponse\"\0000\001\022j\n\023ListTrendingArtists"
+    "\022&.CrowdSound.ListTrendingArtistsRequest"
+    "\032\'.CrowdSound.ListTrendingArtistsRespons"
+    "e\"\0000\001\022I\n\010PostSong\022\033.CrowdSound.PostSongR"
+    "equest\032\034.CrowdSound.PostSongResponse\"\000(\001"
+    "\022G\n\010VoteSong\022\033.CrowdSound.VoteSongReques"
+    "t\032\034.CrowdSound.VoteSongResponse\"\000\022G\n\010Vot"
+    "eSkip\022\033.CrowdSound.VoteSkipRequest\032\034.Cro"
+    "wdSound.VoteSkipResponse\"\000B\032\n\007ex.grpcZ\nc"
+    "rowdsound\242\002\002CSb\006proto3", 1462);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/crowdsound_service.proto", &protobuf_RegisterTypes);
   PingRequest::default_instance_ = new PingRequest();
@@ -1442,6 +1443,7 @@ void GetSessionDataResponse::clear_num_users() {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int GetPlayingRequest::kUserIdFieldNumber;
 #endif  // !_MSC_VER
 
 GetPlayingRequest::GetPlayingRequest()
@@ -1464,7 +1466,9 @@ GetPlayingRequest::GetPlayingRequest(const GetPlayingRequest& from)
 
 void GetPlayingRequest::SharedCtor() {
     _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
+  user_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 GetPlayingRequest::~GetPlayingRequest() {
@@ -1473,6 +1477,7 @@ GetPlayingRequest::~GetPlayingRequest() {
 }
 
 void GetPlayingRequest::SharedDtor() {
+  user_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -1503,6 +1508,7 @@ GetPlayingRequest* GetPlayingRequest::New(::google::protobuf::Arena* arena) cons
 }
 
 void GetPlayingRequest::Clear() {
+  user_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 bool GetPlayingRequest::MergePartialFromCodedStream(
@@ -1514,13 +1520,34 @@ bool GetPlayingRequest::MergePartialFromCodedStream(
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0 ||
-        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      goto success;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string user_id = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_user_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->user_id().data(), this->user_id().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CrowdSound.GetPlayingRequest.user_id"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
   }
 success:
   // @@protoc_insertion_point(parse_success:CrowdSound.GetPlayingRequest)
@@ -1534,18 +1561,46 @@ failure:
 void GetPlayingRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:CrowdSound.GetPlayingRequest)
+  // optional string user_id = 1;
+  if (this->user_id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->user_id().data(), this->user_id().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetPlayingRequest.user_id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->user_id(), output);
+  }
+
   // @@protoc_insertion_point(serialize_end:CrowdSound.GetPlayingRequest)
 }
 
 ::google::protobuf::uint8* GetPlayingRequest::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:CrowdSound.GetPlayingRequest)
+  // optional string user_id = 1;
+  if (this->user_id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->user_id().data(), this->user_id().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetPlayingRequest.user_id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->user_id(), target);
+  }
+
   // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.GetPlayingRequest)
   return target;
 }
 
 int GetPlayingRequest::ByteSize() const {
   int total_size = 0;
+
+  // optional string user_id = 1;
+  if (this->user_id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->user_id());
+  }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = total_size;
@@ -1567,6 +1622,10 @@ void GetPlayingRequest::MergeFrom(const ::google::protobuf::Message& from) {
 
 void GetPlayingRequest::MergeFrom(const GetPlayingRequest& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.user_id().size() > 0) {
+
+    user_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.user_id_);
+  }
 }
 
 void GetPlayingRequest::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1591,6 +1650,7 @@ void GetPlayingRequest::Swap(GetPlayingRequest* other) {
   InternalSwap(other);
 }
 void GetPlayingRequest::InternalSwap(GetPlayingRequest* other) {
+  user_id_.Swap(&other->user_id_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -1605,6 +1665,49 @@ void GetPlayingRequest::InternalSwap(GetPlayingRequest* other) {
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // GetPlayingRequest
+
+// optional string user_id = 1;
+void GetPlayingRequest::clear_user_id() {
+  user_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& GetPlayingRequest::user_id() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetPlayingRequest.user_id)
+  return user_id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetPlayingRequest::set_user_id(const ::std::string& value) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetPlayingRequest.user_id)
+}
+ void GetPlayingRequest::set_user_id(const char* value) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetPlayingRequest.user_id)
+}
+ void GetPlayingRequest::set_user_id(const char* value, size_t size) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetPlayingRequest.user_id)
+}
+ ::std::string* GetPlayingRequest::mutable_user_id() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetPlayingRequest.user_id)
+  return user_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* GetPlayingRequest::release_user_id() {
+  
+  return user_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetPlayingRequest::set_allocated_user_id(::std::string* user_id) {
+  if (user_id != NULL) {
+    
+  } else {
+    
+  }
+  user_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), user_id);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetPlayingRequest.user_id)
+}
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
