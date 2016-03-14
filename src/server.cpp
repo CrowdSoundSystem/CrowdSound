@@ -294,7 +294,9 @@ Status CrowdSoundImpl::VoteSkip(ServerContext* context, const VoteSkipRequest* r
         return Status(StatusCode::INTERNAL, status.message());
     }
 
-    if (skip_voters_.size() > users/2) {
+    float percentage = (float)(skip_voters_.size()) / 2.0f;
+
+    if (percentage > 0.5f) {
         playsource_->skipSong();
         skip_voters_.clear();
     }
