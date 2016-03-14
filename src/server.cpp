@@ -228,6 +228,8 @@ Status CrowdSoundImpl::PostSong(ServerContext* context, ServerReader<PostSongReq
         }
     }
 
+    algo_->run();
+
     return Status::OK;
 }
 
@@ -276,8 +278,9 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
         }
     }
 
-    return Status::OK;
+    algo_->run();
 
+    return Status::OK;
 }
 
 Status CrowdSoundImpl::VoteSkip(ServerContext* context, const VoteSkipRequest* request, VoteSkipResponse* resp) {
