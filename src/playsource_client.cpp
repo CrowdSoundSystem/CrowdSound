@@ -121,7 +121,7 @@ void PlaysourceClient::runQueueLoop() {
             // +---+---+---+
             //
             //
-            // What this means, is that we have to remove 'B' in our local queue, shifting
+            // Therefore, we have to remove 'B' in our local queue, shifting
             // everything up (shift C, and decrease songPosition). Our buffer will then be
             // back in sync, but we will also need to fill out the missing slot.
 
