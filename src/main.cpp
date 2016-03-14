@@ -32,7 +32,7 @@ int main() {
 
     unique_ptr<PlaysourceClient> playsource(new PlaysourceClient(
         grpc::CreateChannel("localhost:50052", grpc::InsecureCredentials()),
-        3,
+        4,
         db,
         algorithm
     ));

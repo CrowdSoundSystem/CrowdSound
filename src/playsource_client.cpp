@@ -63,7 +63,7 @@ void PlaysourceClient::runQueueLoop() {
         }
 
         // If the buffer is not full, try to pull in songs.
-        if (buffer.size() < 3) {
+        if (buffer.size() < max_queue_size_) {
             algorithm_->run();
 
             int count = buffer.size();
