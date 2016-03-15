@@ -109,25 +109,36 @@ Status CrowdSoundAdminImpl::apply(const SetSettingRequest* request, int& val) {
     }
 
     val = request->int_val();
+
+    return Status::OK;
 }
+
 Status CrowdSoundAdminImpl::apply(const SetSettingRequest* request, float& val) {
     if (request->value_case() != SetSettingRequest::ValueCase::kFloatVal) {
         return Status(StatusCode::INVALID_ARGUMENT, "invalid type for key");
     }
 
     val = request->float_val();
+
+    return Status::OK;
 }
+
 Status CrowdSoundAdminImpl::apply(const SetSettingRequest* request, bool& val) {
     if (request->value_case() != SetSettingRequest::ValueCase::kBoolVal) {
         return Status(StatusCode::INVALID_ARGUMENT, "invalid type for key");
     }
 
     val = request->bool_val();
+
+    return Status::OK;
 }
+
 Status CrowdSoundAdminImpl::apply(const SetSettingRequest* request, string& val) {
     if (request->value_case() != SetSettingRequest::ValueCase::kStrVal) {
         return Status(StatusCode::INVALID_ARGUMENT, "invalid type for key");
     }
 
     val = request->str_val();
+
+    return Status::OK;
 }
