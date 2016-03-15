@@ -36,6 +36,10 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
 void protobuf_AssignDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
 void protobuf_ShutdownFile_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
 
+class GetSettingsRequest;
+class GetSettingsResponse;
+class SetSettingRequest;
+class SetSettingResponse;
 class SkipRequest;
 class SkipResponse;
 class SkipStatusRequest;
@@ -346,6 +350,453 @@ class SkipResponse : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static SkipResponse* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class GetSettingsRequest : public ::google::protobuf::Message {
+ public:
+  GetSettingsRequest();
+  virtual ~GetSettingsRequest();
+
+  GetSettingsRequest(const GetSettingsRequest& from);
+
+  inline GetSettingsRequest& operator=(const GetSettingsRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetSettingsRequest& default_instance();
+
+  void Swap(GetSettingsRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline GetSettingsRequest* New() const { return New(NULL); }
+
+  GetSettingsRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetSettingsRequest& from);
+  void MergeFrom(const GetSettingsRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(GetSettingsRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:CrowdSound.GetSettingsRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static GetSettingsRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GetSettingsResponse : public ::google::protobuf::Message {
+ public:
+  GetSettingsResponse();
+  virtual ~GetSettingsResponse();
+
+  GetSettingsResponse(const GetSettingsResponse& from);
+
+  inline GetSettingsResponse& operator=(const GetSettingsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetSettingsResponse& default_instance();
+
+  void Swap(GetSettingsResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline GetSettingsResponse* New() const { return New(NULL); }
+
+  GetSettingsResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetSettingsResponse& from);
+  void MergeFrom(const GetSettingsResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(GetSettingsResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional bool filter_buffered = 1;
+  void clear_filter_buffered();
+  static const int kFilterBufferedFieldNumber = 1;
+  bool filter_buffered() const;
+  void set_filter_buffered(bool value);
+
+  // optional int32 inactivity_threshold = 2;
+  void clear_inactivity_threshold();
+  static const int kInactivityThresholdFieldNumber = 2;
+  ::google::protobuf::int32 inactivity_threshold() const;
+  void set_inactivity_threshold(::google::protobuf::int32 value);
+
+  // optional int32 result_limit = 3;
+  void clear_result_limit();
+  static const int kResultLimitFieldNumber = 3;
+  ::google::protobuf::int32 result_limit() const;
+  void set_result_limit(::google::protobuf::int32 value);
+
+  // optional string session_name = 4;
+  void clear_session_name();
+  static const int kSessionNameFieldNumber = 4;
+  const ::std::string& session_name() const;
+  void set_session_name(const ::std::string& value);
+  void set_session_name(const char* value);
+  void set_session_name(const char* value, size_t size);
+  ::std::string* mutable_session_name();
+  ::std::string* release_session_name();
+  void set_allocated_session_name(::std::string* session_name);
+
+  // optional int32 queue_size = 5;
+  void clear_queue_size();
+  static const int kQueueSizeFieldNumber = 5;
+  ::google::protobuf::int32 queue_size() const;
+  void set_queue_size(::google::protobuf::int32 value);
+
+  // optional int32 trending_artists_size = 6;
+  void clear_trending_artists_size();
+  static const int kTrendingArtistsSizeFieldNumber = 6;
+  ::google::protobuf::int32 trending_artists_size() const;
+  void set_trending_artists_size(::google::protobuf::int32 value);
+
+  // optional float skip_threshold = 7;
+  void clear_skip_threshold();
+  static const int kSkipThresholdFieldNumber = 7;
+  float skip_threshold() const;
+  void set_skip_threshold(float value);
+
+  // optional float count_weight = 8;
+  void clear_count_weight();
+  static const int kCountWeightFieldNumber = 8;
+  float count_weight() const;
+  void set_count_weight(float value);
+
+  // optional float vote_weight = 9;
+  void clear_vote_weight();
+  static const int kVoteWeightFieldNumber = 9;
+  float vote_weight() const;
+  void set_vote_weight(float value);
+
+  // optional float genre_weight = 10;
+  void clear_genre_weight();
+  static const int kGenreWeightFieldNumber = 10;
+  float genre_weight() const;
+  void set_genre_weight(float value);
+
+  // optional float artist_weight = 11;
+  void clear_artist_weight();
+  static const int kArtistWeightFieldNumber = 11;
+  float artist_weight() const;
+  void set_artist_weight(float value);
+
+  // optional float played_again_mult = 12;
+  void clear_played_again_mult();
+  static const int kPlayedAgainMultFieldNumber = 12;
+  float played_again_mult() const;
+  void set_played_again_mult(float value);
+
+  // optional float min_repeat_window = 13;
+  void clear_min_repeat_window();
+  static const int kMinRepeatWindowFieldNumber = 13;
+  float min_repeat_window() const;
+  void set_min_repeat_window(float value);
+
+  // @@protoc_insertion_point(class_scope:CrowdSound.GetSettingsResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  bool filter_buffered_;
+  ::google::protobuf::int32 inactivity_threshold_;
+  ::google::protobuf::internal::ArenaStringPtr session_name_;
+  ::google::protobuf::int32 result_limit_;
+  ::google::protobuf::int32 queue_size_;
+  ::google::protobuf::int32 trending_artists_size_;
+  float skip_threshold_;
+  float count_weight_;
+  float vote_weight_;
+  float genre_weight_;
+  float artist_weight_;
+  float played_again_mult_;
+  float min_repeat_window_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static GetSettingsResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SetSettingRequest : public ::google::protobuf::Message {
+ public:
+  SetSettingRequest();
+  virtual ~SetSettingRequest();
+
+  SetSettingRequest(const SetSettingRequest& from);
+
+  inline SetSettingRequest& operator=(const SetSettingRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SetSettingRequest& default_instance();
+
+  enum ValueCase {
+    kStrVal = 2,
+    kIntVal = 3,
+    kFloatVal = 4,
+    VALUE_NOT_SET = 0,
+  };
+
+  void Swap(SetSettingRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline SetSettingRequest* New() const { return New(NULL); }
+
+  SetSettingRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SetSettingRequest& from);
+  void MergeFrom(const SetSettingRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(SetSettingRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string key = 1;
+  void clear_key();
+  static const int kKeyFieldNumber = 1;
+  const ::std::string& key() const;
+  void set_key(const ::std::string& value);
+  void set_key(const char* value);
+  void set_key(const char* value, size_t size);
+  ::std::string* mutable_key();
+  ::std::string* release_key();
+  void set_allocated_key(::std::string* key);
+
+  // optional string str_val = 2;
+  private:
+  bool has_str_val() const;
+  public:
+  void clear_str_val();
+  static const int kStrValFieldNumber = 2;
+  const ::std::string& str_val() const;
+  void set_str_val(const ::std::string& value);
+  void set_str_val(const char* value);
+  void set_str_val(const char* value, size_t size);
+  ::std::string* mutable_str_val();
+  ::std::string* release_str_val();
+  void set_allocated_str_val(::std::string* str_val);
+
+  // optional int32 int_val = 3;
+  private:
+  bool has_int_val() const;
+  public:
+  void clear_int_val();
+  static const int kIntValFieldNumber = 3;
+  ::google::protobuf::int32 int_val() const;
+  void set_int_val(::google::protobuf::int32 value);
+
+  // optional float float_val = 4;
+  private:
+  bool has_float_val() const;
+  public:
+  void clear_float_val();
+  static const int kFloatValFieldNumber = 4;
+  float float_val() const;
+  void set_float_val(float value);
+
+  ValueCase value_case() const;
+  // @@protoc_insertion_point(class_scope:CrowdSound.SetSettingRequest)
+ private:
+  inline void set_has_str_val();
+  inline void set_has_int_val();
+  inline void set_has_float_val();
+
+  inline bool has_value() const;
+  void clear_value();
+  inline void clear_has_value();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  ::google::protobuf::internal::ArenaStringPtr key_;
+  union ValueUnion {
+    ValueUnion() {}
+    ::google::protobuf::internal::ArenaStringPtr str_val_;
+    ::google::protobuf::int32 int_val_;
+    float float_val_;
+  } value_;
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _oneof_case_[1];
+
+  friend void  protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static SetSettingRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SetSettingResponse : public ::google::protobuf::Message {
+ public:
+  SetSettingResponse();
+  virtual ~SetSettingResponse();
+
+  SetSettingResponse(const SetSettingResponse& from);
+
+  inline SetSettingResponse& operator=(const SetSettingResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SetSettingResponse& default_instance();
+
+  void Swap(SetSettingResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline SetSettingResponse* New() const { return New(NULL); }
+
+  SetSettingResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SetSettingResponse& from);
+  void MergeFrom(const SetSettingResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(SetSettingResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:CrowdSound.SetSettingResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool _is_default_instance_;
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  friend void protobuf_AssignDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  friend void protobuf_ShutdownFile_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+
+  void InitAsDefaultInstance();
+  static SetSettingResponse* default_instance_;
+};
 // ===================================================================
 
 
@@ -408,7 +859,432 @@ inline void SkipStatusResponse::set_threshold(float value) {
 
 // SkipResponse
 
+// -------------------------------------------------------------------
+
+// GetSettingsRequest
+
+// -------------------------------------------------------------------
+
+// GetSettingsResponse
+
+// optional bool filter_buffered = 1;
+inline void GetSettingsResponse::clear_filter_buffered() {
+  filter_buffered_ = false;
+}
+inline bool GetSettingsResponse::filter_buffered() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.filter_buffered)
+  return filter_buffered_;
+}
+inline void GetSettingsResponse::set_filter_buffered(bool value) {
+  
+  filter_buffered_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.filter_buffered)
+}
+
+// optional int32 inactivity_threshold = 2;
+inline void GetSettingsResponse::clear_inactivity_threshold() {
+  inactivity_threshold_ = 0;
+}
+inline ::google::protobuf::int32 GetSettingsResponse::inactivity_threshold() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.inactivity_threshold)
+  return inactivity_threshold_;
+}
+inline void GetSettingsResponse::set_inactivity_threshold(::google::protobuf::int32 value) {
+  
+  inactivity_threshold_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.inactivity_threshold)
+}
+
+// optional int32 result_limit = 3;
+inline void GetSettingsResponse::clear_result_limit() {
+  result_limit_ = 0;
+}
+inline ::google::protobuf::int32 GetSettingsResponse::result_limit() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.result_limit)
+  return result_limit_;
+}
+inline void GetSettingsResponse::set_result_limit(::google::protobuf::int32 value) {
+  
+  result_limit_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.result_limit)
+}
+
+// optional string session_name = 4;
+inline void GetSettingsResponse::clear_session_name() {
+  session_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetSettingsResponse::session_name() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.session_name)
+  return session_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetSettingsResponse::set_session_name(const ::std::string& value) {
+  
+  session_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.session_name)
+}
+inline void GetSettingsResponse::set_session_name(const char* value) {
+  
+  session_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetSettingsResponse.session_name)
+}
+inline void GetSettingsResponse::set_session_name(const char* value, size_t size) {
+  
+  session_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetSettingsResponse.session_name)
+}
+inline ::std::string* GetSettingsResponse::mutable_session_name() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetSettingsResponse.session_name)
+  return session_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetSettingsResponse::release_session_name() {
+  
+  return session_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetSettingsResponse::set_allocated_session_name(::std::string* session_name) {
+  if (session_name != NULL) {
+    
+  } else {
+    
+  }
+  session_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), session_name);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetSettingsResponse.session_name)
+}
+
+// optional int32 queue_size = 5;
+inline void GetSettingsResponse::clear_queue_size() {
+  queue_size_ = 0;
+}
+inline ::google::protobuf::int32 GetSettingsResponse::queue_size() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.queue_size)
+  return queue_size_;
+}
+inline void GetSettingsResponse::set_queue_size(::google::protobuf::int32 value) {
+  
+  queue_size_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.queue_size)
+}
+
+// optional int32 trending_artists_size = 6;
+inline void GetSettingsResponse::clear_trending_artists_size() {
+  trending_artists_size_ = 0;
+}
+inline ::google::protobuf::int32 GetSettingsResponse::trending_artists_size() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.trending_artists_size)
+  return trending_artists_size_;
+}
+inline void GetSettingsResponse::set_trending_artists_size(::google::protobuf::int32 value) {
+  
+  trending_artists_size_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.trending_artists_size)
+}
+
+// optional float skip_threshold = 7;
+inline void GetSettingsResponse::clear_skip_threshold() {
+  skip_threshold_ = 0;
+}
+inline float GetSettingsResponse::skip_threshold() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.skip_threshold)
+  return skip_threshold_;
+}
+inline void GetSettingsResponse::set_skip_threshold(float value) {
+  
+  skip_threshold_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.skip_threshold)
+}
+
+// optional float count_weight = 8;
+inline void GetSettingsResponse::clear_count_weight() {
+  count_weight_ = 0;
+}
+inline float GetSettingsResponse::count_weight() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.count_weight)
+  return count_weight_;
+}
+inline void GetSettingsResponse::set_count_weight(float value) {
+  
+  count_weight_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.count_weight)
+}
+
+// optional float vote_weight = 9;
+inline void GetSettingsResponse::clear_vote_weight() {
+  vote_weight_ = 0;
+}
+inline float GetSettingsResponse::vote_weight() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.vote_weight)
+  return vote_weight_;
+}
+inline void GetSettingsResponse::set_vote_weight(float value) {
+  
+  vote_weight_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.vote_weight)
+}
+
+// optional float genre_weight = 10;
+inline void GetSettingsResponse::clear_genre_weight() {
+  genre_weight_ = 0;
+}
+inline float GetSettingsResponse::genre_weight() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.genre_weight)
+  return genre_weight_;
+}
+inline void GetSettingsResponse::set_genre_weight(float value) {
+  
+  genre_weight_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.genre_weight)
+}
+
+// optional float artist_weight = 11;
+inline void GetSettingsResponse::clear_artist_weight() {
+  artist_weight_ = 0;
+}
+inline float GetSettingsResponse::artist_weight() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.artist_weight)
+  return artist_weight_;
+}
+inline void GetSettingsResponse::set_artist_weight(float value) {
+  
+  artist_weight_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.artist_weight)
+}
+
+// optional float played_again_mult = 12;
+inline void GetSettingsResponse::clear_played_again_mult() {
+  played_again_mult_ = 0;
+}
+inline float GetSettingsResponse::played_again_mult() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.played_again_mult)
+  return played_again_mult_;
+}
+inline void GetSettingsResponse::set_played_again_mult(float value) {
+  
+  played_again_mult_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.played_again_mult)
+}
+
+// optional float min_repeat_window = 13;
+inline void GetSettingsResponse::clear_min_repeat_window() {
+  min_repeat_window_ = 0;
+}
+inline float GetSettingsResponse::min_repeat_window() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetSettingsResponse.min_repeat_window)
+  return min_repeat_window_;
+}
+inline void GetSettingsResponse::set_min_repeat_window(float value) {
+  
+  min_repeat_window_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetSettingsResponse.min_repeat_window)
+}
+
+// -------------------------------------------------------------------
+
+// SetSettingRequest
+
+// optional string key = 1;
+inline void SetSettingRequest::clear_key() {
+  key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SetSettingRequest::key() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.SetSettingRequest.key)
+  return key_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SetSettingRequest::set_key(const ::std::string& value) {
+  
+  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.SetSettingRequest.key)
+}
+inline void SetSettingRequest::set_key(const char* value) {
+  
+  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.SetSettingRequest.key)
+}
+inline void SetSettingRequest::set_key(const char* value, size_t size) {
+  
+  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.SetSettingRequest.key)
+}
+inline ::std::string* SetSettingRequest::mutable_key() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.SetSettingRequest.key)
+  return key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SetSettingRequest::release_key() {
+  
+  return key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SetSettingRequest::set_allocated_key(::std::string* key) {
+  if (key != NULL) {
+    
+  } else {
+    
+  }
+  key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), key);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.SetSettingRequest.key)
+}
+
+// optional string str_val = 2;
+inline bool SetSettingRequest::has_str_val() const {
+  return value_case() == kStrVal;
+}
+inline void SetSettingRequest::set_has_str_val() {
+  _oneof_case_[0] = kStrVal;
+}
+inline void SetSettingRequest::clear_str_val() {
+  if (has_str_val()) {
+    value_.str_val_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_value();
+  }
+}
+inline const ::std::string& SetSettingRequest::str_val() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.SetSettingRequest.str_val)
+  if (has_str_val()) {
+    return value_.str_val_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  return *&::google::protobuf::internal::GetEmptyStringAlreadyInited();
+}
+inline void SetSettingRequest::set_str_val(const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:CrowdSound.SetSettingRequest.str_val)
+  if (!has_str_val()) {
+    clear_value();
+    set_has_str_val();
+    value_.str_val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  value_.str_val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.SetSettingRequest.str_val)
+}
+inline void SetSettingRequest::set_str_val(const char* value) {
+  if (!has_str_val()) {
+    clear_value();
+    set_has_str_val();
+    value_.str_val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  value_.str_val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.SetSettingRequest.str_val)
+}
+inline void SetSettingRequest::set_str_val(const char* value, size_t size) {
+  if (!has_str_val()) {
+    clear_value();
+    set_has_str_val();
+    value_.str_val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  value_.str_val_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.SetSettingRequest.str_val)
+}
+inline ::std::string* SetSettingRequest::mutable_str_val() {
+  if (!has_str_val()) {
+    clear_value();
+    set_has_str_val();
+    value_.str_val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_mutable:CrowdSound.SetSettingRequest.str_val)
+  return value_.str_val_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SetSettingRequest::release_str_val() {
+  if (has_str_val()) {
+    clear_has_value();
+    return value_.str_val_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  } else {
+    return NULL;
+  }
+}
+inline void SetSettingRequest::set_allocated_str_val(::std::string* str_val) {
+  if (!has_str_val()) {
+    value_.str_val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  clear_value();
+  if (str_val != NULL) {
+    set_has_str_val();
+    value_.str_val_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+        str_val);
+  }
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.SetSettingRequest.str_val)
+}
+
+// optional int32 int_val = 3;
+inline bool SetSettingRequest::has_int_val() const {
+  return value_case() == kIntVal;
+}
+inline void SetSettingRequest::set_has_int_val() {
+  _oneof_case_[0] = kIntVal;
+}
+inline void SetSettingRequest::clear_int_val() {
+  if (has_int_val()) {
+    value_.int_val_ = 0;
+    clear_has_value();
+  }
+}
+inline ::google::protobuf::int32 SetSettingRequest::int_val() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.SetSettingRequest.int_val)
+  if (has_int_val()) {
+    return value_.int_val_;
+  }
+  return 0;
+}
+inline void SetSettingRequest::set_int_val(::google::protobuf::int32 value) {
+  if (!has_int_val()) {
+    clear_value();
+    set_has_int_val();
+  }
+  value_.int_val_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.SetSettingRequest.int_val)
+}
+
+// optional float float_val = 4;
+inline bool SetSettingRequest::has_float_val() const {
+  return value_case() == kFloatVal;
+}
+inline void SetSettingRequest::set_has_float_val() {
+  _oneof_case_[0] = kFloatVal;
+}
+inline void SetSettingRequest::clear_float_val() {
+  if (has_float_val()) {
+    value_.float_val_ = 0;
+    clear_has_value();
+  }
+}
+inline float SetSettingRequest::float_val() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.SetSettingRequest.float_val)
+  if (has_float_val()) {
+    return value_.float_val_;
+  }
+  return 0;
+}
+inline void SetSettingRequest::set_float_val(float value) {
+  if (!has_float_val()) {
+    clear_value();
+    set_has_float_val();
+  }
+  value_.float_val_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.SetSettingRequest.float_val)
+}
+
+inline bool SetSettingRequest::has_value() const {
+  return value_case() != VALUE_NOT_SET;
+}
+inline void SetSettingRequest::clear_has_value() {
+  _oneof_case_[0] = VALUE_NOT_SET;
+}
+inline SetSettingRequest::ValueCase SetSettingRequest::value_case() const {
+  return SetSettingRequest::ValueCase(_oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// SetSettingResponse
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -23,6 +23,10 @@ using CrowdSound::SkipStatusRequest;
 using CrowdSound::SkipStatusResponse;
 using CrowdSound::SkipRequest;
 using CrowdSound::SkipResponse;
+using CrowdSound::GetSettingsRequest;
+using CrowdSound::GetSettingsResponse;
+using CrowdSound::SetSettingRequest;
+using CrowdSound::SetSettingResponse;
 
 class CrowdSoundAdminImpl final : public CrowdSound::Admin::Service {
 public:
@@ -30,6 +34,9 @@ public:
 
     Status SkipStatus(ServerContext* context, const SkipStatusRequest* request, SkipStatusResponse* response) override;
     Status Skip(ServerContext* context, const SkipRequest* request, SkipResponse* response) override;
+
+    Status GetSettings(ServerContext* context, const GetSettingsRequest* request, GetSettingsResponse* response) override;
+    Status SetSetting(ServerContext* context, const SetSettingRequest* request, SetSettingResponse* response) override;
 private:
     std::shared_ptr<Server> server_;
 };

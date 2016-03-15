@@ -7,6 +7,9 @@ package CrowdSound;
 service Admin {
     rpc SkipStatus(SkipStatusRequest) returns (SkipStatusResponse) {}
     rpc Skip(SkipRequest) returns (SkipResponse) {}
+
+    rpc GetSettings(GetSettingsRequest) returns (GetSettingsResponse) {}
+    rpc SetSetting(SetSettingRequest) returns (SetSettingResponse) {}
 }
 
 message SkipStatusRequest {
@@ -24,3 +27,36 @@ message SkipRequest {
 message SkipResponse {
 }
 
+message GetSettingsRequest {
+}
+
+message GetSettingsResponse {
+    bool filter_buffered = 1;
+    int32 inactivity_threshold = 2;
+    int32 result_limit = 3;
+
+    string session_name = 4;
+    int32 queue_size = 5;
+    int32 trending_artists_size = 6;
+    float skip_threshold = 7;
+
+    float count_weight = 8;
+    float vote_weight = 9;
+    float genre_weight = 10;
+    float artist_weight = 11;
+    float played_again_mult = 12;
+    float min_repeat_window = 13;
+}
+
+message SetSettingRequest {
+    string key = 1;
+
+    oneof value {
+        string str_val = 2;
+        int32  int_val = 3;
+        float  float_val = 4;
+    }
+}
+
+message SetSettingResponse {
+}

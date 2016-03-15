@@ -17,6 +17,8 @@ namespace CrowdSound {
 static const char* Admin_method_names[] = {
   "/CrowdSound.Admin/SkipStatus",
   "/CrowdSound.Admin/Skip",
+  "/CrowdSound.Admin/GetSettings",
+  "/CrowdSound.Admin/SetSetting",
 };
 
 std::unique_ptr< Admin::Stub> Admin::NewStub(const std::shared_ptr< ::grpc::Channel>& channel, const ::grpc::StubOptions& options) {
@@ -27,6 +29,8 @@ std::unique_ptr< Admin::Stub> Admin::NewStub(const std::shared_ptr< ::grpc::Chan
 Admin::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   : channel_(channel), rpcmethod_SkipStatus_(Admin_method_names[0], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Skip_(Admin_method_names[1], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSettings_(Admin_method_names[2], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetSetting_(Admin_method_names[3], ::grpc::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Admin::Stub::SkipStatus(::grpc::ClientContext* context, const ::CrowdSound::SkipStatusRequest& request, ::CrowdSound::SkipStatusResponse* response) {
@@ -45,7 +49,23 @@ Admin::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   return new ::grpc::ClientAsyncResponseReader< ::CrowdSound::SkipResponse>(channel_.get(), cq, rpcmethod_Skip_, context, request);
 }
 
-Admin::AsyncService::AsyncService() : ::grpc::AsynchronousService(Admin_method_names, 2) {}
+::grpc::Status Admin::Stub::GetSettings(::grpc::ClientContext* context, const ::CrowdSound::GetSettingsRequest& request, ::CrowdSound::GetSettingsResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_GetSettings_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::CrowdSound::GetSettingsResponse>* Admin::Stub::AsyncGetSettingsRaw(::grpc::ClientContext* context, const ::CrowdSound::GetSettingsRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetSettingsResponse>(channel_.get(), cq, rpcmethod_GetSettings_, context, request);
+}
+
+::grpc::Status Admin::Stub::SetSetting(::grpc::ClientContext* context, const ::CrowdSound::SetSettingRequest& request, ::CrowdSound::SetSettingResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_SetSetting_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::CrowdSound::SetSettingResponse>* Admin::Stub::AsyncSetSettingRaw(::grpc::ClientContext* context, const ::CrowdSound::SetSettingRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::CrowdSound::SetSettingResponse>(channel_.get(), cq, rpcmethod_SetSetting_, context, request);
+}
+
+Admin::AsyncService::AsyncService() : ::grpc::AsynchronousService(Admin_method_names, 4) {}
 
 Admin::Service::~Service() {
   delete service_;
@@ -73,6 +93,28 @@ void Admin::AsyncService::RequestSkip(::grpc::ServerContext* context, ::CrowdSou
   AsynchronousService::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
 }
 
+::grpc::Status Admin::Service::GetSettings(::grpc::ServerContext* context, const ::CrowdSound::GetSettingsRequest* request, ::CrowdSound::GetSettingsResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+void Admin::AsyncService::RequestGetSettings(::grpc::ServerContext* context, ::CrowdSound::GetSettingsRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::GetSettingsResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+  AsynchronousService::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+}
+
+::grpc::Status Admin::Service::SetSetting(::grpc::ServerContext* context, const ::CrowdSound::SetSettingRequest* request, ::CrowdSound::SetSettingResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+void Admin::AsyncService::RequestSetSetting(::grpc::ServerContext* context, ::CrowdSound::SetSettingRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::SetSettingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+  AsynchronousService::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+}
+
 ::grpc::RpcService* Admin::Service::service() {
   if (service_ != nullptr) {
     return service_;
@@ -88,6 +130,16 @@ void Admin::AsyncService::RequestSkip(::grpc::ServerContext* context, ::CrowdSou
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< Admin::Service, ::CrowdSound::SkipRequest, ::CrowdSound::SkipResponse>(
           std::mem_fn(&Admin::Service::Skip), this)));
+  service_->AddMethod(new ::grpc::RpcServiceMethod(
+      Admin_method_names[2],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< Admin::Service, ::CrowdSound::GetSettingsRequest, ::CrowdSound::GetSettingsResponse>(
+          std::mem_fn(&Admin::Service::GetSettings), this)));
+  service_->AddMethod(new ::grpc::RpcServiceMethod(
+      Admin_method_names[3],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< Admin::Service, ::CrowdSound::SetSettingRequest, ::CrowdSound::SetSettingResponse>(
+          std::mem_fn(&Admin::Service::SetSetting), this)));
   return service_;
 }
 

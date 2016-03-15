@@ -52,3 +52,30 @@ Status CrowdSoundAdminImpl::Skip(ServerContext* context, const SkipRequest* requ
 
     return Status::OK;
 }
+
+Status CrowdSoundAdminImpl::GetSettings(ServerContext* context, const GetSettingsRequest* request, GetSettingsResponse* response) {
+    lock_guard<mutex> lock(server_->settings_guard_);
+
+    // TODO: Global database read options.
+    response->set_filter_buffered(true);
+    response->set_inactivity_threshold(100);
+    response->set_result_limit(100);
+
+    // Queue/Settings Settings
+    response->set_session_name(server_->session_name_);
+    response->set_queue_size(server_->queue_size_);
+    response->set_trending_artists_size(server_->trending_artists_size_);
+    response->set_skip_threshold(server_->skip_threshold_);
+
+    // Algorithm Settings
+    response->set_count_weight(server_->algo_settings_.m_countWeight);
+    response->set_vote_weight(server_->algo_settings_.m_voteWeight);
+    response->set_genre_weight(server_->algo_settings_.m_genreWeight);
+    response->set_artist_weight(server_->algo_settings_.m_artistWeight);
+    response->set_played_again_mult(server_->algo_settings_.m_playedAgainMultipler);
+    response->set_min_repeat_window(server_->algo_settings_.m_minsBeforeCanPlayAgain);
+}
+
+Status CrowdSoundAdminImpl::SetSetting(ServerContext* context, const SetSettingRequest* request, SetSettingResponse* response) {
+    return Status::OK;
+}
