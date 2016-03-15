@@ -50,6 +50,18 @@ struct SetSettingRequestOneofInstance {
 const ::google::protobuf::Descriptor* SetSettingResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SetSettingResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GetVersionInfoRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GetVersionInfoRequest_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GetVersionInfoResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GetVersionInfoResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GetDBStatsRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GetDBStatsRequest_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GetDBStatsResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GetDBStatsResponse_reflection_ = NULL;
 
 }  // namespace
 
@@ -196,6 +208,70 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto() {
       sizeof(SetSettingResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetSettingResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetSettingResponse, _is_default_instance_));
+  GetVersionInfoRequest_descriptor_ = file->message_type(8);
+  static const int GetVersionInfoRequest_offsets_[1] = {
+  };
+  GetVersionInfoRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      GetVersionInfoRequest_descriptor_,
+      GetVersionInfoRequest::default_instance_,
+      GetVersionInfoRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(GetVersionInfoRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetVersionInfoRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetVersionInfoRequest, _is_default_instance_));
+  GetVersionInfoResponse_descriptor_ = file->message_type(9);
+  static const int GetVersionInfoResponse_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetVersionInfoResponse, crowdsound_version_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetVersionInfoResponse, playsource_version_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetVersionInfoResponse, algorithm_version_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetVersionInfoResponse, skrillex_version_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetVersionInfoResponse, grpc_version_),
+  };
+  GetVersionInfoResponse_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      GetVersionInfoResponse_descriptor_,
+      GetVersionInfoResponse::default_instance_,
+      GetVersionInfoResponse_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(GetVersionInfoResponse),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetVersionInfoResponse, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetVersionInfoResponse, _is_default_instance_));
+  GetDBStatsRequest_descriptor_ = file->message_type(10);
+  static const int GetDBStatsRequest_offsets_[1] = {
+  };
+  GetDBStatsRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      GetDBStatsRequest_descriptor_,
+      GetDBStatsRequest::default_instance_,
+      GetDBStatsRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(GetDBStatsRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetDBStatsRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetDBStatsRequest, _is_default_instance_));
+  GetDBStatsResponse_descriptor_ = file->message_type(11);
+  static const int GetDBStatsResponse_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetDBStatsResponse, num_songs_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetDBStatsResponse, num_artists_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetDBStatsResponse, num_genres_),
+  };
+  GetDBStatsResponse_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      GetDBStatsResponse_descriptor_,
+      GetDBStatsResponse::default_instance_,
+      GetDBStatsResponse_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(GetDBStatsResponse),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetDBStatsResponse, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetDBStatsResponse, _is_default_instance_));
 }
 
 namespace {
@@ -224,6 +300,14 @@ void protobuf_RegisterTypes(const ::std::string&) {
       SetSettingRequest_descriptor_, &SetSettingRequest::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       SetSettingResponse_descriptor_, &SetSettingResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      GetVersionInfoRequest_descriptor_, &GetVersionInfoRequest::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      GetVersionInfoResponse_descriptor_, &GetVersionInfoResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      GetDBStatsRequest_descriptor_, &GetDBStatsRequest::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      GetDBStatsResponse_descriptor_, &GetDBStatsResponse::default_instance());
 }
 
 }  // namespace
@@ -246,6 +330,14 @@ void protobuf_ShutdownFile_proto_2fcrowdsound_5fadmin_5fservice_2eproto() {
   delete SetSettingRequest_reflection_;
   delete SetSettingResponse::default_instance_;
   delete SetSettingResponse_reflection_;
+  delete GetVersionInfoRequest::default_instance_;
+  delete GetVersionInfoRequest_reflection_;
+  delete GetVersionInfoResponse::default_instance_;
+  delete GetVersionInfoResponse_reflection_;
+  delete GetDBStatsRequest::default_instance_;
+  delete GetDBStatsRequest_reflection_;
+  delete GetDBStatsResponse::default_instance_;
+  delete GetDBStatsResponse_reflection_;
 }
 
 void protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto() {
@@ -272,15 +364,27 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto() {
     "ingRequest\022\013\n\003key\030\001 \001(\t\022\022\n\010bool_val\030\002 \001("
     "\010H\000\022\021\n\007str_val\030\003 \001(\tH\000\022\021\n\007int_val\030\004 \001(\005H"
     "\000\022\023\n\tfloat_val\030\005 \001(\002H\000B\007\n\005value\"\024\n\022SetSe"
-    "ttingResponse2\264\002\n\005Admin\022M\n\nSkipStatus\022\035."
-    "CrowdSound.SkipStatusRequest\032\036.CrowdSoun"
-    "d.SkipStatusResponse\"\000\022;\n\004Skip\022\027.CrowdSo"
-    "und.SkipRequest\032\030.CrowdSound.SkipRespons"
-    "e\"\000\022P\n\013GetSettings\022\036.CrowdSound.GetSetti"
-    "ngsRequest\032\037.CrowdSound.GetSettingsRespo"
-    "nse\"\000\022M\n\nSetSetting\022\035.CrowdSound.SetSett"
-    "ingRequest\032\036.CrowdSound.SetSettingRespon"
-    "se\"\000B\014Z\ncrowdsoundb\006proto3", 1026);
+    "ttingResponse\"\027\n\025GetVersionInfoRequest\"\233"
+    "\001\n\026GetVersionInfoResponse\022\032\n\022crowdsound_"
+    "version\030\001 \001(\t\022\032\n\022playsource_version\030\002 \001("
+    "\t\022\031\n\021algorithm_version\030\003 \001(\t\022\030\n\020skrillex"
+    "_version\030\004 \001(\t\022\024\n\014grpc_version\030\005 \001(\t\"\023\n\021"
+    "GetDBStatsRequest\"P\n\022GetDBStatsResponse\022"
+    "\021\n\tnum_songs\030\001 \001(\005\022\023\n\013num_artists\030\002 \001(\005\022"
+    "\022\n\nnum_genres\030\003 \001(\0052\336\003\n\005Admin\022M\n\nSkipSta"
+    "tus\022\035.CrowdSound.SkipStatusRequest\032\036.Cro"
+    "wdSound.SkipStatusResponse\"\000\022;\n\004Skip\022\027.C"
+    "rowdSound.SkipRequest\032\030.CrowdSound.SkipR"
+    "esponse\"\000\022P\n\013GetSettings\022\036.CrowdSound.Ge"
+    "tSettingsRequest\032\037.CrowdSound.GetSetting"
+    "sResponse\"\000\022M\n\nSetSetting\022\035.CrowdSound.S"
+    "etSettingRequest\032\036.CrowdSound.SetSetting"
+    "Response\"\000\022Y\n\016GetVersionInfo\022!.CrowdSoun"
+    "d.GetVersionInfoRequest\032\".CrowdSound.Get"
+    "VersionInfoResponse\"\000\022M\n\nGetDBStats\022\035.Cr"
+    "owdSound.GetDBStatsRequest\032\036.CrowdSound."
+    "GetDBStatsResponse\"\000B\014Z\ncrowdsoundb\006prot"
+    "o3", 1482);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/crowdsound_admin_service.proto", &protobuf_RegisterTypes);
   SkipStatusRequest::default_instance_ = new SkipStatusRequest();
@@ -292,6 +396,10 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto() {
   SetSettingRequest::default_instance_ = new SetSettingRequest();
   SetSettingRequest_default_oneof_instance_ = new SetSettingRequestOneofInstance();
   SetSettingResponse::default_instance_ = new SetSettingResponse();
+  GetVersionInfoRequest::default_instance_ = new GetVersionInfoRequest();
+  GetVersionInfoResponse::default_instance_ = new GetVersionInfoResponse();
+  GetDBStatsRequest::default_instance_ = new GetDBStatsRequest();
+  GetDBStatsResponse::default_instance_ = new GetDBStatsResponse();
   SkipStatusRequest::default_instance_->InitAsDefaultInstance();
   SkipStatusResponse::default_instance_->InitAsDefaultInstance();
   SkipRequest::default_instance_->InitAsDefaultInstance();
@@ -300,6 +408,10 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto() {
   GetSettingsResponse::default_instance_->InitAsDefaultInstance();
   SetSettingRequest::default_instance_->InitAsDefaultInstance();
   SetSettingResponse::default_instance_->InitAsDefaultInstance();
+  GetVersionInfoRequest::default_instance_->InitAsDefaultInstance();
+  GetVersionInfoResponse::default_instance_->InitAsDefaultInstance();
+  GetDBStatsRequest::default_instance_->InitAsDefaultInstance();
+  GetDBStatsResponse::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_proto_2fcrowdsound_5fadmin_5fservice_2eproto);
 }
 
@@ -3050,6 +3162,1345 @@ void SetSettingResponse::InternalSwap(SetSettingResponse* other) {
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // SetSettingResponse
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+GetVersionInfoRequest::GetVersionInfoRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CrowdSound.GetVersionInfoRequest)
+}
+
+void GetVersionInfoRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+GetVersionInfoRequest::GetVersionInfoRequest(const GetVersionInfoRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:CrowdSound.GetVersionInfoRequest)
+}
+
+void GetVersionInfoRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+}
+
+GetVersionInfoRequest::~GetVersionInfoRequest() {
+  // @@protoc_insertion_point(destructor:CrowdSound.GetVersionInfoRequest)
+  SharedDtor();
+}
+
+void GetVersionInfoRequest::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void GetVersionInfoRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetVersionInfoRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GetVersionInfoRequest_descriptor_;
+}
+
+const GetVersionInfoRequest& GetVersionInfoRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  return *default_instance_;
+}
+
+GetVersionInfoRequest* GetVersionInfoRequest::default_instance_ = NULL;
+
+GetVersionInfoRequest* GetVersionInfoRequest::New(::google::protobuf::Arena* arena) const {
+  GetVersionInfoRequest* n = new GetVersionInfoRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void GetVersionInfoRequest::Clear() {
+}
+
+bool GetVersionInfoRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CrowdSound.GetVersionInfoRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CrowdSound.GetVersionInfoRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CrowdSound.GetVersionInfoRequest)
+  return false;
+#undef DO_
+}
+
+void GetVersionInfoRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CrowdSound.GetVersionInfoRequest)
+  // @@protoc_insertion_point(serialize_end:CrowdSound.GetVersionInfoRequest)
+}
+
+::google::protobuf::uint8* GetVersionInfoRequest::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:CrowdSound.GetVersionInfoRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.GetVersionInfoRequest)
+  return target;
+}
+
+int GetVersionInfoRequest::ByteSize() const {
+  int total_size = 0;
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetVersionInfoRequest::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const GetVersionInfoRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetVersionInfoRequest>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GetVersionInfoRequest::MergeFrom(const GetVersionInfoRequest& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+}
+
+void GetVersionInfoRequest::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetVersionInfoRequest::CopyFrom(const GetVersionInfoRequest& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetVersionInfoRequest::IsInitialized() const {
+
+  return true;
+}
+
+void GetVersionInfoRequest::Swap(GetVersionInfoRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void GetVersionInfoRequest::InternalSwap(GetVersionInfoRequest* other) {
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata GetVersionInfoRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GetVersionInfoRequest_descriptor_;
+  metadata.reflection = GetVersionInfoRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// GetVersionInfoRequest
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int GetVersionInfoResponse::kCrowdsoundVersionFieldNumber;
+const int GetVersionInfoResponse::kPlaysourceVersionFieldNumber;
+const int GetVersionInfoResponse::kAlgorithmVersionFieldNumber;
+const int GetVersionInfoResponse::kSkrillexVersionFieldNumber;
+const int GetVersionInfoResponse::kGrpcVersionFieldNumber;
+#endif  // !_MSC_VER
+
+GetVersionInfoResponse::GetVersionInfoResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CrowdSound.GetVersionInfoResponse)
+}
+
+void GetVersionInfoResponse::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+GetVersionInfoResponse::GetVersionInfoResponse(const GetVersionInfoResponse& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:CrowdSound.GetVersionInfoResponse)
+}
+
+void GetVersionInfoResponse::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  crowdsound_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  playsource_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  algorithm_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  skrillex_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  grpc_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+GetVersionInfoResponse::~GetVersionInfoResponse() {
+  // @@protoc_insertion_point(destructor:CrowdSound.GetVersionInfoResponse)
+  SharedDtor();
+}
+
+void GetVersionInfoResponse::SharedDtor() {
+  crowdsound_version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  playsource_version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  algorithm_version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  skrillex_version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  grpc_version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void GetVersionInfoResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetVersionInfoResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GetVersionInfoResponse_descriptor_;
+}
+
+const GetVersionInfoResponse& GetVersionInfoResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  return *default_instance_;
+}
+
+GetVersionInfoResponse* GetVersionInfoResponse::default_instance_ = NULL;
+
+GetVersionInfoResponse* GetVersionInfoResponse::New(::google::protobuf::Arena* arena) const {
+  GetVersionInfoResponse* n = new GetVersionInfoResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void GetVersionInfoResponse::Clear() {
+  crowdsound_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  playsource_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  algorithm_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  skrillex_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  grpc_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+bool GetVersionInfoResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CrowdSound.GetVersionInfoResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string crowdsound_version = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_crowdsound_version()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->crowdsound_version().data(), this->crowdsound_version().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CrowdSound.GetVersionInfoResponse.crowdsound_version"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_playsource_version;
+        break;
+      }
+
+      // optional string playsource_version = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_playsource_version:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_playsource_version()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->playsource_version().data(), this->playsource_version().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CrowdSound.GetVersionInfoResponse.playsource_version"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_algorithm_version;
+        break;
+      }
+
+      // optional string algorithm_version = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_algorithm_version:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_algorithm_version()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->algorithm_version().data(), this->algorithm_version().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CrowdSound.GetVersionInfoResponse.algorithm_version"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_skrillex_version;
+        break;
+      }
+
+      // optional string skrillex_version = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_skrillex_version:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_skrillex_version()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->skrillex_version().data(), this->skrillex_version().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CrowdSound.GetVersionInfoResponse.skrillex_version"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_grpc_version;
+        break;
+      }
+
+      // optional string grpc_version = 5;
+      case 5: {
+        if (tag == 42) {
+         parse_grpc_version:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_grpc_version()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->grpc_version().data(), this->grpc_version().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CrowdSound.GetVersionInfoResponse.grpc_version"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CrowdSound.GetVersionInfoResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CrowdSound.GetVersionInfoResponse)
+  return false;
+#undef DO_
+}
+
+void GetVersionInfoResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CrowdSound.GetVersionInfoResponse)
+  // optional string crowdsound_version = 1;
+  if (this->crowdsound_version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->crowdsound_version().data(), this->crowdsound_version().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetVersionInfoResponse.crowdsound_version");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->crowdsound_version(), output);
+  }
+
+  // optional string playsource_version = 2;
+  if (this->playsource_version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->playsource_version().data(), this->playsource_version().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetVersionInfoResponse.playsource_version");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->playsource_version(), output);
+  }
+
+  // optional string algorithm_version = 3;
+  if (this->algorithm_version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->algorithm_version().data(), this->algorithm_version().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetVersionInfoResponse.algorithm_version");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->algorithm_version(), output);
+  }
+
+  // optional string skrillex_version = 4;
+  if (this->skrillex_version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->skrillex_version().data(), this->skrillex_version().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetVersionInfoResponse.skrillex_version");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->skrillex_version(), output);
+  }
+
+  // optional string grpc_version = 5;
+  if (this->grpc_version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->grpc_version().data(), this->grpc_version().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetVersionInfoResponse.grpc_version");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      5, this->grpc_version(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:CrowdSound.GetVersionInfoResponse)
+}
+
+::google::protobuf::uint8* GetVersionInfoResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:CrowdSound.GetVersionInfoResponse)
+  // optional string crowdsound_version = 1;
+  if (this->crowdsound_version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->crowdsound_version().data(), this->crowdsound_version().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetVersionInfoResponse.crowdsound_version");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->crowdsound_version(), target);
+  }
+
+  // optional string playsource_version = 2;
+  if (this->playsource_version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->playsource_version().data(), this->playsource_version().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetVersionInfoResponse.playsource_version");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->playsource_version(), target);
+  }
+
+  // optional string algorithm_version = 3;
+  if (this->algorithm_version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->algorithm_version().data(), this->algorithm_version().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetVersionInfoResponse.algorithm_version");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->algorithm_version(), target);
+  }
+
+  // optional string skrillex_version = 4;
+  if (this->skrillex_version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->skrillex_version().data(), this->skrillex_version().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetVersionInfoResponse.skrillex_version");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->skrillex_version(), target);
+  }
+
+  // optional string grpc_version = 5;
+  if (this->grpc_version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->grpc_version().data(), this->grpc_version().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.GetVersionInfoResponse.grpc_version");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->grpc_version(), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.GetVersionInfoResponse)
+  return target;
+}
+
+int GetVersionInfoResponse::ByteSize() const {
+  int total_size = 0;
+
+  // optional string crowdsound_version = 1;
+  if (this->crowdsound_version().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->crowdsound_version());
+  }
+
+  // optional string playsource_version = 2;
+  if (this->playsource_version().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->playsource_version());
+  }
+
+  // optional string algorithm_version = 3;
+  if (this->algorithm_version().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->algorithm_version());
+  }
+
+  // optional string skrillex_version = 4;
+  if (this->skrillex_version().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->skrillex_version());
+  }
+
+  // optional string grpc_version = 5;
+  if (this->grpc_version().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->grpc_version());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetVersionInfoResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const GetVersionInfoResponse* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetVersionInfoResponse>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GetVersionInfoResponse::MergeFrom(const GetVersionInfoResponse& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.crowdsound_version().size() > 0) {
+
+    crowdsound_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.crowdsound_version_);
+  }
+  if (from.playsource_version().size() > 0) {
+
+    playsource_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.playsource_version_);
+  }
+  if (from.algorithm_version().size() > 0) {
+
+    algorithm_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.algorithm_version_);
+  }
+  if (from.skrillex_version().size() > 0) {
+
+    skrillex_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.skrillex_version_);
+  }
+  if (from.grpc_version().size() > 0) {
+
+    grpc_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.grpc_version_);
+  }
+}
+
+void GetVersionInfoResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetVersionInfoResponse::CopyFrom(const GetVersionInfoResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetVersionInfoResponse::IsInitialized() const {
+
+  return true;
+}
+
+void GetVersionInfoResponse::Swap(GetVersionInfoResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void GetVersionInfoResponse::InternalSwap(GetVersionInfoResponse* other) {
+  crowdsound_version_.Swap(&other->crowdsound_version_);
+  playsource_version_.Swap(&other->playsource_version_);
+  algorithm_version_.Swap(&other->algorithm_version_);
+  skrillex_version_.Swap(&other->skrillex_version_);
+  grpc_version_.Swap(&other->grpc_version_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata GetVersionInfoResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GetVersionInfoResponse_descriptor_;
+  metadata.reflection = GetVersionInfoResponse_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// GetVersionInfoResponse
+
+// optional string crowdsound_version = 1;
+void GetVersionInfoResponse::clear_crowdsound_version() {
+  crowdsound_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& GetVersionInfoResponse::crowdsound_version() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetVersionInfoResponse.crowdsound_version)
+  return crowdsound_version_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetVersionInfoResponse::set_crowdsound_version(const ::std::string& value) {
+  
+  crowdsound_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetVersionInfoResponse.crowdsound_version)
+}
+ void GetVersionInfoResponse::set_crowdsound_version(const char* value) {
+  
+  crowdsound_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetVersionInfoResponse.crowdsound_version)
+}
+ void GetVersionInfoResponse::set_crowdsound_version(const char* value, size_t size) {
+  
+  crowdsound_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetVersionInfoResponse.crowdsound_version)
+}
+ ::std::string* GetVersionInfoResponse::mutable_crowdsound_version() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetVersionInfoResponse.crowdsound_version)
+  return crowdsound_version_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* GetVersionInfoResponse::release_crowdsound_version() {
+  
+  return crowdsound_version_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetVersionInfoResponse::set_allocated_crowdsound_version(::std::string* crowdsound_version) {
+  if (crowdsound_version != NULL) {
+    
+  } else {
+    
+  }
+  crowdsound_version_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), crowdsound_version);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetVersionInfoResponse.crowdsound_version)
+}
+
+// optional string playsource_version = 2;
+void GetVersionInfoResponse::clear_playsource_version() {
+  playsource_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& GetVersionInfoResponse::playsource_version() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetVersionInfoResponse.playsource_version)
+  return playsource_version_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetVersionInfoResponse::set_playsource_version(const ::std::string& value) {
+  
+  playsource_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetVersionInfoResponse.playsource_version)
+}
+ void GetVersionInfoResponse::set_playsource_version(const char* value) {
+  
+  playsource_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetVersionInfoResponse.playsource_version)
+}
+ void GetVersionInfoResponse::set_playsource_version(const char* value, size_t size) {
+  
+  playsource_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetVersionInfoResponse.playsource_version)
+}
+ ::std::string* GetVersionInfoResponse::mutable_playsource_version() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetVersionInfoResponse.playsource_version)
+  return playsource_version_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* GetVersionInfoResponse::release_playsource_version() {
+  
+  return playsource_version_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetVersionInfoResponse::set_allocated_playsource_version(::std::string* playsource_version) {
+  if (playsource_version != NULL) {
+    
+  } else {
+    
+  }
+  playsource_version_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), playsource_version);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetVersionInfoResponse.playsource_version)
+}
+
+// optional string algorithm_version = 3;
+void GetVersionInfoResponse::clear_algorithm_version() {
+  algorithm_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& GetVersionInfoResponse::algorithm_version() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetVersionInfoResponse.algorithm_version)
+  return algorithm_version_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetVersionInfoResponse::set_algorithm_version(const ::std::string& value) {
+  
+  algorithm_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetVersionInfoResponse.algorithm_version)
+}
+ void GetVersionInfoResponse::set_algorithm_version(const char* value) {
+  
+  algorithm_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetVersionInfoResponse.algorithm_version)
+}
+ void GetVersionInfoResponse::set_algorithm_version(const char* value, size_t size) {
+  
+  algorithm_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetVersionInfoResponse.algorithm_version)
+}
+ ::std::string* GetVersionInfoResponse::mutable_algorithm_version() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetVersionInfoResponse.algorithm_version)
+  return algorithm_version_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* GetVersionInfoResponse::release_algorithm_version() {
+  
+  return algorithm_version_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetVersionInfoResponse::set_allocated_algorithm_version(::std::string* algorithm_version) {
+  if (algorithm_version != NULL) {
+    
+  } else {
+    
+  }
+  algorithm_version_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), algorithm_version);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetVersionInfoResponse.algorithm_version)
+}
+
+// optional string skrillex_version = 4;
+void GetVersionInfoResponse::clear_skrillex_version() {
+  skrillex_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& GetVersionInfoResponse::skrillex_version() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetVersionInfoResponse.skrillex_version)
+  return skrillex_version_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetVersionInfoResponse::set_skrillex_version(const ::std::string& value) {
+  
+  skrillex_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetVersionInfoResponse.skrillex_version)
+}
+ void GetVersionInfoResponse::set_skrillex_version(const char* value) {
+  
+  skrillex_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetVersionInfoResponse.skrillex_version)
+}
+ void GetVersionInfoResponse::set_skrillex_version(const char* value, size_t size) {
+  
+  skrillex_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetVersionInfoResponse.skrillex_version)
+}
+ ::std::string* GetVersionInfoResponse::mutable_skrillex_version() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetVersionInfoResponse.skrillex_version)
+  return skrillex_version_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* GetVersionInfoResponse::release_skrillex_version() {
+  
+  return skrillex_version_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetVersionInfoResponse::set_allocated_skrillex_version(::std::string* skrillex_version) {
+  if (skrillex_version != NULL) {
+    
+  } else {
+    
+  }
+  skrillex_version_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), skrillex_version);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetVersionInfoResponse.skrillex_version)
+}
+
+// optional string grpc_version = 5;
+void GetVersionInfoResponse::clear_grpc_version() {
+  grpc_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& GetVersionInfoResponse::grpc_version() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetVersionInfoResponse.grpc_version)
+  return grpc_version_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetVersionInfoResponse::set_grpc_version(const ::std::string& value) {
+  
+  grpc_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.GetVersionInfoResponse.grpc_version)
+}
+ void GetVersionInfoResponse::set_grpc_version(const char* value) {
+  
+  grpc_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.GetVersionInfoResponse.grpc_version)
+}
+ void GetVersionInfoResponse::set_grpc_version(const char* value, size_t size) {
+  
+  grpc_version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.GetVersionInfoResponse.grpc_version)
+}
+ ::std::string* GetVersionInfoResponse::mutable_grpc_version() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.GetVersionInfoResponse.grpc_version)
+  return grpc_version_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* GetVersionInfoResponse::release_grpc_version() {
+  
+  return grpc_version_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void GetVersionInfoResponse::set_allocated_grpc_version(::std::string* grpc_version) {
+  if (grpc_version != NULL) {
+    
+  } else {
+    
+  }
+  grpc_version_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), grpc_version);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.GetVersionInfoResponse.grpc_version)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+GetDBStatsRequest::GetDBStatsRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CrowdSound.GetDBStatsRequest)
+}
+
+void GetDBStatsRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+GetDBStatsRequest::GetDBStatsRequest(const GetDBStatsRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:CrowdSound.GetDBStatsRequest)
+}
+
+void GetDBStatsRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+}
+
+GetDBStatsRequest::~GetDBStatsRequest() {
+  // @@protoc_insertion_point(destructor:CrowdSound.GetDBStatsRequest)
+  SharedDtor();
+}
+
+void GetDBStatsRequest::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void GetDBStatsRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetDBStatsRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GetDBStatsRequest_descriptor_;
+}
+
+const GetDBStatsRequest& GetDBStatsRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  return *default_instance_;
+}
+
+GetDBStatsRequest* GetDBStatsRequest::default_instance_ = NULL;
+
+GetDBStatsRequest* GetDBStatsRequest::New(::google::protobuf::Arena* arena) const {
+  GetDBStatsRequest* n = new GetDBStatsRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void GetDBStatsRequest::Clear() {
+}
+
+bool GetDBStatsRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CrowdSound.GetDBStatsRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CrowdSound.GetDBStatsRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CrowdSound.GetDBStatsRequest)
+  return false;
+#undef DO_
+}
+
+void GetDBStatsRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CrowdSound.GetDBStatsRequest)
+  // @@protoc_insertion_point(serialize_end:CrowdSound.GetDBStatsRequest)
+}
+
+::google::protobuf::uint8* GetDBStatsRequest::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:CrowdSound.GetDBStatsRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.GetDBStatsRequest)
+  return target;
+}
+
+int GetDBStatsRequest::ByteSize() const {
+  int total_size = 0;
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetDBStatsRequest::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const GetDBStatsRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetDBStatsRequest>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GetDBStatsRequest::MergeFrom(const GetDBStatsRequest& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+}
+
+void GetDBStatsRequest::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetDBStatsRequest::CopyFrom(const GetDBStatsRequest& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetDBStatsRequest::IsInitialized() const {
+
+  return true;
+}
+
+void GetDBStatsRequest::Swap(GetDBStatsRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void GetDBStatsRequest::InternalSwap(GetDBStatsRequest* other) {
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata GetDBStatsRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GetDBStatsRequest_descriptor_;
+  metadata.reflection = GetDBStatsRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// GetDBStatsRequest
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int GetDBStatsResponse::kNumSongsFieldNumber;
+const int GetDBStatsResponse::kNumArtistsFieldNumber;
+const int GetDBStatsResponse::kNumGenresFieldNumber;
+#endif  // !_MSC_VER
+
+GetDBStatsResponse::GetDBStatsResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CrowdSound.GetDBStatsResponse)
+}
+
+void GetDBStatsResponse::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+GetDBStatsResponse::GetDBStatsResponse(const GetDBStatsResponse& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:CrowdSound.GetDBStatsResponse)
+}
+
+void GetDBStatsResponse::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+  num_songs_ = 0;
+  num_artists_ = 0;
+  num_genres_ = 0;
+}
+
+GetDBStatsResponse::~GetDBStatsResponse() {
+  // @@protoc_insertion_point(destructor:CrowdSound.GetDBStatsResponse)
+  SharedDtor();
+}
+
+void GetDBStatsResponse::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void GetDBStatsResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetDBStatsResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GetDBStatsResponse_descriptor_;
+}
+
+const GetDBStatsResponse& GetDBStatsResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
+  return *default_instance_;
+}
+
+GetDBStatsResponse* GetDBStatsResponse::default_instance_ = NULL;
+
+GetDBStatsResponse* GetDBStatsResponse::New(::google::protobuf::Arena* arena) const {
+  GetDBStatsResponse* n = new GetDBStatsResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void GetDBStatsResponse::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<GetDBStatsResponse*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(num_songs_, num_genres_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+}
+
+bool GetDBStatsResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CrowdSound.GetDBStatsResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 num_songs = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &num_songs_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_num_artists;
+        break;
+      }
+
+      // optional int32 num_artists = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_num_artists:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &num_artists_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_num_genres;
+        break;
+      }
+
+      // optional int32 num_genres = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_num_genres:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &num_genres_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CrowdSound.GetDBStatsResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CrowdSound.GetDBStatsResponse)
+  return false;
+#undef DO_
+}
+
+void GetDBStatsResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CrowdSound.GetDBStatsResponse)
+  // optional int32 num_songs = 1;
+  if (this->num_songs() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->num_songs(), output);
+  }
+
+  // optional int32 num_artists = 2;
+  if (this->num_artists() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->num_artists(), output);
+  }
+
+  // optional int32 num_genres = 3;
+  if (this->num_genres() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->num_genres(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:CrowdSound.GetDBStatsResponse)
+}
+
+::google::protobuf::uint8* GetDBStatsResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:CrowdSound.GetDBStatsResponse)
+  // optional int32 num_songs = 1;
+  if (this->num_songs() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->num_songs(), target);
+  }
+
+  // optional int32 num_artists = 2;
+  if (this->num_artists() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->num_artists(), target);
+  }
+
+  // optional int32 num_genres = 3;
+  if (this->num_genres() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->num_genres(), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.GetDBStatsResponse)
+  return target;
+}
+
+int GetDBStatsResponse::ByteSize() const {
+  int total_size = 0;
+
+  // optional int32 num_songs = 1;
+  if (this->num_songs() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->num_songs());
+  }
+
+  // optional int32 num_artists = 2;
+  if (this->num_artists() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->num_artists());
+  }
+
+  // optional int32 num_genres = 3;
+  if (this->num_genres() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->num_genres());
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetDBStatsResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const GetDBStatsResponse* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetDBStatsResponse>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GetDBStatsResponse::MergeFrom(const GetDBStatsResponse& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.num_songs() != 0) {
+    set_num_songs(from.num_songs());
+  }
+  if (from.num_artists() != 0) {
+    set_num_artists(from.num_artists());
+  }
+  if (from.num_genres() != 0) {
+    set_num_genres(from.num_genres());
+  }
+}
+
+void GetDBStatsResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetDBStatsResponse::CopyFrom(const GetDBStatsResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetDBStatsResponse::IsInitialized() const {
+
+  return true;
+}
+
+void GetDBStatsResponse::Swap(GetDBStatsResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void GetDBStatsResponse::InternalSwap(GetDBStatsResponse* other) {
+  std::swap(num_songs_, other->num_songs_);
+  std::swap(num_artists_, other->num_artists_);
+  std::swap(num_genres_, other->num_genres_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata GetDBStatsResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GetDBStatsResponse_descriptor_;
+  metadata.reflection = GetDBStatsResponse_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// GetDBStatsResponse
+
+// optional int32 num_songs = 1;
+void GetDBStatsResponse::clear_num_songs() {
+  num_songs_ = 0;
+}
+ ::google::protobuf::int32 GetDBStatsResponse::num_songs() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetDBStatsResponse.num_songs)
+  return num_songs_;
+}
+ void GetDBStatsResponse::set_num_songs(::google::protobuf::int32 value) {
+  
+  num_songs_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetDBStatsResponse.num_songs)
+}
+
+// optional int32 num_artists = 2;
+void GetDBStatsResponse::clear_num_artists() {
+  num_artists_ = 0;
+}
+ ::google::protobuf::int32 GetDBStatsResponse::num_artists() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetDBStatsResponse.num_artists)
+  return num_artists_;
+}
+ void GetDBStatsResponse::set_num_artists(::google::protobuf::int32 value) {
+  
+  num_artists_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetDBStatsResponse.num_artists)
+}
+
+// optional int32 num_genres = 3;
+void GetDBStatsResponse::clear_num_genres() {
+  num_genres_ = 0;
+}
+ ::google::protobuf::int32 GetDBStatsResponse::num_genres() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.GetDBStatsResponse.num_genres)
+  return num_genres_;
+}
+ void GetDBStatsResponse::set_num_genres(::google::protobuf::int32 value) {
+  
+  num_genres_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.GetDBStatsResponse.num_genres)
+}
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 

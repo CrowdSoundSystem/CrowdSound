@@ -46,11 +46,21 @@ class Admin GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::SetSettingResponse>> AsyncSetSetting(::grpc::ClientContext* context, const ::CrowdSound::SetSettingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::SetSettingResponse>>(AsyncSetSettingRaw(context, request, cq));
     }
+    virtual ::grpc::Status GetVersionInfo(::grpc::ClientContext* context, const ::CrowdSound::GetVersionInfoRequest& request, ::CrowdSound::GetVersionInfoResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetVersionInfoResponse>> AsyncGetVersionInfo(::grpc::ClientContext* context, const ::CrowdSound::GetVersionInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetVersionInfoResponse>>(AsyncGetVersionInfoRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetDBStats(::grpc::ClientContext* context, const ::CrowdSound::GetDBStatsRequest& request, ::CrowdSound::GetDBStatsResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetDBStatsResponse>> AsyncGetDBStats(::grpc::ClientContext* context, const ::CrowdSound::GetDBStatsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetDBStatsResponse>>(AsyncGetDBStatsRaw(context, request, cq));
+    }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::SkipStatusResponse>* AsyncSkipStatusRaw(::grpc::ClientContext* context, const ::CrowdSound::SkipStatusRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::SkipResponse>* AsyncSkipRaw(::grpc::ClientContext* context, const ::CrowdSound::SkipRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetSettingsResponse>* AsyncGetSettingsRaw(::grpc::ClientContext* context, const ::CrowdSound::GetSettingsRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::SetSettingResponse>* AsyncSetSettingRaw(::grpc::ClientContext* context, const ::CrowdSound::SetSettingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetVersionInfoResponse>* AsyncGetVersionInfoRaw(::grpc::ClientContext* context, const ::CrowdSound::GetVersionInfoRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::GetDBStatsResponse>* AsyncGetDBStatsRaw(::grpc::ClientContext* context, const ::CrowdSound::GetDBStatsRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub GRPC_FINAL : public StubInterface {
    public:
@@ -71,6 +81,14 @@ class Admin GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::SetSettingResponse>> AsyncSetSetting(::grpc::ClientContext* context, const ::CrowdSound::SetSettingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::SetSettingResponse>>(AsyncSetSettingRaw(context, request, cq));
     }
+    ::grpc::Status GetVersionInfo(::grpc::ClientContext* context, const ::CrowdSound::GetVersionInfoRequest& request, ::CrowdSound::GetVersionInfoResponse* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetVersionInfoResponse>> AsyncGetVersionInfo(::grpc::ClientContext* context, const ::CrowdSound::GetVersionInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetVersionInfoResponse>>(AsyncGetVersionInfoRaw(context, request, cq));
+    }
+    ::grpc::Status GetDBStats(::grpc::ClientContext* context, const ::CrowdSound::GetDBStatsRequest& request, ::CrowdSound::GetDBStatsResponse* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetDBStatsResponse>> AsyncGetDBStats(::grpc::ClientContext* context, const ::CrowdSound::GetDBStatsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetDBStatsResponse>>(AsyncGetDBStatsRaw(context, request, cq));
+    }
 
    private:
     std::shared_ptr< ::grpc::Channel> channel_;
@@ -78,10 +96,14 @@ class Admin GRPC_FINAL {
     ::grpc::ClientAsyncResponseReader< ::CrowdSound::SkipResponse>* AsyncSkipRaw(::grpc::ClientContext* context, const ::CrowdSound::SkipRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetSettingsResponse>* AsyncGetSettingsRaw(::grpc::ClientContext* context, const ::CrowdSound::GetSettingsRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::CrowdSound::SetSettingResponse>* AsyncSetSettingRaw(::grpc::ClientContext* context, const ::CrowdSound::SetSettingRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetVersionInfoResponse>* AsyncGetVersionInfoRaw(::grpc::ClientContext* context, const ::CrowdSound::GetVersionInfoRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::CrowdSound::GetDBStatsResponse>* AsyncGetDBStatsRaw(::grpc::ClientContext* context, const ::CrowdSound::GetDBStatsRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     const ::grpc::RpcMethod rpcmethod_SkipStatus_;
     const ::grpc::RpcMethod rpcmethod_Skip_;
     const ::grpc::RpcMethod rpcmethod_GetSettings_;
     const ::grpc::RpcMethod rpcmethod_SetSetting_;
+    const ::grpc::RpcMethod rpcmethod_GetVersionInfo_;
+    const ::grpc::RpcMethod rpcmethod_GetDBStats_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::Channel>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -93,6 +115,8 @@ class Admin GRPC_FINAL {
     virtual ::grpc::Status Skip(::grpc::ServerContext* context, const ::CrowdSound::SkipRequest* request, ::CrowdSound::SkipResponse* response);
     virtual ::grpc::Status GetSettings(::grpc::ServerContext* context, const ::CrowdSound::GetSettingsRequest* request, ::CrowdSound::GetSettingsResponse* response);
     virtual ::grpc::Status SetSetting(::grpc::ServerContext* context, const ::CrowdSound::SetSettingRequest* request, ::CrowdSound::SetSettingResponse* response);
+    virtual ::grpc::Status GetVersionInfo(::grpc::ServerContext* context, const ::CrowdSound::GetVersionInfoRequest* request, ::CrowdSound::GetVersionInfoResponse* response);
+    virtual ::grpc::Status GetDBStats(::grpc::ServerContext* context, const ::CrowdSound::GetDBStatsRequest* request, ::CrowdSound::GetDBStatsResponse* response);
     ::grpc::RpcService* service() GRPC_OVERRIDE GRPC_FINAL;
    private:
     ::grpc::RpcService* service_;
@@ -105,6 +129,8 @@ class Admin GRPC_FINAL {
     void RequestSkip(::grpc::ServerContext* context, ::CrowdSound::SkipRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::SkipResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestGetSettings(::grpc::ServerContext* context, ::CrowdSound::GetSettingsRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::GetSettingsResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestSetSetting(::grpc::ServerContext* context, ::CrowdSound::SetSettingRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::SetSettingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestGetVersionInfo(::grpc::ServerContext* context, ::CrowdSound::GetVersionInfoRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::GetVersionInfoResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestGetDBStats(::grpc::ServerContext* context, ::CrowdSound::GetDBStatsRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::GetDBStatsResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
   };
 };
 

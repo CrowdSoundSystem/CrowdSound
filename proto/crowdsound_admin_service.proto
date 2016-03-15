@@ -10,6 +10,9 @@ service Admin {
 
     rpc GetSettings(GetSettingsRequest) returns (GetSettingsResponse) {}
     rpc SetSetting(SetSettingRequest) returns (SetSettingResponse) {}
+
+    rpc GetVersionInfo(GetVersionInfoRequest) returns (GetVersionInfoResponse) {}
+    rpc GetDBStats(GetDBStatsRequest) returns (GetDBStatsResponse) {}
 }
 
 message SkipStatusRequest {
@@ -61,3 +64,24 @@ message SetSettingRequest {
 
 message SetSettingResponse {
 }
+
+message GetVersionInfoRequest {
+}
+
+message GetVersionInfoResponse {
+    string crowdsound_version = 1;
+    string playsource_version = 2;
+    string algorithm_version = 3;
+    string skrillex_version = 4;
+    string grpc_version = 5;
+}
+
+message GetDBStatsRequest {
+}
+
+message GetDBStatsResponse {
+    int32 num_songs = 1;
+    int32 num_artists = 2;
+    int32 num_genres = 3;
+}
+

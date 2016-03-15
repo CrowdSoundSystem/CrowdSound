@@ -163,7 +163,7 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
 }
 
 Status CrowdSoundImpl::ListTrendingArtists(ServerContext* context, const ListTrendingArtistsRequest* request, ServerWriter<ListTrendingArtistsResponse>* writer) {
-    ReadOptions voteSort;
+    ReadOptions voteSort = server_->skrillex_read_options_;
     voteSort.sort = SortType::Votes;
 
     ResultSet<Artist> resultSet;

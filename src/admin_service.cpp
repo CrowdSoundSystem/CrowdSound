@@ -4,6 +4,8 @@
 #include "proto/crowdsound_admin_service.pb.h"
 #include "proto/crowdsound_admin_service.grpc.pb.h"
 
+#include "skrillex/skrillex.hpp"
+
 using namespace std;
 
 using grpc::ServerContext;
@@ -11,11 +13,6 @@ using grpc::ServerReader;
 using grpc::ServerWriter;
 using grpc::Status;
 using grpc::StatusCode;
-
-using CrowdSound::SkipStatusRequest;
-using CrowdSound::SkipStatusResponse;
-using CrowdSound::SkipRequest;
-using CrowdSound::SkipResponse;
 
 CrowdSoundAdminImpl::CrowdSoundAdminImpl(shared_ptr<Server> server)
 : server_(server)
@@ -139,6 +136,43 @@ Status CrowdSoundAdminImpl::apply(const SetSettingRequest* request, string& val)
     }
 
     val = request->str_val();
+
+    return Status::OK;
+}
+
+Status CrowdSoundAdminImpl::GetVersionInfo(ServerContext* context, const GetVersionInfoRequest* request, GetVersionInfoResponse* response) {
+    response->set_crowdsound_version(CROWDSOUND_VERSION);
+    response->set_playsource_version(PLAYSOURCE_VERSION);
+    response->set_algorithm_version(ALGORITHM_VERSION);
+    response->set_skrillex_version(SKRILLEX_VERSION);
+    response->set_grpc_version(GRPC_VERSION);
+
+    return Status::OK;
+}
+
+Status CrowdSoundAdminImpl::GetDBStats(ServerContext* context, const GetDBStatsRequest* request, GetDBStatsResponse* response) {
+    skrillex::ResultSet<skrillex::Song>   songs;
+    skrillex::ResultSet<skrillex::Artist> artists;
+    skrillex::ResultSet<skrillex::Genre>  genres;
+
+    skrillex::Status s = server_->db_->getSongs(songs);
+    if (s != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, s.message());
+    }
+
+    s = server_->db_->getArtists(artists);
+    if (s != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, s.message());
+    }
+
+    s = server_->db_->getGenres(genres);
+    if (s != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, s.message());
+    }
+
+    response->set_num_songs(songs.size());
+    response->set_num_artists(artists.size());
+    response->set_num_genres(genres.size());
 
     return Status::OK;
 }

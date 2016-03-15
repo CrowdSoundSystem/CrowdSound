@@ -11,6 +11,7 @@
 #include "proto/crowdsound_service.grpc.pb.h"
 #include "proto/crowdsound_admin_service.grpc.pb.h"
 
+#include "version.hpp"
 #include "server.hpp"
 
 using grpc::ServerBuilder;
@@ -23,10 +24,16 @@ using CrowdSound::SkipStatusRequest;
 using CrowdSound::SkipStatusResponse;
 using CrowdSound::SkipRequest;
 using CrowdSound::SkipResponse;
+
 using CrowdSound::GetSettingsRequest;
 using CrowdSound::GetSettingsResponse;
 using CrowdSound::SetSettingRequest;
 using CrowdSound::SetSettingResponse;
+
+using CrowdSound::GetVersionInfoRequest;
+using CrowdSound::GetVersionInfoResponse;
+using CrowdSound::GetDBStatsRequest;
+using CrowdSound::GetDBStatsResponse;
 
 class CrowdSoundAdminImpl final : public CrowdSound::Admin::Service {
 public:
@@ -37,6 +44,9 @@ public:
 
     Status GetSettings(ServerContext* context, const GetSettingsRequest* request, GetSettingsResponse* response) override;
     Status SetSetting(ServerContext* context, const SetSettingRequest* request, SetSettingResponse* response) override;
+
+    Status GetVersionInfo(ServerContext* context, const GetVersionInfoRequest* request, GetVersionInfoResponse* response) override;
+    Status GetDBStats(ServerContext* context, const GetDBStatsRequest* request, GetDBStatsResponse* response) override;
 
 private:
     Status apply(const SetSettingRequest* request, int& val);
