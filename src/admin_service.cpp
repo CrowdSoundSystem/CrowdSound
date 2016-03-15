@@ -73,14 +73,18 @@ Status CrowdSoundAdminImpl::GetSettings(ServerContext* context, const GetSetting
     response->set_artist_weight(server_->algo_settings_.m_artistWeight);
     response->set_played_again_mult(server_->algo_settings_.m_playedAgainMultipler);
     response->set_min_repeat_window(server_->algo_settings_.m_minsBeforeCanPlayAgain);
+
+    return Status::OK
 }
 
 
 Status CrowdSoundAdminImpl::SetSetting(ServerContext* context, const SetSettingRequest* request, SetSettingResponse* response) {
+    lock_guard<mutex> lock(server_->settings_guard_);
+
     // Why no switch supper :( or any nice way to do this
-    if (request->key() == "filter_buffered")           { return apply(request, server_->skrillex_read_options_.filter_buffered); }
-    else if (request->key() == "inactivity_threshold") { return apply(request, server_->skrillex_read_options_.inactivity_threshold); }
-    else if (request->key() == "result_limit")         { return apply(request, server_->skrillex_read_options_.result_limit); }
+    if (request->key() == "filter_buffered")            { return apply(request, server_->skrillex_read_options_.filter_buffered); }
+    else if (request->key() == "inactivity_threshold")  { return apply(request, server_->skrillex_read_options_.inactivity_threshold); }
+    else if (request->key() == "result_limit")          { return apply(request, server_->skrillex_read_options_.result_limit); }
 
     // Query Options
     else if (request->key() == "session_name")          { return apply(request, server_->session_name_); }
