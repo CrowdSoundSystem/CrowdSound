@@ -34,6 +34,7 @@ private:
     std::unique_ptr<Playsource::Playsource::Stub> stub_;
     std::shared_ptr<skrillex::DB> db_;
     std::shared_ptr<DecisionAlgorithm> algorithm_;
+	std::shared_ptr<DecisionSettings> algorithmSettings_;
 };
 
 #endif
