@@ -144,9 +144,11 @@ void PlaysourceClient::runQueueLoop() {
         }
 
         server_->runAlgorithm();
+        server_->clearSkipVotes();
         db_->songFinished();
         db_->bufferNext();
         sendPosition--;
+
     }
 
     stream->Finish();

@@ -76,3 +76,8 @@ void Server::voteSkip(std::string userId) {
     }
 
 }
+
+void Server::clearSkipVotes() {
+    lock_guard<recursive_mutex> lock(skip_guard_);
+    skip_voters_.clear();
+}

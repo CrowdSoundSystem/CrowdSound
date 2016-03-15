@@ -28,6 +28,7 @@ public:
     void runAlgorithm();
     void skipSong();
     void voteSkip(std::string userId);
+    void clearSkipVotes();
 
 private:
     void runPlaySource();
