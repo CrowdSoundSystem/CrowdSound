@@ -51,6 +51,8 @@ void Server::runAlgorithm() {
 
 void Server::skipSong() {
     lock_guard<recursive_mutex> lock(skip_guard_);
+
+    cout << "[server] skipping song" << endl;
     playsource_->skipSong();
     skip_voters_.clear();
 }
