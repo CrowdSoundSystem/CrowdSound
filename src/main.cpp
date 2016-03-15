@@ -29,7 +29,7 @@ int main() {
     }
 
     // Create algorithm
-    shared_ptr<DecisionAlgorithm> algorithm(new DecisionAlgorithm(DecisionSettings::defaultSettings(), db));
+    shared_ptr<DecisionAlgorithm> algorithm(new DecisionAlgorithm(db));
 
     unique_ptr<PlaysourceClient> playsource(new PlaysourceClient(
         grpc::CreateChannel("localhost:50052", grpc::InsecureCredentials()),
