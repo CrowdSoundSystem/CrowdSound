@@ -182,6 +182,12 @@ class SkipStatusResponse : public ::google::protobuf::Message {
   ::google::protobuf::int32 total_users() const;
   void set_total_users(::google::protobuf::int32 value);
 
+  // optional float threshold = 3;
+  void clear_threshold();
+  static const int kThresholdFieldNumber = 3;
+  float threshold() const;
+  void set_threshold(float value);
+
   // @@protoc_insertion_point(class_scope:CrowdSound.SkipStatusResponse)
  private:
 
@@ -189,6 +195,7 @@ class SkipStatusResponse : public ::google::protobuf::Message {
   bool _is_default_instance_;
   ::google::protobuf::int32 votes_to_skip_;
   ::google::protobuf::int32 total_users_;
+  float threshold_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
   friend void protobuf_AssignDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto();
@@ -377,6 +384,20 @@ inline void SkipStatusResponse::set_total_users(::google::protobuf::int32 value)
   
   total_users_ = value;
   // @@protoc_insertion_point(field_set:CrowdSound.SkipStatusResponse.total_users)
+}
+
+// optional float threshold = 3;
+inline void SkipStatusResponse::clear_threshold() {
+  threshold_ = 0;
+}
+inline float SkipStatusResponse::threshold() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.SkipStatusResponse.threshold)
+  return threshold_;
+}
+inline void SkipStatusResponse::set_threshold(float value) {
+  
+  threshold_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.SkipStatusResponse.threshold)
 }
 
 // -------------------------------------------------------------------

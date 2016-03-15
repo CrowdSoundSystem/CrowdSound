@@ -39,6 +39,11 @@ Status CrowdSoundAdminImpl::SkipStatus(ServerContext* context, const SkipStatusR
     resp->set_votes_to_skip(votesToSkip);
     resp->set_total_users(totalUsers);
 
+    {
+        lock_guard<mutex> lock(server_->settings_guard_);
+        resp->set_threshold(server_->skip_threshold_);
+    }
+
     return Status::OK;
 }
 

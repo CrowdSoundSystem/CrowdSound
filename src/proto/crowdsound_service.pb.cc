@@ -451,8 +451,8 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto() {
     "\022G\n\010VoteSong\022\033.CrowdSound.VoteSongReques"
     "t\032\034.CrowdSound.VoteSongResponse\"\000\022G\n\010Vot"
     "eSkip\022\033.CrowdSound.VoteSkipRequest\032\034.Cro"
-    "wdSound.VoteSkipResponse\"\000B\032\n\007ex.grpcZ\nc"
-    "rowdsound\242\002\002CSb\006proto3", 1462);
+    "wdSound.VoteSkipResponse\"\000B\021Z\ncrowdsound"
+    "\242\002\002CSb\006proto3", 1453);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/crowdsound_service.proto", &protobuf_RegisterTypes);
   PingRequest::default_instance_ = new PingRequest();

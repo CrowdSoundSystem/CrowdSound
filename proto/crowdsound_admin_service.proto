@@ -15,6 +15,7 @@ message SkipStatusRequest {
 message SkipStatusResponse {
     int32 votes_to_skip = 1;
     int32 total_users = 2;
+    float threshold = 3;
 }
 
 message SkipRequest {

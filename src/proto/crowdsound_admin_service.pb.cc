@@ -57,9 +57,10 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkipStatusRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkipStatusRequest, _is_default_instance_));
   SkipStatusResponse_descriptor_ = file->message_type(1);
-  static const int SkipStatusResponse_offsets_[2] = {
+  static const int SkipStatusResponse_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkipStatusResponse, votes_to_skip_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkipStatusResponse, total_users_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SkipStatusResponse, threshold_),
   };
   SkipStatusResponse_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -143,14 +144,14 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n$proto/crowdsound_admin_service.proto\022\n"
-    "CrowdSound\"\023\n\021SkipStatusRequest\"@\n\022SkipS"
+    "CrowdSound\"\023\n\021SkipStatusRequest\"S\n\022SkipS"
     "tatusResponse\022\025\n\rvotes_to_skip\030\001 \001(\005\022\023\n\013"
-    "total_users\030\002 \001(\005\"\r\n\013SkipRequest\"\016\n\014Skip"
-    "Response2\223\001\n\005Admin\022M\n\nSkipStatus\022\035.Crowd"
-    "Sound.SkipStatusRequest\032\036.CrowdSound.Ski"
-    "pStatusResponse\"\000\022;\n\004Skip\022\027.CrowdSound.S"
-    "kipRequest\032\030.CrowdSound.SkipResponse\"\000B\014"
-    "Z\ncrowdsoundb\006proto3", 340);
+    "total_users\030\002 \001(\005\022\021\n\tthreshold\030\003 \001(\002\"\r\n\013"
+    "SkipRequest\"\016\n\014SkipResponse2\223\001\n\005Admin\022M\n"
+    "\nSkipStatus\022\035.CrowdSound.SkipStatusReque"
+    "st\032\036.CrowdSound.SkipStatusResponse\"\000\022;\n\004"
+    "Skip\022\027.CrowdSound.SkipRequest\032\030.CrowdSou"
+    "nd.SkipResponse\"\000B\014Z\ncrowdsoundb\006proto3", 359);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/crowdsound_admin_service.proto", &protobuf_RegisterTypes);
   SkipStatusRequest::default_instance_ = new SkipStatusRequest();
@@ -355,6 +356,7 @@ void SkipStatusRequest::InternalSwap(SkipStatusRequest* other) {
 #ifndef _MSC_VER
 const int SkipStatusResponse::kVotesToSkipFieldNumber;
 const int SkipStatusResponse::kTotalUsersFieldNumber;
+const int SkipStatusResponse::kThresholdFieldNumber;
 #endif  // !_MSC_VER
 
 SkipStatusResponse::SkipStatusResponse()
@@ -380,6 +382,7 @@ void SkipStatusResponse::SharedCtor() {
   _cached_size_ = 0;
   votes_to_skip_ = 0;
   total_users_ = 0;
+  threshold_ = 0;
 }
 
 SkipStatusResponse::~SkipStatusResponse() {
@@ -426,7 +429,7 @@ void SkipStatusResponse::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(votes_to_skip_, total_users_);
+  ZR_(votes_to_skip_, threshold_);
 
 #undef ZR_HELPER_
 #undef ZR_
@@ -464,6 +467,21 @@ bool SkipStatusResponse::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &total_users_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(29)) goto parse_threshold;
+        break;
+      }
+
+      // optional float threshold = 3;
+      case 3: {
+        if (tag == 29) {
+         parse_threshold:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &threshold_)));
 
         } else {
           goto handle_unusual;
@@ -506,6 +524,11 @@ void SkipStatusResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->total_users(), output);
   }
 
+  // optional float threshold = 3;
+  if (this->threshold() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->threshold(), output);
+  }
+
   // @@protoc_insertion_point(serialize_end:CrowdSound.SkipStatusResponse)
 }
 
@@ -520,6 +543,11 @@ void SkipStatusResponse::SerializeWithCachedSizes(
   // optional int32 total_users = 2;
   if (this->total_users() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->total_users(), target);
+  }
+
+  // optional float threshold = 3;
+  if (this->threshold() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->threshold(), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.SkipStatusResponse)
@@ -541,6 +569,11 @@ int SkipStatusResponse::ByteSize() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->total_users());
+  }
+
+  // optional float threshold = 3;
+  if (this->threshold() != 0) {
+    total_size += 1 + 4;
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -569,6 +602,9 @@ void SkipStatusResponse::MergeFrom(const SkipStatusResponse& from) {
   if (from.total_users() != 0) {
     set_total_users(from.total_users());
   }
+  if (from.threshold() != 0) {
+    set_threshold(from.threshold());
+  }
 }
 
 void SkipStatusResponse::CopyFrom(const ::google::protobuf::Message& from) {
@@ -595,6 +631,7 @@ void SkipStatusResponse::Swap(SkipStatusResponse* other) {
 void SkipStatusResponse::InternalSwap(SkipStatusResponse* other) {
   std::swap(votes_to_skip_, other->votes_to_skip_);
   std::swap(total_users_, other->total_users_);
+  std::swap(threshold_, other->threshold_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -636,6 +673,20 @@ void SkipStatusResponse::clear_total_users() {
   
   total_users_ = value;
   // @@protoc_insertion_point(field_set:CrowdSound.SkipStatusResponse.total_users)
+}
+
+// optional float threshold = 3;
+void SkipStatusResponse::clear_threshold() {
+  threshold_ = 0;
+}
+ float SkipStatusResponse::threshold() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.SkipStatusResponse.threshold)
+  return threshold_;
+}
+ void SkipStatusResponse::set_threshold(float value) {
+  
+  threshold_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.SkipStatusResponse.threshold)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
