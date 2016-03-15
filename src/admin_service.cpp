@@ -17,8 +17,8 @@ using CrowdSound::SkipStatusResponse;
 using CrowdSound::SkipRequest;
 using CrowdSound::SkipResponse;
 
-CrowdSoundAdminImpl::CrowdSoundAdminImpl(shared_ptr<CrowdSoundImpl> service)
-: service_(service)
+CrowdSoundAdminImpl::CrowdSoundAdminImpl(shared_ptr<Server> server)
+: server_(server)
 {
 }
 
@@ -27,10 +27,10 @@ Status CrowdSoundAdminImpl::SkipStatus(ServerContext* context, const SkipStatusR
     int totalUsers = 0;
 
     {
-        lock_guard<mutex> lock(service_->skip_guard_);
+        lock_guard<recursive_mutex> lock(server_->skip_guard_);
 
-        votesToSkip = service_->skip_voters_.size();
-        skrillex::Status status = service_->db_->getSessionUserCount(totalUsers);
+        votesToSkip = server_->skip_voters_.size();
+        skrillex::Status status = server_->db_->getSessionUserCount(totalUsers);
         if (status != skrillex::Status::OK()) {
             return Status(StatusCode::INTERNAL, status.message());
         }
@@ -43,10 +43,7 @@ Status CrowdSoundAdminImpl::SkipStatus(ServerContext* context, const SkipStatusR
 }
 
 Status CrowdSoundAdminImpl::Skip(ServerContext* context, const SkipRequest* request, SkipResponse* resp) {
-    lock_guard<mutex> lock(service_->skip_guard_);
-
-    service_->playsource_->skipSong();
-    service_->skip_voters_.clear();
+    server_->skipSong();
 
     return Status::OK;
 }

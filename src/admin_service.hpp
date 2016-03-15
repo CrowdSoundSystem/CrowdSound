@@ -11,9 +11,8 @@
 #include "proto/crowdsound_service.grpc.pb.h"
 #include "proto/crowdsound_admin_service.grpc.pb.h"
 
-#include "crowdsound_service.hpp"
+#include "server.hpp"
 
-using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::ServerWriter;
@@ -27,12 +26,12 @@ using CrowdSound::SkipResponse;
 
 class CrowdSoundAdminImpl final : public CrowdSound::Admin::Service {
 public:
-    explicit CrowdSoundAdminImpl(std::shared_ptr<CrowdSoundImpl> service);
+    explicit CrowdSoundAdminImpl(std::shared_ptr<Server> server);
 
     Status SkipStatus(ServerContext* context, const SkipStatusRequest* request, SkipStatusResponse* response) override;
     Status Skip(ServerContext* context, const SkipRequest* request, SkipResponse* response) override;
 private:
-    std::shared_ptr<CrowdSoundImpl> service_;
+    std::shared_ptr<Server> server_;
 };
 
 #endif

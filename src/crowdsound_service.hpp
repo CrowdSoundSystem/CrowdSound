@@ -15,7 +15,6 @@
 #include "skrillex/skrillex.hpp"
 #include "DecisionAlgorithm.h"
 
-using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::ServerWriter;
@@ -48,10 +47,7 @@ class CrowdSoundAdminImpl;
 
 class CrowdSoundImpl final : public CrowdSound::CrowdSound::Service {
 public:
-    explicit CrowdSoundImpl(
-        std::shared_ptr<skrillex::DB> db,
-        std::unique_ptr<PlaysourceClient> playsource,
-        std::shared_ptr<DecisionAlgorithm> decisionAlgorithm);
+    explicit CrowdSoundImpl(std::shared_ptr<Server> server);
 
     Status Ping(ServerContext* context, const PingRequest* request, PingResponse* resp) override;
     Status GetSessionData(ServerContext* context, const GetSessionDataRequest* request, GetSessionDataResponse* resp) override;
@@ -62,20 +58,10 @@ public:
     Status VoteSong(ServerContext* context, const VoteSongRequest* request, VoteSongResponse* resp) override;
     Status VoteSkip(ServerContext* context, const VoteSkipRequest* request, VoteSkipResponse* resp) override;
 
-protected:
-    void runPlaySource();
 private:
+    std::shared_ptr<Server>       server_;
     std::shared_ptr<skrillex::DB> db_;
-    std::shared_ptr<skrillex::Mapper> mapper_;
-    std::shared_ptr<DecisionAlgorithm> algo_;
-    std::unique_ptr<PlaysourceClient> playsource_;
-
-    std::mutex            skip_guard_;
-    std::set<std::string> skip_voters_;
-
-    std::thread ps_thread_;
-
-    friend class CrowdSoundAdminImpl;
+    skrillex::Mapper              mapper_;
 };
 
 #endif

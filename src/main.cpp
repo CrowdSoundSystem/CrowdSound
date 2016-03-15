@@ -5,17 +5,18 @@
 #include "skrillex/skrillex.hpp"
 #include "DecisionAlgorithm.h"
 
+#include "server.hpp"
 #include "crowdsound_service.hpp"
 #include "admin_service.hpp"
 #include "playsource_client.hpp"
 
-using grpc::Server;
+using grpc::Channel;
 using grpc::ServerBuilder;
 using namespace std;
 
 
 int main() {
-    // Create/Load the main database
+    // Create/Load the main database.
     skrillex::Options options;
     options.create_if_missing = true;
 
@@ -28,28 +29,23 @@ int main() {
         return -1;
     }
 
-    // Create algorithm
-    shared_ptr<DecisionAlgorithm> algorithm(new DecisionAlgorithm(db));
+    // Create channel to playsource
+    shared_ptr<Channel> channel = grpc::CreateChannel("localhost:50052", grpc::InsecureCredentials());
 
-    unique_ptr<PlaysourceClient> playsource(new PlaysourceClient(
-        grpc::CreateChannel("localhost:50052", grpc::InsecureCredentials()),
-        4,
-        db,
-        algorithm
-    ));
+    // Create main server.
+    shared_ptr<Server> server = make_shared<Server>(db, channel);
 
-    string listen_address("0.0.0.0:50051");
-
-    shared_ptr<CrowdSoundImpl> crowdsound_service(new CrowdSoundImpl(db, move(playsource), algorithm));
-    shared_ptr<CrowdSoundAdminImpl> admin_service(new CrowdSoundAdminImpl(crowdsound_service));
+    // Create gRPC services
+    shared_ptr<CrowdSoundImpl>      crowdsound_service(new CrowdSoundImpl(server));
+    shared_ptr<CrowdSoundAdminImpl> admin_service(new CrowdSoundAdminImpl(server));
 
     ServerBuilder builder;
-    builder.AddListeningPort(listen_address, grpc::InsecureServerCredentials());
+    builder.AddListeningPort("0.0.0.0:50051", grpc::InsecureServerCredentials());
     builder.RegisterService(crowdsound_service.get());
     builder.RegisterService(admin_service.get());
 
-    unique_ptr<Server> server(builder.BuildAndStart());
-    cout << "Listening on " << listen_address << endl;
+    unique_ptr<grpc::Server> grpcServer(builder.BuildAndStart());
+    cout << "Listening on 0.0.0.0:50051" << endl;
 
-    server->Wait();
+    grpcServer->Wait();
 }

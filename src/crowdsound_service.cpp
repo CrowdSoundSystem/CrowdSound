@@ -46,33 +46,27 @@ using skrillex::Song;
 using skrillex::Artist;
 using skrillex::Genre;
 
-CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db, unique_ptr<PlaysourceClient> playsource, shared_ptr<DecisionAlgorithm> algorithm)
-: db_(db)
-, mapper_(new Mapper(db_))
-, algo_(algorithm)
-, playsource_(move(playsource))
-, ps_thread_(std::bind(&CrowdSoundImpl::runPlaySource, this))
+CrowdSoundImpl::CrowdSoundImpl(shared_ptr<Server> server)
+: server_(server)
+, db_(server->db_)
+, mapper_(server_->db_)
 {
 }
 
-void CrowdSoundImpl::runPlaySource() {
-    // TODO: Use member binding instead?
-    cout << "[server] running playsource loop" << endl;
-    playsource_->runQueueLoop();
-}
 
 Status CrowdSoundImpl::Ping(ServerContext* context, const PingRequest* request, PingResponse* resp) {
-    int64_t now = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
-    this->db_->setActivity(request->user_id(), now);
+    cout << "[server] Received ping from: " << request->user_id() << endl;
 
-    cout << "Received ping from: " << request->user_id() << endl;
+    server_->updateActivity(request->user_id());
 
     return Status::OK;
 }
 
 Status CrowdSoundImpl::GetSessionData(ServerContext* context, const GetSessionDataRequest* request, GetSessionDataResponse* resp) {
-    // TODO: Use real data
-    resp->set_session_name("Symposium");
+    {
+        lock_guard<mutex> lock(server_->settings_guard_);
+        resp->set_session_name(server_->session_name_);
+    }
 
     int users = 0;
     skrillex::Status status = db_->getSessionUserCount(users);
@@ -88,11 +82,7 @@ Status CrowdSoundImpl::GetSessionData(ServerContext* context, const GetSessionDa
 Status CrowdSoundImpl::GetPlaying(ServerContext* context, const GetPlayingRequest* request, GetPlayingResponse* response) {
     ResultSet<Song> resultSet;
 
-    // If the user_id was provided (it should be), then update their activity
-    if (request->user_id().size() > 0) {
-        int64_t timestamp = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
-        db_->setActivity(request->user_id(), timestamp);
-    }
+    server_->updateActivity(request->user_id());
 
     skrillex::Status status = this->db_->getBuffer(resultSet);
     if (status != skrillex::Status::OK()) {
@@ -111,12 +101,7 @@ Status CrowdSoundImpl::GetPlaying(ServerContext* context, const GetPlayingReques
 Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* request, ServerWriter<GetQueueResponse>* writer) {
     ResultSet<Song> resultSet;
 
-    // If the user_id was provided (it should be), then update their activity
-    if (request->user_id().size() > 0) {
-        int64_t timestamp = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
-        db_->setActivity(request->user_id(), timestamp);
-    }
-
+    server_->updateActivity(request->user_id());
 
     // First, send back the buffer
     skrillex::Status status = this->db_->getBuffer(resultSet);
@@ -151,6 +136,12 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
         return Status(StatusCode::INTERNAL, status.message());
     }
 
+    int queueSize = 0;
+    {
+        lock_guard<mutex> lock(server_->settings_guard_);
+        queueSize = server_->queue_size_;
+    }
+
     for (Song s : resultSet) {
         GetQueueResponse resp;
         resp.set_name(s.name);
@@ -163,7 +154,7 @@ Status CrowdSoundImpl::GetQueue(ServerContext* context, const GetQueueRequest* r
             break;
         }
 
-        if (++count >= 20) {
+        if (++count >= queueSize) {
             break;
         }
     }
@@ -181,6 +172,12 @@ Status CrowdSoundImpl::ListTrendingArtists(ServerContext* context, const ListTre
         return Status(StatusCode::INTERNAL, status.message());
     }
 
+    int trendingArtistsSize = 0;
+    {
+        lock_guard<mutex> lock(server_->settings_guard_);
+        trendingArtistsSize = server_->trending_artists_size_;
+    }
+
     int count = 0;
     for (Artist s : resultSet) {
         ListTrendingArtistsResponse resp;
@@ -191,7 +188,7 @@ Status CrowdSoundImpl::ListTrendingArtists(ServerContext* context, const ListTre
             break;
         }
 
-        if (++count >= 20) {
+        if (++count >= trendingArtistsSize) {
             break;
         }
     }
@@ -216,8 +213,8 @@ Status CrowdSoundImpl::PostSong(ServerContext* context, ServerReader<PostSongReq
             firstArtist = request.artist(0);
         }
 
-        cout << "[Server] Received PostSong: [" << request.genre() << "] " << firstArtist << " - " << request.name() << endl;
-        status = mapper_->map(song, request.name(), firstArtist, request.genre());
+        cout << "[server] Received PostSong: [" << request.genre() << "] " << firstArtist << " - " << request.name() << endl;
+        status = mapper_.map(song, request.name(), firstArtist, request.genre());
         if (status != skrillex::Status::OK()) {
             return Status(StatusCode::INTERNAL, status.message());
         }
@@ -242,7 +239,7 @@ Status CrowdSoundImpl::PostSong(ServerContext* context, ServerReader<PostSongReq
         }
     }
 
-    algo_->run(DecisionSettings::defaultSettings());
+    server_->runAlgorithm();
 
     return Status::OK;
 }
@@ -261,11 +258,11 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
     // introduces a lot of work client side too). The first approach comes relatively
     // free with the parsing model, and fuck it, it's a prototype with strick deadlines.
 
-    cout << "[Server] Received VoteSong: [" << request->artist() << " - " << request->name() << "] - " << request->like() << endl;
+    cout << "[server] Received VoteSong: [" << request->artist() << " - " << request->name() << "] - " << request->like() << endl;
 
     Song song;
     int amount = request->like() ? 1 : -1;
-    skrillex::Status status = mapper_->lookup(song, request->name(), request->artist());
+    skrillex::Status status = mapper_.lookup(song, request->name(), request->artist());
 
     if (status.notFound()) {
         return Status(StatusCode::NOT_FOUND, status.message());
@@ -292,29 +289,15 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
         }
     }
 
-    algo_->run(DecisionSettings::defaultSettings());
+    server_->updateActivity(request->user_id());
+    server_->runAlgorithm();
 
     return Status::OK;
 }
 
 Status CrowdSoundImpl::VoteSkip(ServerContext* context, const VoteSkipRequest* request, VoteSkipResponse* resp) {
-    lock_guard<mutex> lock(skip_guard_);
-
-    skip_voters_.insert(request->user_id());
-
-    int users = 0;
-    skrillex::Status status = db_->getSessionUserCount(users);
-    if (status != skrillex::Status::OK()) {
-        return Status(StatusCode::INTERNAL, status.message());
-    }
-
-    float percentage = (float)skip_voters_.size() / (float)users;
-
-    cout << "[algorithm]" << "vote ratio: " << percentage << " [" << skip_voters_.size() << ", " << users << "]" << endl;
-    if (percentage > 0.5f) {
-        playsource_->skipSong();
-        skip_voters_.clear();
-    }
+    server_->updateActivity(request->user_id());
+    server_->voteSkip(request->user_id());
 
     return Status::OK;
 }

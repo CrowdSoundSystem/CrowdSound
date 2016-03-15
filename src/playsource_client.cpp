@@ -19,12 +19,12 @@ using Playsource::QueueSongResponse;
 using Playsource::SkipSongRequest;
 using Playsource::SkipSongResponse;
 
-PlaysourceClient::PlaysourceClient(shared_ptr<Channel> channel, int maxQueueSize, shared_ptr<skrillex::DB> db, shared_ptr<DecisionAlgorithm> algorithm)
+PlaysourceClient::PlaysourceClient(shared_ptr<Channel> channel, int maxQueueSize, Server* server)
     : stub_(Playsource::Playsource::NewStub(channel))
     , running_(false)
     , max_queue_size_(maxQueueSize)
-    , db_(db)
-    , algorithm_(algorithm)
+    , server_(server)
+    , db_(server->db_)
 {
 }
 
@@ -64,7 +64,7 @@ void PlaysourceClient::runQueueLoop() {
 
         // If the buffer is not full, try to pull in songs.
         if (buffer.size() < max_queue_size_) {
-			algorithm_->run(DecisionSettings::defaultSettings());
+            server_->runAlgorithm();
 
             int count = buffer.size();
             if (!pullFromQueue(count)) {
@@ -143,7 +143,7 @@ void PlaysourceClient::runQueueLoop() {
             cout << "[playsource] song finished: " << responseSong << endl;
         }
 
-		algorithm_->run(DecisionSettings::defaultSettings());
+        server_->runAlgorithm();
         db_->songFinished();
         db_->bufferNext();
         sendPosition--;
