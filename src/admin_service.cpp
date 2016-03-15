@@ -56,10 +56,9 @@ Status CrowdSoundAdminImpl::Skip(ServerContext* context, const SkipRequest* requ
 Status CrowdSoundAdminImpl::GetSettings(ServerContext* context, const GetSettingsRequest* request, GetSettingsResponse* response) {
     lock_guard<mutex> lock(server_->settings_guard_);
 
-    // TODO: Global database read options.
-    response->set_filter_buffered(true);
-    response->set_inactivity_threshold(100);
-    response->set_result_limit(100);
+    response->set_filter_buffered(server_->skrillex_read_options_.filter_buffered);
+    response->set_inactivity_threshold(server_->skrillex_read_options_.inactivity_threshold);
+    response->set_result_limit(server_->skrillex_read_options_.result_limit);
 
     // Queue/Settings Settings
     response->set_session_name(server_->session_name_);
@@ -76,6 +75,55 @@ Status CrowdSoundAdminImpl::GetSettings(ServerContext* context, const GetSetting
     response->set_min_repeat_window(server_->algo_settings_.m_minsBeforeCanPlayAgain);
 }
 
+
 Status CrowdSoundAdminImpl::SetSetting(ServerContext* context, const SetSettingRequest* request, SetSettingResponse* response) {
-    return Status::OK;
+    // Why no switch supper :( or any nice way to do this
+    if (request->key() == "filter_buffered")           { return apply(request, server_->skrillex_read_options_.filter_buffered); }
+    else if (request->key() == "inactivity_threshold") { return apply(request, server_->skrillex_read_options_.inactivity_threshold); }
+    else if (request->key() == "result_limit")         { return apply(request, server_->skrillex_read_options_.result_limit); }
+
+    // Query Options
+    else if (request->key() == "session_name")          { return apply(request, server_->session_name_); }
+    else if (request->key() == "queue_size")            { return apply(request, server_->queue_size_); }
+    else if (request->key() == "trending_artists_size") { return apply(request, server_->trending_artists_size_); }
+    else if (request->key() == "skip_threshold")        { return apply(request, server_->skip_threshold_); }
+
+    // Algorithm settings
+    else if (request->key() == "count_weight")          { return apply(request, server_->algo_settings_.m_countWeight); }
+    else if (request->key() == "vote_weight")           { return apply(request, (int&)server_->algo_settings_.m_voteWeight); }
+    else if (request->key() == "genre_weight")          { return apply(request, server_->algo_settings_.m_genreWeight); }
+    else if (request->key() == "artist_weight")         { return apply(request, server_->algo_settings_.m_artistWeight); }
+    else if (request->key() == "played_again_mult")     { return apply(request, server_->algo_settings_.m_playedAgainMultipler); }
+    else if (request->key() == "min_repeat_window")     { return apply(request, server_->algo_settings_.m_minsBeforeCanPlayAgain); }
+
+    return Status(StatusCode::NOT_FOUND, "key not found");
+}
+
+Status CrowdSoundAdminImpl::apply(const SetSettingRequest* request, int& val) {
+    if (request->value_case() != SetSettingRequest::ValueCase::kIntVal) {
+        return Status(StatusCode::INVALID_ARGUMENT, "invalid type for key");
+    }
+
+    val = request->int_val();
+}
+Status CrowdSoundAdminImpl::apply(const SetSettingRequest* request, float& val) {
+    if (request->value_case() != SetSettingRequest::ValueCase::kFloatVal) {
+        return Status(StatusCode::INVALID_ARGUMENT, "invalid type for key");
+    }
+
+    val = request->float_val();
+}
+Status CrowdSoundAdminImpl::apply(const SetSettingRequest* request, bool& val) {
+    if (request->value_case() != SetSettingRequest::ValueCase::kBoolVal) {
+        return Status(StatusCode::INVALID_ARGUMENT, "invalid type for key");
+    }
+
+    val = request->bool_val();
+}
+Status CrowdSoundAdminImpl::apply(const SetSettingRequest* request, string& val) {
+    if (request->value_case() != SetSettingRequest::ValueCase::kStrVal) {
+        return Status(StatusCode::INVALID_ARGUMENT, "invalid type for key");
+    }
+
+    val = request->str_val();
 }

@@ -18,6 +18,7 @@ Server::Server(std::shared_ptr<skrillex::DB> db, std::shared_ptr<Channel> channe
 , skip_threshold_(0.5f)
 , session_name_("Crowdsound")
 , algo_settings_(DecisionSettings::defaultSettings())
+, skrillex_read_options_(skrillex::ReadOptions())
 {
 }
 

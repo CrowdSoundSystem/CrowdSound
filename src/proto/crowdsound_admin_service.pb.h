@@ -606,9 +606,10 @@ class SetSettingRequest : public ::google::protobuf::Message {
   static const SetSettingRequest& default_instance();
 
   enum ValueCase {
-    kStrVal = 2,
-    kIntVal = 3,
-    kFloatVal = 4,
+    kBoolVal = 2,
+    kStrVal = 3,
+    kIntVal = 4,
+    kFloatVal = 5,
     VALUE_NOT_SET = 0,
   };
 
@@ -664,12 +665,21 @@ class SetSettingRequest : public ::google::protobuf::Message {
   ::std::string* release_key();
   void set_allocated_key(::std::string* key);
 
-  // optional string str_val = 2;
+  // optional bool bool_val = 2;
+  private:
+  bool has_bool_val() const;
+  public:
+  void clear_bool_val();
+  static const int kBoolValFieldNumber = 2;
+  bool bool_val() const;
+  void set_bool_val(bool value);
+
+  // optional string str_val = 3;
   private:
   bool has_str_val() const;
   public:
   void clear_str_val();
-  static const int kStrValFieldNumber = 2;
+  static const int kStrValFieldNumber = 3;
   const ::std::string& str_val() const;
   void set_str_val(const ::std::string& value);
   void set_str_val(const char* value);
@@ -678,27 +688,28 @@ class SetSettingRequest : public ::google::protobuf::Message {
   ::std::string* release_str_val();
   void set_allocated_str_val(::std::string* str_val);
 
-  // optional int32 int_val = 3;
+  // optional int32 int_val = 4;
   private:
   bool has_int_val() const;
   public:
   void clear_int_val();
-  static const int kIntValFieldNumber = 3;
+  static const int kIntValFieldNumber = 4;
   ::google::protobuf::int32 int_val() const;
   void set_int_val(::google::protobuf::int32 value);
 
-  // optional float float_val = 4;
+  // optional float float_val = 5;
   private:
   bool has_float_val() const;
   public:
   void clear_float_val();
-  static const int kFloatValFieldNumber = 4;
+  static const int kFloatValFieldNumber = 5;
   float float_val() const;
   void set_float_val(float value);
 
   ValueCase value_case() const;
   // @@protoc_insertion_point(class_scope:CrowdSound.SetSettingRequest)
  private:
+  inline void set_has_bool_val();
   inline void set_has_str_val();
   inline void set_has_int_val();
   inline void set_has_float_val();
@@ -712,6 +723,7 @@ class SetSettingRequest : public ::google::protobuf::Message {
   ::google::protobuf::internal::ArenaStringPtr key_;
   union ValueUnion {
     ValueUnion() {}
+    bool bool_val_;
     ::google::protobuf::internal::ArenaStringPtr str_val_;
     ::google::protobuf::int32 int_val_;
     float float_val_;
@@ -1125,7 +1137,36 @@ inline void SetSettingRequest::set_allocated_key(::std::string* key) {
   // @@protoc_insertion_point(field_set_allocated:CrowdSound.SetSettingRequest.key)
 }
 
-// optional string str_val = 2;
+// optional bool bool_val = 2;
+inline bool SetSettingRequest::has_bool_val() const {
+  return value_case() == kBoolVal;
+}
+inline void SetSettingRequest::set_has_bool_val() {
+  _oneof_case_[0] = kBoolVal;
+}
+inline void SetSettingRequest::clear_bool_val() {
+  if (has_bool_val()) {
+    value_.bool_val_ = false;
+    clear_has_value();
+  }
+}
+inline bool SetSettingRequest::bool_val() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.SetSettingRequest.bool_val)
+  if (has_bool_val()) {
+    return value_.bool_val_;
+  }
+  return false;
+}
+inline void SetSettingRequest::set_bool_val(bool value) {
+  if (!has_bool_val()) {
+    clear_value();
+    set_has_bool_val();
+  }
+  value_.bool_val_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.SetSettingRequest.bool_val)
+}
+
+// optional string str_val = 3;
 inline bool SetSettingRequest::has_str_val() const {
   return value_case() == kStrVal;
 }
@@ -1205,7 +1246,7 @@ inline void SetSettingRequest::set_allocated_str_val(::std::string* str_val) {
   // @@protoc_insertion_point(field_set_allocated:CrowdSound.SetSettingRequest.str_val)
 }
 
-// optional int32 int_val = 3;
+// optional int32 int_val = 4;
 inline bool SetSettingRequest::has_int_val() const {
   return value_case() == kIntVal;
 }
@@ -1234,7 +1275,7 @@ inline void SetSettingRequest::set_int_val(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:CrowdSound.SetSettingRequest.int_val)
 }
 
-// optional float float_val = 4;
+// optional float float_val = 5;
 inline bool SetSettingRequest::has_float_val() const {
   return value_case() == kFloatVal;
 }

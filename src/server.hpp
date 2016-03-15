@@ -40,12 +40,14 @@ private:
     std::recursive_mutex  skip_guard_;
     std::set<std::string> skip_voters_;
 
-    std::mutex       settings_guard_;
-    int              queue_size_;
-    int              trending_artists_size_;
-    float            skip_threshold_;
-    std::string      session_name_;
-    DecisionSettings algo_settings_;
+    std::mutex            settings_guard_;
+    int                   queue_size_;
+    int                   trending_artists_size_;
+    float                 skip_threshold_;
+    std::string           session_name_;
+    DecisionSettings      algo_settings_;
+    skrillex::ReadOptions skrillex_read_options_;
+
 
     std::thread ps_thread_;
 

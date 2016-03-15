@@ -37,6 +37,13 @@ public:
 
     Status GetSettings(ServerContext* context, const GetSettingsRequest* request, GetSettingsResponse* response) override;
     Status SetSetting(ServerContext* context, const SetSettingRequest* request, SetSettingResponse* response) override;
+
+private:
+    Status apply(const SetSettingRequest* request, int& val);
+    Status apply(const SetSettingRequest* request, float& val);
+    Status apply(const SetSettingRequest* request, bool& val);
+    Status apply(const SetSettingRequest* request, std::string& val);
+
 private:
     std::shared_ptr<Server> server_;
 };

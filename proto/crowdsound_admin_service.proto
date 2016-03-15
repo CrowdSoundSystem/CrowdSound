@@ -52,9 +52,10 @@ message SetSettingRequest {
     string key = 1;
 
     oneof value {
-        string str_val = 2;
-        int32  int_val = 3;
-        float  float_val = 4;
+        bool   bool_val  = 2;
+        string str_val   = 3;
+        int32  int_val   = 4;
+        float  float_val = 5;
     }
 }
 

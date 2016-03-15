@@ -42,6 +42,7 @@ const ::google::protobuf::Descriptor* SetSettingRequest_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SetSettingRequest_reflection_ = NULL;
 struct SetSettingRequestOneofInstance {
+  bool bool_val_;
   ::google::protobuf::internal::ArenaStringPtr str_val_;
   ::google::protobuf::int32 int_val_;
   float float_val_;
@@ -160,8 +161,9 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSettingsResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSettingsResponse, _is_default_instance_));
   SetSettingRequest_descriptor_ = file->message_type(6);
-  static const int SetSettingRequest_offsets_[5] = {
+  static const int SetSettingRequest_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetSettingRequest, key_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SetSettingRequest_default_oneof_instance_, bool_val_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SetSettingRequest_default_oneof_instance_, str_val_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SetSettingRequest_default_oneof_instance_, int_val_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(SetSettingRequest_default_oneof_instance_, float_val_),
@@ -266,19 +268,19 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fadmin_5fservice_2eproto() {
     "d\030\007 \001(\002\022\024\n\014count_weight\030\010 \001(\002\022\023\n\013vote_we"
     "ight\030\t \001(\002\022\024\n\014genre_weight\030\n \001(\002\022\025\n\rarti"
     "st_weight\030\013 \001(\002\022\031\n\021played_again_mult\030\014 \001"
-    "(\002\022\031\n\021min_repeat_window\030\r \001(\002\"d\n\021SetSett"
-    "ingRequest\022\013\n\003key\030\001 \001(\t\022\021\n\007str_val\030\002 \001(\t"
-    "H\000\022\021\n\007int_val\030\003 \001(\005H\000\022\023\n\tfloat_val\030\004 \001(\002"
-    "H\000B\007\n\005value\"\024\n\022SetSettingResponse2\264\002\n\005Ad"
-    "min\022M\n\nSkipStatus\022\035.CrowdSound.SkipStatu"
-    "sRequest\032\036.CrowdSound.SkipStatusResponse"
-    "\"\000\022;\n\004Skip\022\027.CrowdSound.SkipRequest\032\030.Cr"
-    "owdSound.SkipResponse\"\000\022P\n\013GetSettings\022\036"
-    ".CrowdSound.GetSettingsRequest\032\037.CrowdSo"
-    "und.GetSettingsResponse\"\000\022M\n\nSetSetting\022"
-    "\035.CrowdSound.SetSettingRequest\032\036.CrowdSo"
-    "und.SetSettingResponse\"\000B\014Z\ncrowdsoundb\006"
-    "proto3", 1006);
+    "(\002\022\031\n\021min_repeat_window\030\r \001(\002\"x\n\021SetSett"
+    "ingRequest\022\013\n\003key\030\001 \001(\t\022\022\n\010bool_val\030\002 \001("
+    "\010H\000\022\021\n\007str_val\030\003 \001(\tH\000\022\021\n\007int_val\030\004 \001(\005H"
+    "\000\022\023\n\tfloat_val\030\005 \001(\002H\000B\007\n\005value\"\024\n\022SetSe"
+    "ttingResponse2\264\002\n\005Admin\022M\n\nSkipStatus\022\035."
+    "CrowdSound.SkipStatusRequest\032\036.CrowdSoun"
+    "d.SkipStatusResponse\"\000\022;\n\004Skip\022\027.CrowdSo"
+    "und.SkipRequest\032\030.CrowdSound.SkipRespons"
+    "e\"\000\022P\n\013GetSettings\022\036.CrowdSound.GetSetti"
+    "ngsRequest\032\037.CrowdSound.GetSettingsRespo"
+    "nse\"\000\022M\n\nSetSetting\022\035.CrowdSound.SetSett"
+    "ingRequest\032\036.CrowdSound.SetSettingRespon"
+    "se\"\000B\014Z\ncrowdsoundb\006proto3", 1026);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/crowdsound_admin_service.proto", &protobuf_RegisterTypes);
   SkipStatusRequest::default_instance_ = new SkipStatusRequest();
@@ -2232,6 +2234,7 @@ void GetSettingsResponse::clear_min_repeat_window() {
 
 #ifndef _MSC_VER
 const int SetSettingRequest::kKeyFieldNumber;
+const int SetSettingRequest::kBoolValFieldNumber;
 const int SetSettingRequest::kStrValFieldNumber;
 const int SetSettingRequest::kIntValFieldNumber;
 const int SetSettingRequest::kFloatValFieldNumber;
@@ -2245,6 +2248,7 @@ SetSettingRequest::SetSettingRequest()
 
 void SetSettingRequest::InitAsDefaultInstance() {
   _is_default_instance_ = true;
+  SetSettingRequest_default_oneof_instance_->bool_val_ = false;
   SetSettingRequest_default_oneof_instance_->str_val_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   SetSettingRequest_default_oneof_instance_->int_val_ = 0;
   SetSettingRequest_default_oneof_instance_->float_val_ = 0;
@@ -2307,6 +2311,10 @@ SetSettingRequest* SetSettingRequest::New(::google::protobuf::Arena* arena) cons
 
 void SetSettingRequest::clear_value() {
   switch(value_case()) {
+    case kBoolVal: {
+      // No need to clear
+      break;
+    }
     case kStrVal: {
       value_.str_val_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
       break;
@@ -2354,13 +2362,29 @@ bool SetSettingRequest::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_str_val;
+        if (input->ExpectTag(16)) goto parse_bool_val;
         break;
       }
 
-      // optional string str_val = 2;
+      // optional bool bool_val = 2;
       case 2: {
-        if (tag == 18) {
+        if (tag == 16) {
+         parse_bool_val:
+          clear_value();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &value_.bool_val_)));
+          set_has_bool_val();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_str_val;
+        break;
+      }
+
+      // optional string str_val = 3;
+      case 3: {
+        if (tag == 26) {
          parse_str_val:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_str_val()));
@@ -2371,13 +2395,13 @@ bool SetSettingRequest::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(24)) goto parse_int_val;
+        if (input->ExpectTag(32)) goto parse_int_val;
         break;
       }
 
-      // optional int32 int_val = 3;
-      case 3: {
-        if (tag == 24) {
+      // optional int32 int_val = 4;
+      case 4: {
+        if (tag == 32) {
          parse_int_val:
           clear_value();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -2387,13 +2411,13 @@ bool SetSettingRequest::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(37)) goto parse_float_val;
+        if (input->ExpectTag(45)) goto parse_float_val;
         break;
       }
 
-      // optional float float_val = 4;
-      case 4: {
-        if (tag == 37) {
+      // optional float float_val = 5;
+      case 5: {
+        if (tag == 45) {
          parse_float_val:
           clear_value();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -2441,24 +2465,29 @@ void SetSettingRequest::SerializeWithCachedSizes(
       1, this->key(), output);
   }
 
-  // optional string str_val = 2;
+  // optional bool bool_val = 2;
+  if (has_bool_val()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->bool_val(), output);
+  }
+
+  // optional string str_val = 3;
   if (has_str_val()) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->str_val().data(), this->str_val().length(),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "CrowdSound.SetSettingRequest.str_val");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->str_val(), output);
+      3, this->str_val(), output);
   }
 
-  // optional int32 int_val = 3;
+  // optional int32 int_val = 4;
   if (has_int_val()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->int_val(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->int_val(), output);
   }
 
-  // optional float float_val = 4;
+  // optional float float_val = 5;
   if (has_float_val()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->float_val(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->float_val(), output);
   }
 
   // @@protoc_insertion_point(serialize_end:CrowdSound.SetSettingRequest)
@@ -2478,7 +2507,12 @@ void SetSettingRequest::SerializeWithCachedSizes(
         1, this->key(), target);
   }
 
-  // optional string str_val = 2;
+  // optional bool bool_val = 2;
+  if (has_bool_val()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->bool_val(), target);
+  }
+
+  // optional string str_val = 3;
   if (has_str_val()) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->str_val().data(), this->str_val().length(),
@@ -2486,17 +2520,17 @@ void SetSettingRequest::SerializeWithCachedSizes(
       "CrowdSound.SetSettingRequest.str_val");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->str_val(), target);
+        3, this->str_val(), target);
   }
 
-  // optional int32 int_val = 3;
+  // optional int32 int_val = 4;
   if (has_int_val()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->int_val(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->int_val(), target);
   }
 
-  // optional float float_val = 4;
+  // optional float float_val = 5;
   if (has_float_val()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->float_val(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->float_val(), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.SetSettingRequest)
@@ -2514,21 +2548,26 @@ int SetSettingRequest::ByteSize() const {
   }
 
   switch (value_case()) {
-    // optional string str_val = 2;
+    // optional bool bool_val = 2;
+    case kBoolVal: {
+      total_size += 1 + 1;
+      break;
+    }
+    // optional string str_val = 3;
     case kStrVal: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->str_val());
       break;
     }
-    // optional int32 int_val = 3;
+    // optional int32 int_val = 4;
     case kIntVal: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->int_val());
       break;
     }
-    // optional float float_val = 4;
+    // optional float float_val = 5;
     case kFloatVal: {
       total_size += 1 + 4;
       break;
@@ -2558,6 +2597,10 @@ void SetSettingRequest::MergeFrom(const ::google::protobuf::Message& from) {
 void SetSettingRequest::MergeFrom(const SetSettingRequest& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   switch (from.value_case()) {
+    case kBoolVal: {
+      set_bool_val(from.bool_val());
+      break;
+    }
     case kStrVal: {
       set_str_val(from.str_val());
       break;
@@ -2663,7 +2706,36 @@ void SetSettingRequest::clear_key() {
   // @@protoc_insertion_point(field_set_allocated:CrowdSound.SetSettingRequest.key)
 }
 
-// optional string str_val = 2;
+// optional bool bool_val = 2;
+bool SetSettingRequest::has_bool_val() const {
+  return value_case() == kBoolVal;
+}
+void SetSettingRequest::set_has_bool_val() {
+  _oneof_case_[0] = kBoolVal;
+}
+void SetSettingRequest::clear_bool_val() {
+  if (has_bool_val()) {
+    value_.bool_val_ = false;
+    clear_has_value();
+  }
+}
+ bool SetSettingRequest::bool_val() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.SetSettingRequest.bool_val)
+  if (has_bool_val()) {
+    return value_.bool_val_;
+  }
+  return false;
+}
+ void SetSettingRequest::set_bool_val(bool value) {
+  if (!has_bool_val()) {
+    clear_value();
+    set_has_bool_val();
+  }
+  value_.bool_val_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.SetSettingRequest.bool_val)
+}
+
+// optional string str_val = 3;
 bool SetSettingRequest::has_str_val() const {
   return value_case() == kStrVal;
 }
@@ -2743,7 +2815,7 @@ void SetSettingRequest::clear_str_val() {
   // @@protoc_insertion_point(field_set_allocated:CrowdSound.SetSettingRequest.str_val)
 }
 
-// optional int32 int_val = 3;
+// optional int32 int_val = 4;
 bool SetSettingRequest::has_int_val() const {
   return value_case() == kIntVal;
 }
@@ -2772,7 +2844,7 @@ void SetSettingRequest::clear_int_val() {
   // @@protoc_insertion_point(field_set:CrowdSound.SetSettingRequest.int_val)
 }
 
-// optional float float_val = 4;
+// optional float float_val = 5;
 bool SetSettingRequest::has_float_val() const {
   return value_case() == kFloatVal;
 }
