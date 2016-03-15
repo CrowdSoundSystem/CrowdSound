@@ -25,7 +25,6 @@ PlaysourceClient::PlaysourceClient(shared_ptr<Channel> channel, int maxQueueSize
     , max_queue_size_(maxQueueSize)
     , db_(db)
     , algorithm_(algorithm)
-	, algorithmSettings_(DecisionSettings::defaultSettings())
 {
 }
 
@@ -65,7 +64,7 @@ void PlaysourceClient::runQueueLoop() {
 
         // If the buffer is not full, try to pull in songs.
         if (buffer.size() < max_queue_size_) {
-			algorithm_->run(algorithmSettings_);
+			algorithm_->run(DecisionSettings::defaultSettings());
 
             int count = buffer.size();
             if (!pullFromQueue(count)) {
@@ -144,7 +143,7 @@ void PlaysourceClient::runQueueLoop() {
             cout << "[playsource] song finished: " << responseSong << endl;
         }
 
-		algorithm_->run(algorithmSettings_);
+		algorithm_->run(DecisionSettings::defaultSettings());
         db_->songFinished();
         db_->bufferNext();
         sendPosition--;

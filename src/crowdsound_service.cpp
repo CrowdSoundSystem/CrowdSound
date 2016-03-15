@@ -242,7 +242,7 @@ Status CrowdSoundImpl::PostSong(ServerContext* context, ServerReader<PostSongReq
         }
     }
 
-    algo_->run();
+    algo_->run(DecisionSettings::defaultSettings());
 
     return Status::OK;
 }
@@ -292,7 +292,7 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
         }
     }
 
-    algo_->run();
+    algo_->run(DecisionSettings::defaultSettings());
 
     return Status::OK;
 }
