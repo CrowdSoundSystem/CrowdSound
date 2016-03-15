@@ -9,6 +9,7 @@
 
 #include <grpc++/grpc++.h>
 #include "proto/crowdsound_service.grpc.pb.h"
+#include "proto/crowdsound_admin_service.grpc.pb.h"
 
 #include "playsource_client.hpp"
 #include "skrillex/skrillex.hpp"
@@ -38,6 +39,13 @@ using CrowdSound::VoteSongResponse;
 using CrowdSound::VoteSkipRequest;
 using CrowdSound::VoteSkipResponse;
 
+using CrowdSound::SkipStatusRequest;
+using CrowdSound::SkipStatusResponse;
+using CrowdSound::SkipRequest;
+using CrowdSound::SkipResponse;
+
+class CrowdSoundAdminImpl;
+
 class CrowdSoundImpl final : public CrowdSound::CrowdSound::Service {
 public:
     explicit CrowdSoundImpl(
@@ -66,6 +74,8 @@ private:
     std::set<std::string> skip_voters_;
 
     std::thread ps_thread_;
+
+    friend class CrowdSoundAdminImpl;
 };
 
 #endif

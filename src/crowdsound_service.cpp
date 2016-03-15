@@ -2,9 +2,11 @@
 #include <iostream>
 #include <grpc++/grpc++.h>
 
-#include "server.hpp"
+#include "crowdsound_service.hpp"
 #include "proto/crowdsound_service.pb.h"
 #include "proto/crowdsound_service.grpc.pb.h"
+#include "proto/crowdsound_admin_service.pb.h"
+#include "proto/crowdsound_admin_service.grpc.pb.h"
 
 using namespace std;
 
@@ -29,6 +31,11 @@ using CrowdSound::VoteSongResponse;
 using CrowdSound::VoteSkipRequest;
 using CrowdSound::VoteSkipResponse;
 
+using CrowdSound::SkipStatusRequest;
+using CrowdSound::SkipStatusResponse;
+using CrowdSound::SkipRequest;
+using CrowdSound::SkipResponse;
+
 using skrillex::DB;
 using skrillex::Mapper;
 using skrillex::ResultSet;
@@ -44,7 +51,8 @@ CrowdSoundImpl::CrowdSoundImpl(shared_ptr<DB> db, unique_ptr<PlaysourceClient> p
 , mapper_(new Mapper(db_))
 , algo_(algorithm)
 , playsource_(move(playsource))
-, ps_thread_(std::bind(&CrowdSoundImpl::runPlaySource, this)) {
+, ps_thread_(std::bind(&CrowdSoundImpl::runPlaySource, this))
+{
 }
 
 void CrowdSoundImpl::runPlaySource() {
@@ -310,3 +318,4 @@ Status CrowdSoundImpl::VoteSkip(ServerContext* context, const VoteSkipRequest* r
 
     return Status::OK;
 }
+

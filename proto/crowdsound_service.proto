@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-option java_package = "ex.grpc";
 option objc_class_prefix = "CS";
 option go_package = "crowdsound";
 

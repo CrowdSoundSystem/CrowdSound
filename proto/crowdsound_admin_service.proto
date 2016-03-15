@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "crowdsound";
+
+package CrowdSound;
+
+service Admin {
+    rpc SkipStatus(SkipStatusRequest) returns (SkipStatusResponse) {}
+    rpc Skip(SkipRequest) returns (SkipResponse) {}
+}
+
+message SkipStatusRequest {
+}
+
+message SkipStatusResponse {
+    int32 votes_to_skip = 1;
+    int32 total_users = 2;
+}
+
+message SkipRequest {
+}
+
+message SkipResponse {
+}
+

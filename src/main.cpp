@@ -5,7 +5,8 @@
 #include "skrillex/skrillex.hpp"
 #include "DecisionAlgorithm.h"
 
-#include "server.hpp"
+#include "crowdsound_service.hpp"
+#include "admin_service.hpp"
 #include "playsource_client.hpp"
 
 using grpc::Server;
@@ -39,11 +40,13 @@ int main() {
 
     string listen_address("0.0.0.0:50051");
 
-    CrowdSoundImpl service(db, move(playsource), algorithm);
+    shared_ptr<CrowdSoundImpl> crowdsound_service(new CrowdSoundImpl(db, move(playsource), algorithm));
+    shared_ptr<CrowdSoundAdminImpl> admin_service(new CrowdSoundAdminImpl(crowdsound_service));
 
     ServerBuilder builder;
     builder.AddListeningPort(listen_address, grpc::InsecureServerCredentials());
-    builder.RegisterService(&service);
+    builder.RegisterService(crowdsound_service.get());
+    builder.RegisterService(admin_service.get());
 
     unique_ptr<Server> server(builder.BuildAndStart());
     cout << "Listening on " << listen_address << endl;
