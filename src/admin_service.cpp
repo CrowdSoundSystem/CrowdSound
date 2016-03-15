@@ -74,7 +74,7 @@ Status CrowdSoundAdminImpl::GetSettings(ServerContext* context, const GetSetting
     response->set_played_again_mult(server_->algo_settings_.m_playedAgainMultipler);
     response->set_min_repeat_window(server_->algo_settings_.m_minsBeforeCanPlayAgain);
 
-    return Status::OK
+    return Status::OK;
 }
 
 
