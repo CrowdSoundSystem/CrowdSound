@@ -47,7 +47,7 @@ void Server::updateActivity(string userId) {
 
 void Server::runAlgorithm() {
     lock_guard<mutex> lock(settings_guard_);
-    algo_.run(algo_settings_);
+    algo_.run(algo_settings_, skrillex_read_options_);
 }
 
 void Server::skipSong() {
