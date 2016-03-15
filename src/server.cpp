@@ -64,7 +64,7 @@ void Server::voteSkip(std::string userId) {
 
     int users = 0;
 
-    skrillex::Status status = db_->getSessionUserCount(users);
+    skrillex::Status status = db_->getSessionUserCount(users, skrillex_read_options_);
     if (status != skrillex::Status::OK()) {
         cout << "[server] failed to get user count: " << status.message() << endl;
         return;

@@ -69,7 +69,7 @@ Status CrowdSoundImpl::GetSessionData(ServerContext* context, const GetSessionDa
     }
 
     int users = 0;
-    skrillex::Status status = db_->getSessionUserCount(users);
+    skrillex::Status status = db_->getSessionUserCount(users, server_->skrillex_read_options_);
     if (status != skrillex::Status::OK()) {
         return Status(StatusCode::INTERNAL, status.message());
     }

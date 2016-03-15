@@ -27,7 +27,7 @@ Status CrowdSoundAdminImpl::SkipStatus(ServerContext* context, const SkipStatusR
         lock_guard<recursive_mutex> lock(server_->skip_guard_);
 
         votesToSkip = server_->skip_voters_.size();
-        skrillex::Status status = server_->db_->getSessionUserCount(totalUsers);
+        skrillex::Status status = server_->db_->getSessionUserCount(totalUsers, server_->skrillex_read_options_);
         if (status != skrillex::Status::OK()) {
             return Status(StatusCode::INTERNAL, status.message());
         }
