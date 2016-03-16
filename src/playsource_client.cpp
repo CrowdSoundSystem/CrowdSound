@@ -143,9 +143,9 @@ void PlaysourceClient::runQueueLoop() {
             cout << "[playsource] song finished: " << responseSong << endl;
         }
 
-        server_->runAlgorithm();
-        server_->clearSkipVotes();
         db_->songFinished();
+        server_->clearSkipVotes();
+        server_->runAlgorithm();
         db_->bufferNext();
         sendPosition--;
 
