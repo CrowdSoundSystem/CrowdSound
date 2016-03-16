@@ -295,6 +295,10 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
     return Status::OK;
 }
 
+Status CrowdSoundImpl::VoteArtist(ServerContext* context, const VoteArtistRequest* request, VoteArtistResponse* resp) {
+    return Status::OK;
+}
+
 Status CrowdSoundImpl::VoteSkip(ServerContext* context, const VoteSkipRequest* request, VoteSkipResponse* resp) {
     server_->updateActivity(request->user_id());
     server_->voteSkip(request->user_id());

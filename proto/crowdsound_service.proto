@@ -11,6 +11,7 @@ service CrowdSound {
     // alive and connected.
     rpc Ping(PingRequest) returns (PingResponse) {}
 
+    // GetSessionData returns data about the session.
     rpc GetSessionData(GetSessionDataRequest) returns (GetSessionDataResponse) {}
 
     // GetPlaying returns the current song that is playing.
@@ -32,6 +33,9 @@ service CrowdSound {
 
     // VoteSong informs the CrowdSound service of a vote for a Song.
     rpc VoteSong(VoteSongRequest) returns (VoteSongResponse) {}
+
+    // VoteArtist informs the CrowdSound service of a vote for a Song.
+    rpc VoteArtist(VoteArtistRequest) returns (VoteArtistResponse) {}
 
     // VoteSkip votes to skip the currently playing song.
     rpc VoteSkip(VoteSkipRequest) returns (VoteSkipResponse) {}
@@ -101,6 +105,15 @@ message VoteSongRequest {
 }
 
 message VoteSongResponse {
+}
+
+message VoteArtistRequest {
+    string user_id = 1;
+    string artist = 2;
+    bool like = 3;
+}
+
+message VoteArtistResponse {
 }
 
 message VoteSkipRequest {

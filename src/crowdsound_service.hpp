@@ -35,6 +35,8 @@ using CrowdSound::PostSongRequest;
 using CrowdSound::PostSongResponse;
 using CrowdSound::VoteSongRequest;
 using CrowdSound::VoteSongResponse;
+using CrowdSound::VoteArtistRequest;
+using CrowdSound::VoteArtistResponse;
 using CrowdSound::VoteSkipRequest;
 using CrowdSound::VoteSkipResponse;
 
@@ -56,6 +58,7 @@ public:
     Status ListTrendingArtists(ServerContext* context, const ListTrendingArtistsRequest* request, ServerWriter<ListTrendingArtistsResponse>* writer) override;
     Status PostSong(ServerContext* context, ServerReader<PostSongRequest>* request, PostSongResponse* resp) override;
     Status VoteSong(ServerContext* context, const VoteSongRequest* request, VoteSongResponse* resp) override;
+    Status VoteArtist(ServerContext* context, const VoteArtistRequest* request, VoteArtistResponse* resp) override;
     Status VoteSkip(ServerContext* context, const VoteSkipRequest* request, VoteSkipResponse* resp) override;
 
 private:

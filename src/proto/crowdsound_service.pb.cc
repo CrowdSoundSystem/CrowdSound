@@ -62,6 +62,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* VoteSongResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   VoteSongResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* VoteArtistRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  VoteArtistRequest_reflection_ = NULL;
+const ::google::protobuf::Descriptor* VoteArtistResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  VoteArtistResponse_reflection_ = NULL;
 const ::google::protobuf::Descriptor* VoteSkipRequest_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   VoteSkipRequest_reflection_ = NULL;
@@ -297,7 +303,38 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       sizeof(VoteSongResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteSongResponse, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteSongResponse, _is_default_instance_));
-  VoteSkipRequest_descriptor_ = file->message_type(14);
+  VoteArtistRequest_descriptor_ = file->message_type(14);
+  static const int VoteArtistRequest_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteArtistRequest, user_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteArtistRequest, artist_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteArtistRequest, like_),
+  };
+  VoteArtistRequest_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      VoteArtistRequest_descriptor_,
+      VoteArtistRequest::default_instance_,
+      VoteArtistRequest_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(VoteArtistRequest),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteArtistRequest, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteArtistRequest, _is_default_instance_));
+  VoteArtistResponse_descriptor_ = file->message_type(15);
+  static const int VoteArtistResponse_offsets_[1] = {
+  };
+  VoteArtistResponse_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      VoteArtistResponse_descriptor_,
+      VoteArtistResponse::default_instance_,
+      VoteArtistResponse_offsets_,
+      -1,
+      -1,
+      -1,
+      sizeof(VoteArtistResponse),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteArtistResponse, _internal_metadata_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteArtistResponse, _is_default_instance_));
+  VoteSkipRequest_descriptor_ = file->message_type(16);
   static const int VoteSkipRequest_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteSkipRequest, user_id_),
   };
@@ -312,7 +349,7 @@ void protobuf_AssignDesc_proto_2fcrowdsound_5fservice_2eproto() {
       sizeof(VoteSkipRequest),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteSkipRequest, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VoteSkipRequest, _is_default_instance_));
-  VoteSkipResponse_descriptor_ = file->message_type(15);
+  VoteSkipResponse_descriptor_ = file->message_type(17);
   static const int VoteSkipResponse_offsets_[1] = {
   };
   VoteSkipResponse_reflection_ =
@@ -367,6 +404,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       VoteSongResponse_descriptor_, &VoteSongResponse::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      VoteArtistRequest_descriptor_, &VoteArtistRequest::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      VoteArtistResponse_descriptor_, &VoteArtistResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       VoteSkipRequest_descriptor_, &VoteSkipRequest::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       VoteSkipResponse_descriptor_, &VoteSkipResponse::default_instance());
@@ -403,6 +444,10 @@ void protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto() {
   delete VoteSongRequest_reflection_;
   delete VoteSongResponse::default_instance_;
   delete VoteSongResponse_reflection_;
+  delete VoteArtistRequest::default_instance_;
+  delete VoteArtistRequest_reflection_;
+  delete VoteArtistResponse::default_instance_;
+  delete VoteArtistResponse_reflection_;
   delete VoteSkipRequest::default_instance_;
   delete VoteSkipRequest_reflection_;
   delete VoteSkipResponse::default_instance_;
@@ -434,25 +479,29 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto() {
     "\"\022\n\020PostSongResponse\"N\n\017VoteSongRequest\022"
     "\017\n\007user_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006artist"
     "\030\003 \001(\t\022\014\n\004like\030\004 \001(\010\"\022\n\020VoteSongResponse"
-    "\"\"\n\017VoteSkipRequest\022\017\n\007user_id\030\001 \001(\t\"\022\n\020"
-    "VoteSkipResponse2\207\005\n\nCrowdSound\022;\n\004Ping\022"
-    "\027.CrowdSound.PingRequest\032\030.CrowdSound.Pi"
-    "ngResponse\"\000\022Y\n\016GetSessionData\022!.CrowdSo"
-    "und.GetSessionDataRequest\032\".CrowdSound.G"
-    "etSessionDataResponse\"\000\022M\n\nGetPlaying\022\035."
-    "CrowdSound.GetPlayingRequest\032\036.CrowdSoun"
-    "d.GetPlayingResponse\"\000\022I\n\010GetQueue\022\033.Cro"
-    "wdSound.GetQueueRequest\032\034.CrowdSound.Get"
-    "QueueResponse\"\0000\001\022j\n\023ListTrendingArtists"
-    "\022&.CrowdSound.ListTrendingArtistsRequest"
-    "\032\'.CrowdSound.ListTrendingArtistsRespons"
-    "e\"\0000\001\022I\n\010PostSong\022\033.CrowdSound.PostSongR"
-    "equest\032\034.CrowdSound.PostSongResponse\"\000(\001"
-    "\022G\n\010VoteSong\022\033.CrowdSound.VoteSongReques"
-    "t\032\034.CrowdSound.VoteSongResponse\"\000\022G\n\010Vot"
-    "eSkip\022\033.CrowdSound.VoteSkipRequest\032\034.Cro"
-    "wdSound.VoteSkipResponse\"\000B\021Z\ncrowdsound"
-    "\242\002\002CSb\006proto3", 1453);
+    "\"B\n\021VoteArtistRequest\022\017\n\007user_id\030\001 \001(\t\022\016"
+    "\n\006artist\030\002 \001(\t\022\014\n\004like\030\003 \001(\010\"\024\n\022VoteArti"
+    "stResponse\"\"\n\017VoteSkipRequest\022\017\n\007user_id"
+    "\030\001 \001(\t\"\022\n\020VoteSkipResponse2\326\005\n\nCrowdSoun"
+    "d\022;\n\004Ping\022\027.CrowdSound.PingRequest\032\030.Cro"
+    "wdSound.PingResponse\"\000\022Y\n\016GetSessionData"
+    "\022!.CrowdSound.GetSessionDataRequest\032\".Cr"
+    "owdSound.GetSessionDataResponse\"\000\022M\n\nGet"
+    "Playing\022\035.CrowdSound.GetPlayingRequest\032\036"
+    ".CrowdSound.GetPlayingResponse\"\000\022I\n\010GetQ"
+    "ueue\022\033.CrowdSound.GetQueueRequest\032\034.Crow"
+    "dSound.GetQueueResponse\"\0000\001\022j\n\023ListTrend"
+    "ingArtists\022&.CrowdSound.ListTrendingArti"
+    "stsRequest\032\'.CrowdSound.ListTrendingArti"
+    "stsResponse\"\0000\001\022I\n\010PostSong\022\033.CrowdSound"
+    ".PostSongRequest\032\034.CrowdSound.PostSongRe"
+    "sponse\"\000(\001\022G\n\010VoteSong\022\033.CrowdSound.Vote"
+    "SongRequest\032\034.CrowdSound.VoteSongRespons"
+    "e\"\000\022M\n\nVoteArtist\022\035.CrowdSound.VoteArtis"
+    "tRequest\032\036.CrowdSound.VoteArtistResponse"
+    "\"\000\022G\n\010VoteSkip\022\033.CrowdSound.VoteSkipRequ"
+    "est\032\034.CrowdSound.VoteSkipResponse\"\000B\021Z\nc"
+    "rowdsound\242\002\002CSb\006proto3", 1622);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/crowdsound_service.proto", &protobuf_RegisterTypes);
   PingRequest::default_instance_ = new PingRequest();
@@ -469,6 +518,8 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto() {
   PostSongResponse::default_instance_ = new PostSongResponse();
   VoteSongRequest::default_instance_ = new VoteSongRequest();
   VoteSongResponse::default_instance_ = new VoteSongResponse();
+  VoteArtistRequest::default_instance_ = new VoteArtistRequest();
+  VoteArtistResponse::default_instance_ = new VoteArtistResponse();
   VoteSkipRequest::default_instance_ = new VoteSkipRequest();
   VoteSkipResponse::default_instance_ = new VoteSkipResponse();
   PingRequest::default_instance_->InitAsDefaultInstance();
@@ -485,6 +536,8 @@ void protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto() {
   PostSongResponse::default_instance_->InitAsDefaultInstance();
   VoteSongRequest::default_instance_->InitAsDefaultInstance();
   VoteSongResponse::default_instance_->InitAsDefaultInstance();
+  VoteArtistRequest::default_instance_->InitAsDefaultInstance();
+  VoteArtistResponse::default_instance_->InitAsDefaultInstance();
   VoteSkipRequest::default_instance_->InitAsDefaultInstance();
   VoteSkipResponse::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_proto_2fcrowdsound_5fservice_2eproto);
@@ -4938,6 +4991,594 @@ void VoteSongResponse::InternalSwap(VoteSongResponse* other) {
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // VoteSongResponse
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int VoteArtistRequest::kUserIdFieldNumber;
+const int VoteArtistRequest::kArtistFieldNumber;
+const int VoteArtistRequest::kLikeFieldNumber;
+#endif  // !_MSC_VER
+
+VoteArtistRequest::VoteArtistRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CrowdSound.VoteArtistRequest)
+}
+
+void VoteArtistRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+VoteArtistRequest::VoteArtistRequest(const VoteArtistRequest& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:CrowdSound.VoteArtistRequest)
+}
+
+void VoteArtistRequest::SharedCtor() {
+    _is_default_instance_ = false;
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  user_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  artist_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  like_ = false;
+}
+
+VoteArtistRequest::~VoteArtistRequest() {
+  // @@protoc_insertion_point(destructor:CrowdSound.VoteArtistRequest)
+  SharedDtor();
+}
+
+void VoteArtistRequest::SharedDtor() {
+  user_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  artist_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void VoteArtistRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* VoteArtistRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return VoteArtistRequest_descriptor_;
+}
+
+const VoteArtistRequest& VoteArtistRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
+  return *default_instance_;
+}
+
+VoteArtistRequest* VoteArtistRequest::default_instance_ = NULL;
+
+VoteArtistRequest* VoteArtistRequest::New(::google::protobuf::Arena* arena) const {
+  VoteArtistRequest* n = new VoteArtistRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void VoteArtistRequest::Clear() {
+  user_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  artist_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  like_ = false;
+}
+
+bool VoteArtistRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CrowdSound.VoteArtistRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string user_id = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_user_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->user_id().data(), this->user_id().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CrowdSound.VoteArtistRequest.user_id"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_artist;
+        break;
+      }
+
+      // optional string artist = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_artist:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_artist()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->artist().data(), this->artist().length(),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CrowdSound.VoteArtistRequest.artist"));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_like;
+        break;
+      }
+
+      // optional bool like = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_like:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &like_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CrowdSound.VoteArtistRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CrowdSound.VoteArtistRequest)
+  return false;
+#undef DO_
+}
+
+void VoteArtistRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CrowdSound.VoteArtistRequest)
+  // optional string user_id = 1;
+  if (this->user_id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->user_id().data(), this->user_id().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.VoteArtistRequest.user_id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->user_id(), output);
+  }
+
+  // optional string artist = 2;
+  if (this->artist().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->artist().data(), this->artist().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.VoteArtistRequest.artist");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->artist(), output);
+  }
+
+  // optional bool like = 3;
+  if (this->like() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->like(), output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:CrowdSound.VoteArtistRequest)
+}
+
+::google::protobuf::uint8* VoteArtistRequest::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:CrowdSound.VoteArtistRequest)
+  // optional string user_id = 1;
+  if (this->user_id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->user_id().data(), this->user_id().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.VoteArtistRequest.user_id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->user_id(), target);
+  }
+
+  // optional string artist = 2;
+  if (this->artist().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->artist().data(), this->artist().length(),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CrowdSound.VoteArtistRequest.artist");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->artist(), target);
+  }
+
+  // optional bool like = 3;
+  if (this->like() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->like(), target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.VoteArtistRequest)
+  return target;
+}
+
+int VoteArtistRequest::ByteSize() const {
+  int total_size = 0;
+
+  // optional string user_id = 1;
+  if (this->user_id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->user_id());
+  }
+
+  // optional string artist = 2;
+  if (this->artist().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->artist());
+  }
+
+  // optional bool like = 3;
+  if (this->like() != 0) {
+    total_size += 1 + 1;
+  }
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void VoteArtistRequest::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const VoteArtistRequest* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const VoteArtistRequest>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void VoteArtistRequest::MergeFrom(const VoteArtistRequest& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.user_id().size() > 0) {
+
+    user_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.user_id_);
+  }
+  if (from.artist().size() > 0) {
+
+    artist_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.artist_);
+  }
+  if (from.like() != 0) {
+    set_like(from.like());
+  }
+}
+
+void VoteArtistRequest::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void VoteArtistRequest::CopyFrom(const VoteArtistRequest& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool VoteArtistRequest::IsInitialized() const {
+
+  return true;
+}
+
+void VoteArtistRequest::Swap(VoteArtistRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void VoteArtistRequest::InternalSwap(VoteArtistRequest* other) {
+  user_id_.Swap(&other->user_id_);
+  artist_.Swap(&other->artist_);
+  std::swap(like_, other->like_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata VoteArtistRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = VoteArtistRequest_descriptor_;
+  metadata.reflection = VoteArtistRequest_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// VoteArtistRequest
+
+// optional string user_id = 1;
+void VoteArtistRequest::clear_user_id() {
+  user_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& VoteArtistRequest::user_id() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.VoteArtistRequest.user_id)
+  return user_id_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void VoteArtistRequest::set_user_id(const ::std::string& value) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.VoteArtistRequest.user_id)
+}
+ void VoteArtistRequest::set_user_id(const char* value) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.VoteArtistRequest.user_id)
+}
+ void VoteArtistRequest::set_user_id(const char* value, size_t size) {
+  
+  user_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.VoteArtistRequest.user_id)
+}
+ ::std::string* VoteArtistRequest::mutable_user_id() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.VoteArtistRequest.user_id)
+  return user_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* VoteArtistRequest::release_user_id() {
+  
+  return user_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void VoteArtistRequest::set_allocated_user_id(::std::string* user_id) {
+  if (user_id != NULL) {
+    
+  } else {
+    
+  }
+  user_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), user_id);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.VoteArtistRequest.user_id)
+}
+
+// optional string artist = 2;
+void VoteArtistRequest::clear_artist() {
+  artist_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ const ::std::string& VoteArtistRequest::artist() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.VoteArtistRequest.artist)
+  return artist_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void VoteArtistRequest::set_artist(const ::std::string& value) {
+  
+  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CrowdSound.VoteArtistRequest.artist)
+}
+ void VoteArtistRequest::set_artist(const char* value) {
+  
+  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CrowdSound.VoteArtistRequest.artist)
+}
+ void VoteArtistRequest::set_artist(const char* value, size_t size) {
+  
+  artist_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CrowdSound.VoteArtistRequest.artist)
+}
+ ::std::string* VoteArtistRequest::mutable_artist() {
+  
+  // @@protoc_insertion_point(field_mutable:CrowdSound.VoteArtistRequest.artist)
+  return artist_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* VoteArtistRequest::release_artist() {
+  
+  return artist_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void VoteArtistRequest::set_allocated_artist(::std::string* artist) {
+  if (artist != NULL) {
+    
+  } else {
+    
+  }
+  artist_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), artist);
+  // @@protoc_insertion_point(field_set_allocated:CrowdSound.VoteArtistRequest.artist)
+}
+
+// optional bool like = 3;
+void VoteArtistRequest::clear_like() {
+  like_ = false;
+}
+ bool VoteArtistRequest::like() const {
+  // @@protoc_insertion_point(field_get:CrowdSound.VoteArtistRequest.like)
+  return like_;
+}
+ void VoteArtistRequest::set_like(bool value) {
+  
+  like_ = value;
+  // @@protoc_insertion_point(field_set:CrowdSound.VoteArtistRequest.like)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+VoteArtistResponse::VoteArtistResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CrowdSound.VoteArtistResponse)
+}
+
+void VoteArtistResponse::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
+}
+
+VoteArtistResponse::VoteArtistResponse(const VoteArtistResponse& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:CrowdSound.VoteArtistResponse)
+}
+
+void VoteArtistResponse::SharedCtor() {
+    _is_default_instance_ = false;
+  _cached_size_ = 0;
+}
+
+VoteArtistResponse::~VoteArtistResponse() {
+  // @@protoc_insertion_point(destructor:CrowdSound.VoteArtistResponse)
+  SharedDtor();
+}
+
+void VoteArtistResponse::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void VoteArtistResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* VoteArtistResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return VoteArtistResponse_descriptor_;
+}
+
+const VoteArtistResponse& VoteArtistResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fcrowdsound_5fservice_2eproto();
+  return *default_instance_;
+}
+
+VoteArtistResponse* VoteArtistResponse::default_instance_ = NULL;
+
+VoteArtistResponse* VoteArtistResponse::New(::google::protobuf::Arena* arena) const {
+  VoteArtistResponse* n = new VoteArtistResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void VoteArtistResponse::Clear() {
+}
+
+bool VoteArtistResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CrowdSound.VoteArtistResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CrowdSound.VoteArtistResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CrowdSound.VoteArtistResponse)
+  return false;
+#undef DO_
+}
+
+void VoteArtistResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CrowdSound.VoteArtistResponse)
+  // @@protoc_insertion_point(serialize_end:CrowdSound.VoteArtistResponse)
+}
+
+::google::protobuf::uint8* VoteArtistResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:CrowdSound.VoteArtistResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:CrowdSound.VoteArtistResponse)
+  return target;
+}
+
+int VoteArtistResponse::ByteSize() const {
+  int total_size = 0;
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void VoteArtistResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const VoteArtistResponse* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const VoteArtistResponse>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void VoteArtistResponse::MergeFrom(const VoteArtistResponse& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+}
+
+void VoteArtistResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void VoteArtistResponse::CopyFrom(const VoteArtistResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool VoteArtistResponse::IsInitialized() const {
+
+  return true;
+}
+
+void VoteArtistResponse::Swap(VoteArtistResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void VoteArtistResponse::InternalSwap(VoteArtistResponse* other) {
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata VoteArtistResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = VoteArtistResponse_descriptor_;
+  metadata.reflection = VoteArtistResponse_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// VoteArtistResponse
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 

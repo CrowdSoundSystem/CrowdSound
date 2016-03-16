@@ -22,6 +22,7 @@ static const char* CrowdSound_method_names[] = {
   "/CrowdSound.CrowdSound/ListTrendingArtists",
   "/CrowdSound.CrowdSound/PostSong",
   "/CrowdSound.CrowdSound/VoteSong",
+  "/CrowdSound.CrowdSound/VoteArtist",
   "/CrowdSound.CrowdSound/VoteSkip",
 };
 
@@ -38,7 +39,8 @@ CrowdSound::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   , rpcmethod_ListTrendingArtists_(CrowdSound_method_names[4], ::grpc::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_PostSong_(CrowdSound_method_names[5], ::grpc::RpcMethod::CLIENT_STREAMING, channel)
   , rpcmethod_VoteSong_(CrowdSound_method_names[6], ::grpc::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VoteSkip_(CrowdSound_method_names[7], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VoteArtist_(CrowdSound_method_names[7], ::grpc::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VoteSkip_(CrowdSound_method_names[8], ::grpc::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status CrowdSound::Stub::Ping(::grpc::ClientContext* context, const ::CrowdSound::PingRequest& request, ::CrowdSound::PingResponse* response) {
@@ -97,6 +99,14 @@ CrowdSound::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   return new ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteSongResponse>(channel_.get(), cq, rpcmethod_VoteSong_, context, request);
 }
 
+::grpc::Status CrowdSound::Stub::VoteArtist(::grpc::ClientContext* context, const ::CrowdSound::VoteArtistRequest& request, ::CrowdSound::VoteArtistResponse* response) {
+  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_VoteArtist_, context, request, response);
+}
+
+::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteArtistResponse>* CrowdSound::Stub::AsyncVoteArtistRaw(::grpc::ClientContext* context, const ::CrowdSound::VoteArtistRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteArtistResponse>(channel_.get(), cq, rpcmethod_VoteArtist_, context, request);
+}
+
 ::grpc::Status CrowdSound::Stub::VoteSkip(::grpc::ClientContext* context, const ::CrowdSound::VoteSkipRequest& request, ::CrowdSound::VoteSkipResponse* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_VoteSkip_, context, request, response);
 }
@@ -105,7 +115,7 @@ CrowdSound::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   return new ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteSkipResponse>(channel_.get(), cq, rpcmethod_VoteSkip_, context, request);
 }
 
-CrowdSound::AsyncService::AsyncService() : ::grpc::AsynchronousService(CrowdSound_method_names, 8) {}
+CrowdSound::AsyncService::AsyncService() : ::grpc::AsynchronousService(CrowdSound_method_names, 9) {}
 
 CrowdSound::Service::~Service() {
   delete service_;
@@ -188,6 +198,17 @@ void CrowdSound::AsyncService::RequestVoteSong(::grpc::ServerContext* context, :
   AsynchronousService::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
 }
 
+::grpc::Status CrowdSound::Service::VoteArtist(::grpc::ServerContext* context, const ::CrowdSound::VoteArtistRequest* request, ::CrowdSound::VoteArtistResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+void CrowdSound::AsyncService::RequestVoteArtist(::grpc::ServerContext* context, ::CrowdSound::VoteArtistRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::VoteArtistResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+  AsynchronousService::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+}
+
 ::grpc::Status CrowdSound::Service::VoteSkip(::grpc::ServerContext* context, const ::CrowdSound::VoteSkipRequest* request, ::CrowdSound::VoteSkipResponse* response) {
   (void) context;
   (void) request;
@@ -196,7 +217,7 @@ void CrowdSound::AsyncService::RequestVoteSong(::grpc::ServerContext* context, :
 }
 
 void CrowdSound::AsyncService::RequestVoteSkip(::grpc::ServerContext* context, ::CrowdSound::VoteSkipRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::VoteSkipResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-  AsynchronousService::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+  AsynchronousService::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
 }
 
 ::grpc::RpcService* CrowdSound::Service::service() {
@@ -241,6 +262,11 @@ void CrowdSound::AsyncService::RequestVoteSkip(::grpc::ServerContext* context, :
           std::mem_fn(&CrowdSound::Service::VoteSong), this)));
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       CrowdSound_method_names[7],
+      ::grpc::RpcMethod::NORMAL_RPC,
+      new ::grpc::RpcMethodHandler< CrowdSound::Service, ::CrowdSound::VoteArtistRequest, ::CrowdSound::VoteArtistResponse>(
+          std::mem_fn(&CrowdSound::Service::VoteArtist), this)));
+  service_->AddMethod(new ::grpc::RpcServiceMethod(
+      CrowdSound_method_names[8],
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< CrowdSound::Service, ::CrowdSound::VoteSkipRequest, ::CrowdSound::VoteSkipResponse>(
           std::mem_fn(&CrowdSound::Service::VoteSkip), this)));

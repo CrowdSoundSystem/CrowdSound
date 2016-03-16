@@ -64,6 +64,10 @@ class CrowdSound GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::VoteSongResponse>> AsyncVoteSong(::grpc::ClientContext* context, const ::CrowdSound::VoteSongRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::VoteSongResponse>>(AsyncVoteSongRaw(context, request, cq));
     }
+    virtual ::grpc::Status VoteArtist(::grpc::ClientContext* context, const ::CrowdSound::VoteArtistRequest& request, ::CrowdSound::VoteArtistResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::VoteArtistResponse>> AsyncVoteArtist(::grpc::ClientContext* context, const ::CrowdSound::VoteArtistRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::VoteArtistResponse>>(AsyncVoteArtistRaw(context, request, cq));
+    }
     virtual ::grpc::Status VoteSkip(::grpc::ClientContext* context, const ::CrowdSound::VoteSkipRequest& request, ::CrowdSound::VoteSkipResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::VoteSkipResponse>> AsyncVoteSkip(::grpc::ClientContext* context, const ::CrowdSound::VoteSkipRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::VoteSkipResponse>>(AsyncVoteSkipRaw(context, request, cq));
@@ -79,6 +83,7 @@ class CrowdSound GRPC_FINAL {
     virtual ::grpc::ClientWriterInterface< ::CrowdSound::PostSongRequest>* PostSongRaw(::grpc::ClientContext* context, ::CrowdSound::PostSongResponse* response) = 0;
     virtual ::grpc::ClientAsyncWriterInterface< ::CrowdSound::PostSongRequest>* AsyncPostSongRaw(::grpc::ClientContext* context, ::CrowdSound::PostSongResponse* response, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::VoteSongResponse>* AsyncVoteSongRaw(::grpc::ClientContext* context, const ::CrowdSound::VoteSongRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::VoteArtistResponse>* AsyncVoteArtistRaw(::grpc::ClientContext* context, const ::CrowdSound::VoteArtistRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CrowdSound::VoteSkipResponse>* AsyncVoteSkipRaw(::grpc::ClientContext* context, const ::CrowdSound::VoteSkipRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub GRPC_FINAL : public StubInterface {
@@ -118,6 +123,10 @@ class CrowdSound GRPC_FINAL {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteSongResponse>> AsyncVoteSong(::grpc::ClientContext* context, const ::CrowdSound::VoteSongRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteSongResponse>>(AsyncVoteSongRaw(context, request, cq));
     }
+    ::grpc::Status VoteArtist(::grpc::ClientContext* context, const ::CrowdSound::VoteArtistRequest& request, ::CrowdSound::VoteArtistResponse* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteArtistResponse>> AsyncVoteArtist(::grpc::ClientContext* context, const ::CrowdSound::VoteArtistRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteArtistResponse>>(AsyncVoteArtistRaw(context, request, cq));
+    }
     ::grpc::Status VoteSkip(::grpc::ClientContext* context, const ::CrowdSound::VoteSkipRequest& request, ::CrowdSound::VoteSkipResponse* response) GRPC_OVERRIDE;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteSkipResponse>> AsyncVoteSkip(::grpc::ClientContext* context, const ::CrowdSound::VoteSkipRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteSkipResponse>>(AsyncVoteSkipRaw(context, request, cq));
@@ -135,6 +144,7 @@ class CrowdSound GRPC_FINAL {
     ::grpc::ClientWriter< ::CrowdSound::PostSongRequest>* PostSongRaw(::grpc::ClientContext* context, ::CrowdSound::PostSongResponse* response) GRPC_OVERRIDE;
     ::grpc::ClientAsyncWriter< ::CrowdSound::PostSongRequest>* AsyncPostSongRaw(::grpc::ClientContext* context, ::CrowdSound::PostSongResponse* response, ::grpc::CompletionQueue* cq, void* tag) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteSongResponse>* AsyncVoteSongRaw(::grpc::ClientContext* context, const ::CrowdSound::VoteSongRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteArtistResponse>* AsyncVoteArtistRaw(::grpc::ClientContext* context, const ::CrowdSound::VoteArtistRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     ::grpc::ClientAsyncResponseReader< ::CrowdSound::VoteSkipResponse>* AsyncVoteSkipRaw(::grpc::ClientContext* context, const ::CrowdSound::VoteSkipRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     const ::grpc::RpcMethod rpcmethod_Ping_;
     const ::grpc::RpcMethod rpcmethod_GetSessionData_;
@@ -143,6 +153,7 @@ class CrowdSound GRPC_FINAL {
     const ::grpc::RpcMethod rpcmethod_ListTrendingArtists_;
     const ::grpc::RpcMethod rpcmethod_PostSong_;
     const ::grpc::RpcMethod rpcmethod_VoteSong_;
+    const ::grpc::RpcMethod rpcmethod_VoteArtist_;
     const ::grpc::RpcMethod rpcmethod_VoteSkip_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::Channel>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -158,6 +169,7 @@ class CrowdSound GRPC_FINAL {
     virtual ::grpc::Status ListTrendingArtists(::grpc::ServerContext* context, const ::CrowdSound::ListTrendingArtistsRequest* request, ::grpc::ServerWriter< ::CrowdSound::ListTrendingArtistsResponse>* writer);
     virtual ::grpc::Status PostSong(::grpc::ServerContext* context, ::grpc::ServerReader< ::CrowdSound::PostSongRequest>* reader, ::CrowdSound::PostSongResponse* response);
     virtual ::grpc::Status VoteSong(::grpc::ServerContext* context, const ::CrowdSound::VoteSongRequest* request, ::CrowdSound::VoteSongResponse* response);
+    virtual ::grpc::Status VoteArtist(::grpc::ServerContext* context, const ::CrowdSound::VoteArtistRequest* request, ::CrowdSound::VoteArtistResponse* response);
     virtual ::grpc::Status VoteSkip(::grpc::ServerContext* context, const ::CrowdSound::VoteSkipRequest* request, ::CrowdSound::VoteSkipResponse* response);
     ::grpc::RpcService* service() GRPC_OVERRIDE GRPC_FINAL;
    private:
@@ -174,6 +186,7 @@ class CrowdSound GRPC_FINAL {
     void RequestListTrendingArtists(::grpc::ServerContext* context, ::CrowdSound::ListTrendingArtistsRequest* request, ::grpc::ServerAsyncWriter< ::CrowdSound::ListTrendingArtistsResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestPostSong(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::CrowdSound::PostSongResponse, ::CrowdSound::PostSongRequest>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestVoteSong(::grpc::ServerContext* context, ::CrowdSound::VoteSongRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::VoteSongResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestVoteArtist(::grpc::ServerContext* context, ::CrowdSound::VoteArtistRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::VoteArtistResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
     void RequestVoteSkip(::grpc::ServerContext* context, ::CrowdSound::VoteSkipRequest* request, ::grpc::ServerAsyncResponseWriter< ::CrowdSound::VoteSkipResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
   };
 };
