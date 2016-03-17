@@ -88,7 +88,10 @@ void PlaysourceClient::runQueueLoop() {
             QueueSongRequest req;
             req.mutable_song()->set_song_id(it->id);
             req.mutable_song()->set_name(it->name);
-            req.mutable_song()->add_artists(it->artist.name);
+
+            if (it->artist.name != "") {
+                req.mutable_song()->add_artists(it->artist.name);
+            }
 
             sendPosition++;
             if (!stream->Write(req, writeOptions)) {
