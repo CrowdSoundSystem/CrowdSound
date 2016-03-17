@@ -76,8 +76,14 @@ void PlaysourceClient::runQueueLoop() {
                 this_thread::sleep_for(chrono::seconds(1));
                 continue;
             }
+
+            // Buffer was, so re-iterate
+            if (buffer.size() != count) {
+                continue;
+            }
         }
 
+        cout << "[playsource] sending songs from buffer" << endl;
         for (auto it = buffer.begin() + sendPosition; it != buffer.end(); it++) {
             QueueSongRequest req;
             req.mutable_song()->set_song_id(it->id);
@@ -93,6 +99,7 @@ void PlaysourceClient::runQueueLoop() {
             cout << "[playsource] buffering: " << *it << endl;
         }
 
+        cout << "[playsource] waiting for reply" << endl;
         QueueSongResponse resp;
         if (!stream->Read(&resp)) {
             Status status = stream->Finish();
