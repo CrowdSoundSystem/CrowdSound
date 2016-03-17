@@ -15,13 +15,19 @@ using grpc::ServerBuilder;
 using namespace std;
 
 
-int main() {
+int main(int argc, char *argv[]) {
+    string db_path = "crowdsound.db";
+
+    if (argc > 1) {
+        db_path = string(argv[1]);
+    }
+
     // Create/Load the main database.
     skrillex::Options options;
     options.create_if_missing = true;
 
     skrillex::DB* raw = 0;
-    skrillex::Status status = skrillex::open(raw, "crowdsound.db", options);
+    skrillex::Status status = skrillex::open(raw, db_path, options);
     shared_ptr<skrillex::DB> db(raw);
 
     if (status != skrillex::Status::OK()) {

@@ -1,0 +1,10 @@
+[Unit]
+Description=Crowdsound Server
+Requires=playsource.service
+After=playsource.service
+
+[Service]
+ExecStart=/opt/crowdsound /opt/crowdsound.db
+
+[Install]
+WantedBy=multi-user.target
