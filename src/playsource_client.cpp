@@ -74,9 +74,8 @@ void PlaysourceClient::runQueueLoop() {
             if (count == 0) {
                 cout << "[playsource] queue empty, sleeping..." << endl;
                 this_thread::sleep_for(chrono::seconds(1));
+                continue;
             }
-
-            continue;
         }
 
         for (auto it = buffer.begin() + sendPosition; it != buffer.end(); it++) {
