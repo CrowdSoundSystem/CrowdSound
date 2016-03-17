@@ -5,6 +5,7 @@ After=playsource.service
 
 [Service]
 ExecStart=/opt/crowdsound/crowdsound /opt/crowdsound/crowdsound.db
+TimeoutStartSec=infinity
 
 [Install]
 WantedBy=multi-user.target
