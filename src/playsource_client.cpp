@@ -74,16 +74,24 @@ void PlaysourceClient::runQueueLoop() {
             if (count == 0) {
                 cout << "[playsource] queue empty, sleeping..." << endl;
                 this_thread::sleep_for(chrono::seconds(1));
+                continue;
             }
 
-            continue;
+            // Buffer was, so re-iterate
+            if (buffer.size() != count) {
+                continue;
+            }
         }
 
+        cout << "[playsource] sending songs from buffer" << endl;
         for (auto it = buffer.begin() + sendPosition; it != buffer.end(); it++) {
             QueueSongRequest req;
             req.mutable_song()->set_song_id(it->id);
             req.mutable_song()->set_name(it->name);
-            req.mutable_song()->add_artists(it->artist.name);
+
+            if (it->artist.name != "") {
+                req.mutable_song()->add_artists(it->artist.name);
+            }
 
             sendPosition++;
             if (!stream->Write(req, writeOptions)) {
@@ -94,6 +102,7 @@ void PlaysourceClient::runQueueLoop() {
             cout << "[playsource] buffering: " << *it << endl;
         }
 
+        cout << "[playsource] waiting for reply" << endl;
         QueueSongResponse resp;
         if (!stream->Read(&resp)) {
             Status status = stream->Finish();
@@ -143,9 +152,9 @@ void PlaysourceClient::runQueueLoop() {
             cout << "[playsource] song finished: " << responseSong << endl;
         }
 
-        server_->runAlgorithm();
-        server_->clearSkipVotes();
         db_->songFinished();
+        server_->clearSkipVotes();
+        server_->runAlgorithm();
         db_->bufferNext();
         sendPosition--;
 

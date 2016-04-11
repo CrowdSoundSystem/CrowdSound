@@ -296,6 +296,26 @@ Status CrowdSoundImpl::VoteSong(ServerContext* context, const VoteSongRequest* r
 }
 
 Status CrowdSoundImpl::VoteArtist(ServerContext* context, const VoteArtistRequest* request, VoteArtistResponse* resp) {
+    cout << "[server Received VoteArtist: " << request->artist() << endl;
+
+    skrillex::Artist artist;
+    int amount = request->like() ? 1 : -1;
+    skrillex::Status status = mapper_.lookup(artist, request->artist());
+
+    if (status.notFound()) {
+        return Status(StatusCode::NOT_FOUND, status.message());
+    } else if (status != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, status.message());
+    }
+
+    status = db_->voteArtist(request->user_id(), artist, amount);
+    if (status != skrillex::Status::OK()) {
+        return Status(StatusCode::INTERNAL, status.message());
+    }
+
+    server_->updateActivity(request->user_id());
+    server_->runAlgorithm();
+
     return Status::OK;
 }
 
